@@ -9,7 +9,7 @@ OBJS=common_tester.o alg.o print.o cprint.o alloc.o \
 	 strlen.o memset.o bzero.o memcpy.o memmove.o \
 	 strlcpy.o strlcpy_regular.o strlcpy_special.o \
 	 strlcat.o strlcat_regular.o strlcat_special.o \
-	 toupper.o tolower.o strchr.o strrchr.o
+	 toupper.o tolower.o strchr.o strrchr.o strncmp.o
 
 $(NAME) : $(OBJS) $(BSDOBJS)
 	cd .. && $(MAKE) all # First let's build the Libft
@@ -113,5 +113,8 @@ strchr.o : src/strchr.c include/libft_tester.h
 
 strrchr.o : src/strrchr.c include/libft_tester.h
 	$(CC) -c src/strrchr.c 
+
+strncmp.o : src/strncmp.c include/libft_tester.h
+	$(CC) -c src/strncmp.c 
 
 .PHONY: all clean fclean re

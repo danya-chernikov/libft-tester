@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:53:37 by dchernik          #+#    #+#             */
-/*   Updated: 2024/11/19 18:10:25 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/11/20 17:22:02 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ static void	launch_tests(char const *funcname)
 	char	str[32] = "just a test string";
 	char	str2[8] = "teste";
 
-	printf("str = \"%s\"\n", str);
-	printf("Address of str is: %p\n", str);
+	printf("\tstr = \"%s\"\n", str);
+	printf("\tAddress of str is: %p\n", str);
 	test_helper(funcname, 1, str, 'j');
 	test_helper(funcname, 2, str, ' ');
 	test_helper(funcname, 3, str, 'a');

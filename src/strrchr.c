@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:57:12 by dchernik          #+#    #+#             */
-/*   Updated: 2024/11/20 17:12:07 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/11/20 17:22:02 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	test_helper(t_char_c *funcname, int ntest, t_char_c *str, int ch);
 /* Main function that tests ft_strrchr(), launching both tests of our own
  * implementation and the same tests of the original strrchr() from Glibc,
  * to be able to compare their results */
-void	strchr_test()
+void	strrchr_test()
 {
 	t_char_c	our_funcname[] = "ft_strrchr";
 	t_char_c	orig_funcname[] = "strrchr";
@@ -51,8 +51,8 @@ static void	launch_tests(char const *funcname)
 	char	str[32] = "just a test string";
 	char	str2[8] = "teste";
 
-	printf("str = \"%s\"\n", str);
-	printf("Address of str is: %p\n", str);
+	printf("\tstr = \"%s\"\n", str);
+	printf("\tAddress of str is: %p\n", str);
 	test_helper(funcname, 1, str, 'j');
 	test_helper(funcname, 2, str, ' ');
 	test_helper(funcname, 3, str, 'a');

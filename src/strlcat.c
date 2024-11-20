@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:54:14 by dchernik          #+#    #+#             */
-/*   Updated: 2024/11/15 17:56:50 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/11/20 17:43:24 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,14 @@ void	strlcat_test_helper(char const *funcname,
 	size_t	ret;
 
 	cprintf(YELLOW, "%s", funcname);
-	printf("(\"%s\", \"%s\", %lu):", dst, src, size);
+	printf("(\"%s\", \"%s\", %lu) = ", dst, src, size);
 	if (strncmp(funcname, "ft_strlcat", MAX_FUNC_NAME_LEN) == 0)
 		ret = ft_strlcat(dst, src, size);
 	else if (strncmp(funcname, "strlcat", MAX_FUNC_NAME_LEN) == 0)
 		ret = strlcat(dst, src, size);
 	else
 		ret = ft_strlcat(dst, src, size);
-	printf("\t\tcall returned value is: %lu", ret);
+	printf("%lu\n", ret);
 	printf("\t\tdestination buffer is: \"%s\"\n", dst);
 	printf("\t\t");
 	print_bytes(dst, 64);
