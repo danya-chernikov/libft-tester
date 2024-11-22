@@ -110,6 +110,7 @@ int main(void)
 ------------------------------------------------------------------------------------------------------
 5. The file tester.c may be compiled and launched:
 ```bash
+$ cd examples/
 $ cc -Wall -Wextra -Werror tester.c ../libft_tester.a ../../libft.a -o tester
 $ ./tester
 ```
