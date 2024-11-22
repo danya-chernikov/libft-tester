@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:42:27 by dchernik          #+#    #+#             */
-/*   Updated: 2024/11/20 19:59:29 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/11/22 19:52:39 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # define FT_STR					"ft_"
 # define MAX_FUNC_NAME_LEN		20
 # define MAX_STRNCMP_STR_LEN	128
+# define MAX_MEMCHR_STR_LEN		128
 
 /* In this structure we store all possible arguments that may have a put_smth
  * putchar_fd_test, putstr_fd_test, ...) function. There are 3 different

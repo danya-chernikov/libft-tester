@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:42:05 by dchernik          #+#    #+#             */
-/*   Updated: 2024/11/20 19:59:22 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/11/22 19:41:25 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,13 @@
 
 typedef char const	t_char_c;
 
-/* cprintf() - colored printf 
+/* Packet of arguments */
+typedef struct s_pargs
+{
+	void	**arg;
+}	t_pargs;
+
+/* cprintf() - colored printf
  * cperror() - colored perror
  * alloc_str_2d() - allocates dynamic memory for an array of strings */
 void	cprintf(const char *color, const char *format, ...);
@@ -61,6 +67,7 @@ void	print_test_header(const char *funcname);
 void	print_test_footer(void);
 char	*pack_strs(t_char_c *s1, t_char_c *s2);
 int		unpack_strs(char *strs, char *s1, char *s2);
+void    **pack_args(int nargs, ...);
 char	**alloc_str_2d(int strsnum, int strlen);
 void	print_bytes(void *ptr, int size);
 void	print_arr_int(int *arr, int size);

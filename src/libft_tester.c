@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:51:25 by dchernik          #+#    #+#             */
-/*   Updated: 2024/11/20 20:00:20 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/11/22 19:52:46 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ void	test_glibc_funcs()
 	strchr_test();
 	strrchr_test();
 	strncmp_test();
-	/*memchr_test();
-	memcmp_test();
+	memchr_test();
+	/*memcmp_test();
 	strnstr_test();
 	atoi_test();
 	calloc_test();

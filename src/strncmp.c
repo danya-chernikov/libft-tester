@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:57:02 by dchernik          #+#    #+#             */
-/*   Updated: 2024/11/20 20:06:48 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/11/22 19:55:09 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	test_helper(t_char_c *fname, t_char_c *s1, t_char_c *s2, size_t n);
 static void	regular_test(t_char_c *fname, int ntest, char *strs, size_t n);
 static void	launch_tests(t_char_c *fname);
 
-void	strncmp_test()
+void	strncmp_test(void)
 {	
 	t_char_c	our_funcname[] = "ft_strncmp";
 	t_char_c	orig_funcname[] = "strncmp";

@@ -3,13 +3,14 @@ NAME=libft_tester.a
 CFLAGS=-Wall -Werror -Wextra
 BSDOBJS=bsd_strlcpy.o bsd_strlcat.o
 
-OBJS=common_tester.o alg.o print.o cprint.o alloc.o \
+OBJS=common_tester.o alg.o print.o cprint.o alloc.o packer.o \
 	 libft_tester.o \
 	 isalpha.o isdigit.o isalnum.o isascii.o isprint.o \
 	 strlen.o memset.o bzero.o memcpy.o memmove.o \
 	 strlcpy.o strlcpy_regular.o strlcpy_special.o \
 	 strlcat.o strlcat_regular.o strlcat_special.o \
-	 toupper.o tolower.o strchr.o strrchr.o strncmp.o
+	 toupper.o tolower.o strchr.o strrchr.o strncmp.o \
+	 memchr.o
 
 $(NAME) : $(OBJS) $(BSDOBJS)
 	cd .. && $(MAKE) all # First let's build the Libft
@@ -46,9 +47,11 @@ print.o : common_tester/print.c common_tester/common_tester.h
 
 cprint.o : common_tester/cprint.c common_tester/common_tester.h
 	$(CC) -c common_tester/cprint.c
-
 alloc.o : common_tester/alloc.c common_tester/common_tester.h
 	$(CC) -c common_tester/alloc.c
+
+packer.o : common_tester/packer.c common_tester/common_tester.h
+	$(CC) -c common_tester/packer.c
 
 # Let's compile all the sources of libft_tester library
 libft_tester.o : src/libft_tester.c include/libft_tester.h
@@ -116,5 +119,8 @@ strrchr.o : src/strrchr.c include/libft_tester.h
 
 strncmp.o : src/strncmp.c include/libft_tester.h
 	$(CC) -c src/strncmp.c 
+
+memchr.o : src/memchr.c include/libft_tester.h
+	$(CC) -c src/memchr.c
 
 .PHONY: all clean fclean re
