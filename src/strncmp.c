@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:57:02 by dchernik          #+#    #+#             */
-/*   Updated: 2024/11/22 19:55:09 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/11/23 19:17:32 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ static void	regular_test(t_char_c *fname, int ntest, char *strs, size_t n)
 	char	s1[MAX_STRNCMP_STR_LEN];
 	char	s2[MAX_STRNCMP_STR_LEN];
 
-	unpack_strs(strs, s1, s2);
 	printf("\t%d. ", ntest);
+	unpack_strs(strs, s1, s2);
 	test_helper(fname, s1, s2, n);
 }
 

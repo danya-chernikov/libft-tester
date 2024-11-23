@@ -1,18 +1,53 @@
 #include "common_tester.h"
 
-void	print_bytes(void *ptr, int size)
+/* It prints n bytes starting from the ptr address in memory.
+ * It uses a space as a delimiter between the bytes printed.
+ * If a caller wants to print a too long peace of memory the
+ * function does nothing */
+void	print_bytes(void *ptr, int n)
 {
-	unsigned char	*p;
-	int				i;
+	u_char	*p;
+	int		i;
 
-	p = (unsigned char *)ptr;
+	if (n > PRINT_BYTES_LIMIT)
+		return;
+	p = (u_char *)ptr;
 	i = 0;
-	while (i < size)
+	while (i < n)
 	{
 		printf("%02hhX ", p[i]);
 		i++;
 	}
 	printf("\n");
+}
+
+/* It behaves the same as print_bytes(), but accepts a delimiter string
+ * and returns the string of bytes instead of printing it */
+char    *get_bytes_delim(void *ptr, int n, t_char_c *delim, int height)
+{
+	static char	bstr[PRINT_BYTES_LIMIT + 1];
+	char		one_byte[DELIM_BYTES_LIMIT + 2 + 1];
+	u_char		*p;
+	int			i;
+
+	if (n > PRINT_BYTES_LIMIT)
+		return (NULL);
+	if (strlen(delim) > DELIM_BYTES_LIMIT)
+		return (NULL);
+	if (n * (strlen(delim) + 2) > PRINT_BYTES_LIMIT)
+		return (NULL);
+	bstr[0] = '\0';
+	p = (u_char *)ptr;
+	i = 0;
+	while (i < n)
+	{
+		snprintf(one_byte, DELIM_BYTES_LIMIT + 2, "%s%02hhX", delim, p[i]);
+		strlcat(bstr, one_byte, PRINT_BYTES_LIMIT);
+		if (i % height == 0 && i >= height)
+			strlcat(bstr, "\n", PRINT_BYTES_LIMIT);
+		i++;
+	}
+	return (bstr);
 }
 
 void	print_arr_int(int *arr, int size)

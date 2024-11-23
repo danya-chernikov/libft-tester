@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:42:05 by dchernik          #+#    #+#             */
-/*   Updated: 2024/11/22 19:41:25 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/11/23 20:09:36 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdarg.h>
+
+#include "../libbsd/bsd_string.h"
 
 /* GL_COLOR_FLAG    - global color flag. if 1 cprintf() function
  *					  is going to color it's output, otherwise
@@ -49,18 +51,15 @@
 # define MAX_SUBSTR_LEN		100
 # define MAX_TESTS_NUM		128
 # define MAX_TEST_STR_LEN	256
+# define PRINT_BYTES_LIMIT	1024
+# define DELIM_BYTES_LIMIT	10
 
 typedef char const	t_char_c;
+typedef void const	t_void_c;
 
-/* Packet of arguments */
-typedef struct s_pargs
-{
-	void	**arg;
-}	t_pargs;
-
-/* cprintf() - colored printf
- * cperror() - colored perror
- * alloc_str_2d() - allocates dynamic memory for an array of strings */
+/* cprintf() - colored printf;
+ * cperror() - colored perror;
+ * alloc_str_2d() - allocates dynamic memory for an array of strings; */
 void	cprintf(const char *color, const char *format, ...);
 void	cperror(const char *color, const char *format, ...);
 void	print_test_header(const char *funcname);
@@ -70,6 +69,7 @@ int		unpack_strs(char *strs, char *s1, char *s2);
 void    **pack_args(int nargs, ...);
 char	**alloc_str_2d(int strsnum, int strlen);
 void	print_bytes(void *ptr, int size);
+char    *get_bytes_delim(void *ptr, int n, t_char_c *delim, int height);
 void	print_arr_int(int *arr, int size);
 int		max(int v1, int v2);
 int		min(int v1, int v2);
