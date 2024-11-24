@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:52:06 by dchernik          #+#    #+#             */
-/*   Updated: 2024/11/23 20:10:51 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/11/24 15:00:07 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ void	memcmp_test_helper(t_char_c *fname, t_void_c *s1, t_void_c *s2, size_t n)
 {
 	t_char_c	format[] = "(\"%s\"|\"%s\",\n\"%s\"|\"%s\", %lu) = ";
 	int			ret;
-	char		bytes_s1[PRINT_BYTES_LIMIT + 1];
-	char		bytes_s2[PRINT_BYTES_LIMIT + 1];
+	char		bytes_s1[READ_MEM_LIMIT + 1];
+	char		bytes_s2[READ_MEM_LIMIT + 1];
 
-	strlcpy(bytes_s1, get_bytes_delim((void *)s1, n, "\\x", 8), PRINT_BYTES_LIMIT);
-	strlcpy(bytes_s2, get_bytes_delim((void *)s2, n, "\\x", 8), PRINT_BYTES_LIMIT);
+	strlcpy(bytes_s1, read_mem((void *)s1, n, "\\x", 8), READ_MEM_LIMIT);
+	strlcpy(bytes_s2, read_mem((void *)s2, n, "\\x", 8), READ_MEM_LIMIT);
 	cprintf(YELLOW, "%s", fname);
 	printf(format, bytes_s1, (char *)s1, bytes_s2, (char *)s2, n);
 	if (strncmp(fname, "ft_memcmp", MAX_FUNC_NAME_LEN) == 0)
