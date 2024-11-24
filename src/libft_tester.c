@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:51:25 by dchernik          #+#    #+#             */
-/*   Updated: 2024/11/24 17:54:43 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/11/24 18:21:40 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	test_glibc_funcs()
 	strnstr_test();
 	atoi_test();
 	calloc_test();
-	//strdup_test();
+	strdup_test();
 }
 
 /* It launches tests of the additional functions we've been asked to implement */
