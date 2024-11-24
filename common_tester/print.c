@@ -9,7 +9,7 @@ void	print_bytes(void *ptr, int n)
 	u_char	*p;
 	int		i;
 
-	if (n > PRINT_BYTES_LIMIT)
+	if (n > READ_MEM_LIMIT)
 		return;
 	p = (u_char *)ptr;
 	i = 0;
@@ -23,18 +23,18 @@ void	print_bytes(void *ptr, int n)
 
 /* It behaves the same as print_bytes(), but accepts a delimiter string
  * and returns the string of bytes instead of printing it */
-char    *get_bytes_delim(void *ptr, int n, t_char_c *delim, int height)
+char    *read_mem(void *ptr, int n, t_char_c *delim, int height)
 {
-	static char	bstr[PRINT_BYTES_LIMIT + 1];
+	static char	bstr[READ_MEM_LIMIT + 1];
 	char		one_byte[DELIM_BYTES_LIMIT + 2 + 1];
 	u_char		*p;
 	int			i;
 
-	if (n > PRINT_BYTES_LIMIT)
+	if (n > READ_MEM_LIMIT)
 		return (NULL);
 	if (strlen(delim) > DELIM_BYTES_LIMIT)
 		return (NULL);
-	if (n * (strlen(delim) + 2) > PRINT_BYTES_LIMIT)
+	if (n * (strlen(delim) + 2) > READ_MEM_LIMIT)
 		return (NULL);
 	bstr[0] = '\0';
 	p = (u_char *)ptr;
@@ -42,9 +42,9 @@ char    *get_bytes_delim(void *ptr, int n, t_char_c *delim, int height)
 	while (i < n)
 	{
 		snprintf(one_byte, DELIM_BYTES_LIMIT + 2, "%s%02hhX", delim, p[i]);
-		strlcat(bstr, one_byte, PRINT_BYTES_LIMIT);
+		strlcat(bstr, one_byte, READ_MEM_LIMIT);
 		if (i % height == 0 && i >= height)
-			strlcat(bstr, "\n", PRINT_BYTES_LIMIT);
+			strlcat(bstr, "\n", READ_MEM_LIMIT);
 		i++;
 	}
 	return (bstr);

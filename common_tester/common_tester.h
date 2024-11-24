@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:42:05 by dchernik          #+#    #+#             */
-/*   Updated: 2024/11/23 20:09:36 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/11/24 15:04:22 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@
 # define MAX_SUBSTR_LEN		100
 # define MAX_TESTS_NUM		128
 # define MAX_TEST_STR_LEN	256
-# define PRINT_BYTES_LIMIT	1024
+# define READ_MEM_LIMIT		1024
 # define DELIM_BYTES_LIMIT	10
 
 typedef char const	t_char_c;
@@ -69,7 +69,7 @@ int		unpack_strs(char *strs, char *s1, char *s2);
 void    **pack_args(int nargs, ...);
 char	**alloc_str_2d(int strsnum, int strlen);
 void	print_bytes(void *ptr, int size);
-char    *get_bytes_delim(void *ptr, int n, t_char_c *delim, int height);
+char    *read_mem(void *ptr, int n, t_char_c *delim, int height);
 void	print_arr_int(int *arr, int size);
 int		max(int v1, int v2);
 int		min(int v1, int v2);
