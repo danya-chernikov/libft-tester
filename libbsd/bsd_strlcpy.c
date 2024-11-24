@@ -16,11 +16,11 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-/* Modified by [Daniil Chernikov/libft_tester] on [11/15/2024]
+/* Modified by [Daniil Chernikov/libft-tester] on [11/15/2024]
  * I substituted the #include <string.h> line with #include "string.h",
- * making it possible to compile the code of strlcpy.c and strlcat.c using
- * the original string.h header file provided by libbsd-0.12.2, but not the
- * system's string.h header file
+ * making it possible to compile the code of this file using the original
+ * string.h header file provided by libbsd-0.12.2, but not the system's
+ * string.h header file
  */
 
 #include <sys/types.h>
