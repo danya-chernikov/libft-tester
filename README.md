@@ -128,5 +128,11 @@ This work is published under the terms of [42 Unlicense](https://github.com/gcam
 
 The following files are included under thier original licenses:
 - strlcpy.c: Copyright (c) 1998, 2015 Todd C. Miller <Todd.Miller@courtesan.com>. Licensed under a permissive license.
+
 - strlcat.c: Copyright (c) 1998, 2015 Todd C. Miller <Todd.Miller@courtesan.com>. Licensed under a permissive license.
+
+- strnstr.c: Copyright (c) 2001 Mike Barcroft <mike@FreeBSD.org>.
+  Copyright (c) 1990, 1993 The Regents of the University of California All rights reserved.
+  This code is derived from software contributed to Berkeley by Chris Torek. Licensed under a permissive license.
+
 - string.h:  Copyright © 2004, 2005, 2009, 2011 Guillem Jover <guillem@hadrons.org>. Licensed under the BSD 3-Clause License.

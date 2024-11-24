@@ -1,7 +1,7 @@
 CC=cc
 NAME=libft_tester.a
 CFLAGS=-Wall -Werror -Wextra
-BSDOBJS=bsd_strlcpy.o bsd_strlcat.o
+BSDOBJS=bsd_strlcpy.o bsd_strlcat.o bsd_strnstr.o
 
 OBJS=common_tester.o alg.o print.o cprint.o alloc.o packer.o \
 	 libft_tester.o \
@@ -11,7 +11,8 @@ OBJS=common_tester.o alg.o print.o cprint.o alloc.o packer.o \
 	 strlcat.o strlcat_regular.o strlcat_special.o \
 	 toupper.o tolower.o strchr.o strrchr.o strncmp.o \
 	 memchr.o \
-	 memcmp.o memcmp_regular.o memcmp_special.o
+	 memcmp.o memcmp_regular.o memcmp_special.o \
+	 strnstr.o atoi.o
 
 $(NAME) : $(OBJS) $(BSDOBJS)
 	cd .. && $(MAKE) all # First let's build the Libft
@@ -35,6 +36,10 @@ bsd_strlcpy.o : libbsd/bsd_strlcpy.c libbsd/bsd_string.h
 # Let's compile the original strlcat() from FreeBSD
 bsd_strlcat.o : libbsd/bsd_strlcat.c libbsd/bsd_string.h
 	$(CC) -c libbsd/bsd_strlcat.c
+
+# Let's compile the original strnstr() from FreeBSD
+bsd_strnstr.o : libbsd/bsd_strnstr.c libbsd/bsd_string.h
+	$(CC) -c libbsd/bsd_strnstr.c
 
 # Let's compile common tester library
 common_tester.o : common_tester/common_tester.c common_tester/common_tester.h
@@ -132,5 +137,11 @@ memcmp_special.o : src/memcmp_special.c include/memcmp.h include/libft_tester.h
 
 memcmp.o : src/memcmp.c include/libft_tester.h
 	$(CC) -c src/memcmp.c
+
+strnstr.o : src/strnstr.c include/libft_tester.h
+	$(CC) -c src/strnstr.c
+
+atoi.o : src/atoi.c include/libft_tester.h
+	$(CC) -c src/atoi.c
 
 .PHONY: all clean fclean re
