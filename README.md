@@ -75,6 +75,7 @@ The most common example of directory arrangement is shown below:
 |    |    |        bsd_string.h
 |    |    |        bsd_strlcat.c
 |    |    |        bsd_strlcpy.c
+|    |    |		   bsd_strnstr.c
 |    |    |    examples/
 |    |    |        tester.c <-------- A program that invokes lauch_tester()
 |    |    |    Makefile <------------ A makefile that builds libft_tester.a
