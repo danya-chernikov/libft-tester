@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:57:07 by dchernik          #+#    #+#             */
-/*   Updated: 2024/11/24 16:14:41 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/11/24 16:21:02 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static void	launch_tests(const char *fname)
 /* It's a common test case */
 static void	test_helper(const char *fname, int ntest, char *strs, size_t len)
 {
-	t_char_c	format[] = "(\"%s\", \"%s\", %lu) = \"%p\"\n";
+	t_char_c	format[] = "(\"%s\", \"%s\", %lu) = %p\n";
 	char		big[MAX_STRNSTR_STR_LEN];
 	char		little[MAX_STRNSTR_STR_LEN];
 	char		*ret;
