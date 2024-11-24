@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:51:54 by dchernik          #+#    #+#             */
-/*   Updated: 2024/11/22 20:14:47 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/11/24 19:12:16 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ static void	launch_tests(t_char_c *fname);
 
 void	memchr_test(void)
 {
-
 	t_char_c	our_funcname[] = "ft_memchr";
 	t_char_c	orig_funcname[] = "memchr";
 
@@ -29,6 +28,13 @@ void	memchr_test(void)
 	print_test_footer();
 }
 
+/*
+ * It accepts a pack of arguments and then unpacks them to pass
+ * these arguments to the tested function. The pack contains
+ * three arguments:
+ *     str - a pointer to the memory area in which to search;
+ *     c   - the symbol to search for in the string str;
+ *     n   - the number of bytes to search. */
 static void	test_helper(t_char_c *fname, int ntest, void **pack)
 {
 	void	*ret;
