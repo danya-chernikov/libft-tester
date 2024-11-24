@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:51:25 by dchernik          #+#    #+#             */
-/*   Updated: 2024/11/24 18:21:40 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/11/24 18:48:04 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ void	test_glibc_funcs()
 /* It launches tests of the additional functions we've been asked to implement */
 void	test_addit_funcs()
 {
-	/*substr_test();
-	strjoin_test();
+	substr_test();
+	/*strjoin_test();
 	strtrim_test();
 	split_test();
 	itoa_test();

@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:41:21 by dchernik          #+#    #+#             */
-/*   Updated: 2024/11/24 17:45:40 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/11/24 20:23:53 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	launch_tests(t_char_c *fname);
 static void launch_tests_part_2(t_char_c *fname);
 static void	test_helper(t_char_c *fname, int ntest, char *s);
 
-void	atoi_test()
+void	atoi_test(void)
 {
 	t_char_c	our_funcname[] = "ft_atoi";
 	t_char_c	orig_funcname[] = "atoi";
