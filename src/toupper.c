@@ -22,7 +22,6 @@ void	toupper_test()
 static void	test_helper(char const *funcname, int ntest, int ch)
 {
 	char const	format[] = "\t%d. %s%s%s('%c'(%d)) = ";
-	char		res;
 
 	printf(format, ntest, YELLOW, funcname, WHITE, ch, ch);
 	if (strncmp(funcname, "ft_toupper", MAX_FUNC_NAME_LEN) == 0)

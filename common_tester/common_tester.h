@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:42:05 by dchernik          #+#    #+#             */
-/*   Updated: 2024/11/24 15:04:22 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/11/25 20:43:46 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void    **pack_args(int nargs, ...);
 char	**alloc_str_2d(int strsnum, int strlen);
 void	print_bytes(void *ptr, int size);
 char    *read_mem(void *ptr, int n, t_char_c *delim, int height);
-void	print_arr_int(int *arr, int size);
+void	print_arr_int(int *arr, size_t size);
 int		max(int v1, int v2);
 int		min(int v1, int v2);
 

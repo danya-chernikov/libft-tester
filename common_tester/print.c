@@ -50,7 +50,7 @@ char    *read_mem(void *ptr, int n, t_char_c *delim, int height)
 	return (bstr);
 }
 
-void	print_arr_int(int *arr, int size)
+void	print_arr_int(int *arr, size_t size)
 {
 	size_t	i;
 

@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:42:27 by dchernik          #+#    #+#             */
-/*   Updated: 2024/11/25 19:19:50 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/11/25 20:18:09 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,16 +60,6 @@ void	test_glibc_funcs(void);
 void	test_addit_funcs(void);
 void	test_linked_list(void);
 
-
-void	itoa_test_helper(const char *funcname, int ntest, int num);
-void	itoa_test(void);
-
-char	func_for_strmapi(unsigned int pos, char symbol);
-void	strmapi_test(void);
-
-void	func_for_striteri(unsigned int pos, char *ptr);
-void	striteri_test(void);
-
 void	putchar_fd_test(void **func_arr);
 void	putstr_fd_test(void **func_arr);
 void	putendl_fd_test(void **func_arr);	
@@ -108,6 +98,9 @@ void	substr_test(void);
 void	strjoin_test(void);
 void	strtrim_test(void);
 void	split_test(void);
+void	itoa_test(void);
+void	strmapi_test(void);
+void	striteri_test(void);
 
 void	free_node(void *ptr);
 void	singly_linked_list_test(void);

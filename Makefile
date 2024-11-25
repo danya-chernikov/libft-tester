@@ -1,6 +1,6 @@
 CC=cc
 NAME=libft_tester.a
-CFLAGS=-Wall -Werror -Wextra
+CFLAGS=-Wall -Werror -Wextra -O0 -g3
 BSDOBJS=bsd_strlcpy.o bsd_strlcat.o bsd_strnstr.o
 
 OBJS=common_tester.o alg.o print.o cprint.o alloc.o packer.o \
@@ -14,7 +14,7 @@ OBJS=common_tester.o alg.o print.o cprint.o alloc.o packer.o \
 	 strnstr.o atoi.o calloc.o strdup.o \
 	 substr.o strjoin.o strtrim.o \
 	 split.o split_aux.o \
-	 itoa.o
+	 itoa.o strmapi.o striteri.o
 
 $(NAME) : $(OBJS) $(BSDOBJS)
 	cd .. && $(MAKE) all # First let's build the Libft
@@ -33,141 +33,147 @@ re : fclean all
 
 # Let's compile the original strlcpy() from FreeBSD
 bsd_strlcpy.o : libbsd/bsd_strlcpy.c libbsd/bsd_string.h
-	$(CC) -c libbsd/bsd_strlcpy.c
+	$(CC) $(CFLAGS) -c libbsd/bsd_strlcpy.c
 
 # Let's compile the original strlcat() from FreeBSD
 bsd_strlcat.o : libbsd/bsd_strlcat.c libbsd/bsd_string.h
-	$(CC) -c libbsd/bsd_strlcat.c
+	$(CC) $(CFLAGS) -c libbsd/bsd_strlcat.c
 
 # Let's compile the original strnstr() from FreeBSD
 bsd_strnstr.o : libbsd/bsd_strnstr.c libbsd/bsd_string.h
-	$(CC) -c libbsd/bsd_strnstr.c
+	$(CC) $(CFLAGS) -c libbsd/bsd_strnstr.c
 
 # Let's compile common tester library
 common_tester.o : common_tester/common_tester.c common_tester/common_tester.h
-	$(CC) -c common_tester/common_tester.c
+	$(CC) $(CFLAGS) -c common_tester/common_tester.c
 
 alg.o : common_tester/alg.c common_tester/common_tester.h
-	$(CC) -c common_tester/alg.c
+	$(CC) $(CFLAGS) -c common_tester/alg.c
 
 print.o : common_tester/print.c common_tester/common_tester.h
-	$(CC) -c common_tester/print.c
+	$(CC) $(CFLAGS) -c common_tester/print.c
 
 cprint.o : common_tester/cprint.c common_tester/common_tester.h
-	$(CC) -c common_tester/cprint.c
+	$(CC) $(CFLAGS) -c common_tester/cprint.c
 alloc.o : common_tester/alloc.c common_tester/common_tester.h
-	$(CC) -c common_tester/alloc.c
+	$(CC) $(CFLAGS) -c common_tester/alloc.c
 
 packer.o : common_tester/packer.c common_tester/common_tester.h
-	$(CC) -c common_tester/packer.c
+	$(CC) $(CFLAGS) -c common_tester/packer.c
 
 # Let's compile all the sources of libft_tester library
 libft_tester.o : src/libft_tester.c include/libft_tester.h
-	$(CC) -c src/libft_tester.c
+	$(CC) $(CFLAGS) -c src/libft_tester.c
 
 isalpha.o : src/isalpha.c include/libft_tester.h
-	$(CC) -c src/isalpha.c
+	$(CC) $(CFLAGS) -c src/isalpha.c
 
 isdigit.o : src/isdigit.c include/libft_tester.h
-	$(CC) -c src/isdigit.c
+	$(CC) $(CFLAGS) -c src/isdigit.c
 
 isalnum.o : src/isalnum.c include/libft_tester.h
-	$(CC) -c src/isalnum.c
+	$(CC) $(CFLAGS) -c src/isalnum.c
 
 isascii.o : src/isascii.c include/libft_tester.h
-	$(CC) -c src/isascii.c
+	$(CC) $(CFLAGS) -c src/isascii.c
 
 isprint.o : src/isprint.c include/libft_tester.h
-	$(CC) -c src/isprint.c
+	$(CC) $(CFLAGS) -c src/isprint.c
 
 strlen.o : src/strlen.c include/libft_tester.h
-	$(CC) -c src/strlen.c
+	$(CC) $(CFLAGS) -c src/strlen.c
 
 memset.o : src/memset.c include/libft_tester.h
-	$(CC) -c src/memset.c
+	$(CC) $(CFLAGS) -c src/memset.c
 
 bzero.o : src/bzero.c include/libft_tester.h
-	$(CC) -c src/bzero.c
+	$(CC) $(CFLAGS) -c src/bzero.c
 
 memcpy.o : src/memcpy.c include/libft_tester.h
-	$(CC) -c src/memcpy.c
+	$(CC) $(CFLAGS) -c src/memcpy.c
 
 memmove.o : src/memmove.c include/libft_tester.h
-	$(CC) -c src/memmove.c
+	$(CC) $(CFLAGS) -c src/memmove.c
 
 strlcpy_regular.o : src/strlcpy_regular.c include/strlcpy.h include/libft_tester.h
-	$(CC) -c src/strlcpy_regular.c
+	$(CC) $(CFLAGS) -c src/strlcpy_regular.c
 
 strlcpy_special.o : src/strlcpy_special.c include/strlcpy.h include/libft_tester.h
-	$(CC) -c src/strlcpy_special.c
+	$(CC) $(CFLAGS) -c src/strlcpy_special.c
 
 strlcpy.o : src/strlcpy.c include/strlcpy.h include/libft_tester.h
-	$(CC) -c src/strlcpy.c
+	$(CC) $(CFLAGS) -c src/strlcpy.c
 
 strlcat_regular.o : src/strlcat_regular.c include/strlcat.h include/libft_tester.h
-	$(CC) -c src/strlcat_regular.c
+	$(CC) $(CFLAGS) -c src/strlcat_regular.c
 
 strlcat_special.o : src/strlcat_special.c include/strlcat.h include/libft_tester.h
-	$(CC) -c src/strlcat_special.c
+	$(CC) $(CFLAGS) -c src/strlcat_special.c
 
 strlcat.o : src/strlcat.c include/strlcat.h include/libft_tester.h
-	$(CC) -c src/strlcat.c
+	$(CC) $(CFLAGS) -c src/strlcat.c
 
 toupper.o : src/toupper.c include/libft_tester.h
-	$(CC) -c src/toupper.c 
+	$(CC) $(CFLAGS) -c src/toupper.c 
 
 tolower.o : src/tolower.c include/libft_tester.h
-	$(CC) -c src/tolower.c 
+	$(CC) $(CFLAGS) -c src/tolower.c 
 
 strchr.o : src/strchr.c include/libft_tester.h
-	$(CC) -c src/strchr.c 
+	$(CC) $(CFLAGS) -c src/strchr.c 
 
 strrchr.o : src/strrchr.c include/libft_tester.h
-	$(CC) -c src/strrchr.c 
+	$(CC) $(CFLAGS) -c src/strrchr.c 
 
 strncmp.o : src/strncmp.c include/libft_tester.h
-	$(CC) -c src/strncmp.c 
+	$(CC) $(CFLAGS) -c src/strncmp.c 
 
 memchr.o : src/memchr.c include/libft_tester.h
-	$(CC) -c src/memchr.c
+	$(CC) $(CFLAGS) -c src/memchr.c
 
 memcmp_regular.o : src/memcmp_regular.c include/memcmp.h include/libft_tester.h
-	$(CC) -c src/memcmp_regular.c
+	$(CC) $(CFLAGS) -c src/memcmp_regular.c
 
 memcmp_special.o : src/memcmp_special.c include/memcmp.h include/libft_tester.h
-	$(CC) -c src/memcmp_special.c
+	$(CC) $(CFLAGS) -c src/memcmp_special.c
 
 memcmp.o : src/memcmp.c include/memcmp.h include/libft_tester.h
-	$(CC) -c src/memcmp.c
+	$(CC) $(CFLAGS) -c src/memcmp.c
 
 strnstr.o : src/strnstr.c include/libft_tester.h
-	$(CC) -c src/strnstr.c
+	$(CC) $(CFLAGS) -c src/strnstr.c
 
 atoi.o : src/atoi.c include/libft_tester.h
-	$(CC) -c src/atoi.c
+	$(CC) $(CFLAGS) -c src/atoi.c
 
 calloc.o : src/calloc.c include/libft_tester.h
-	$(CC) -c src/calloc.c
+	$(CC) $(CFLAGS) -c src/calloc.c
 
 strdup.o : src/strdup.c include/libft_tester.h
-	$(CC) -c src/strdup.c
+	$(CC) $(CFLAGS) -c src/strdup.c
 
 substr.o : src/substr.c include/libft_tester.h
-	$(CC) -c src/substr.c
+	$(CC) $(CFLAGS) -c src/substr.c
 
 strjoin.o : src/strjoin.c include/libft_tester.h
-	$(CC) -c src/strjoin.c
+	$(CC) $(CFLAGS) -c src/strjoin.c
 
 strtrim.o : src/strtrim.c include/libft_tester.h
-	$(CC) -c src/strtrim.c
+	$(CC) $(CFLAGS) -c src/strtrim.c
 
 split_aux.o : src/split_aux.c include/split.h include/libft_tester.h
-	$(CC) -c src/split_aux.c
+	$(CC) $(CFLAGS) -c src/split_aux.c
 
 split.o : src/split.c include/split.h include/libft_tester.h
-	$(CC) -c src/split.c
+	$(CC) $(CFLAGS) -c src/split.c
 
 itoa.o : src/itoa.c include/libft_tester.h
-	$(CC) -c src/itoa.c
+	$(CC) $(CFLAGS) -c src/itoa.c
+
+strmapi.o : src/strmapi.c include/libft_tester.h
+	$(CC) $(CFLAGS) -c src/strmapi.c
+
+striteri.o : src/striteri.c include/libft_tester.h
+	$(CC) $(CFLAGS) -c src/striteri.c
 
 .PHONY: all clean fclean re

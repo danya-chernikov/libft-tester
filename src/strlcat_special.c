@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:54:26 by dchernik          #+#    #+#             */
-/*   Updated: 2024/11/23 19:02:20 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/11/25 20:45:00 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ static void	special_test_1(char const *funcname,
 {
 	size_t	BUF_SIZE = 64;
 	char	dst[BUF_SIZE];
-	size_t	ret;
 
 	printf("\n\tLet's see what will happen if the original"
 	"dst string is longer than dstsize\n");
@@ -64,7 +63,6 @@ static void	special_test_2(char const *funcname,
 {
 	size_t	BUF_SIZE = 64;
 	char	dst[BUF_SIZE];
-	size_t	ret;
 
 	printf("\n\tLet's see what will happen if"
 	"the original dst buffer is empty\n");
@@ -80,7 +78,6 @@ static void	special_test_3(char const *funcname,
 {
 	size_t	BUF_SIZE = 64;
 	char	dst[BUF_SIZE];
-	size_t	ret;
 
 	printf("\n\tLet's see what will happen if"
 	"the original src buffer is empty\n");
@@ -97,7 +94,6 @@ static void	special_test_4(char const *funcname,
 {
 	size_t	BUF_SIZE = 64;
 	char	dst[BUF_SIZE];
-	size_t	ret;
 
 	bzero((void *)src, strlen(src));
 	strlcpy(dst, "You - but the voice", BUF_SIZE);
