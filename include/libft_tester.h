@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:42:27 by dchernik          #+#    #+#             */
-/*   Updated: 2024/11/25 16:26:36 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/11/25 17:01:18 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@
 # define MAX_STRNSTR_STR_LEN	128
 # define MAX_STRDUP_STR_LEN		256
 # define MAX_SUBSTR_STR_LEN		128
+# define MAX_SPLIT_STR_LEN		256
+# define MEM_ERR				"can't allocate memory"
 
 /* In this structure we store all possible arguments that may have a put_smth
  * putchar_fd_test, putstr_fd_test, ...) function. There are 3 different
@@ -59,11 +61,6 @@ void	test_glibc_funcs(void);
 void	test_addit_funcs(void);
 void	test_linked_list(void);
 
-void	split_test(void);
-int		split_test_helper(const char *funcname,
-						  int ntest,
-						  char const *str,
-						  char delim);
 
 void	itoa_test_helper(const char *funcname, int ntest, int num);
 void	itoa_test(void);
@@ -111,6 +108,7 @@ void	strdup_test(void);
 void	substr_test(void);
 void	strjoin_test(void);
 void	strtrim_test(void);
+void	split_test(void);
 
 void	free_node(void *ptr);
 void	singly_linked_list_test(void);

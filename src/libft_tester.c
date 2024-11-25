@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:51:25 by dchernik          #+#    #+#             */
-/*   Updated: 2024/11/25 16:22:20 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/11/25 16:44:33 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ void	test_addit_funcs()
 	substr_test();
 	strjoin_test();
 	strtrim_test();
-	/*split_test();
-	itoa_test();
+	split_test();
+	/*itoa_test();
 	strmapi_test();
 	striteri_test();
 	putchar_fd_test(put_smth_func_arr);
