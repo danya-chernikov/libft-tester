@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:51:25 by dchernik          #+#    #+#             */
-/*   Updated: 2024/11/24 18:48:04 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/11/25 16:17:24 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ void	test_glibc_funcs()
 void	test_addit_funcs()
 {
 	substr_test();
-	/*strjoin_test();
-	strtrim_test();
+	strjoin_test();
+	/*strtrim_test();
 	split_test();
 	itoa_test();
 	strmapi_test();
