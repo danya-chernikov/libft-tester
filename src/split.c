@@ -6,16 +6,17 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:53:32 by dchernik          #+#    #+#             */
-/*   Updated: 2024/11/25 18:22:49 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/11/25 19:24:33 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libft_tester.h"
 #include "../include/split.h"
 
-static void	test_helper(t_char_c *fname, int ntest, t_char_c *str, char delim);
 static void	launch_tests(t_char_c *fname);
 static char *prepare_long_str(void);
+static void	test_helper(t_char_c *fname, int ntest, t_char_c *str, char delim);
+static void	call_split(t_char_c *fname, t_char_c *str, char delim);
 
 void	split_test(void)
 {
@@ -68,17 +69,24 @@ static char *prepare_long_str(void)
 static void	test_helper(t_char_c *fname, int ntest, t_char_c *str, char delim)
 {
 	t_char_c	format[] = "(\"%s\", '%c') = ";
-	char		errbuf[MAX_ERR_BUF_SIZE];
-	int			errflag;
-	char		**ret;
-	int			i;
 
-	errflag = 0;
-	if ((ret = ft_split(str, delim)) == NULL)
-		errflag = 1;
 	printf("\t%d. ", ntest);
 	cprintf(YELLOW, "%s", fname);
 	printf(format, str, delim);
+	call_split(fname, str, delim);
+}
+
+static void	call_split(t_char_c *fname, t_char_c *str, char delim)
+{
+	char	errbuf[MAX_ERR_BUF_SIZE];
+	char	**ret;
+	int		errflag;
+	int		i;
+
+	errflag = 0;
+	ret = ft_split(str, delim);
+	if (ret == NULL)
+		errflag = 1;
 	if (!errflag)
 		printf("%p\n", ret);
 	else
@@ -89,19 +97,9 @@ static void	test_helper(t_char_c *fname, int ntest, t_char_c *str, char delim)
 	}
 	i = 0;
 	while (ret[i] != NULL)
-		printf("\t\t%d substr = \"%s\"\n", i + 1, ret[i++]);
-	split_free(&ret);
-}
-
-void	split_free(char ***res)
-{
-	size_t	i;
-	
-	i = 0;
-	while ((*res)[i])
 	{
-		free((*res)[i]);
+		printf("\t\t%d substr = \"%s\"\n", i + 1, ret[i]);
 		i++;
 	}
-	free(*res);
+	split_free(&ret);
 }

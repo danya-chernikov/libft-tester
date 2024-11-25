@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:42:27 by dchernik          #+#    #+#             */
-/*   Updated: 2024/11/25 17:01:18 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/11/25 19:19:50 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 # include <limits.h>
 # include <stdint.h>
 
-# define FT_STR					"ft_"
 # define MAX_FUNC_NAME_LEN		20
 # define MAX_STRNCMP_STR_LEN	128
 # define MAX_MEMCHR_STR_LEN		128
