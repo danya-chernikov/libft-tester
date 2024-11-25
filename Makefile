@@ -13,7 +13,8 @@ OBJS=common_tester.o alg.o print.o cprint.o alloc.o packer.o \
 	 memcmp.o memcmp_regular.o memcmp_special.o \
 	 strnstr.o atoi.o calloc.o strdup.o \
 	 substr.o strjoin.o strtrim.o \
-	 split.o split_aux.o
+	 split.o split_aux.o \
+	 itoa.o
 
 $(NAME) : $(OBJS) $(BSDOBJS)
 	cd .. && $(MAKE) all # First let's build the Libft
@@ -165,5 +166,8 @@ split_aux.o : src/split_aux.c include/split.h include/libft_tester.h
 
 split.o : src/split.c include/split.h include/libft_tester.h
 	$(CC) -c src/split.c
+
+itoa.o : src/itoa.c include/libft_tester.h
+	$(CC) -c src/itoa.c
 
 .PHONY: all clean fclean re
