@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:42:27 by dchernik          #+#    #+#             */
-/*   Updated: 2024/11/24 20:23:34 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/11/25 16:26:36 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,24 +54,10 @@ typedef struct
 	} second;
 } put_smth_args;
 
-/* Function definitions */
 void	launch_tester(void);
 void	test_glibc_funcs(void);
 void	test_addit_funcs(void);
 void	test_linked_list(void);
-
-
-void	strjoin_test(void);
-void	strjoin_test_helper(const char *funcname,
-							int ntest,
-							char const *tstr1,
-							char const *tstr2);
-
-void	strtrim_test(void);
-void	strtrim_test_helper(const char *funcname,
-							int ntest,
-							char const *str,
-							char const *set);
 
 void	split_test(void);
 int		split_test_helper(const char *funcname,
@@ -123,6 +109,8 @@ void	calloc_test(void);
 void	strdup_test(void);
 
 void	substr_test(void);
+void	strjoin_test(void);
+void	strtrim_test(void);
 
 void	free_node(void *ptr);
 void	singly_linked_list_test(void);

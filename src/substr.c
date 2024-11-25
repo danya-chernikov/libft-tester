@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:57:28 by dchernik          #+#    #+#             */
-/*   Updated: 2024/11/24 20:29:14 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/11/25 16:37:16 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	substr_test(void)
  * For example, it is not possible to call a test this way:
  * test_helper(..., pack_args(3, (void *)"str", (void *)&(2), (void *)&(4));
  * I SHOULD TRY TO USE COMPOUND LITERALS HERE!!! */
-static void	launch_tests(t_char_c *fname)	
+static void	launch_tests(t_char_c *fname)
 {
 	t_char_c	s[][MAX_SUBSTR_STR_LEN] = { "just a string to test", "a", "" };
 	u_int		t[] = { 2, 0, 0, 0, 14, 14, 0, 0, 0 };
