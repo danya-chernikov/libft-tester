@@ -68,7 +68,7 @@ int	create_temp_file(t_char_c *fname, int *fd, char **readbuf, char **errbuf)
 	*fd = open(TEMP_FILE_NAME, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (*fd < 0)
 	{
-		form_create_temp_file_err_msg(fname, *errbuf);
+		form_common_file_err_msg(*errbuf, fname, FILE_CREAT_ERR_MSG);
 		perror(*errbuf);
 		ps_free_mem(readbuf, errbuf);
 		return (ERROR);
@@ -82,7 +82,7 @@ int	open_temp_file(t_char_c *fname, int *fd, char **readbuf, char **errbuf)
 	*fd = open(TEMP_FILE_NAME, O_RDONLY);
 	if (*fd < 0)
 	{
-		form_open_temp_file_err_msg(fname, *errbuf);
+		form_common_file_err_msg(*errbuf, fname, FILE_OPEN_ERR_MSG);
 		perror(*errbuf);
 		delete_temp_file(fname, errbuf);
 		ps_free_mem(readbuf, errbuf);
@@ -103,7 +103,7 @@ int	read_temp_file(t_char_c *fname, int *fd, char **readbuf, char **errbuf)
 	rb = read(*fd, *readbuf, file_size);
 	if (rb == -1)
 	{
-		form_read_temp_file_err_msg(fname, *errbuf);
+		form_common_file_err_msg(*errbuf, fname, FILE_READ_ERR_MSG);
 		perror(*errbuf);
 		close(*fd);
 		delete_temp_file(fname, errbuf);

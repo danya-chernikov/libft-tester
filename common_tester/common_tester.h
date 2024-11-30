@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:42:05 by dchernik          #+#    #+#             */
-/*   Updated: 2024/11/30 15:55:04 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/11/30 19:12:37 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,6 @@
 # define TEST_HD_FT_SYM		'#'
 # define MAX_SUBSTRS_NUM	200
 # define MAX_SUBSTR_LEN		100
-# define MAX_TESTS_NUM		128
-# define MAX_TEST_STR_LEN	256
 # define READ_MEM_LIMIT		1024
 # define DELIM_BYTES_LIMIT	10
 
@@ -69,6 +67,7 @@ char	*pack_strs(t_char_c *s1, t_char_c *s2);
 int		unpack_strs(char *strs, char *s1, char *s2);
 void    **pack_args(int nargs, ...);
 char	**alloc_str_2d(int strsnum, int strlen);
+void	free_str_2d(char **ptr, int strsnum);
 void	print_bytes(void *ptr, int size);
 char    *read_mem(void *ptr, int n, t_char_c *delim, int height);
 void	print_arr_int(int *arr, size_t size);

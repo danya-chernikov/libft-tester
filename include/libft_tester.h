@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:42:27 by dchernik          #+#    #+#             */
-/*   Updated: 2024/11/30 17:05:24 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/11/30 19:27:59 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,17 @@
 # define MAX_SPLIT_STR_LEN			256
 # define FILE_READ_BUF_SIZE			256
 # define MAX_ERR_BUF_SIZE			256
+# define MAX_TESTS_NUM				128
+# define MAX_TEST_STR_LEN			256
 # define TEMP_FILE_NAME				"text.txt"
-# define MEM_ERR_BUF_MSG			"can't allocate memory for the error buffer"
-# define MEM_ERR_FILE_READ_BUF_MSG	"can't allocate memory for the file buffer"
-# define MEM_ERR_MSG				"can't allocate memory"
+# define TOO_MANY_TESTS_ERR_MSG		"too many tests"
+# define PUTSMTH_MEM_ERR_STRS		"unable to allocate dynamic memory for an array of strings"
+# define MEM_ERR_BUF_MSG			"unable to allocate memory for the error buffer"
+# define MEM_ERR_FILE_READ_BUF_MSG	"unable to allocate memory for the file buffer"
+# define MEM_ERR_MSG				"unable to allocate memory"
 # define FILE_CREAT_ERR_MSG			"error creating file"
 # define FILE_OPEN_ERR_MSG			"error opening file"
-# define FILE_DEL_ERR_MSG			"can't delete file"
+# define FILE_DEL_ERR_MSG			"unable delete file"
 # define FILE_READ_ERR_MSG			"error reading from the file"
 # define PUTCHAR_FORMAT				"('%c', fd): \"%s\"\n"
 # define PUTSTR_FORMAT				"(\"%s\", fd): \"%s\"\n"
@@ -152,13 +156,13 @@ typedef struct
 {
 	struct s_first_arg
 	{
-		char	symbol[MAX_TESTS_NUM];
+		char	symbol[MAX_TESTS_NUM + 1];
 		char	**string;
-		int		number[MAX_TESTS_NUM];
+		int		number[MAX_TESTS_NUM + 1];
 	} first;
 	struct s_second_arg
 	{
-		int	fd[MAX_TESTS_NUM];
+		int	fd[MAX_TESTS_NUM + 1];
 	} second;
 } ps_tests;
 

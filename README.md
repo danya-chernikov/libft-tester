@@ -140,74 +140,70 @@ packer.c
 
 ----------------------
 libft\_tester.c
-isalpha.o
-isdigit.o
-isalnum.o
-isascii.o
-isprint.o
-strlen.o
-memset.o
-bzero.o
-memcpy.o
-memmove.c
-toupper.o
-tolower.o
-strchr.o
-strrchr.o
-strncmp.o
-memchr.o
-strnstr.o
-atoi.o
-calloc.o
-strdup.o
-substr.o
-strjoin.o
-strtrim.o
-itoa.o
-strmapi.o
-striteri.o
+isalpha.c
+isdigit.c
+isalnum.c
+isascii.c
+isprint.c
+strlen.c
+memset.c
+bze.c.c
+memcpy.c
+mem.cve.c
+.cupper.c
+.c.cwer.c
+strchr.c
+strrchr.c
+strncmp.c
+memchr.c
+strnstr.c
+a.ci.c
+cal.cc.c
+strdup.c
+substr.c
+str.cin.c
+strtrim.c
+i.ca.c
+strmapi.c
+striteri.c
 
 ----------------------
-strlcpy.o
-strlcpy\_regular.o
-strlcpy\_special.o
-
-----------------------
-
-----------------------
-strlcat.o
-strlcat\_regular.o
-strlcat\_special.o
+strlcpy.c
+strlcpy\_regular.c
+strlcpy\_special.c
 
 ----------------------
 
 ----------------------
-memcmp.o
-memcmp\_regular.o
-memcmp\_special.o
+strlcat.c
+strlcat\_regular.c
+strlcat\_special.c
 
 ----------------------
 
 ----------------------
-split.o
-split\_aux.o
+memcmp.c
+memcmp\_regular.c
+memcmp\_special.c
 
 ----------------------
 
 ----------------------
-putchar\_fd.o
-putsmth\_fd\_aux.o
-putsmth\_fd\_regular.o
-putsmth\_fd\_special.o
+split.c
+split\_aux.c
 
 ----------------------
 
+----------------------
+putchar\_fd.c
+putsmth\_fd\_aux.c
+putsmth\_fd\_regular.c
+putsmth\_fd\_special.c
+putsmth\_fd\_write.c
+putsmth\_fd\_print.c
+putsmth\_fd\_er.crs.c
 
-
-
-
-
-
+----------------------
 
 ## **License**
 

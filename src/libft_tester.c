@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:51:25 by dchernik          #+#    #+#             */
-/*   Updated: 2024/11/28 17:03:35 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/11/30 20:04:53 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ void	test_addit_funcs()
 	strmapi_test();
 	striteri_test();
 	putchar_fd_test();
-	/*putstr_fd_test();
-	putendl_fd_test();
+	putstr_fd_test();
+	/*putendl_fd_test();
 	putnbr_fd_test();*/
 }
 

@@ -35,11 +35,7 @@ void	print_putendl_res(t_char_c *fn, ps_tests *tests, int tnum, char **rbuf);
 void	print_putnbr_res(t_char_c *fn, ps_tests *tests, int tnum, char **rbuf);
 
 /* putsmth_fd_errors.c */
-void	form_alloc_errbuf_err_msg(t_char_c *fname, char *buf);
-void	form_alloc_readbuf_err_msg(t_char_c *fname, char *buf);
-void	form_delete_temp_file_err_msg(t_char_c *fname, char *buf);
-void	form_create_temp_file_err_msg(t_char_c *fname, char *buf);
-void	form_open_temp_file_err_msg(t_char_c *fname, char *buf);
-void	form_read_temp_file_err_msg(t_char_c *fname, char *buf);
+void	form_common_err_msg(char *buf, t_char_c *fname, t_char_c *msg);
+void	form_common_file_err_msg(char *buf, t_char_c *fname, t_char_c *msg);
 
 #endif

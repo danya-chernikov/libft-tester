@@ -4,6 +4,7 @@
 /* 
  * It launches all the tests (both regular and one special)
  * for a function determined by the find argument.
+ * The `ps_` prefix means `putsmth` = `putsomething`.
  * Description of the arguments this function accepts:
  *     fn     - The name of the function (passed without
  *				parentheses) that will be tested;
@@ -29,13 +30,18 @@ void	ps_test_helper(t_char_c *fn, ps_tests *tests, func_id find, int tnum)
 	void	**pack;
 
 	errbuf = NULL;
-	readbuf = NULL;
+	readbuf = NULL;	
 	if(!ps_alloc_mem(fn, &readbuf, &errbuf))
 		return;
+	if (tnum > MAX_TESTS_NUM)
+	{
+		form_common_err_msg(errbuf, fn, TOO_MANY_TESTS_ERR_MSG);
+		perror(errbuf);
+		ps_free_mem(&readbuf, &errbuf);
+	}
 	ps_regular_tests(fn, tests, find, tnum);
 	pack = pack_args(3, (void *)tests, (void *)&find, (void *)&tnum);
-	if (!ps_special_test(fn, pack, &readbuf, &errbuf))
-		return;
+	ps_special_test(fn, pack, &readbuf, &errbuf);
 	ps_free_mem(&readbuf, &errbuf);
 }
 
@@ -57,14 +63,14 @@ int	ps_alloc_mem(t_char_c *fname, char **readbuf, char **errbuf)
 	*errbuf = (char *)calloc((MAX_ERR_BUF_SIZE + 1), sizeof(char));
 	if (*errbuf == NULL)
 	{
-		form_alloc_errbuf_err_msg(fname, res_errbuf);
+		form_common_err_msg(res_errbuf, fname, MEM_ERR_BUF_MSG);
 		perror(res_errbuf);
 		return (ERROR);
 	}
 	*readbuf = (char *)calloc((FILE_READ_BUF_SIZE + 1), sizeof(char));
 	if (*readbuf == NULL)
 	{
-		form_alloc_readbuf_err_msg(fname, *errbuf);
+		form_common_err_msg(*errbuf, fname, MEM_ERR_FILE_READ_BUF_MSG);
 		perror(*errbuf);
 		free(*errbuf);
 		return (ERROR);
@@ -84,7 +90,7 @@ int	delete_temp_file(t_char_c *fname, char **errbuf)
 	printf("\tDeleting file content\n");
 	if (unlink(TEMP_FILE_NAME) == -1)
 	{
-		form_delete_temp_file_err_msg(fname, *errbuf);
+		form_common_file_err_msg(*errbuf, fname, FILE_DEL_ERR_MSG);
 		perror(*errbuf);
 		return (ERROR);
 	}
