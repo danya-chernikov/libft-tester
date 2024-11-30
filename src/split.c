@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:53:32 by dchernik          #+#    #+#             */
-/*   Updated: 2024/11/25 19:24:33 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/11/26 18:56:29 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ static void	test_helper(t_char_c *fname, int ntest, t_char_c *str, char delim)
 
 static void	call_split(t_char_c *fname, t_char_c *str, char delim)
 {
-	char	errbuf[MAX_ERR_BUF_SIZE];
+	char	errbuf[MAX_ERR_BUF_SIZE + 1];
 	char	**ret;
 	int		errflag;
 	int		i;
@@ -92,7 +92,7 @@ static void	call_split(t_char_c *fname, t_char_c *str, char delim)
 	else
 	{
 		printf("NULL\n");
-		snprintf(errbuf, MAX_ERR_BUF_SIZE - 1, "\t%s_test(): %s", fname, MEM_ERR);
+		snprintf(errbuf, MAX_ERR_BUF_SIZE, "\t%s_test(): %s", fname, MEM_ERR_MSG);
 		perror(errbuf);
 	}
 	i = 0;

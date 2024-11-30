@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:51:25 by dchernik          #+#    #+#             */
-/*   Updated: 2024/11/25 20:07:01 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/11/28 17:03:35 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ void	launch_tester()
 	test_linked_list();
 }
 
-/* It launches tests of our implementation of the original Glibc functions */
+/* It launches tests of our implementation of the
+ * original Glibc functions */
 void	test_glibc_funcs()
 {
 	isalpha_test();
@@ -47,7 +48,8 @@ void	test_glibc_funcs()
 	strdup_test();
 }
 
-/* It launches tests of the additional functions we've been asked to implement */
+/* It launches tests of the additional functions
+ * we've been asked to implement */
 void	test_addit_funcs()
 {
 	substr_test();
@@ -57,13 +59,14 @@ void	test_addit_funcs()
 	itoa_test();
 	strmapi_test();
 	striteri_test();
-	/*putchar_fd_test(put_smth_func_arr);
-	putstr_fd_test(put_smth_func_arr);
-	putendl_fd_test(put_smth_func_arr);
-	putnbr_fd_test(put_smth_func_arr);*/
+	putchar_fd_test();
+	/*putstr_fd_test();
+	putendl_fd_test();
+	putnbr_fd_test();*/
 }
 
-/* It launches test of our singly linked list implementation */
+/* It launches test of our singly linked
+ * list implementation */
 void	test_linked_list()
 {
 	//linked_list_test();

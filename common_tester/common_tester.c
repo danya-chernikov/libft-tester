@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:42:11 by dchernik          #+#    #+#             */
-/*   Updated: 2024/11/22 15:46:49 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/11/30 15:53:52 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,23 @@ void	print_test_footer(void)
 		i++;
 	}
 	printf("\n\n");
+}
+
+/* It gets the size of the file represented by the fd
+ * file descriptor. First, the lseek() system call
+ * sets the file position indicator to the end of the
+ * file (adding 0 to SEEK_END). Then, the next lseek()
+ * invocation retrieves the file size in bytes, which
+ * is the current value of the file position indicator.
+ * Finally, the third lseek() call sets the file position
+ * indicator to the beginning of the file, allowing it t
+ * be read from the start */
+long	get_filesize(int fd)
+{
+	long	size;
+
+	lseek(fd, 0, SEEK_END);
+	size = lseek(fd, 0, SEEK_CUR);
+	lseek(fd, 0, SEEK_SET);
+	return (size);
 }

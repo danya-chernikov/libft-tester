@@ -123,6 +123,92 @@ and bsd\_string.h for testing the strlcpy() and strlcat() functions,
 allowing us to compare the execution of the original BSD functions with that of
 our own implementations.
 
+## **For developers**
+
+This section serves to simplify the understanding of the project's source code.
+Here is given a brief description of each file and the methods used to create it.
+
+----------------------
+common\_tester.c
+alg.c
+print.c
+cprint.c
+alloc.c
+packer.c
+
+----------------------
+
+----------------------
+libft\_tester.c
+isalpha.o
+isdigit.o
+isalnum.o
+isascii.o
+isprint.o
+strlen.o
+memset.o
+bzero.o
+memcpy.o
+memmove.c
+toupper.o
+tolower.o
+strchr.o
+strrchr.o
+strncmp.o
+memchr.o
+strnstr.o
+atoi.o
+calloc.o
+strdup.o
+substr.o
+strjoin.o
+strtrim.o
+itoa.o
+strmapi.o
+striteri.o
+
+----------------------
+strlcpy.o
+strlcpy\_regular.o
+strlcpy\_special.o
+
+----------------------
+
+----------------------
+strlcat.o
+strlcat\_regular.o
+strlcat\_special.o
+
+----------------------
+
+----------------------
+memcmp.o
+memcmp\_regular.o
+memcmp\_special.o
+
+----------------------
+
+----------------------
+split.o
+split\_aux.o
+
+----------------------
+
+----------------------
+putchar\_fd.o
+putsmth\_fd\_aux.o
+putsmth\_fd\_regular.o
+putsmth\_fd\_special.o
+
+----------------------
+
+
+
+
+
+
+
+
 ## **License**
 
 This work is published under the terms of [42 Unlicense](https://github.com/gcamerli/42unlicense).

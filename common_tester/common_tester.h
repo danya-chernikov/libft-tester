@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:42:05 by dchernik          #+#    #+#             */
-/*   Updated: 2024/11/25 20:43:46 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/11/30 15:55:04 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void	cprintf(const char *color, const char *format, ...);
 void	cperror(const char *color, const char *format, ...);
 void	print_test_header(const char *funcname);
 void	print_test_footer(void);
+long	get_filesize(int fd);
 char	*pack_strs(t_char_c *s1, t_char_c *s2);
 int		unpack_strs(char *strs, char *s1, char *s2);
 void    **pack_args(int nargs, ...);
