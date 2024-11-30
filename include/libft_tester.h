@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:42:27 by dchernik          #+#    #+#             */
-/*   Updated: 2024/11/30 19:27:59 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/11/30 20:09:12 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@
  *						the `putchar_fd()` function (used in the
  *						`print_special_test_result()`).
  */
+# define ERROR						0
+# define SUCCESS					1
 # define STDIN						0
 # define STDOUT						1
 # define STDERR						2
-# define ERROR						0
-# define SUCCESS					1
 # define NO_STD_STREAM				0
 # define MAX_FUNC_NAME_LEN			20
 # define MAX_FORMAT_STR_LEN			1024

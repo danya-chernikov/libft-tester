@@ -15,7 +15,7 @@ OBJS=common_tester.o alg.o print.o cprint.o alloc.o packer.o \
 	 substr.o strjoin.o strtrim.o \
 	 split.o split_aux.o \
 	 itoa.o strmapi.o striteri.o \
-	 putchar_fd.o putstr_fd.o \
+	 putchar_fd.o putstr_fd.o putendl_fd.o \
 	 putsmth_fd_aux.o putsmth_fd_regular.o \
 	 putsmth_fd_special.o putsmth_fd_write.o putsmth_fd_print.o \
 	 putsmth_fd_errors.o
@@ -186,6 +186,9 @@ putchar_fd.o : src/putchar_fd.c include/putsmth_fd.h include/libft_tester.h
 
 putstr_fd.o : src/putstr_fd.c include/putsmth_fd.h include/libft_tester.h
 	$(CC) $(CFLAGS) -c src/putstr_fd.c
+
+putendl_fd.o : src/putendl_fd.c include/putsmth_fd.h include/libft_tester.h
+	$(CC) $(CFLAGS) -c src/putendl_fd.c
 
 putsmth_fd_aux.o : src/putsmth_fd_aux.c include/putsmth_fd.h include/libft_tester.h
 	$(CC) $(CFLAGS) -c src/putsmth_fd_aux.c

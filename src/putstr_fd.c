@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:53:17 by dchernik          #+#    #+#             */
-/*   Updated: 2024/11/30 19:56:24 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/11/30 20:15:28 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	putstr_fd_test(void)
 	{
 		form_common_err_msg(errbuf, fname, PUTSMTH_MEM_ERR_STRS);
 		perror(errbuf);
+		print_test_footer();
 		return;
 	}
 	form_tests(&tests);
