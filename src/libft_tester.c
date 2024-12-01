@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:51:25 by dchernik          #+#    #+#             */
-/*   Updated: 2024/11/30 20:32:50 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/12/01 20:30:00 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,14 @@ void	test_addit_funcs()
 /* It launches test of our singly linked
  * list implementation */
 void	test_linked_list()
-{
-	//linked_list_test();
+{	
+	lstnew();
+/*	lstadd_front();
+	lstsize();
+	lstlast();
+	lstadd_back();
+	lstdel_one();
+	lstclear();
+	lstiter();
+	lstmap();*/
 }

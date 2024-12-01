@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:42:27 by dchernik          #+#    #+#             */
-/*   Updated: 2024/11/30 20:09:12 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/12/01 20:30:03 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -207,7 +207,16 @@ void	putstr_fd_test(void);
 void	putendl_fd_test(void);	
 void	putnbr_fd_test(void);
 
+void	lstnew(void);
+void	lstadd_front(void);
+void	lstsize(void);
+void	lstlast(void);
+void	lstadd_back(void);
+void	lstdel_one(void);
+void	lstclear(void);
+void	lstiter(void);
+void	lstmap(void);
+
 void	free_node(void *ptr);
-void	singly_linked_list_test(void);
 
 #endif
