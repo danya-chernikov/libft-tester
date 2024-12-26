@@ -6,24 +6,25 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:41:33 by dchernik          #+#    #+#             */
-/*   Updated: 2024/11/16 17:35:39 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/12/26 15:44:09 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libft_tester.h"
 
-static void	bzero_our();
-static void	bzero_orig();
+static void	bzero_our(void);
+static void	bzero_orig(void);
 
 /* Main function that tests ft_bzero(). As usual, it prints the standard
  * test header, then launches tests of our implementation of the bzero()
  * function, followed by the same tests for the original bzero() function
  * from Glibc, to be able to compare their results. Finally, it prints the
  * standard footer stub that visually indicates the end of testing */
-void	bzero_test()
+void	bzero_test(void)
 {
-	const char	funcname[] = "ft_bzero";
+	char	funcname[MAX_FUNC_NAME_LEN];
 
+	strlcpy(funcname, "ft_bzero", MAX_FUNC_NAME_LEN);
 	print_test_header(funcname);
 	printf("ft_bzero():\n");
 	bzero_our();
@@ -34,7 +35,7 @@ void	bzero_test()
 
 /* It launches tests of our own bzero() implementation. We color
  * function name yellow to make it visually more noticeable */
-static void	bzero_our()
+static void	bzero_our(void)
 {
 	char	buf[32];
 
@@ -45,7 +46,7 @@ static void	bzero_our()
 }
 
 /* It launches tests of the original bzero() function */
-static void	bzero_orig()
+static void	bzero_orig(void)
 {
 	char	buf[32];
 

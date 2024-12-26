@@ -6,18 +6,20 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:54:14 by dchernik          #+#    #+#             */
-/*   Updated: 2024/11/23 18:52:55 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/12/26 18:27:26 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libft_tester.h"
 #include "../include/strlcat.h"
 
-void	strlcat_test()
+void	strlcat_test(void)
 {
-	char const	our_funcname[] = "ft_strlcat";
-	char const	orig_funcname[] = "strlcat";
+	char	our_funcname[MAX_FUNC_NAME_LEN];
+	char	orig_funcname[MAX_FUNC_NAME_LEN];
 
+	strlcpy(our_funcname, "ft_strlcat", MAX_FUNC_NAME_LEN);
+	strlcpy(orig_funcname, "strlcat", MAX_FUNC_NAME_LEN);
 	print_test_header(our_funcname);
 	printf("%s():\n", our_funcname);
 	strlcat_regular_tests(our_funcname);
@@ -29,18 +31,15 @@ void	strlcat_test()
 }
 
 /* It's a common test case */
-void	strlcat_test_helper(char const *funcname,
-							char *dst,
-							char const *src,
-							size_t size)
+void	strlcat_test_helper(t_char_c *fn, char *dst, t_char_c *src, size_t size)
 {
 	size_t	ret;
 
-	cprintf(YELLOW, "%s", funcname);
+	cprintf(YELLOW, "%s", fn);
 	printf("(\"%s\", \"%s\", %lu) = ", dst, src, size);
-	if (strncmp(funcname, "ft_strlcat", MAX_FUNC_NAME_LEN) == 0)
+	if (strncmp(fn, "ft_strlcat", MAX_FUNC_NAME_LEN) == 0)
 		ret = ft_strlcat(dst, src, size);
-	else if (strncmp(funcname, "strlcat", MAX_FUNC_NAME_LEN) == 0)
+	else if (strncmp(fn, "strlcat", MAX_FUNC_NAME_LEN) == 0)
 		ret = strlcat(dst, src, size);
 	else
 		ret = ft_strlcat(dst, src, size);

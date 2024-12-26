@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:57:02 by dchernik          #+#    #+#             */
-/*   Updated: 2024/11/24 16:15:29 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/12/26 19:19:39 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,12 @@ static void	regular_test(t_char_c *fname, int ntest, char *strs, size_t n);
 static void	launch_tests(t_char_c *fname);
 
 void	strncmp_test(void)
-{	
-	t_char_c	our_funcname[] = "ft_strncmp";
-	t_char_c	orig_funcname[] = "strncmp";
+{
+	char	our_funcname[MAX_FUNC_NAME_LEN];
+	char	orig_funcname[MAX_FUNC_NAME_LEN];
 
+	strlcpy(our_funcname, "ft_strncmp", MAX_FUNC_NAME_LEN);
+	strlcpy(orig_funcname, "strncmp", MAX_FUNC_NAME_LEN);
 	print_test_header(our_funcname);
 	printf("%s():\n", our_funcname);
 	launch_tests(our_funcname);

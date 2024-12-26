@@ -6,24 +6,29 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:52:28 by dchernik          #+#    #+#             */
-/*   Updated: 2024/11/16 17:37:21 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/12/26 16:59:20 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libft_tester.h"
 
-static void	memmove_our();
-static void	memmove_orig();
+static void	memmove_our(void);
+static void	memmove_orig(void);
 
-/* Main function that tests ft_memmove(). As usual, it prints the standard
- * test header, then launches tests of our implementation of the memmove()
- * function, followed by the same tests for the original memmove() function
- * from Glibc, to be able to compare their results. Finally, it prints the
- * standard footer stub that visually indicates the end of testing */
-void	memmove_test()
+/* Main function that tests ft_memmove().
+ * As usual, it prints the standard test
+ * header, then launches tests of our
+ * implementation of the memmove() function,
+ * followed by the same tests for the original
+ * memmove() function from Glibc, to be able
+ * to compare their results. Finally, it prints
+ * the standard footer stub that visually
+ * indicates the end of testing */
+void	memmove_test(void)
 {
-	const char	funcname[] = "ft_memmove";
+	char	funcname[MAX_FUNC_NAME_LEN];
 
+	strlcpy(funcname, "ft_memmove", MAX_FUNC_NAME_LEN);
 	print_test_header(funcname);
 	printf("ft_memmove():\n");
 	memmove_our();
@@ -32,33 +37,38 @@ void	memmove_test()
 	print_test_footer();
 }
 
-/* It launches tests of our own memmove() implementation. We color
- * function name yellow to make it visually more noticeable */
-static void	memmove_our()
+/* It launches tests of our own
+ * memmove() implementation. We
+ * color function name yellow to
+ * make it visually more noticeable */
+static void	memmove_our(void)
 {
-	char		recv_buf[64];
-	char		src_buf[] = "we are testing memmove";
+	char	format[MAX_FORMAT_STR_LEN];
+	char	recv_buf[64];
+	char	src_buf[64];
 
-	printf("%sft_memmove%s(recv_buf, \"%s\", strlen(src_buf)+1):\n",
-		   YELLOW,
-		   WHITE,
-		   src_buf);
+	strlcpy(src_buf, "we are testing memmove", 64); 
+	strlcpy(format, "%sft_memmove%s(recv_buf,", MAX_FORMAT_STR_LEN); 
+	strlcat(format, " \"%s\", strlen(src_buf)+1):\n", MAX_FORMAT_STR_LEN);
+	printf(format, YELLOW, WHITE, src_buf);
 	ft_memmove(recv_buf, src_buf, strlen(src_buf) + 1);
 	printf("\t\trecv_buf = \"%s\"\n", recv_buf);
 	printf("\t\t");
 	print_bytes(recv_buf, sizeof(recv_buf));
 }
 
-/* It launches tests of the original memmove() function */
-static void	memmove_orig()
+/* It launches tests of the
+ * original memmove() function */
+static void	memmove_orig(void)
 {
-	char		recv_buf[64];
-	char		src_buf[] = "we are testing memmove";
+	char	format[MAX_FORMAT_STR_LEN];
+	char	recv_buf[64];
+	char	src_buf[64];
 
-	printf("%smemmove%s(recv_buf, \"%s\", strlen(src_buf)+1):\n",
-		   YELLOW,
-		   WHITE,
-		   src_buf);
+	strlcpy(src_buf, "we are testing memmove", 64); 
+	strlcpy(format, "%smemmove%s(recv_buf,", MAX_FORMAT_STR_LEN);
+	strlcat(format, " \"%s\", strlen(src_buf)+1):\n", MAX_FORMAT_STR_LEN);
+	printf(format, YELLOW, WHITE, src_buf);
 	memmove(recv_buf, src_buf, strlen(src_buf) + 1);
 	printf("\t\trecv_buf = \"%s\"\n", recv_buf);
 	printf("\t\t");

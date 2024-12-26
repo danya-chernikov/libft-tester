@@ -23,7 +23,7 @@
  *				file is used. It is possible to pass 0 to
  *				perform only the special test without launching
  *				regular tests. */
-void	ps_test_helper(t_char_c *fn, ps_tests *tests, func_id find, int tnum)
+void	ps_test_helper(t_char_c *fn, t_ps_tests *tests, t_func_id find, int tnum)
 {
 	char	*errbuf;
 	char	*readbuf;

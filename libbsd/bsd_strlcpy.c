@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 00:04:03 by dchernik          #+#    #+#             */
-/*   Updated: 2024/12/02 00:10:49 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/12/26 15:16:43 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,5 @@ size_t	strlcpy(char *dst, const char *src, size_t dsize)
 		while (*src++)
 			;
 	}
-	return (src - osrc - 1);	/*  */
+	return (src - osrc - 1);
 }

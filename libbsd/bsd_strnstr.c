@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 23:39:40 by dchernik          #+#    #+#             */
-/*   Updated: 2024/12/02 00:10:49 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/12/26 14:58:38 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@
 
 #include "string.h"
 
-static void	alg(const char *s, const char *find, size_t slen, char c);
+static int	alg(const char *s, const char *find, size_t slen, char c);
 
 /*
  * Find the first occurrence of find in s, where the search is limited to the
@@ -67,11 +67,14 @@ char	*strnstr(const char *s, const char *find, size_t slen)
 
 	c = *find++;
 	if (c != '\0')
-		alg(s, find, slen, c);
+	{
+		if (!alg(s, find, slen, c))
+			return (NULL);
+	}
 	return ((char *)s);
 }
 
-static void	alg(const char *s, const char *find, size_t slen, char c)
+static int	alg(const char *s, const char *find, size_t slen, char c)
 {
 	char	sc;
 	size_t	len;
@@ -83,14 +86,15 @@ static void	alg(const char *s, const char *find, size_t slen, char c)
 		{
 			sc = *s++;
 			if (slen-- < 1 || sc == '\0')
-				return (NULL);
+				return (0);
 			if (sc == c)
 				break ;
 		}
 		if (len > slen)
-			return (NULL);
+			return (0);
 		if (strncmp(s, find, len) == 0)
 			break ;
 	}
 	s--;
+	return (1);
 }

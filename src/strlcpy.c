@@ -6,23 +6,29 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:54:33 by dchernik          #+#    #+#             */
-/*   Updated: 2024/11/20 17:42:07 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/12/26 18:58:59 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libft_tester.h"
 #include "../include/strlcpy.h"
 
-/* Main function that tests ft_strlcpy(). As usual, it prints the standard
- * test header, then launches tests of our implementation of the strlcpy()
- * function, followed by the same tests for the original strlcpy() function
- * from Glibc, to be able to compare their results. Finally, it prints the
- * standard footer stub that visually indicates the end of testing */
-void	strlcpy_test()
+/* Main function that tests ft_strlcpy().
+ * As usual, it prints the standard test
+ * header, then launches tests of our
+ * implementation of the strlcpy() function,
+ * followed by the same tests for the original
+ * strlcpy() function from Glibc, to be able
+ * to compare their results. Finally, it prints
+ * the standard footer stub that visually
+ * indicates the end of testing */
+void	strlcpy_test(void)
 {
-	char const	our_funcname[] = "ft_strlcpy";
-	char const	orig_funcname[] = "strlcpy";
+	char	our_funcname[MAX_FUNC_NAME_LEN];
+	char	orig_funcname[MAX_FUNC_NAME_LEN];
 
+	strlcpy(our_funcname, "ft_strlcpy", MAX_FUNC_NAME_LEN);
+	strlcpy(orig_funcname, "strlcpy", MAX_FUNC_NAME_LEN);
 	print_test_header(our_funcname);
 	printf("%s():\n", our_funcname);
 	strlcpy_regular_tests(our_funcname);
@@ -33,18 +39,15 @@ void	strlcpy_test()
 	print_test_footer();
 }
 
-void	strlcpy_test_helper(char const *funcname,
-							char *dst,
-							char const *src,
-							size_t size)
+void	strlcpy_test_helper(t_char_c *fn, char *dst, t_char_c *src, size_t size)
 {
 	size_t	ret;
 
-	cprintf(YELLOW, "%s", funcname);
+	cprintf(YELLOW, "%s", fn);
 	printf("(\"%s\", \"%s\", %lu) = ", dst, src, size);
-	if (strncmp(funcname, "ft_strlcpy", MAX_FUNC_NAME_LEN) == 0)
+	if (strncmp(fn, "ft_strlcpy", MAX_FUNC_NAME_LEN) == 0)
 		ret = ft_strlcpy(dst, src, size);
-	else if (strncmp(funcname, "strlcpy", MAX_FUNC_NAME_LEN) == 0)
+	else if (strncmp(fn, "strlcpy", MAX_FUNC_NAME_LEN) == 0)
 		ret = strlcpy(dst, src, size);
 	else
 		ret = ft_strlcpy(dst, src, size);

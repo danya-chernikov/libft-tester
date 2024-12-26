@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:51:54 by dchernik          #+#    #+#             */
-/*   Updated: 2024/11/24 19:12:16 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/12/26 16:07:16 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,11 @@ static void	launch_tests(t_char_c *fname);
 
 void	memchr_test(void)
 {
-	t_char_c	our_funcname[] = "ft_memchr";
-	t_char_c	orig_funcname[] = "memchr";
+	char	our_funcname[MAX_FUNC_NAME_LEN];
+	char	orig_funcname[MAX_FUNC_NAME_LEN];
 
+	strlcpy(our_funcname, "ft_memchr", MAX_FUNC_NAME_LEN);
+	strlcpy(orig_funcname, "memchr", MAX_FUNC_NAME_LEN);
 	print_test_header(our_funcname);
 	printf("%s():\n", our_funcname);
 	launch_tests(our_funcname);
@@ -62,9 +64,14 @@ static void	launch_tests(t_char_c *fname)
 {
 	char	s[MAX_MEMCHR_STR_LEN];
 	size_t	slen;
-	char	c[3] = { ';', ' ', 'Y' };
-	int		n[2] = { 0, 1 };
+	char	c[3];
+	int		n[2];
 
+	c[0] = ';';
+	c[1] = ' ';
+	c[2] = 'Y';
+	c[0] = 0;
+	c[1] = 1;
 	strlcpy(s, "Peter, I have been sent as punishment;", MAX_MEMCHR_STR_LEN);
 	strlcat(s, " I turn to the pages of his crown:", MAX_MEMCHR_STR_LEN);
 	slen = strlen(s);

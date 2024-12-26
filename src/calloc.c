@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:41:52 by dchernik          #+#    #+#             */
-/*   Updated: 2024/11/24 18:17:50 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/12/26 15:48:39 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,13 @@
 static void	launch_tests(t_char_c *fname);
 static void	test_helper(t_char_c *fname, int ntest, size_t nmemb, size_t size);
 
-void	calloc_test()
+void	calloc_test(void)
 {
-	t_char_c	our_funcname[] = "ft_calloc";
-	t_char_c	orig_funcname[] = "calloc";
+	char	our_funcname[MAX_FUNC_NAME_LEN];
+	char	orig_funcname[MAX_FUNC_NAME_LEN];
 
+	strlcpy(our_funcname, "ft_calloc", MAX_FUNC_NAME_LEN);
+	strlcpy(orig_funcname, "calloc", MAX_FUNC_NAME_LEN);
 	print_test_header(our_funcname);
 	printf("%s():\n", our_funcname);
 	launch_tests(our_funcname);

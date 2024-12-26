@@ -12,8 +12,8 @@
 #include "../include/libft_tester.h"
 #include "../include/putsmth_fd.h"
 
-static void	form_tests(ps_tests *tests);
-static void	add_test(ps_tests *tests, int test_ind, int number, int fd);
+static void	form_tests(t_ps_tests *tests);
+static void	add_test(t_ps_tests *tests, int test_ind, int number, int fd);
 
 /*
  * It launches tests for the putnbr_fd() function.
@@ -27,7 +27,7 @@ static void	add_test(ps_tests *tests, int test_ind, int number, int fd);
 void	putnbr_fd_test(void)
 {
 	t_char_c	fname[] = "ft_putnbr_fd";
-	ps_tests	tests;
+	t_ps_tests	tests;
 	int			tests_num;
 
 	print_test_header(fname);
@@ -39,7 +39,7 @@ void	putnbr_fd_test(void)
 
 /*
  * It adds user-defined tests to the tests member
- * of the ps_tests structure.
+ * of the t_ps_tests structure.
  * Constants explanation:
  *     STDOUT = 1        - equivalent to stdout;
  *     STDERR = 2        - equivalent to stderr;
@@ -48,7 +48,7 @@ void	putnbr_fd_test(void)
  *						   last special test because a temporary file
  *						   will be used.
  * */
-static void	form_tests(ps_tests *tests)
+static void	form_tests(t_ps_tests *tests)
 {
 	add_test(tests, 1, 2757, STDOUT);
 	add_test(tests, 2, 0, STDERR);
@@ -59,7 +59,7 @@ static void	form_tests(ps_tests *tests)
 
 /* It adds an individual test. The `number` represents the first
  * argument of the tested function, and `fd` represents the second. */
-static void	add_test(ps_tests *tests, int test_ind, int number, int fd)
+static void	add_test(t_ps_tests *tests, int test_ind, int number, int fd)
 {
 	tests->first.number[test_ind - 1] = number;
 	tests->second.fd[test_ind - 1] = fd;

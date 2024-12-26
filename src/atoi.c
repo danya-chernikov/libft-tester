@@ -6,21 +6,23 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:41:21 by dchernik          #+#    #+#             */
-/*   Updated: 2024/11/24 20:23:53 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/12/26 15:41:38 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libft_tester.h"
 
 static void	launch_tests(t_char_c *fname);
-static void launch_tests_part_2(t_char_c *fname);
+static void	launch_tests_part_2(t_char_c *fname);
 static void	test_helper(t_char_c *fname, int ntest, char *s);
 
 void	atoi_test(void)
 {
-	t_char_c	our_funcname[] = "ft_atoi";
-	t_char_c	orig_funcname[] = "atoi";
+	char	our_funcname[MAX_FUNC_NAME_LEN];
+	char	orig_funcname[MAX_FUNC_NAME_LEN];
 
+	strlcpy(our_funcname, "ft_atoi", MAX_FUNC_NAME_LEN);
+	strlcpy(orig_funcname, "atoi", MAX_FUNC_NAME_LEN);
 	print_test_header(our_funcname);
 	printf("%s():\n", our_funcname);
 	launch_tests(our_funcname);

@@ -16,9 +16,11 @@ void	memcmp_regular_tests(t_char_c *fname)
 
 static void	regular_test(t_char_c *fname, int ntest, int n)
 {
-	int arr1[5] = {1, 2, 3, 4, 5};
-	int arr2[5] = {1, 2, 3, 4, 5};
+	int		arr1[5];
+	int		arr2[5];
 
+	fill_arr_int(arr1, 1, 1, sizeof (arr1) / sizeof (int));
+	fill_arr_int(arr2, 1, 1, sizeof (arr2) / sizeof (int));
 	printf("\t%d. ", ntest);
 	memcmp_test_helper(fname, (void *)arr1, (void *)arr2, n);
 }

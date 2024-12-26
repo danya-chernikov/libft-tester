@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:43:00 by dchernik          #+#    #+#             */
-/*   Updated: 2024/11/17 19:39:25 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/12/26 15:01:42 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 
 void	strlcpy_regular_tests(t_char_c *fname);
 void	strlcpy_special_tests(t_char_c *fname);
-void	strlcpy_test_helper(t_char_c *fname, char *dst, t_char_c *src, size_t s);
+void	strlcpy_test_helper(t_char_c *fn, char *dst, t_char_c *src, size_t s);
 
 #endif

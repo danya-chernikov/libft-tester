@@ -6,24 +6,24 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:54:20 by dchernik          #+#    #+#             */
-/*   Updated: 2024/11/15 17:58:54 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/12/26 19:00:23 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libft_tester.h"
 #include "../include/strlcat.h"
 
-static void	regular_test(char const *funcname, 
-						 int ntest,
-						 char const *src,
-						 size_t size);
+static void	regular_test(t_char_c *fn, int ntest, t_char_c *src, size_t size);
 
-void	strlcat_regular_tests(char const *funcname)
+void	strlcat_regular_tests(t_char_c *funcname)
 {
-	char src[] = " of the muse of the dark";
-	char src2[] = " of the muse of the dark. L touch your ear?"
-	"Do you understand the soul of the humble The desire of my heart?";
+	char	src[256];
+	char	src2[256];
 
+	strlcpy(src, " of the muse of the dark", 256);
+	strlcpy(src2, " of the muse of the dark. L touch your ear?", 256);
+	strlcat(src2, " Do you understand the soul of the humble ", 256);
+	strlcat(src2, "The desire of my heart?", 256);
 	regular_test(funcname, 1, src, 64);
 	regular_test(funcname, 2, src2, 64);
 	regular_test(funcname, 3, src, 0);
@@ -37,15 +37,11 @@ void	strlcat_regular_tests(char const *funcname)
 	regular_test(funcname, 11, src, 40);
 }
 
-static void	regular_test(char const *funcname, 
-						 int ntest,
-						 char const *src,
-						 size_t size)
+static void	regular_test(t_char_c *fn, int ntest, t_char_c *src, size_t size)
 {
-	size_t	BUF_SIZE = 64;
-	char	dst[BUF_SIZE];
+	char	dst[64];
 
-	strlcpy(dst, "You - but the voice", BUF_SIZE);
+	strlcpy(dst, "You - but the voice", 64);
 	printf("\t%d. ", ntest);
-	strlcat_test_helper(funcname, dst, src, size);
+	strlcat_test_helper(fn, dst, src, size);
 }

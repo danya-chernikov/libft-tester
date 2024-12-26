@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:51:25 by dchernik          #+#    #+#             */
-/*   Updated: 2024/12/01 20:30:00 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/12/26 14:59:26 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,8 @@ void	test_addit_funcs()
  * list implementation */
 void	test_linked_list()
 {	
-	lstnew();
-/*	lstadd_front();
+	/*lstnew();
+	lstadd_front();
 	lstsize();
 	lstlast();
 	lstadd_back();

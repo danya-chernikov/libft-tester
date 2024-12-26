@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:57:12 by dchernik          #+#    #+#             */
-/*   Updated: 2024/11/20 17:22:02 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/12/26 19:29:05 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,20 @@
 static void	launch_tests(t_char_c *funcname);
 static void	test_helper(t_char_c *funcname, int ntest, t_char_c *str, int ch);
 
-/* Main function that tests ft_strrchr(), launching both tests of our own
- * implementation and the same tests of the original strrchr() from Glibc,
- * to be able to compare their results */
-void	strrchr_test()
+/* Main function that tests
+ * ft_strrchr(), launching
+ * both tests of our own
+ * implementation and the
+ * same tests of the original
+ * strrchr() from Glibc, to be
+ * able to compare their results */
+void	strrchr_test(void)
 {
-	t_char_c	our_funcname[] = "ft_strrchr";
-	t_char_c	orig_funcname[] = "strrchr";
+	char	our_funcname[MAX_FUNC_NAME_LEN];
+	char	orig_funcname[MAX_FUNC_NAME_LEN];
 
+	strlcpy(our_funcname, "ft_strrchr", MAX_FUNC_NAME_LEN);
+	strlcpy(orig_funcname, "strrchr", MAX_FUNC_NAME_LEN);
 	print_test_header(our_funcname);
 	printf("%s():\n", our_funcname);
 	launch_tests(our_funcname);
@@ -33,9 +39,10 @@ void	strrchr_test()
 
 static void	test_helper(t_char_c *funcname, int ntest, t_char_c *str, int ch)
 {
-	t_char_c	format[] = "\t%d. %s%s%s(\"%s\", '%c') = ";
-	char		*res;
+	char	format[MAX_FORMAT_STR_LEN];
+	char	*res;
 
+	strlcpy(format, "\t%d. %s%s%s(\"%s\", '%c') = ", MAX_FORMAT_STR_LEN);
 	printf(format, ntest, YELLOW, funcname, WHITE, str, ch);
 	if (strncmp(funcname, "ft_strrchr", MAX_FUNC_NAME_LEN) == 0)
 		res = ft_strrchr(str, ch);
@@ -46,11 +53,13 @@ static void	test_helper(t_char_c *funcname, int ntest, t_char_c *str, int ch)
 	printf("%p\n", res);
 }
 
-static void	launch_tests(char const *funcname)
+static void	launch_tests(t_char_c *funcname)
 {
-	char	str[32] = "just a test string";
-	char	str2[8] = "teste";
+	char	str[32];
+	char	str2[8];
 
+	strlcpy(str, "just a test string", 32);
+	strlcpy(str, "teste", 8);
 	printf("\tstr = \"%s\"\n", str);
 	printf("\tAddress of str is: %p\n", str);
 	test_helper(funcname, 1, str, 'j');

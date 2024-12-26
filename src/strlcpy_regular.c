@@ -6,19 +6,16 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:54:41 by dchernik          #+#    #+#             */
-/*   Updated: 2024/11/20 18:58:29 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/12/26 18:59:44 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libft_tester.h"
 #include "../include/strlcpy.h"
 
-static void	regular_test(char const *funcname,
-						 int ntest,
-						 char const *src,
-						 size_t size);
+static void	regular_test(t_char_c *fn, int ntest, t_char_c *src, size_t size);
 
-void	strlcpy_regular_tests(char const *funcname)
+void	strlcpy_regular_tests(t_char_c *funcname)
 {
 	regular_test(funcname, 1, "just some text", 64);
 	regular_test(funcname, 2, "just some text", 10);
@@ -28,14 +25,10 @@ void	strlcpy_regular_tests(char const *funcname)
 }
 
 /* It's a common test case */
-static void	regular_test(char const *funcname,
-						 int ntest,
-						 char const *src,
-						 size_t size)
+static void	regular_test(t_char_c *fn, int ntest, t_char_c *src, size_t size)
 {
-	size_t	BUF_SIZE = 64;
-	char	dst[BUF_SIZE];
+	char	dst[64];
 
 	printf("\t%d. ", ntest);
-	strlcpy_test_helper(funcname, dst, src, size);
+	strlcpy_test_helper(fn, dst, src, size);
 }

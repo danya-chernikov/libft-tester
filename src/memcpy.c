@@ -6,24 +6,30 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:52:17 by dchernik          #+#    #+#             */
-/*   Updated: 2024/11/15 17:56:07 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/12/26 16:27:14 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libft_tester.h"
 
-static void	memcpy_our();
-static void	memcpy_orig();
+static void	memcpy_our(void);
+static void	memcpy_orig(void);
 
-/* Main function that tests ft_memcpy(). As usual, it prints the standard
-   test header, then launches tests of our implementation of the memcpy()
-   function, followed by the same tests for the original memcpy() function
-   from Glibc, to be able to compare their results. Finally, it prints the
-   standard footer stub that visually indicates the end of testing */
-void	memcpy_test()
+/* Main function that tests ft_memcpy().
+ * As usual, it prints the standard test
+ * header, then launches tests of our
+ * implementation of the memcpy() function,
+ * followed by the same tests for the
+ * original memcpy() function from Glibc,
+ * to be able to compare their results.
+ * Finally, it prints the standard footer
+ * stub that visually indicates the end
+ * of testing */
+void	memcpy_test(void)
 {
-	const char	funcname[] = "ft_memcpy";
+	char	funcname[MAX_FUNC_NAME_LEN];
 
+	strlcpy(funcname, "ft_memcpy", MAX_FUNC_NAME_LEN);
 	print_test_header(funcname);
 	printf("ft_memcpy():\n");
 	memcpy_our();
@@ -32,10 +38,12 @@ void	memcpy_test()
 	print_test_footer();
 }
 
-/* It launches tests of our own memcpy() implementation. We color
-   function name yellow to make it visually more noticeable
-   rptr - pointer to the result produced by memcpy */
-static void	memcpy_our()
+/* It launches tests of our own memcpy()
+ * implementation. We color function name
+ * yellow to make it visually more noticeable.
+ *     rptr - pointer to the result produced
+ *			  by memcpy. */
+static void	memcpy_our(void)
 {
 	char	recv_buf[32];
 	char	src_buf[22];
@@ -51,8 +59,9 @@ static void	memcpy_our()
 	print_bytes(recv_buf, sizeof(recv_buf) + 10);
 }
 
-/* It launches tests of the original memcpy() function */
-static void	memcpy_orig()
+/* It launches tests of the
+ * original memcpy() function */
+static void	memcpy_orig(void)
 {
 	char	recv_buf[32];
 	char	src_buf[22];

@@ -6,22 +6,27 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:43:35 by dchernik          #+#    #+#             */
-/*   Updated: 2024/11/16 17:36:21 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/12/26 16:01:47 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libft_tester.h"
 
-static void	isdigit_our();
-static void	isdigit_orig();
+static void	isdigit_our(void);
+static void	isdigit_orig(void);
 
-/* Main function that tests ft_isdigit(), launching both tests of our own
- * implementation and the same tests of the original isdigit() from Glibc,
- * to be able to compare their results */
-void	isdigit_test()
+/* Main function that tests
+ * ft_isdigit(), launching
+ * both tests of our own
+ * implementation and the
+ * same tests of the original
+ * isdigit() from Glibc, to be
+ * able to compare their results */
+void	isdigit_test(void)
 {
-	char const	funcname[] = "ft_isdigit";
+	char	funcname[MAX_FUNC_NAME_LEN];
 
+	strlcpy(funcname, "ft_isdigit", MAX_FUNC_NAME_LEN);
 	print_test_header(funcname);
 	printf("ft_isdigit():\n");
 	isdigit_our();
@@ -30,9 +35,11 @@ void	isdigit_test()
 	print_test_footer();
 }
 
-/* It launches tests of our own isdigit() implementation. We color
- * function name yellow to make it visually more noticeable */
-static void	isdigit_our()
+/* It launches tests of our
+ * own isdigit() implementation.
+ * We color function name yellow
+ * to make it visually more noticeable */
+static void	isdigit_our(void)
 {
     printf("\t%sft_isdigit%s('\\r') = %d\n", YELLOW, WHITE, ft_isdigit('\r'));
     printf("\t%sft_isdigit%s('0') = %d\n", YELLOW, WHITE, ft_isdigit('0'));
@@ -47,8 +54,9 @@ static void	isdigit_our()
     printf("\t%sft_isdigit%s(EOF) = %d\n", YELLOW, WHITE, ft_isdigit(EOF));
 }
 
-/* It launches tests of the original isdigit() function */
-static void	isdigit_orig()
+/* It launches tests of the
+ * original isdigit() function */
+static void	isdigit_orig(void)
 {
     printf("\t%sisdigit%s('\\r') = %d\n", YELLOW, WHITE, isdigit('\r'));
     printf("\t%sisdigit%s('0') = %d\n", YELLOW, WHITE, isdigit('0'));

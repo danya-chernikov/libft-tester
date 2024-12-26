@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:56:57 by dchernik          #+#    #+#             */
-/*   Updated: 2024/11/25 19:59:05 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/12/26 19:17:42 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,9 @@ static char	func_for_strmapi(u_int pos, char symbol);
 
 void	strmapi_test(void)
 {
-	t_char_c	our_funcname[] = "ft_strmapi";
+	char	our_funcname[MAX_FUNC_NAME_LEN];
 
+	strlcpy(our_funcname, "ft_strmapi", MAX_FUNC_NAME_LEN);
 	print_test_header(our_funcname);
 	printf("%s():\n", our_funcname);
 	launch_tests(our_funcname);
@@ -33,14 +34,15 @@ static void	launch_tests(t_char_c *fname)
 
 static void	test_helper(t_char_c *fname, int ntest, t_char_c *str)
 {
-	t_char_c	format[] = "(\"%s\", func_for_strmapi) = \"%s\"\n";
-	char		*ret;
+	char	f[MAX_FORMAT_STR_LEN];
+	char	*ret;
 
+	strlcpy(f, "(\"%s\", func_for_strmapi) = \"%s\"\n", MAX_FORMAT_STR_LEN);
 	ret = ft_strmapi(str, func_for_strmapi);
 	printf("\t%d. ", ntest);
 	cprintf(YELLOW, "%s", fname);
-	printf(format, str, ret);
-    free(ret);
+	printf(f, str, ret);
+	free(ret);
 }
 
 /* We initialize and increment the 'pos' variable at the beginning

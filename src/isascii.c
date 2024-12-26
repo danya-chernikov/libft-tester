@@ -6,20 +6,25 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:43:28 by dchernik          #+#    #+#             */
-/*   Updated: 2024/11/15 17:55:33 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/12/26 18:10:59 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libft_tester.h"
 
-/* It prints the ASCII table in two columns. The left column shows the
-   output of the implementation of our isascii() function, and the right
-   column shows the output of the original isascii() function from Glibc */
-void	isascii_test()
+/* It prints the ASCII table in
+ * two columns. The left column
+ * shows the output of the
+ * implementation of our isascii()
+ * function, and the right column
+ * shows the output of the original
+ * isascii() function from Glibc */
+void	isascii_test(void)
 {
-	const char	funcname[] = "ft_isascii";
-	int			i;
+	char	funcname[MAX_FUNC_NAME_LEN];
+	int		i;
 
+	strlcpy(funcname, "ft_isascii", MAX_FUNC_NAME_LEN);
 	print_test_header(funcname);
 	printf("ft_isascii()\t\t\ttrue isascii() from LibC\n");
 	i = 0;

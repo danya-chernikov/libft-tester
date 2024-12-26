@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:53:53 by dchernik          #+#    #+#             */
-/*   Updated: 2024/11/24 18:41:38 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/12/26 18:19:35 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,13 @@
 static void	launch_tests(t_char_c *fname);
 static void	test_helper(t_char_c *fname, int ntest, t_char_c *s);
 
-void	strdup_test()
+void	strdup_test(void)
 {
-	t_char_c	our_funcname[] = "ft_strdup";
-	t_char_c	orig_funcname[] = "strdup";
+	char	our_funcname[MAX_FUNC_NAME_LEN];
+	char	orig_funcname[MAX_FUNC_NAME_LEN];
 
+	strlcpy(our_funcname, "ft_strdup", MAX_FUNC_NAME_LEN);
+	strlcpy(orig_funcname, "strdup", MAX_FUNC_NAME_LEN);
 	print_test_header(our_funcname);
 	printf("%s():\n", our_funcname);
 	launch_tests(our_funcname);
@@ -38,11 +40,12 @@ static void	launch_tests(t_char_c *fname)
 }
 
 /* It's a common test case */
-static void	test_helper(t_char_c *fname, int ntest, t_char_c *s) 
+static void	test_helper(t_char_c *fname, int ntest, t_char_c *s)
 {
-	t_char_c	format[] = "(\"%s\") = %p -> \"%s\"\n";
-	char		*ret;
-	
+	char	format[MAX_FORMAT_STR_LEN];
+	char	*ret;	
+
+	strlcpy(format, "(\"%s\") = %p -> \"%s\"\n", MAX_FORMAT_STR_LEN);
 	if (strncmp(fname, "ft_strdup", MAX_FUNC_NAME_LEN) == 0)
 		ret = ft_strdup(s);
 	else if (strncmp(fname, "strdup", MAX_FUNC_NAME_LEN) == 0)

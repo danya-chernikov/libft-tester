@@ -10,7 +10,7 @@ void	print_bytes(void *ptr, int n)
 	int		i;
 
 	if (n > READ_MEM_LIMIT)
-		return;
+		return ;
 	p = (u_char *)ptr;
 	i = 0;
 	while (i < n)
@@ -23,7 +23,7 @@ void	print_bytes(void *ptr, int n)
 
 /* It behaves the same as print_bytes(), but accepts a delimiter string
  * and returns the string of bytes instead of printing it */
-char    *read_mem(void *ptr, int n, t_char_c *delim, int height)
+char	*read_mem(void *ptr, int n, t_char_c *delim, int height)
 {
 	static char	bstr[READ_MEM_LIMIT + 1];
 	char		one_byte[DELIM_BYTES_LIMIT + 2 + 1];

@@ -6,15 +6,15 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:52:49 by dchernik          #+#    #+#             */
-/*   Updated: 2024/11/30 14:20:50 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/12/26 15:07:50 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libft_tester.h"
 #include "../include/putsmth_fd.h"
 
-static void	form_tests(ps_tests *tests);
-static void	add_test(ps_tests *tests, int test_ind, char symbol, int fd);
+static void	form_tests(t_ps_tests *tests);
+static void	add_test(t_ps_tests *tests, int test_ind, char symbol, int fd);
 
 /*
  * It launches tests for the putchar_fd() function.
@@ -24,12 +24,11 @@ static void	add_test(ps_tests *tests, int test_ind, char symbol, int fd);
 	   regular tests and one special test;
 	   args     - a member of the structure that
 	   describes all the tests to be performed on
-	   the tested function.
- * */
+	   the tested function. */
 void	putchar_fd_test(void)
 {
 	t_char_c	fname[] = "ft_putchar_fd";
-	ps_tests	tests;
+	t_ps_tests	tests;
 	int			tests_num;
 
 	print_test_header(fname);
@@ -50,7 +49,7 @@ void	putchar_fd_test(void)
  *						   last special test because a temporary file
  *						   will be used.
  * */
-static void	form_tests(ps_tests *tests)
+static void	form_tests(t_ps_tests *tests)
 {
 	add_test(tests, 1, 'a', STDOUT);
 	add_test(tests, 2, 'b', STDERR);
@@ -59,7 +58,7 @@ static void	form_tests(ps_tests *tests)
 
 /* It adds an individual test. The `symbol` represents the first
  * argument of the tested function, and `fd` represents the second. */
-static void	add_test(ps_tests *tests, int test_ind, char symbol, int fd)
+static void	add_test(t_ps_tests *tests, int test_ind, char symbol, int fd)
 {
 	tests->first.symbol[test_ind - 1] = symbol;
 	tests->second.fd[test_ind - 1] = fd;

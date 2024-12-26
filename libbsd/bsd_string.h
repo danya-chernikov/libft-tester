@@ -24,38 +24,17 @@
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifdef LIBBSD_OVERLAY
-#include_next <string.h>
-#else
-#include <string.h>
-#endif
+/* Modified by [Daniil Chernikov/libft-tester] on [12/26/2024]
+ * I formatted the code to fit the Norm (norminette) */
 
-#ifndef LIBBSD_STRING_H
-#define LIBBSD_STRING_H
+#ifndef BSD_STRING_H
+# define BSD_STRING_H
 
-#ifdef LIBBSD_OVERLAY
-#include <sys/cdefs.h>
-#else
-#include <bsd/sys/cdefs.h>
-#endif
-#include <sys/types.h>
+# include <string.h>
+# include <sys/types.h>
 
-__BEGIN_DECLS
-#if !defined(__APPLE__) && \
-    (!defined(__GLIBC__) || !__GLIBC_PREREQ(2, 38) || !defined(_DEFAULT_SOURCE))
-size_t strlcpy(char *dst, const char *src, size_t siz);
-size_t strlcat(char *dst, const char *src, size_t siz);
-#endif
-char *strnstr(const char *str, const char *find, size_t str_len);
-#ifndef __APPLE__
-void strmode(mode_t mode, char *str);
-#endif
-
-#if !defined(__GLIBC__) || \
-    !__GLIBC_PREREQ(2, 25) || \
-    !defined(_DEFAULT_SOURCE)
-void explicit_bzero(void *buf, size_t len);
-#endif
-__END_DECLS
+size_t	strlcpy(char *dst, const char *src, size_t siz);
+size_t	strlcat(char *dst, const char *src, size_t siz);
+char	*strnstr(const char *str, const char *find, size_t str_len);
 
 #endif

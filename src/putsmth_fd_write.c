@@ -5,12 +5,12 @@
  * into the temporary file. */
 void	write_temp_file(t_char_c *fname, void **pack, int *fd)
 {
-	ps_tests	*tests;
-	func_id		find;
+	t_ps_tests	*tests;
+	t_func_id	find;
 	int			tnum;
 
-	tests = (ps_tests *)pack[0];
-	find = *(func_id *)pack[1];
+	tests = (t_ps_tests *)pack[0];
+	find = *(t_func_id *)pack[1];
 	tnum = *(int *)pack[2];	
 	if (find == PUTCHAR_FD_ID)
 	{
@@ -30,7 +30,7 @@ void	write_temp_file(t_char_c *fname, void **pack, int *fd)
 	}
 }
 
-void	putchar_fd_write(t_char_c *fname, ps_tests *tests, int tnum, int *fd)
+void	putchar_fd_write(t_char_c *fname, t_ps_tests *tests, int tnum, int *fd)
 {
 	char	format[MAX_FORMAT_STR_LEN + 1];
 
@@ -40,7 +40,7 @@ void	putchar_fd_write(t_char_c *fname, ps_tests *tests, int tnum, int *fd)
 	ft_putchar_fd(tests->first.symbol[tnum - 1], *fd);
 }
 
-void	putstr_fd_write(t_char_c *fname, ps_tests *tests, int tnum, int *fd)
+void	putstr_fd_write(t_char_c *fname, t_ps_tests *tests, int tnum, int *fd)
 {
 	char	format[MAX_FORMAT_STR_LEN + 1];
 
@@ -50,7 +50,7 @@ void	putstr_fd_write(t_char_c *fname, ps_tests *tests, int tnum, int *fd)
 	ft_putstr_fd(tests->first.string[tnum - 1], *fd);
 }
 
-void	putendl_fd_write(t_char_c *fname, ps_tests *tests, int tnum, int *fd)
+void	putendl_fd_write(t_char_c *fname, t_ps_tests *tests, int tnum, int *fd)
 {
 	char	format[MAX_FORMAT_STR_LEN + 1];
 
@@ -61,7 +61,7 @@ void	putendl_fd_write(t_char_c *fname, ps_tests *tests, int tnum, int *fd)
 	ft_putendl_fd(tests->first.string[tnum - 1], *fd);
 }
 
-void	putnbr_fd_write(t_char_c *fname, ps_tests *tests, int tnum, int *fd)
+void	putnbr_fd_write(t_char_c *fname, t_ps_tests *tests, int tnum, int *fd)
 {
 	char	format[MAX_FORMAT_STR_LEN + 1];
 

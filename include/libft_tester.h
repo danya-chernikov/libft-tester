@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:42:27 by dchernik          #+#    #+#             */
-/*   Updated: 2024/12/01 20:30:03 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/12/26 18:09:35 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@
 # define STDOUT						1
 # define STDERR						2
 # define NO_STD_STREAM				0
-# define MAX_FUNC_NAME_LEN			20
-# define MAX_FORMAT_STR_LEN			1024
+# define MAX_FUNC_NAME_LEN			32
+# define MAX_FORMAT_STR_LEN			512
 # define MAX_STRNCMP_STR_LEN		128
 # define MAX_MEMCHR_STR_LEN			128
 # define MAX_STRNSTR_STR_LEN		128
@@ -58,9 +58,9 @@
 # define MAX_TEST_STR_LEN			256
 # define TEMP_FILE_NAME				"text.txt"
 # define TOO_MANY_TESTS_ERR_MSG		"too many tests"
-# define PUTSMTH_MEM_ERR_STRS		"unable to allocate dynamic memory for an array of strings"
-# define MEM_ERR_BUF_MSG			"unable to allocate memory for the error buffer"
-# define MEM_ERR_FILE_READ_BUF_MSG	"unable to allocate memory for the file buffer"
+# define PUTSMTH_MEM_ERR_STRS		"unable to allocate mem for an arr of strs"
+# define MEM_ERR_BUF_MSG			"unable to allocate mem for the error buf"
+# define MEM_ERR_FILE_READ_BUF_MSG	"unable to allocate mem for the file buf"
 # define MEM_ERR_MSG				"unable to allocate memory"
 # define FILE_CREAT_ERR_MSG			"error creating file"
 # define FILE_OPEN_ERR_MSG			"error opening file"
@@ -75,13 +75,13 @@
  * Each testing function has its unique identifier (ID).
  * This ID is passed to the ps_test_helper() function so
  * that it knows which function should be tested. */
-typedef enum
+typedef enum func_id
 {
 	PUTCHAR_FD_ID,
 	PUTSTR_FD_ID,
 	PUTENDL_FD_ID,
 	PUTNBR_FD_ID
-} func_id;
+}	t_func_id;
 
 /*
  * This structure defines all the tests to be performed on
@@ -152,26 +152,26 @@ typedef enum
  *   (number[1]<-----|								
  *		 ‖
  *	    100  */
-typedef struct
+typedef struct ps_tests
 {
 	struct s_first_arg
 	{
 		char	symbol[MAX_TESTS_NUM + 1];
 		char	**string;
 		int		number[MAX_TESTS_NUM + 1];
-	} first;
+	}	first;
 	struct s_second_arg
 	{
 		int	fd[MAX_TESTS_NUM + 1];
-	} second;
-} ps_tests;
+	}	second;
+}	t_ps_tests;
 
 void	launch_tester(void);
 void	test_glibc_funcs(void);
 void	test_addit_funcs(void);
 void	test_linked_list(void);
 
-void    isalpha_test(void);
+void	isalpha_test(void);
 void	isdigit_test(void);
 void	isalnum_test(void);
 void	isascii_test(void);

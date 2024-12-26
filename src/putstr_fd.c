@@ -6,15 +6,15 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:53:17 by dchernik          #+#    #+#             */
-/*   Updated: 2024/11/30 20:15:28 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/12/26 15:12:18 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libft_tester.h"
 #include "../include/putsmth_fd.h"
 
-static void	form_tests(ps_tests *tests);
-static void	add_test(ps_tests *tests, int test_ind, char *str, int fd);
+static void	form_tests(t_ps_tests *tests);
+static void	add_test(t_ps_tests *tests, int test_ind, char *str, int fd);
 
 /*
  * It launches tests for the putstr_fd() function.
@@ -28,7 +28,7 @@ static void	add_test(ps_tests *tests, int test_ind, char *str, int fd);
 void	putstr_fd_test(void)
 {
 	t_char_c	fname[] = "ft_putstr_fd";
-	ps_tests	tests;
+	t_ps_tests	tests;
 	int			tests_num;
 	char		errbuf[MAX_ERR_BUF_SIZE + 1];
 
@@ -59,7 +59,7 @@ void	putstr_fd_test(void)
  *						   last special test because a temporary file
  *						   will be used.
  * */
-static void	form_tests(ps_tests *tests)
+static void	form_tests(t_ps_tests *tests)
 {
 	add_test(tests, 1, "test_string", STDOUT);
 	add_test(tests, 2, "t", STDERR);
@@ -68,7 +68,7 @@ static void	form_tests(ps_tests *tests)
 
 /* It adds an individual test. The `str` represents the first
  * argument of the tested function, and `fd` represents the second. */
-static void	add_test(ps_tests *tests, int test_ind, char *str, int fd)
+static void	add_test(t_ps_tests *tests, int test_ind, char *str, int fd)
 {
 	strlcpy(tests->first.string[test_ind - 1], str, MAX_TEST_STR_LEN);
 	tests->second.fd[test_ind - 1] = fd;

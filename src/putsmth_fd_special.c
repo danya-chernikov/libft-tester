@@ -37,13 +37,13 @@
  * memory allocated for it can be freed in case of an error. */
 int	ps_special_test(t_char_c *fname, void **pack, char **readbuf, char **errbuf)
 {
-	ps_tests	*tests;
-	func_id		find;
+	t_ps_tests	*tests;
+	t_func_id	find;
 	int			tnum;
 	int			fd;
 
-	tests = (ps_tests *)pack[0];
-	find = *(func_id *)pack[1];
+	tests = (t_ps_tests *)pack[0];
+	find = *(t_func_id *)pack[1];
 	tnum = *(int *)pack[2];
 	if (!create_temp_file(fname, &fd, readbuf, errbuf))
 		return (ERROR);
