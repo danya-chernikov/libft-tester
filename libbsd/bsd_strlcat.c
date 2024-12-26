@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   bsd_strlcat.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/01 21:08:13 by dchernik          #+#    #+#             */
+/*   Updated: 2024/12/02 00:04:06 by dchernik         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 /*	$OpenBSD: strlcat.c,v 1.15 2015/03/02 21:41:08 millert Exp $	*/
 
 /*
@@ -20,8 +32,10 @@
  * I substituted the #include <string.h> line with #include "string.h",
  * making it possible to compile the code of this file using the original
  * string.h header file provided by libbsd-0.12.2, but not the system's
- * string.h header file
- */
+ * string.h header file */
+
+/* Modified by [Daniil Chernikov/libft-tester] on [12/01/2024]
+ * I formatted the code to fit the Norm (norminette) */
 
 #include <sys/types.h>
 #include "string.h"
@@ -32,31 +46,34 @@
  * will be copied.  Always NUL terminates (unless dsize <= strlen(dst)).
  * Returns strlen(src) + MIN(dsize, strlen(initial dst)).
  * If retval >= dsize, truncation occurred.
- */
-size_t
-strlcat(char *dst, const char *src, size_t dsize)
+ * The first loop finds the end of dst and adjust bytes left but
+ * don't go past end.
+ * When returning the result count does not include NUL. */
+size_t	strlcat(char *dst, const char *src, size_t dsize)
 {
-	const char *odst = dst;
-	const char *osrc = src;
-	size_t n = dsize;
-	size_t dlen;
+	const char	*odst;
+	const char	*osrc;
+	size_t		n;
+	size_t		dlen;
 
-	/* Find the end of dst and adjust bytes left but don't go past end. */
+	odst = dst;
+	osrc = src;
+	n = dsize;
 	while (n-- != 0 && *dst != '\0')
 		dst++;
 	dlen = dst - odst;
 	n = dsize - dlen;
-
 	if (n-- == 0)
-		return(dlen + strlen(src));
-	while (*src != '\0') {
-		if (n != 0) {
+		return (dlen + strlen(src));
+	while (*src != '\0')
+	{
+		if (n != 0)
+		{
 			*dst++ = *src;
 			n--;
 		}
 		src++;
 	}
 	*dst = '\0';
-
-	return(dlen + (src - osrc));	/* count does not include NUL */
+	return (dlen + (src - osrc));
 }

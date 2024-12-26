@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   bsd_strlcpy.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/02 00:04:03 by dchernik          #+#    #+#             */
+/*   Updated: 2024/12/02 00:10:49 by dchernik         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 /*	$OpenBSD: strlcpy.c,v 1.12 2015/01/15 03:54:12 millert Exp $	*/
 
 /*
@@ -20,8 +32,10 @@
  * I substituted the #include <string.h> line with #include "string.h",
  * making it possible to compile the code of this file using the original
  * string.h header file provided by libbsd-0.12.2, but not the system's
- * string.h header file
- */
+ * string.h header file */
+
+/* Modified by [Daniil Chernikov/libft-tester] on [12/02/2024]
+ * I formatted the code to fit the Norm (norminette) */
 
 #include <sys/types.h>
 #include "string.h"
@@ -30,28 +44,32 @@
  * Copy string src to buffer dst of size dsize.  At most dsize-1
  * chars will be copied.  Always NUL terminates (unless dsize == 0).
  * Returns strlen(src); if retval >= dsize, truncation occurred.
- */
-size_t
-strlcpy(char *dst, const char *src, size_t dsize)
+ * The first loop copies as many bytes as will fit.
+ * Then we check if there is not enough room in dst, add NUL and
+ * traverse rest of src. When returning the result count does
+ * not include NUL. */
+size_t	strlcpy(char *dst, const char *src, size_t dsize)
 {
-	const char *osrc = src;
-	size_t nleft = dsize;
+	const char	*osrc;
+	size_t		nleft;
 
-	/* Copy as many bytes as will fit. */
-	if (nleft != 0) {
-		while (--nleft != 0) {
-			if ((*dst++ = *src++) == '\0')
-				break;
+	osrc = src;
+	nleft = dsize;
+	if (nleft != 0)
+	{
+		while (--nleft != 0)
+		{
+			*dst++ = *src++;
+			if (*dst == '\0')
+				break ;
 		}
 	}
-
-	/* Not enough room in dst, add NUL and traverse rest of src. */
-	if (nleft == 0) {
+	if (nleft == 0)
+	{
 		if (dsize != 0)
-			*dst = '\0';		/* NUL-terminate dst */
+			*dst = '\0';
 		while (*src++)
 			;
 	}
-
-	return(src - osrc - 1);	/* count does not include NUL */
+	return (src - osrc - 1);	/*  */
 }
