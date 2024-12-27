@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:42:05 by dchernik          #+#    #+#             */
-/*   Updated: 2024/12/26 16:49:44 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/12/27 16:40:12 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@
 # define GL_COLOR_FLAG		1
 # define MAX_ERR_BUF_SIZE	256
 # define TEST_HD_FT_LEN		50
-# define TEST_HD_FT_SYM		'#'
+# define TEST_HD_FT_SYM		0x23
 # define MAX_SUBSTRS_NUM	200
 # define MAX_SUBSTR_LEN		100
 # define READ_MEM_LIMIT		1024
