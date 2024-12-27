@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:52:28 by dchernik          #+#    #+#             */
-/*   Updated: 2024/12/26 16:59:20 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/12/27 14:39:57 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	memmove_test(void)
 {
 	char	funcname[MAX_FUNC_NAME_LEN];
 
-	strlcpy(funcname, "ft_memmove", MAX_FUNC_NAME_LEN);
+	strncpy(funcname, "ft_memmove", MAX_FUNC_NAME_LEN);
 	print_test_header(funcname);
 	printf("ft_memmove():\n");
 	memmove_our();
@@ -47,9 +47,9 @@ static void	memmove_our(void)
 	char	recv_buf[64];
 	char	src_buf[64];
 
-	strlcpy(src_buf, "we are testing memmove", 64); 
-	strlcpy(format, "%sft_memmove%s(recv_buf,", MAX_FORMAT_STR_LEN); 
-	strlcat(format, " \"%s\", strlen(src_buf)+1):\n", MAX_FORMAT_STR_LEN);
+	strncpy(src_buf, "we are testing memmove", 64);
+	strncpy(format, "%sft_memmove%s(recv_buf,", MAX_FORMAT_STR_LEN);
+	strncat(format, " \"%s\", strlen(src_buf)+1):\n", MAX_FORMAT_STR_LEN);
 	printf(format, YELLOW, WHITE, src_buf);
 	ft_memmove(recv_buf, src_buf, strlen(src_buf) + 1);
 	printf("\t\trecv_buf = \"%s\"\n", recv_buf);
@@ -65,9 +65,9 @@ static void	memmove_orig(void)
 	char	recv_buf[64];
 	char	src_buf[64];
 
-	strlcpy(src_buf, "we are testing memmove", 64); 
-	strlcpy(format, "%smemmove%s(recv_buf,", MAX_FORMAT_STR_LEN);
-	strlcat(format, " \"%s\", strlen(src_buf)+1):\n", MAX_FORMAT_STR_LEN);
+	strncpy(src_buf, "we are testing memmove", 64);
+	strncpy(format, "%smemmove%s(recv_buf,", MAX_FORMAT_STR_LEN);
+	strncat(format, " \"%s\", strlen(src_buf)+1):\n", MAX_FORMAT_STR_LEN);
 	printf(format, YELLOW, WHITE, src_buf);
 	memmove(recv_buf, src_buf, strlen(src_buf) + 1);
 	printf("\t\trecv_buf = \"%s\"\n", recv_buf);

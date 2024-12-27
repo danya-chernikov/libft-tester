@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:51:54 by dchernik          #+#    #+#             */
-/*   Updated: 2024/12/26 16:07:16 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/12/27 14:37:44 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	memchr_test(void)
 	char	our_funcname[MAX_FUNC_NAME_LEN];
 	char	orig_funcname[MAX_FUNC_NAME_LEN];
 
-	strlcpy(our_funcname, "ft_memchr", MAX_FUNC_NAME_LEN);
-	strlcpy(orig_funcname, "memchr", MAX_FUNC_NAME_LEN);
+	strncpy(our_funcname, "ft_memchr", MAX_FUNC_NAME_LEN);
+	strncpy(orig_funcname, "memchr", MAX_FUNC_NAME_LEN);
 	print_test_header(our_funcname);
 	printf("%s():\n", our_funcname);
 	launch_tests(our_funcname);
@@ -30,8 +30,7 @@ void	memchr_test(void)
 	print_test_footer();
 }
 
-/*
- * It accepts a pack of arguments and then unpacks them to pass
+/* It accepts a pack of arguments and then unpacks them to pass
  * these arguments to the tested function. The pack contains
  * three arguments:
  *     str - a pointer to the memory area in which to search;
@@ -60,7 +59,7 @@ static void	test_helper(t_char_c *fname, int ntest, void **pack)
 	free(pack);
 }
 
-static void	launch_tests(t_char_c *fname)
+static void	launch_tests(t_char_c *fn)
 {
 	char	s[MAX_MEMCHR_STR_LEN];
 	size_t	slen;
@@ -72,14 +71,14 @@ static void	launch_tests(t_char_c *fname)
 	c[2] = 'Y';
 	c[0] = 0;
 	c[1] = 1;
-	strlcpy(s, "Peter, I have been sent as punishment;", MAX_MEMCHR_STR_LEN);
-	strlcat(s, " I turn to the pages of his crown:", MAX_MEMCHR_STR_LEN);
+	strncpy(s, "Peter, I have been sent as punishment;", MAX_MEMCHR_STR_LEN);
+	strncat(s, " I turn to the pages of his crown:", MAX_MEMCHR_STR_LEN);
 	slen = strlen(s);
 	printf("\ts = \"%s\"\n", s);
 	printf("\t&s[0] = %p\n", &s[0]);
-	test_helper(fname, 1, pack_args(3, (void *)s, (void *)&c[0], (void *)&slen));
-	test_helper(fname, 2, pack_args(3, (void *)s, (void *)&c[1], (void *)&slen));
-	test_helper(fname, 3, pack_args(3, (void *)s, (void *)&c[0], (void *)&n[1]));
-	test_helper(fname, 4, pack_args(3, (void *)s, (void *)&c[0], (void *)&n[0]));
-	test_helper(fname, 5, pack_args(3, (void *)s, (void *)&c[2], (void *)&slen));
+	test_helper(fn, 1, pack_args(3, (void *)s, (void *)&c[0], (void *)&slen));
+	test_helper(fn, 2, pack_args(3, (void *)s, (void *)&c[1], (void *)&slen));
+	test_helper(fn, 3, pack_args(3, (void *)s, (void *)&c[0], (void *)&n[1]));
+	test_helper(fn, 4, pack_args(3, (void *)s, (void *)&c[0], (void *)&n[0]));
+	test_helper(fn, 5, pack_args(3, (void *)s, (void *)&c[2], (void *)&slen));
 }

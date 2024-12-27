@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:53:53 by dchernik          #+#    #+#             */
-/*   Updated: 2024/12/26 18:19:35 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/12/27 14:45:58 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	strdup_test(void)
 	char	our_funcname[MAX_FUNC_NAME_LEN];
 	char	orig_funcname[MAX_FUNC_NAME_LEN];
 
-	strlcpy(our_funcname, "ft_strdup", MAX_FUNC_NAME_LEN);
-	strlcpy(orig_funcname, "strdup", MAX_FUNC_NAME_LEN);
+	strncpy(our_funcname, "ft_strdup", MAX_FUNC_NAME_LEN);
+	strncpy(orig_funcname, "strdup", MAX_FUNC_NAME_LEN);
 	print_test_header(our_funcname);
 	printf("%s():\n", our_funcname);
 	launch_tests(our_funcname);
@@ -34,8 +34,8 @@ static void	launch_tests(t_char_c *fname)
 {
 	char	str[MAX_STRDUP_STR_LEN + 1];
 
-	strlcpy(str, "My uncle's goodness is extreme, ", MAX_STRDUP_STR_LEN);
-	strlcat(str, "If seriously he hath disease;", MAX_STRDUP_STR_LEN);
+	strncpy(str, "My uncle's goodness is extreme, ", MAX_STRDUP_STR_LEN);
+	strncat(str, "If seriously he hath disease;", MAX_STRDUP_STR_LEN);
 	test_helper(fname, 1, str);
 }
 
@@ -45,7 +45,7 @@ static void	test_helper(t_char_c *fname, int ntest, t_char_c *s)
 	char	format[MAX_FORMAT_STR_LEN];
 	char	*ret;	
 
-	strlcpy(format, "(\"%s\") = %p -> \"%s\"\n", MAX_FORMAT_STR_LEN);
+	strncpy(format, "(\"%s\") = %p -> \"%s\"\n", MAX_FORMAT_STR_LEN);
 	if (strncmp(fname, "ft_strdup", MAX_FUNC_NAME_LEN) == 0)
 		ret = ft_strdup(s);
 	else if (strncmp(fname, "strdup", MAX_FUNC_NAME_LEN) == 0)

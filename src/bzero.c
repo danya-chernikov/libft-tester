@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:41:33 by dchernik          #+#    #+#             */
-/*   Updated: 2024/12/26 15:44:09 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/12/27 14:34:53 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	bzero_test(void)
 {
 	char	funcname[MAX_FUNC_NAME_LEN];
 
-	strlcpy(funcname, "ft_bzero", MAX_FUNC_NAME_LEN);
+	strncpy(funcname, "ft_bzero", MAX_FUNC_NAME_LEN);
 	print_test_header(funcname);
 	printf("ft_bzero():\n");
 	bzero_our();

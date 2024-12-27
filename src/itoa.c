@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:43:52 by dchernik          #+#    #+#             */
-/*   Updated: 2024/12/26 16:20:53 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/12/27 14:36:49 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	itoa_test(void)
 {
 	char	our_funcname[MAX_FUNC_NAME_LEN];
 
-	strlcpy(our_funcname, "ft_itoa", MAX_FUNC_NAME_LEN);
+	strncpy(our_funcname, "ft_itoa", MAX_FUNC_NAME_LEN);
 	print_test_header(our_funcname);
 	printf("%s():\n", our_funcname);
 	launch_tests(our_funcname);
@@ -41,12 +41,13 @@ static void	launch_tests(t_char_c *fname)
 
 static void	test_helper(t_char_c *fname, int ntest, int num)
 {
-	t_char_c	format[] = "(%d) = \"%s\"\n";
-	char		*ret;
+	char	format[MAX_FORMAT_STR_LEN + 1];
+	char	*ret;
 
+	strncpy(format, "(%d) = \"%s\"\n", MAX_FORMAT_STR_LEN);
 	ret = ft_itoa(num);
 	printf("\t%d. ", ntest);
 	cprintf(YELLOW, "%s", fname);
 	printf(format, num, ret);
-    free(ret);
+	free(ret);
 }

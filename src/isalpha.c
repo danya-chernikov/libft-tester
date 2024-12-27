@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:43:21 by dchernik          #+#    #+#             */
-/*   Updated: 2024/12/26 15:58:52 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/12/27 14:35:53 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	isalpha_test(void)
 {
 	char	funcname[MAX_FUNC_NAME_LEN];
 
-	strlcpy(funcname, "ft_isalpha", MAX_FUNC_NAME_LEN);
+	strncpy(funcname, "ft_isalpha", MAX_FUNC_NAME_LEN);
 	print_test_header(funcname);
 	printf("ft_isalpha():\n");
 	isalpha_our();
@@ -40,9 +40,9 @@ void	isalpha_test(void)
  * We color function name yellow
  * to make it visually more
  * noticeable */
-static void	isalpha_our()
+static void	isalpha_our(void)
 {
-    printf("\t1.  %sft_isalpha%s('\\r') = %d\n", YEL, WHITE, ft_isalpha('\r'));
+	printf("\t1.  %sft_isalpha%s('\\r') = %d\n", YEL, WHITE, ft_isalpha('\r'));
 	printf("\t2.  %sft_isalpha%s('0') = %d\n", YELLOW, WHITE, ft_isalpha('0'));
 	printf("\t3.  %sft_isalpha%s('A') = %d\n", YELLOW, WHITE, ft_isalpha('A'));
 	printf("\t4.  %sft_isalpha%s('a') = %d\n", YELLOW, WHITE, ft_isalpha('a'));
@@ -56,16 +56,16 @@ static void	isalpha_our()
 
 /* It launches tests of the
  * original isalpha() function */
-static void	isalpha_orig()
+static void	isalpha_orig(void)
 {
-    printf("\t1.  %sisalpha%s('\\r') = %d\n", YEL, WHITE, isalpha('\r'));
-    printf("\t2.  %sisalpha%s('0') = %d\n", YELLOW, WHITE, isalpha('0'));
-    printf("\t3.  %sisalpha%s('A') = %d\n", YELLOW, WHITE, isalpha('A'));
-    printf("\t4.  %sisalpha%s('a') = %d\n", YELLOW, WHITE, isalpha('a'));
-    printf("\t5.  %sisalpha%s('b') = %d\n", YELLOW, WHITE, isalpha('b'));
-    printf("\t6.  %sisalpha%s('Z') = %d\n", YELLOW, WHITE, isalpha('Z'));
-    printf("\t7.  %sisalpha%s('z') = %d\n", YELLOW, WHITE, isalpha('z'));
-    printf("\t8.  %sisalpha%s('1') = %d\n", YELLOW, WHITE, isalpha('1'));
-    printf("\t9.  %sisalpha%s('\\t') = %d\n", YEL, WHITE, isalpha('\t'));
-    printf("\t10. %sisalpha%s(EOF) = %d\n", YELLOW, WHITE, isalpha(EOF));
+	printf("\t1.  %sisalpha%s('\\r') = %d\n", YEL, WHITE, isalpha('\r'));
+	printf("\t2.  %sisalpha%s('0') = %d\n", YELLOW, WHITE, isalpha('0'));
+	printf("\t3.  %sisalpha%s('A') = %d\n", YELLOW, WHITE, isalpha('A'));
+	printf("\t4.  %sisalpha%s('a') = %d\n", YELLOW, WHITE, isalpha('a'));
+	printf("\t5.  %sisalpha%s('b') = %d\n", YELLOW, WHITE, isalpha('b'));
+	printf("\t6.  %sisalpha%s('Z') = %d\n", YELLOW, WHITE, isalpha('Z'));
+	printf("\t7.  %sisalpha%s('z') = %d\n", YELLOW, WHITE, isalpha('z'));
+	printf("\t8.  %sisalpha%s('1') = %d\n", YELLOW, WHITE, isalpha('1'));
+	printf("\t9.  %sisalpha%s('\\t') = %d\n", YEL, WHITE, isalpha('\t'));
+	printf("\t10. %sisalpha%s(EOF) = %d\n", YELLOW, WHITE, isalpha(EOF));
 }

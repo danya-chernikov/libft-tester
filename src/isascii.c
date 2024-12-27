@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:43:28 by dchernik          #+#    #+#             */
-/*   Updated: 2024/12/26 18:10:59 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/12/27 14:32:44 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	isascii_test(void)
 	char	funcname[MAX_FUNC_NAME_LEN];
 	int		i;
 
-	strlcpy(funcname, "ft_isascii", MAX_FUNC_NAME_LEN);
+	strncpy(funcname, "ft_isascii", MAX_FUNC_NAME_LEN);
 	print_test_header(funcname);
 	printf("ft_isascii()\t\t\ttrue isascii() from LibC\n");
 	i = 0;

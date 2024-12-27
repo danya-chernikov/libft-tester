@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:57:07 by dchernik          #+#    #+#             */
-/*   Updated: 2024/12/26 19:24:32 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/12/27 14:55:12 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	strnstr_test(void)
 	char	our_funcname[MAX_FUNC_NAME_LEN];
 	char	orig_funcname[MAX_FUNC_NAME_LEN];
 
-	strlcpy(our_funcname, "ft_strnstr", MAX_FUNC_NAME_LEN);
-	strlcpy(orig_funcname, "strnstr", MAX_FUNC_NAME_LEN);
+	strncpy(our_funcname, "ft_strnstr", MAX_FUNC_NAME_LEN);
+	strncpy(orig_funcname, "strnstr", MAX_FUNC_NAME_LEN);
 	print_test_header(our_funcname);
 	printf("%s():\n", our_funcname);
 	launch_tests(our_funcname);
@@ -36,8 +36,8 @@ static void	launch_tests(t_char_c *fname)
 	char	big[32];
 	char	big2[64];
 
-	strlcpy(big, "abc def ghi jkl", 32);
-	strlcpy(big2, "lorem ipsum dolor sit amet", 64);
+	strncpy(big, "abc def ghi jkl", 32);
+	strncpy(big2, "lorem ipsum dolor sit amet", 64);
 	printf("\taddress of big string is: %p\n", big);
 	test_helper(fname, 1, pack_strs(big, "def"), strlen(big));
 	test_helper(fname, 2, pack_strs(big, "jkl"), strlen(big));
@@ -57,12 +57,12 @@ static void	launch_tests(t_char_c *fname)
 /* It's a common test case */
 static void	test_helper(t_char_c *fname, int ntest, char *strs, size_t len)
 {
-	char	f[MAX_FORMAT_STR_LEN];
+	char	format[MAX_FORMAT_STR_LEN];
 	char	big[MAX_STRNSTR_STR_LEN];
 	char	little[MAX_STRNSTR_STR_LEN];
 	char	*ret;
 
-	strlcpy(format, "(\"%s\", \"%s\", %lu) = %p\n", MAX_FORMAT_STR_LEN);
+	strncpy(format, "(\"%s\", \"%s\", %lu) = %p\n", MAX_FORMAT_STR_LEN);
 	unpack_strs(strs, big, little);
 	if (strncmp(fname, "ft_strnstr", MAX_FUNC_NAME_LEN) == 0)
 		ret = ft_strnstr(big, little, len);

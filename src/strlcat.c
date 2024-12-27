@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:54:14 by dchernik          #+#    #+#             */
-/*   Updated: 2024/12/26 18:27:26 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/12/27 14:47:00 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	strlcat_test(void)
 	char	our_funcname[MAX_FUNC_NAME_LEN];
 	char	orig_funcname[MAX_FUNC_NAME_LEN];
 
-	strlcpy(our_funcname, "ft_strlcat", MAX_FUNC_NAME_LEN);
-	strlcpy(orig_funcname, "strlcat", MAX_FUNC_NAME_LEN);
+	strncpy(our_funcname, "ft_strlcat", MAX_FUNC_NAME_LEN);
+	strncpy(orig_funcname, "strlcat", MAX_FUNC_NAME_LEN);
 	print_test_header(our_funcname);
 	printf("%s():\n", our_funcname);
 	strlcat_regular_tests(our_funcname);

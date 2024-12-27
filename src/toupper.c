@@ -1,16 +1,22 @@
 #include "../include/libft_tester.h"
 
-static void	launch_tests(char const *funcname);
-static void	test_helper(char const *funcname, int ntest, int ch);
+static void	launch_tests(t_char_c *funcname);
+static void	test_helper(t_char_c *funcname, int ntest, int ch);
 
-/* Main function that tests ft_toupper(), launching both tests of our own
- * implementation and the same tests of the original toupper() from Glibc,
- * to be able to compare their results */
-void	toupper_test()
+/* Main function that tests
+ * ft_toupper(), launching
+ * both tests of our own
+ * implementation and the
+ * same tests of the original
+ * toupper() from Glibc, to be
+ * able to compare their results */
+void	toupper_test(void)
 {
-	char const	our_funcname[] = "ft_toupper";
-	char const	orig_funcname[] = "toupper";
+	char	our_funcname[MAX_FUNC_NAME_LEN];
+	char	orig_funcname[MAX_FUNC_NAME_LEN];
 
+	strncpy(our_funcname, "ft_toupper", MAX_FUNC_NAME_LEN);
+	strncpy(orig_funcname, "toupper", MAX_FUNC_NAME_LEN);
 	print_test_header(our_funcname);
 	printf("%s():\n", our_funcname);
 	launch_tests(our_funcname);
@@ -19,10 +25,11 @@ void	toupper_test()
 	print_test_footer();
 }
 
-static void	test_helper(char const *funcname, int ntest, int ch)
+static void	test_helper(t_char_c *funcname, int ntest, int ch)
 {
-	char const	format[] = "\t%d. %s%s%s('%c'(%d)) = ";
+	char	format[MAX_FORMAT_STR_LEN];
 
+	strncpy(format, "\t%d. %s%s%s('%c'(%d)) = ", MAX_FORMAT_STR_LEN);
 	printf(format, ntest, YELLOW, funcname, WHITE, ch, ch);
 	if (strncmp(funcname, "ft_toupper", MAX_FUNC_NAME_LEN) == 0)
 		printf("%c", ft_toupper(ch));
@@ -33,7 +40,7 @@ static void	test_helper(char const *funcname, int ntest, int ch)
 	printf("\n");
 }
 
-static void	launch_tests(char const *funcname)
+static void	launch_tests(t_char_c *funcname)
 {
 	char	*cur_loc;
 

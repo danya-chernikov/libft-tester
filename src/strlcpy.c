@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:54:33 by dchernik          #+#    #+#             */
-/*   Updated: 2024/12/26 18:58:59 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/12/27 14:51:12 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void	strlcpy_test(void)
 	char	our_funcname[MAX_FUNC_NAME_LEN];
 	char	orig_funcname[MAX_FUNC_NAME_LEN];
 
-	strlcpy(our_funcname, "ft_strlcpy", MAX_FUNC_NAME_LEN);
-	strlcpy(orig_funcname, "strlcpy", MAX_FUNC_NAME_LEN);
+	strncpy(our_funcname, "ft_strlcpy", MAX_FUNC_NAME_LEN);
+	strncpy(orig_funcname, "strlcpy", MAX_FUNC_NAME_LEN);
 	print_test_header(our_funcname);
 	printf("%s():\n", our_funcname);
 	strlcpy_regular_tests(our_funcname);

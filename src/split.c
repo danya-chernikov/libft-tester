@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:53:32 by dchernik          #+#    #+#             */
-/*   Updated: 2024/12/26 17:07:45 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/12/27 14:44:42 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	split_test(void)
 {
 	char	our_funcname[MAX_FUNC_NAME_LEN];
 
-	strlcpy(our_funcname, "ft_split", MAX_FUNC_NAME_LEN);
+	strncpy(our_funcname, "ft_split", MAX_FUNC_NAME_LEN);
 	print_test_header(our_funcname);
 	printf("%s():\n", our_funcname);
 	launch_tests(our_funcname);
@@ -60,10 +60,10 @@ static char	*prepare_long_str(void)
 {
 	static char	long_str[MAX_SPLIT_STR_LEN];
 
-	strlcpy(long_str, "   lorem   ipsum dolor    ", MAX_SPLIT_STR_LEN);
-	strlcat(long_str, " sit amet, consectetur  ", MAX_SPLIT_STR_LEN);
-	strlcat(long_str, " adipiscing elit. Sed ", MAX_SPLIT_STR_LEN);
-	strlcat(long_str, "non risus. Suspendisse   ", MAX_SPLIT_STR_LEN);
+	strncpy(long_str, "   lorem   ipsum dolor    ", MAX_SPLIT_STR_LEN);
+	strncat(long_str, " sit amet, consectetur  ", MAX_SPLIT_STR_LEN);
+	strncat(long_str, " adipiscing elit. Sed ", MAX_SPLIT_STR_LEN);
+	strncat(long_str, "non risus. Suspendisse   ", MAX_SPLIT_STR_LEN);
 	return (long_str);
 }
 
@@ -71,7 +71,7 @@ static void	test_helper(t_char_c *fname, int ntest, t_char_c *str, char delim)
 {
 	char	format[MAX_FORMAT_STR_LEN];
 
-	strlcpy(format, "(\"%s\", '%c') = ", MAX_FORMAT_STR_LEN);
+	strncpy(format, "(\"%s\", '%c') = ", MAX_FORMAT_STR_LEN);
 	printf("\t%d. ", ntest);
 	cprintf(YELLOW, "%s", fname);
 	printf(format, str, delim);

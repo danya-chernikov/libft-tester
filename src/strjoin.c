@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:54:03 by dchernik          #+#    #+#             */
-/*   Updated: 2024/12/26 18:44:55 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/12/27 14:46:41 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	strjoin_test(void)
 {
 	char	our_funcname[MAX_FUNC_NAME_LEN];
 
-	strlcpy(our_funcname, "ft_strjoin", MAX_FUNC_NAME_LEN);
+	strncpy(our_funcname, "ft_strjoin", MAX_FUNC_NAME_LEN);
 	print_test_header(our_funcname);
 	printf("%s():\n", our_funcname);
 	launch_tests(our_funcname);
@@ -40,7 +40,7 @@ static void	test_helper(t_char_c *fname, int ntest, t_char_c *s1, t_char_c *s2)
 	char	format[MAX_FORMAT_STR_LEN];
 	char	*ret;
 
-	strlcpy(format, "(\"%s\", \"%s\") = \"%s\"\n", MAX_FORMAT_STR_LEN);
+	strncpy(format, "(\"%s\", \"%s\") = \"%s\"\n", MAX_FORMAT_STR_LEN);
 	ret = ft_strjoin(s1, s2);
 	printf("\t%d. ", ntest);
 	cprintf(YELLOW, "%s", fname);

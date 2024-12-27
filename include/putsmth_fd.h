@@ -2,13 +2,13 @@
 # define PUTSMTH_FD_H
 
 /* putsmth_fd_aux.c */
-void	ps_test_helper(t_char_c *fn, t_ps_tests *tests, t_func_id find, int tn);
+void	ps_test_help(t_char_c *fn, t_ps_tests *tests, t_func_id find, int tn);
 int		ps_alloc_mem(t_char_c *fname, char **readbuf, char **errbuf);
 void	ps_free_mem(char **readbuf, char **errbuf);
 int		delete_temp_file(t_char_c *fname, char **errbuf);
 
 /* putsmth_fd_regular.c */
-void	ps_regular_tests(t_char_c *fn, t_ps_tests *tests, t_func_id fi, int tn);
+void	ps_reg_tests(t_char_c *fn, t_ps_tests *tests, t_func_id fi, int tn);
 void	call_putchar_fd(t_char_c *fname, t_ps_tests *tests, int test_ind);
 void	call_putstr_fd(t_char_c *fname, t_ps_tests *tests, int test_ind);
 void	call_putendl_fd(t_char_c *fname, t_ps_tests *tests, int test_ind);

@@ -1,8 +1,8 @@
 #include "../include/libft_tester.h"
 #include "../include/putsmth_fd.h"
 
-/* It displays to the user the content read from the temporary file,
- * i.e., the result of the special test */
+/* It displays to the user the content read from the
+ * temporary file, i.e., the result of the special test */
 void	print_special_test_res(t_char_c *fname, void **pack, char **readbuf)
 {
 	t_ps_tests	*tests;
@@ -30,30 +30,31 @@ void	print_special_test_res(t_char_c *fname, void **pack, char **readbuf)
 	}
 }
 
-void	print_putchar_res(t_char_c *fn, t_ps_tests *tests, int tnum, char **rbuf)
+/* rb - read buffer */
+void	print_putchar_res(t_char_c *fn, t_ps_tests *tests, int tnum, char **rb)
 {
 	printf("\t%d. ", tnum);
 	cprintf(YELLOW, "%s", fn);
-	printf(PUTCHAR_FORMAT, tests->first.symbol[tnum - 1], *rbuf);
+	printf(PUTCHAR_FORMAT, tests->first.symbol[tnum - 1], *rb);
 }
 
-void	print_putstr_res(t_char_c *fn, t_ps_tests *tests, int tnum, char **rbuf)
+void	print_putstr_res(t_char_c *fn, t_ps_tests *tests, int tnum, char **rb)
 {
 	printf("\t%d. ", tnum);
 	cprintf(YELLOW, "%s", fn);
-	printf(PUTSTR_FORMAT, tests->first.string[tnum - 1], *rbuf);
+	printf(PUTSTR_FORMAT, tests->first.string[tnum - 1], *rb);
 }
 
-void	print_putendl_res(t_char_c *fn, t_ps_tests *tests, int tnum, char **rbuf)
+void	print_putendl_res(t_char_c *fn, t_ps_tests *tests, int tnum, char **rb)
 {
 	printf("\t%d. ", tnum);
 	cprintf(YELLOW, "%s", fn);
-	printf(PUTENDL_FORMAT, tests->first.string[tnum - 1], *rbuf);
+	printf(PUTENDL_FORMAT, tests->first.string[tnum - 1], *rb);
 }
 
-void	print_putnbr_res(t_char_c *fn, t_ps_tests *tests, int tnum, char **rbuf)
+void	print_putnbr_res(t_char_c *fn, t_ps_tests *tests, int tnum, char **rb)
 {
 	printf("\t%d. ", tnum);
 	cprintf(YELLOW, "%s", fn);
-	printf(PUTNBR_FORMAT, tests->first.number[tnum - 1], *rbuf);
+	printf(PUTNBR_FORMAT, tests->first.number[tnum - 1], *rb);
 }

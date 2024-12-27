@@ -1,8 +1,7 @@
 #include "../include/libft_tester.h"
 #include "../include/putsmth_fd.h"
 
-/* 
- * It launches all the tests (both regular and one special)
+/* It launches all the tests (both regular and one special)
  * for a function determined by the find argument.
  * The `ps_` prefix means `putsmth` = `putsomething`.
  * Description of the arguments this function accepts:
@@ -23,23 +22,23 @@
  *				file is used. It is possible to pass 0 to
  *				perform only the special test without launching
  *				regular tests. */
-void	ps_test_helper(t_char_c *fn, t_ps_tests *tests, t_func_id find, int tnum)
+void	ps_test_help(t_char_c *fn, t_ps_tests *tests, t_func_id find, int tnum)
 {
 	char	*errbuf;
 	char	*readbuf;
 	void	**pack;
 
 	errbuf = NULL;
-	readbuf = NULL;	
-	if(!ps_alloc_mem(fn, &readbuf, &errbuf))
-		return;
+	readbuf = NULL;
+	if (!ps_alloc_mem(fn, &readbuf, &errbuf))
+		return ;
 	if (tnum > MAX_TESTS_NUM)
 	{
 		form_common_err_msg(errbuf, fn, TOO_MANY_TESTS_ERR_MSG);
 		perror(errbuf);
 		ps_free_mem(&readbuf, &errbuf);
 	}
-	ps_regular_tests(fn, tests, find, tnum);
+	ps_reg_tests(fn, tests, find, tnum);
 	pack = pack_args(3, (void *)tests, (void *)&find, (void *)&tnum);
 	ps_special_test(fn, pack, &readbuf, &errbuf);
 	ps_free_mem(&readbuf, &errbuf);

@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:52:35 by dchernik          #+#    #+#             */
-/*   Updated: 2024/12/26 17:08:11 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/12/27 14:40:31 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ void	memset_test(void)
 	char	our_funcname[MAX_FUNC_NAME_LEN];
 	char	orig_funcname[MAX_FUNC_NAME_LEN];
 
-	strlcpy(our_funcname, "ft_memset", MAX_FUNC_NAME_LEN);
-	strlcpy(orig_funcname, "memset", MAX_FUNC_NAME_LEN);
+	strncpy(our_funcname, "ft_memset", MAX_FUNC_NAME_LEN);
+	strncpy(orig_funcname, "memset", MAX_FUNC_NAME_LEN);
 	print_test_header(our_funcname);
 	printf("%s():\n", our_funcname);
 	launch_tests(our_funcname);
@@ -56,7 +56,7 @@ static void	test_helper(t_char_c *funcname, int ntest, int c, int n)
 {
 	char		buf[64];
 	char		*ptr;
-	
+
 	if (strncmp(funcname, "ft_memset", MAX_FUNC_NAME_LEN) == 0)
 		ptr = ft_memset(buf, c, n);
 	else if (strncmp(funcname, "memset", MAX_FUNC_NAME_LEN) == 0)

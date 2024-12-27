@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:52:17 by dchernik          #+#    #+#             */
-/*   Updated: 2024/12/26 16:27:14 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/12/27 14:39:29 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	memcpy_test(void)
 {
 	char	funcname[MAX_FUNC_NAME_LEN];
 
-	strlcpy(funcname, "ft_memcpy", MAX_FUNC_NAME_LEN);
+	strncpy(funcname, "ft_memcpy", MAX_FUNC_NAME_LEN);
 	print_test_header(funcname);
 	printf("ft_memcpy():\n");
 	memcpy_our();
@@ -49,11 +49,11 @@ static void	memcpy_our(void)
 	char	src_buf[22];
 	void	*rptr;
 
-	strlcpy(src_buf, "we are testing memcpy", 22);
+	strncpy(src_buf, "we are testing memcpy", 22);
 	memset(recv_buf, 0x43, sizeof(recv_buf));
 	rptr = ft_memcpy(recv_buf, src_buf, strlen(src_buf) + 1);
 	printf("\t1. %sft_memcpy%s(recv_buf, src_buf,"
-	"strlen(src_buf) + 1) = %p\n", YELLOW, WHITE, rptr);
+		"strlen(src_buf) + 1) = %p\n", YELLOW, WHITE, rptr);
 	printf("\t\trecv_buf = \"%s\"\n", recv_buf);
 	printf("\t\t");
 	print_bytes(recv_buf, sizeof(recv_buf) + 10);
@@ -67,11 +67,11 @@ static void	memcpy_orig(void)
 	char	src_buf[22];
 	void	*rptr;
 
-	strlcpy(src_buf, "we are testing memcpy", 22);
+	strncpy(src_buf, "we are testing memcpy", 22);
 	memset(recv_buf, 0x43, sizeof(recv_buf));
 	rptr = memcpy(recv_buf, src_buf, strlen(src_buf) + 1);
 	printf("\t1. %smemcpy%s(recv_buf, src_buf,"
-	"strlen(src_buf) + 1) = %p\n", YELLOW, WHITE, rptr);
+		"strlen(src_buf) + 1) = %p\n", YELLOW, WHITE, rptr);
 	printf("\t\trecv_buf = \"%s\"\n", recv_buf);
 	printf("\t\t");
 	print_bytes(recv_buf, sizeof(recv_buf) + 10);

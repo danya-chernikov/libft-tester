@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:53:17 by dchernik          #+#    #+#             */
-/*   Updated: 2024/12/26 15:12:18 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/12/27 14:43:59 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,40 +16,40 @@
 static void	form_tests(t_ps_tests *tests);
 static void	add_test(t_ps_tests *tests, int test_ind, char *str, int fd);
 
-/*
- * It launches tests for the putstr_fd() function.
+/* It launches tests for the putstr_fd() function.
  * Description of local variables:
 	   test_num - the number of tests to perform.
-	   For example, test_num = 3 indicates two
-	   regular tests and one special test;
+				  For example, test_num = 3
+				  indicates two regular tests
+				  and one special test;
 	   args     - a member of the structure that
-	   describes all the tests to be performed on
-	   the tested function. */
+				  describes all the tests to be
+				  performed on the tested function. */
 void	putstr_fd_test(void)
 {
-	t_char_c	fname[] = "ft_putstr_fd";
-	t_ps_tests	tests;
-	int			tests_num;
+	char		funcname[MAX_FUNC_NAME_LEN];
 	char		errbuf[MAX_ERR_BUF_SIZE + 1];
+	int			tests_num;
+	t_ps_tests	tests;
 
-	print_test_header(fname);
+	strncpy(funcname, "ft_putstr_fd", MAX_FUNC_NAME_LEN);
+	print_test_header(funcname);
 	tests_num = 3;
 	tests.first.string = alloc_str_2d(tests_num, MAX_TEST_STR_LEN + 1);
 	if (tests.first.string == NULL)
 	{
-		form_common_err_msg(errbuf, fname, PUTSMTH_MEM_ERR_STRS);
+		form_common_err_msg(errbuf, funcname, PUTSMTH_MEM_ERR_STRS);
 		perror(errbuf);
 		print_test_footer();
-		return;
+		return ;
 	}
 	form_tests(&tests);
-	ps_test_helper(fname, &tests, PUTSTR_FD_ID, tests_num);
+	ps_test_help(funcname, &tests, PUTSTR_FD_ID, tests_num);
 	free_str_2d(tests.first.string, tests_num);
 	print_test_footer();
 }
 
-/*
- * It adds user-defined tests to the tests member
+/* It adds user-defined tests to the tests member
  * of the ps_tests structure.
  * Constants explanation:
  *     STDOUT = 1        - equivalent to stdout;
@@ -57,8 +57,7 @@ void	putstr_fd_test(void)
  *     NO_STD_STREAM = 0 - this indicates that it is not necessary
  *						   to determine a file descriptor for the
  *						   last special test because a temporary file
- *						   will be used.
- * */
+ *						   will be used. */
 static void	form_tests(t_ps_tests *tests)
 {
 	add_test(tests, 1, "test_string", STDOUT);
@@ -70,6 +69,6 @@ static void	form_tests(t_ps_tests *tests)
  * argument of the tested function, and `fd` represents the second. */
 static void	add_test(t_ps_tests *tests, int test_ind, char *str, int fd)
 {
-	strlcpy(tests->first.string[test_ind - 1], str, MAX_TEST_STR_LEN);
+	strncpy(tests->first.string[test_ind - 1], str, MAX_TEST_STR_LEN);
 	tests->second.fd[test_ind - 1] = fd;
 }

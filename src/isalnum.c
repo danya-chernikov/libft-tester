@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:43:12 by dchernik          #+#    #+#             */
-/*   Updated: 2024/12/26 15:54:43 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/12/27 14:35:32 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	isalnum_test(void)
 {
 	char	funcname[MAX_FUNC_NAME_LEN];
 
-	strlcpy(funcname, "ft_isalnum", MAX_FUNC_NAME_LEN);
+	strncpy(funcname, "ft_isalnum", MAX_FUNC_NAME_LEN);
 	print_test_header(funcname);
 	printf("ft_isalnum():\n");
 	isalnum_our();
@@ -60,16 +60,15 @@ static void	isalnum_our(void)
  * original isalnum() function */
 static void	isalnum_orig(void)
 {
-
-    printf("\t%sisalnum%s('\\r') = %d\n", YELLOW, WHITE, isalnum('\r'));
-    printf("\t%sisalnum%s('0') = %d\n", YELLOW, WHITE, isalnum('0'));
-    printf("\t%sisalnum%s('A') = %d\n", YELLOW, WHITE, isalnum('A'));
-    printf("\t%sisalnum%s('a') = %d\n", YELLOW, WHITE, isalnum('a'));
-    printf("\t%sisalnum%s('b') = %d\n", YELLOW, WHITE, isalnum('b'));
-    printf("\t%sisalnum%s('Z') = %d\n", YELLOW, WHITE, isalnum('Z'));
-    printf("\t%sisalnum%s('z') = %d\n", YELLOW, WHITE, isalnum('z'));
-    printf("\t%sisalnum%s('1') = %d\n", YELLOW, WHITE, isalnum('1'));
-    printf("\t%sisalnum%s('9') = %d\n", YELLOW, WHITE, isalnum('9'));
-    printf("\t%sisalnum%s('\\t') = %d\n", YELLOW, WHITE, isalnum('\t'));
-    printf("\t%sisalnum%s(EOF) = %d\n", YELLOW, WHITE, isalnum(EOF));
+	printf("\t%sisalnum%s('\\r') = %d\n", YELLOW, WHITE, isalnum('\r'));
+	printf("\t%sisalnum%s('0') = %d\n", YELLOW, WHITE, isalnum('0'));
+	printf("\t%sisalnum%s('A') = %d\n", YELLOW, WHITE, isalnum('A'));
+	printf("\t%sisalnum%s('a') = %d\n", YELLOW, WHITE, isalnum('a'));
+	printf("\t%sisalnum%s('b') = %d\n", YELLOW, WHITE, isalnum('b'));
+	printf("\t%sisalnum%s('Z') = %d\n", YELLOW, WHITE, isalnum('Z'));
+	printf("\t%sisalnum%s('z') = %d\n", YELLOW, WHITE, isalnum('z'));
+	printf("\t%sisalnum%s('1') = %d\n", YELLOW, WHITE, isalnum('1'));
+	printf("\t%sisalnum%s('9') = %d\n", YELLOW, WHITE, isalnum('9'));
+	printf("\t%sisalnum%s('\\t') = %d\n", YELLOW, WHITE, isalnum('\t'));
+	printf("\t%sisalnum%s(EOF) = %d\n", YELLOW, WHITE, isalnum(EOF));
 }

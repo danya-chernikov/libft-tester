@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:43:45 by dchernik          #+#    #+#             */
-/*   Updated: 2024/12/26 17:58:52 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/12/27 14:36:33 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,10 @@
  * from Glibc */
 void	isprint_test(void)
 {
-	t_char_c	funcname[] = "ft_isprint";
-	int			i;
+	char	funcname[MAX_FUNC_NAME_LEN];
+	int		i;
 
+	strncpy(funcname, "ft_isprint", MAX_FUNC_NAME_LEN);
 	print_test_header(funcname);
 	printf("ft_isprint()\t\t\ttrue isprint() from LibC\n");
 	i = 0;

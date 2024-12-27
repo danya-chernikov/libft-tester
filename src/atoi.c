@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:41:21 by dchernik          #+#    #+#             */
-/*   Updated: 2024/12/26 15:41:38 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/12/27 14:34:14 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	atoi_test(void)
 	char	our_funcname[MAX_FUNC_NAME_LEN];
 	char	orig_funcname[MAX_FUNC_NAME_LEN];
 
-	strlcpy(our_funcname, "ft_atoi", MAX_FUNC_NAME_LEN);
-	strlcpy(orig_funcname, "atoi", MAX_FUNC_NAME_LEN);
+	strncpy(our_funcname, "ft_atoi", MAX_FUNC_NAME_LEN);
+	strncpy(orig_funcname, "atoi", MAX_FUNC_NAME_LEN);
 	print_test_header(our_funcname);
 	printf("%s():\n", our_funcname);
 	launch_tests(our_funcname);
@@ -64,7 +64,7 @@ static void	launch_tests(t_char_c *fname)
 }
 
 /* It launches the last 17 tests of ft_atoi() */
-static void launch_tests_part_2(t_char_c *fname)
+static void	launch_tests_part_2(t_char_c *fname)
 {
 	test_helper(fname, 26, "12");
 	test_helper(fname, 27, "+12");
@@ -88,9 +88,10 @@ static void launch_tests_part_2(t_char_c *fname)
 /* It's a common test case */
 static void	test_helper(t_char_c *fname, int ntest, char *s)
 {
-	t_char_c	format[] = "(\"%s\") = %d\n";
-	int			ret;
-	
+	char	format[MAX_FORMAT_STR_LEN];
+	int		ret;
+
+	strncpy(format, "(\"%s\") = %d\n", MAX_FORMAT_STR_LEN);
 	if (strncmp(fname, "ft_atoi", MAX_FUNC_NAME_LEN) == 0)
 		ret = ft_atoi(s);
 	else if (strncmp(fname, "atoi", MAX_FUNC_NAME_LEN) == 0)

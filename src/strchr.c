@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:53:37 by dchernik          #+#    #+#             */
-/*   Updated: 2024/12/26 18:18:48 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/12/27 14:45:10 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void	strchr_test(void)
 	char	our_funcname[MAX_FUNC_NAME_LEN];
 	char	orig_funcname[MAX_FUNC_NAME_LEN];
 
-	strlcpy(our_funcname, "ft_strchr", MAX_FUNC_NAME_LEN);
-	strlcpy(orig_funcname, "strchr", MAX_FUNC_NAME_LEN);
+	strncpy(our_funcname, "ft_strchr", MAX_FUNC_NAME_LEN);
+	strncpy(orig_funcname, "strchr", MAX_FUNC_NAME_LEN);
 	print_test_header(our_funcname);
 	printf("%s():\n", our_funcname);
 	launch_tests(our_funcname);
@@ -42,7 +42,7 @@ static void	test_helper(t_char_c *funcname, int ntest, t_char_c *str, int ch)
 	char	format[MAX_FORMAT_STR_LEN];
 	char	*res;
 
-	strlcpy(format, "\t%d. %s%s%s(\"%s\", '%c') = ", MAX_FORMAT_STR_LEN);
+	strncpy(format, "\t%d. %s%s%s(\"%s\", '%c') = ", MAX_FORMAT_STR_LEN);
 	printf(format, ntest, YELLOW, funcname, WHITE, str, ch);
 	if (strncmp(funcname, "ft_strchr", MAX_FUNC_NAME_LEN) == 0)
 		res = ft_strchr(str, ch);
@@ -58,8 +58,8 @@ static void	launch_tests(char const *funcname)
 	char	str[32];
 	char	str2[8];
 
-	strlcpy(str, "just a test string", 32);
-	strlcpy(str2, "teste", 8);
+	strncpy(str, "just a test string", 32);
+	strncpy(str2, "teste", 8);
 	printf("\tstr = \"%s\"\n", str);
 	printf("\tAddress of str is: %p\n", str);
 	test_helper(funcname, 1, str, 'j');

@@ -1,12 +1,12 @@
 #include "../include/libft_tester.h"
 #include "../include/putsmth_fd.h"
 
-/*
- * It launches regular tests based on the function index find passed
- * into this function, the appropriate function is called for testing.
- * The condition while (test_ind < tnum - 1) is used because the last
+/* It launches regular tests based on the function
+ * index find passed into this function, the appropriate
+ * function is called for testing. The condition
+ * while (test_ind < tnum - 1) is used because the last
  * test is a special test. */
-void	ps_regular_tests(t_char_c *fn, t_ps_tests *tests, t_func_id find, int tnum)
+void	ps_reg_tests(t_char_c *fn, t_ps_tests *tests, t_func_id find, int tnum)
 {
 	int	test_ind;
 
@@ -33,13 +33,13 @@ void	ps_regular_tests(t_char_c *fn, t_ps_tests *tests, t_func_id find, int tnum)
 	}
 }
 
-/*
- * It launches the putchar_fd() function and displays the
- * result of its execution */
+/* It launches the putchar_fd() function and
+ * displays the result of its execution */
 void	call_putchar_fd(t_char_c *fname, t_ps_tests *tests, int test_ind)
 {
-	t_char_c	format[] = "('%c', %d): ";
+	char	format[MAX_FORMAT_STR_LEN];
 
+	strncpy(format, "('%c', %d): ", MAX_FORMAT_STR_LEN);
 	printf("\t%d. ", test_ind + 1);
 	cprintf(YELLOW, "%s", fname);
 	printf(format, tests->first.symbol[test_ind], tests->second.fd[test_ind]);
@@ -50,8 +50,9 @@ void	call_putchar_fd(t_char_c *fname, t_ps_tests *tests, int test_ind)
 
 void	call_putstr_fd(t_char_c *fname, t_ps_tests *tests, int test_ind)
 {
-	t_char_c	format[] = "(\"%s\", %d): ";
+	char	format[MAX_FORMAT_STR_LEN];
 
+	strncpy(format, "(\"%s\", %d): ", MAX_FORMAT_STR_LEN);
 	printf("\t%d. ", test_ind + 1);
 	cprintf(YELLOW, "%s", fname);
 	printf(format, tests->first.string[test_ind], tests->second.fd[test_ind]);
@@ -62,8 +63,9 @@ void	call_putstr_fd(t_char_c *fname, t_ps_tests *tests, int test_ind)
 
 void	call_putendl_fd(t_char_c *fname, t_ps_tests *tests, int test_ind)
 {
-	t_char_c	format[] = "(\"%s\", %d): ";
+	char	format[MAX_FORMAT_STR_LEN];
 
+	strncpy(format, "(\"%s\", %d): ", MAX_FORMAT_STR_LEN);
 	printf("\t%d. ", test_ind + 1);
 	cprintf(YELLOW, "%s", fname);
 	printf(format, tests->first.string[test_ind], tests->second.fd[test_ind]);
@@ -74,8 +76,9 @@ void	call_putendl_fd(t_char_c *fname, t_ps_tests *tests, int test_ind)
 
 void	call_putnbr_fd(t_char_c *fname, t_ps_tests *tests, int test_ind)
 {
-	t_char_c	format[] = "(%d, %d): ";
+	char	format[MAX_FORMAT_STR_LEN];
 
+	strncpy(format, "(%d, %d): ", MAX_FORMAT_STR_LEN);
 	printf("\t%d. ", test_ind + 1);
 	cprintf(YELLOW, "%s", fname);
 	printf(format, tests->first.number[test_ind], tests->second.fd[test_ind]);

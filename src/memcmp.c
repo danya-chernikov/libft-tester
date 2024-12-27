@@ -6,8 +6,8 @@ void	memcmp_test(void)
 	char	our_funcname[MAX_FUNC_NAME_LEN];
 	char	orig_funcname[MAX_FUNC_NAME_LEN];
 
-	strlcpy(our_funcname, "ft_memcmp", MAX_FUNC_NAME_LEN);
-	strlcpy(orig_funcname, "memcmp", MAX_FUNC_NAME_LEN);
+	strncpy(our_funcname, "ft_memcmp", MAX_FUNC_NAME_LEN);
+	strncpy(orig_funcname, "memcmp", MAX_FUNC_NAME_LEN);
 	print_test_header(our_funcname);
 	printf("%s():\n", our_funcname);
 	memcmp_regular_tests(our_funcname);
@@ -18,21 +18,21 @@ void	memcmp_test(void)
 	print_test_footer();
 }
 
-void	memcmp_test_helper(t_char_c *fname, t_void_c *s1, t_void_c *s2, size_t n)
+void	memcmp_test_helper(t_char_c *fn, t_void_c *s1, t_void_c *s2, size_t n)
 {
 	char	f[MAX_FORMAT_STR_LEN];
 	char	bytes_s1[READ_MEM_LIMIT + 1];
 	char	bytes_s2[READ_MEM_LIMIT + 1];
 	int		ret;
 
-	strlcpy(f, "(\"%s\"|\"%s\",\n\"%s\"|\"%s\", %lu) = ", MAX_FORMAT_STR_LEN);
-	strlcpy(bytes_s1, read_mem((void *)s1, n, "\\x", 8), READ_MEM_LIMIT);
-	strlcpy(bytes_s2, read_mem((void *)s2, n, "\\x", 8), READ_MEM_LIMIT);
-	cprintf(YELLOW, "%s", fname);
+	strncpy(f, "(\"%s\"|\"%s\",\n\"%s\"|\"%s\", %lu) = ", MAX_FORMAT_STR_LEN);
+	strncpy(bytes_s1, read_mem((void *)s1, n, "\\x", 8), READ_MEM_LIMIT);
+	strncpy(bytes_s2, read_mem((void *)s2, n, "\\x", 8), READ_MEM_LIMIT);
+	cprintf(YELLOW, "%s", fn);
 	printf(f, bytes_s1, (char *)s1, bytes_s2, (char *)s2, n);
-	if (strncmp(fname, "ft_memcmp", MAX_FUNC_NAME_LEN) == 0)
+	if (strncmp(fn, "ft_memcmp", MAX_FUNC_NAME_LEN) == 0)
 		ret = ft_memcmp(s1, s2, n);
-	else if (strncmp(fname, "memcmp", MAX_FUNC_NAME_LEN) == 0)
+	else if (strncmp(fn, "memcmp", MAX_FUNC_NAME_LEN) == 0)
 		ret = memcmp(s1, s2, n);
 	else
 		ret = ft_memcmp(s1, s2, n);

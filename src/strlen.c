@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:54:58 by dchernik          #+#    #+#             */
-/*   Updated: 2024/12/26 19:14:23 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/12/27 15:02:30 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	strlen_test(void)
 {
 	char	funcname[MAX_FUNC_NAME_LEN];
 
-	strlcpy(funcname, "ft_strlen", MAX_FUNC_NAME_LEN);
+	strncpy(funcname, "ft_strlen", MAX_FUNC_NAME_LEN);
 	print_test_header(funcname);
 	printf("ft_strlen():\n");
 	strlen_our();
@@ -42,15 +42,15 @@ void	strlen_test(void)
  * more noticeable */
 static void	strlen_our(void)
 {
-	char	str1[64];
+	char	str1[256];
 	char	str2[256];
 	char	str3[32];
 
-	strlcpy(str1, "urhg r849(Hht49t#*%   hr", 256);
-	strlcpy(str2, "Farewell, thou pathway of the free,\n", 256);
-	strlcat(str2, "For the last time thy waves I view", 256);
-	strlcat(str2, "\nBefore me roll disdainfully,\n", 256);
-	strlcat(str2, "Brilliantly beautiful and blue.", 256);
+	strncpy(str1, "urhg r849(Hht49t#*%   hr", 256);
+	strncpy(str2, "Farewell, thou pathway of the free,\n", 256);
+	strncat(str2, "For the last time thy waves I view", 256);
+	strncat(str2, "\nBefore me roll disdainfully,\n", 256);
+	strncat(str2, "Brilliantly beautiful and blue.", 256);
 	str3[0] = '\0';
 	printf("\t1. %sft_strlen%s(str1) = %lu\n", YELLOW, WHITE, strlen(str1));
 	printf("\t2. %sft_strlen%s(str2) = %lu\n", YELLOW, WHITE, strlen(str2));
@@ -61,15 +61,15 @@ static void	strlen_our(void)
  * original strlen() function */
 static void	strlen_orig(void)
 {
-	char	str1[64];
+	char	str1[256];
 	char	str2[256];
 	char	str3[32];
 
-	strlcpy(str1, "urhg r849(Hht49t#*%   hr", 256);
-	strlcpy(str2, "Farewell, thou pathway of the free,\n", 256);
-	strlcat(str2, "For the last time thy waves I view", 256);
-	strlcat(str2, "\nBefore me roll disdainfully,\n", 256);
-	strlcat(str2, "Brilliantly beautiful and blue.", 256);
+	strncpy(str1, "urhg r849(Hht49t#*%   hr", 256);
+	strncpy(str2, "Farewell, thou pathway of the free,\n", 256);
+	strncat(str2, "For the last time thy waves I view", 256);
+	strncat(str2, "\nBefore me roll disdainfully,\n", 256);
+	strncat(str2, "Brilliantly beautiful and blue.", 256);
 	str3[0] = '\0';
 	printf("\t1. %sstrlen%s(str1) = %lu\n", YELLOW, WHITE, strlen(str1));
 	printf("\t2. %sstrlen%s(str2) = %lu\n", YELLOW, WHITE, strlen(str2));

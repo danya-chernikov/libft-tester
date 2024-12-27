@@ -6,22 +6,23 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:51:25 by dchernik          #+#    #+#             */
-/*   Updated: 2024/12/26 14:59:26 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/12/27 14:37:08 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libft_tester.h"
 
-void	launch_tester()
+void	launch_tester(void)
 {
-	test_glibc_funcs();	
+	test_glibc_funcs();
 	test_addit_funcs();
 	test_linked_list();
 }
 
-/* It launches tests of our implementation of the
+/* It launches tests of our
+ * implementation of the
  * original Glibc functions */
-void	test_glibc_funcs()
+void	test_glibc_funcs(void)
 {
 	isalpha_test();
 	isdigit_test();
@@ -48,9 +49,10 @@ void	test_glibc_funcs()
 	strdup_test();
 }
 
-/* It launches tests of the additional functions
- * we've been asked to implement */
-void	test_addit_funcs()
+/* It launches tests of the
+ * additional functions we've
+ * been asked to implement */
+void	test_addit_funcs(void)
 {
 	substr_test();
 	strjoin_test();
@@ -65,17 +67,18 @@ void	test_addit_funcs()
 	putnbr_fd_test();
 }
 
-/* It launches test of our singly linked
- * list implementation */
-void	test_linked_list()
-{	
-	/*lstnew();
-	lstadd_front();
-	lstsize();
-	lstlast();
-	lstadd_back();
-	lstdel_one();
-	lstclear();
-	lstiter();
-	lstmap();*/
+/* It launches test of our
+ * singly linked list
+ * implementation */
+/*lstnew();
+lstadd_front();
+lstsize();
+lstlast();
+lstadd_back();
+lstdel_one();
+lstclear();
+lstiter();
+lstmap();*/
+void	test_linked_list(void)
+{
 }

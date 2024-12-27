@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:41:52 by dchernik          #+#    #+#             */
-/*   Updated: 2024/12/26 15:48:39 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/12/27 14:35:14 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	calloc_test(void)
 	char	our_funcname[MAX_FUNC_NAME_LEN];
 	char	orig_funcname[MAX_FUNC_NAME_LEN];
 
-	strlcpy(our_funcname, "ft_calloc", MAX_FUNC_NAME_LEN);
-	strlcpy(orig_funcname, "calloc", MAX_FUNC_NAME_LEN);
+	strncpy(our_funcname, "ft_calloc", MAX_FUNC_NAME_LEN);
+	strncpy(orig_funcname, "calloc", MAX_FUNC_NAME_LEN);
 	print_test_header(our_funcname);
 	printf("%s():\n", our_funcname);
 	launch_tests(our_funcname);
@@ -39,9 +39,10 @@ static void	launch_tests(t_char_c *fname)
 /* It's a common test case */
 static void	test_helper(t_char_c *fname, int ntest, size_t nmemb, size_t size)
 {
-	t_char_c	format[] = "(%lu, %lu) = %p\n";
-	u_char		*ret;
-	
+	char	format[MAX_FORMAT_STR_LEN];
+	u_char	*ret;
+
+	strncpy(format, "(%lu, %lu) = %p\n", MAX_FORMAT_STR_LEN);
 	if (strncmp(fname, "ft_calloc", MAX_FUNC_NAME_LEN) == 0)
 		ret = (u_char *)ft_calloc(nmemb, size);
 	else if (strncmp(fname, "calloc", MAX_FUNC_NAME_LEN) == 0)

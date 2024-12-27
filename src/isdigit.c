@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:43:35 by dchernik          #+#    #+#             */
-/*   Updated: 2024/12/26 16:01:47 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/12/27 14:36:24 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	isdigit_test(void)
 {
 	char	funcname[MAX_FUNC_NAME_LEN];
 
-	strlcpy(funcname, "ft_isdigit", MAX_FUNC_NAME_LEN);
+	strncpy(funcname, "ft_isdigit", MAX_FUNC_NAME_LEN);
 	print_test_header(funcname);
 	printf("ft_isdigit():\n");
 	isdigit_our();
@@ -41,32 +41,32 @@ void	isdigit_test(void)
  * to make it visually more noticeable */
 static void	isdigit_our(void)
 {
-    printf("\t%sft_isdigit%s('\\r') = %d\n", YELLOW, WHITE, ft_isdigit('\r'));
-    printf("\t%sft_isdigit%s('0') = %d\n", YELLOW, WHITE, ft_isdigit('0'));
-    printf("\t%sft_isdigit%s('A') = %d\n", YELLOW, WHITE, ft_isdigit('A'));
-    printf("\t%sft_isdigit%s('a') = %d\n", YELLOW, WHITE, ft_isdigit('a'));
-    printf("\t%sft_isdigit%s('b') = %d\n", YELLOW, WHITE, ft_isdigit('b'));
-    printf("\t%sft_isdigit%s('Z') = %d\n", YELLOW, WHITE, ft_isdigit('Z'));
-    printf("\t%sft_isdigit%s('z') = %d\n", YELLOW, WHITE, ft_isdigit('z'));
-    printf("\t%sft_isdigit%s('1') = %d\n", YELLOW, WHITE, ft_isdigit('1'));
-    printf("\t%sft_isdigit%s('9') = %d\n", YELLOW, WHITE, ft_isdigit('9'));
-    printf("\t%sft_isdigit%s('\\t') = %d\n", YELLOW, WHITE, ft_isdigit('\t'));
-    printf("\t%sft_isdigit%s(EOF) = %d\n", YELLOW, WHITE, ft_isdigit(EOF));
+	printf("\t%sft_isdigit%s('\\r') = %d\n", YELLOW, WHITE, ft_isdigit('\r'));
+	printf("\t%sft_isdigit%s('0') = %d\n", YELLOW, WHITE, ft_isdigit('0'));
+	printf("\t%sft_isdigit%s('A') = %d\n", YELLOW, WHITE, ft_isdigit('A'));
+	printf("\t%sft_isdigit%s('a') = %d\n", YELLOW, WHITE, ft_isdigit('a'));
+	printf("\t%sft_isdigit%s('b') = %d\n", YELLOW, WHITE, ft_isdigit('b'));
+	printf("\t%sft_isdigit%s('Z') = %d\n", YELLOW, WHITE, ft_isdigit('Z'));
+	printf("\t%sft_isdigit%s('z') = %d\n", YELLOW, WHITE, ft_isdigit('z'));
+	printf("\t%sft_isdigit%s('1') = %d\n", YELLOW, WHITE, ft_isdigit('1'));
+	printf("\t%sft_isdigit%s('9') = %d\n", YELLOW, WHITE, ft_isdigit('9'));
+	printf("\t%sft_isdigit%s('\\t') = %d\n", YELLOW, WHITE, ft_isdigit('\t'));
+	printf("\t%sft_isdigit%s(EOF) = %d\n", YELLOW, WHITE, ft_isdigit(EOF));
 }
 
 /* It launches tests of the
  * original isdigit() function */
 static void	isdigit_orig(void)
 {
-    printf("\t%sisdigit%s('\\r') = %d\n", YELLOW, WHITE, isdigit('\r'));
-    printf("\t%sisdigit%s('0') = %d\n", YELLOW, WHITE, isdigit('0'));
-    printf("\t%sisdigit%s('A') = %d\n", YELLOW, WHITE, isdigit('A'));
-    printf("\t%sisdigit%s('a') = %d\n", YELLOW, WHITE, isdigit('a'));
-    printf("\t%sisdigit%s('b') = %d\n", YELLOW, WHITE, isdigit('b'));
-    printf("\t%sisdigit%s('Z') = %d\n", YELLOW, WHITE, isdigit('Z'));
-    printf("\t%sisdigit%s('z') = %d\n", YELLOW, WHITE, isdigit('z'));
-    printf("\t%sisdigit%s('1') = %d\n", YELLOW, WHITE, isdigit('1'));
-    printf("\t%sisdigit%s('9') = %d\n", YELLOW, WHITE, isdigit('9'));
-    printf("\t%sisdigit%s('\\t') = %d\n", YELLOW, WHITE, isdigit('\t'));
-    printf("\t%sisdigit%s(EOF) = %d\n", YELLOW, WHITE, isdigit(EOF));
+	printf("\t%sisdigit%s('\\r') = %d\n", YELLOW, WHITE, isdigit('\r'));
+	printf("\t%sisdigit%s('0') = %d\n", YELLOW, WHITE, isdigit('0'));
+	printf("\t%sisdigit%s('A') = %d\n", YELLOW, WHITE, isdigit('A'));
+	printf("\t%sisdigit%s('a') = %d\n", YELLOW, WHITE, isdigit('a'));
+	printf("\t%sisdigit%s('b') = %d\n", YELLOW, WHITE, isdigit('b'));
+	printf("\t%sisdigit%s('Z') = %d\n", YELLOW, WHITE, isdigit('Z'));
+	printf("\t%sisdigit%s('z') = %d\n", YELLOW, WHITE, isdigit('z'));
+	printf("\t%sisdigit%s('1') = %d\n", YELLOW, WHITE, isdigit('1'));
+	printf("\t%sisdigit%s('9') = %d\n", YELLOW, WHITE, isdigit('9'));
+	printf("\t%sisdigit%s('\\t') = %d\n", YELLOW, WHITE, isdigit('\t'));
+	printf("\t%sisdigit%s(EOF) = %d\n", YELLOW, WHITE, isdigit(EOF));
 }

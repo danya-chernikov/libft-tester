@@ -1,39 +1,29 @@
-/* ************************************************************************** */ /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   putnbr_fd.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/13 19:53:07 by dchernik          #+#    #+#             */
-/*   Updated: 2024/11/30 20:26:05 by dchernik         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../include/libft_tester.h"
 #include "../include/putsmth_fd.h"
 
 static void	form_tests(t_ps_tests *tests);
 static void	add_test(t_ps_tests *tests, int test_ind, int number, int fd);
 
-/*
- * It launches tests for the putnbr_fd() function.
+/* It launches tests for the putnbr_fd() function.
  * Description of local variables:
 	   test_num - the number of tests to perform.
-	   For example, test_num = 3 indicates two
-	   regular tests and one special test;
+				  For example, test_num = 3
+				  indicates two regular tests
+				  and one special test;
 	   args     - a member of the structure that
-	   describes all the tests to be performed on
-	   the tested function. */
+				  describes all the tests to be
+				  performed on the tested function. */
 void	putnbr_fd_test(void)
 {
-	t_char_c	fname[] = "ft_putnbr_fd";
-	t_ps_tests	tests;
+	char		fname[MAX_FUNC_NAME_LEN];
 	int			tests_num;
+	t_ps_tests	tests;
 
+	strncpy(fname, "ft_putnbr_fd", MAX_FUNC_NAME_LEN);
 	print_test_header(fname);
 	tests_num = 5;
 	form_tests(&tests);
-	ps_test_helper(fname, &tests, PUTNBR_FD_ID, tests_num);
+	ps_test_help(fname, &tests, PUTNBR_FD_ID, tests_num);
 	print_test_footer();
 }
 

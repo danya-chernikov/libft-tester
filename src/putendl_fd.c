@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:52:59 by dchernik          #+#    #+#             */
-/*   Updated: 2024/12/26 15:08:15 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/12/27 14:59:28 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,23 @@
 static void	form_tests(t_ps_tests *tests);
 static void	add_test(t_ps_tests *tests, int test_ind, char *str, int fd);
 
-/*
- * It launches tests for the putendl_fd() function.
+/* It launches tests for the putendl_fd() function.
  * Description of local variables:
 	   test_num - the number of tests to perform.
-	   For example, test_num = 3 indicates two
-	   regular tests and one special test;
+				  For example, test_num = 3
+				  indicates two regular tests
+				  and one special test;
 	   args     - a member of the structure that
-	   describes all the tests to be performed on
-	   the tested function. */
+				  describes all the tests to be
+				  performed on the tested function. */
 void	putendl_fd_test(void)
 {
-	t_char_c	fname[] = "ft_putendl_fd";
-	t_ps_tests	tests;
-	int			tests_num;
+	char		fname[MAX_FUNC_NAME_LEN];
 	char		errbuf[MAX_ERR_BUF_SIZE + 1];
+	int			tests_num;
+	t_ps_tests	tests;
 
+	strncpy(fname, "ft_putendl_fd", MAX_FUNC_NAME_LEN);
 	print_test_header(fname);
 	tests_num = 3;
 	tests.first.string = alloc_str_2d(tests_num, MAX_TEST_STR_LEN + 1);
@@ -40,10 +41,10 @@ void	putendl_fd_test(void)
 		form_common_err_msg(errbuf, fname, PUTSMTH_MEM_ERR_STRS);
 		perror(errbuf);
 		print_test_footer();
-		return;
+		return ;
 	}
 	form_tests(&tests);
-	ps_test_helper(fname, &tests, PUTENDL_FD_ID, tests_num);
+	ps_test_help(fname, &tests, PUTENDL_FD_ID, tests_num);
 	free_str_2d(tests.first.string, tests_num);
 	print_test_footer();
 }
@@ -70,6 +71,6 @@ static void	form_tests(t_ps_tests *tests)
  * argument of the tested function, and `fd` represents the second. */
 static void	add_test(t_ps_tests *tests, int test_ind, char *str, int fd)
 {
-	strlcpy(tests->first.string[test_ind - 1], str, MAX_TEST_STR_LEN);
+	strncpy(tests->first.string[test_ind - 1], str, MAX_TEST_STR_LEN);
 	tests->second.fd[test_ind - 1] = fd;
 }

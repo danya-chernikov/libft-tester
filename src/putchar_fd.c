@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:52:49 by dchernik          #+#    #+#             */
-/*   Updated: 2024/12/26 15:07:50 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/12/27 14:40:47 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,15 @@ static void	add_test(t_ps_tests *tests, int test_ind, char symbol, int fd);
 	   the tested function. */
 void	putchar_fd_test(void)
 {
-	t_char_c	fname[] = "ft_putchar_fd";
-	t_ps_tests	tests;
+	char		fname[MAX_FUNC_NAME_LEN];
 	int			tests_num;
+	t_ps_tests	tests;
 
+	strncpy(fname, "ft_putchar_fd", MAX_FUNC_NAME_LEN);
 	print_test_header(fname);
 	tests_num = 3;
 	form_tests(&tests);
-	ps_test_helper(fname, &tests, PUTCHAR_FD_ID, tests_num);
+	ps_test_help(fname, &tests, PUTCHAR_FD_ID, tests_num);
 	print_test_footer();
 }
 
