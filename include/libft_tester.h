@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:42:27 by dchernik          #+#    #+#             */
-/*   Updated: 2024/12/27 14:30:17 by dchernik         ###   ########.fr       */
+/*   Updated: 2024/12/27 18:03:45 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,26 @@ typedef enum func_id
 	PUTENDL_FD_ID,
 	PUTNBR_FD_ID
 }	t_func_id;
+
+/* The type of a list's content */
+typedef enum list_cnt_type
+{
+	CHAR,
+	U_CHAR,
+	SHORT,
+	U_SHORT,
+	INT,
+	U_INT,
+	LONG,
+	U_LONG,
+	LONG_LONG,
+	U_LONG_LONG,
+	FLOAT,
+	DOUBLE,
+	LONG_DOUBLE,
+	STRING,
+	VOID
+}	t_cnt_type;
 
 /*
  * This structure defines all the tests to be performed on
