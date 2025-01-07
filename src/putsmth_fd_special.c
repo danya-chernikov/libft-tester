@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 16:31:16 by dchernik          #+#    #+#             */
-/*   Updated: 2024/12/27 16:31:21 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/01/07 18:59:18 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,8 @@
  * memory allocated for it can be freed in case of an error. */
 int	ps_special_test(t_char_c *fname, void **pack, char **readbuf, char **errbuf)
 {
-	t_ps_tests	*tests;
-	t_func_id	find;
-	int			tnum;
-	int			fd;
+	int	fd;
 
-	tests = (t_ps_tests *)pack[0];
-	find = *(t_func_id *)pack[1];
-	tnum = *(int *)pack[2];
 	if (!create_temp_file(fname, &fd, readbuf, errbuf))
 		return (ERROR);
 	write_temp_file(fname, pack, &fd);

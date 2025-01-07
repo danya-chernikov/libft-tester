@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:42:05 by dchernik          #+#    #+#             */
-/*   Updated: 2024/12/27 16:40:12 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/01/07 16:19:41 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,10 @@
 # define READ_MEM_LIMIT		1024
 # define DELIM_BYTES_LIMIT	10
 
-typedef char const	t_char_c;
-typedef void const	t_void_c;
+typedef char const			t_char_c;
+typedef void const			t_void_c;
+typedef unsigned long		t_ul;
+typedef unsigned long long	t_ull;
 
 /* cprintf() - colored printf;
  * cperror() - colored perror;

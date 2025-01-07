@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:53:32 by dchernik          #+#    #+#             */
-/*   Updated: 2024/12/27 14:44:42 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/01/07 18:59:20 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static void	launch_tests(t_char_c *fname)
 
 static char	*prepare_long_str(void)
 {
-	static char	long_str[MAX_SPLIT_STR_LEN];
+	static char	long_str[MAX_SPLIT_STR_LEN + 1];
 
 	strncpy(long_str, "   lorem   ipsum dolor    ", MAX_SPLIT_STR_LEN);
 	strncat(long_str, " sit amet, consectetur  ", MAX_SPLIT_STR_LEN);

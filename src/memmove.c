@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:52:28 by dchernik          #+#    #+#             */
-/*   Updated: 2024/12/27 14:39:57 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/01/07 18:49:26 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,11 @@ void	memmove_test(void)
  * make it visually more noticeable */
 static void	memmove_our(void)
 {
-	char	format[MAX_FORMAT_STR_LEN];
+	char	format[MAX_FORMAT_STR_LEN + 1];
 	char	recv_buf[64];
 	char	src_buf[64];
 
-	strncpy(src_buf, "we are testing memmove", 64);
+	strncpy(src_buf, "we are testing memmove", 63);
 	strncpy(format, "%sft_memmove%s(recv_buf,", MAX_FORMAT_STR_LEN);
 	strncat(format, " \"%s\", strlen(src_buf)+1):\n", MAX_FORMAT_STR_LEN);
 	printf(format, YELLOW, WHITE, src_buf);
@@ -61,11 +61,11 @@ static void	memmove_our(void)
  * original memmove() function */
 static void	memmove_orig(void)
 {
-	char	format[MAX_FORMAT_STR_LEN];
+	char	format[MAX_FORMAT_STR_LEN + 1];
 	char	recv_buf[64];
 	char	src_buf[64];
 
-	strncpy(src_buf, "we are testing memmove", 64);
+	strncpy(src_buf, "we are testing memmove", 63);
 	strncpy(format, "%smemmove%s(recv_buf,", MAX_FORMAT_STR_LEN);
 	strncat(format, " \"%s\", strlen(src_buf)+1):\n", MAX_FORMAT_STR_LEN);
 	printf(format, YELLOW, WHITE, src_buf);

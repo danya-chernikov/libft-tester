@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:54:58 by dchernik          #+#    #+#             */
-/*   Updated: 2024/12/27 15:02:30 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/01/07 18:47:53 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,11 @@ static void	strlen_our(void)
 	char	str2[256];
 	char	str3[32];
 
-	strncpy(str1, "urhg r849(Hht49t#*%   hr", 256);
-	strncpy(str2, "Farewell, thou pathway of the free,\n", 256);
-	strncat(str2, "For the last time thy waves I view", 256);
-	strncat(str2, "\nBefore me roll disdainfully,\n", 256);
-	strncat(str2, "Brilliantly beautiful and blue.", 256);
+	strncpy(str1, "urhg r849(Hht49t#*%   hr", 255);
+	strncpy(str2, "Farewell, thou pathway of the free,\n", 255);
+	strncat(str2, "For the last time thy waves I view", 255);
+	strncat(str2, "\nBefore me roll disdainfully,\n", 255);
+	strncat(str2, "Brilliantly beautiful and blue.", 255);
 	str3[0] = '\0';
 	printf("\t1. %sft_strlen%s(str1) = %lu\n", YELLOW, WHITE, strlen(str1));
 	printf("\t2. %sft_strlen%s(str2) = %lu\n", YELLOW, WHITE, strlen(str2));
@@ -65,11 +65,11 @@ static void	strlen_orig(void)
 	char	str2[256];
 	char	str3[32];
 
-	strncpy(str1, "urhg r849(Hht49t#*%   hr", 256);
-	strncpy(str2, "Farewell, thou pathway of the free,\n", 256);
-	strncat(str2, "For the last time thy waves I view", 256);
-	strncat(str2, "\nBefore me roll disdainfully,\n", 256);
-	strncat(str2, "Brilliantly beautiful and blue.", 256);
+	strncpy(str1, "urhg r849(Hht49t#*%   hr", 255);
+	strncpy(str2, "Farewell, thou pathway of the free,\n", 255);
+	strncat(str2, "For the last time thy waves I view", 255);
+	strncat(str2, "\nBefore me roll disdainfully,\n", 255);
+	strncat(str2, "Brilliantly beautiful and blue.", 255);
 	str3[0] = '\0';
 	printf("\t1. %sstrlen%s(str1) = %lu\n", YELLOW, WHITE, strlen(str1));
 	printf("\t2. %sstrlen%s(str2) = %lu\n", YELLOW, WHITE, strlen(str2));

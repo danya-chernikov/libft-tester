@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:42:27 by dchernik          #+#    #+#             */
-/*   Updated: 2024/12/27 18:03:45 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/01/07 19:07:45 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,9 @@
  *						the `put_smth_fd()` family of functions;
  * PUTCHAR_FORMAT	  - The format string used to print the test result of
  *						the `putchar_fd()` function (used in the
- *						`print_special_test_result()`).
+ *						`print_special_test_result()`);
+ * MAX_CNT_STR_LEN    - The maximum length of a string representing the
+ *						content of a node of a singly linked list.
  */
 # define ERROR						0
 # define SUCCESS					1
@@ -56,6 +58,7 @@
 # define MAX_ERR_BUF_SIZE			256
 # define MAX_TESTS_NUM				128
 # define MAX_TEST_STR_LEN			256
+# define MAX_CNT_STR_LEN			1024
 # define TEMP_FILE_NAME				"text.txt"
 # define TOO_MANY_TESTS_ERR_MSG		"too many tests"
 # define PUTSMTH_MEM_ERR_STRS		"unable to allocate mem for an arr of strs"
@@ -227,7 +230,7 @@ void	putstr_fd_test(void);
 void	putendl_fd_test(void);	
 void	putnbr_fd_test(void);
 
-void	lstnew(void);
+t_list	*lstnew_test(void *cnt, t_cnt_type type);
 void	lstadd_front(void);
 void	lstsize(void);
 void	lstlast(void);
@@ -236,7 +239,5 @@ void	lstdel_one(void);
 void	lstclear(void);
 void	lstiter(void);
 void	lstmap(void);
-
-void	free_node(void *ptr);
 
 #endif

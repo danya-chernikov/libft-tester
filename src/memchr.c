@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:51:54 by dchernik          #+#    #+#             */
-/*   Updated: 2024/12/27 14:37:44 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/01/07 18:51:06 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static void	test_helper(t_char_c *fname, int ntest, void **pack)
 
 static void	launch_tests(t_char_c *fn)
 {
-	char	s[MAX_MEMCHR_STR_LEN];
+	char	s[MAX_MEMCHR_STR_LEN + 1];
 	size_t	slen;
 	char	c[3];
 	int		n[2];

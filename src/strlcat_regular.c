@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:54:20 by dchernik          #+#    #+#             */
-/*   Updated: 2024/12/27 14:47:16 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/01/07 18:50:18 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ void	strlcat_regular_tests(t_char_c *funcname)
 	char	src[256];
 	char	src2[256];
 
-	strncpy(src, " of the muse of the dark", 256);
-	strncpy(src2, " of the muse of the dark. L touch your ear?", 256);
-	strncat(src2, " Do you understand the soul of the humble ", 256);
-	strncat(src2, "The desire of my heart?", 256);
+	strncpy(src, " of the muse of the dark", 255);
+	strncpy(src2, " of the muse of the dark. L touch your ear?", 255);
+	strncat(src2, " Do you understand the soul of the humble ", 255);
+	strncat(src2, "The desire of my heart?", 255);
 	regular_test(funcname, 1, src, 64);
 	regular_test(funcname, 2, src2, 64);
 	regular_test(funcname, 3, src, 0);
@@ -41,7 +41,7 @@ static void	regular_test(t_char_c *fn, int ntest, t_char_c *src, size_t size)
 {
 	char	dst[64];
 
-	strncpy(dst, "You - but the voice", 64);
+	strncpy(dst, "You - but the voice", 63);
 	printf("\t%d. ", ntest);
 	strlcat_test_helper(fn, dst, src, size);
 }

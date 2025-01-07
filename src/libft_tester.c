@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:51:25 by dchernik          #+#    #+#             */
-/*   Updated: 2024/12/27 14:37:08 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/01/07 19:27:47 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,15 +70,22 @@ void	test_addit_funcs(void)
 /* It launches test of our
  * singly linked list
  * implementation */
-/*lstnew();
+/*lstsize();
 lstadd_front();
-lstsize();
 lstlast();
 lstadd_back();
 lstdel_one();
 lstclear();
 lstiter();
-lstmap();*/
+lstmap();
+t_list	*tmp;
+*/
 void	test_linked_list(void)
 {
+	t_list	*head_ptr;
+	char	text[64];
+
+	strncpy(text, "just some text", 64);
+	head_ptr = lstnew_test((void *)&text, STRING);
+	printf("head_ptr = %p\n", head_ptr);
 }
