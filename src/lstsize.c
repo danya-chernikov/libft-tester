@@ -8,7 +8,6 @@ void	lstsize_test(t_list **head)
 
 	strncpy(fname, "ft_lstsize", MAX_FUNC_NAME_LEN);
 	print_test_header(fname);
-	printf("%s():\n", fname);
 	test_helper(fname, 1, head);
 	print_test_footer();
 }

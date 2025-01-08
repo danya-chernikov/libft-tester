@@ -10,7 +10,6 @@ t_list	*lstnew_test(void *cnt, t_cnt_type type)
 
 	strncpy(fname, "ft_lstnew", MAX_FUNC_NAME_LEN);
 	print_test_header(fname);
-	printf("%s():\n", fname);
 	head_ptr = test_helper(fname, 1, cnt, type);
 	print_test_footer();
 	return (head_ptr);
@@ -30,11 +29,10 @@ static t_list	*test_helper(t_char_c *fn, int nt, void *cnt, t_cnt_type type)
 	printf("\t%d. ", nt);
 	cprintf(YELLOW, "%s", fn);
 	printf(format, lst);
-	printf("\t\tThe list `lst` was created\n");
-	printf("\t\tThe list `lst` contains only one node\n");
+	printf("\t\tThe list (%p) was created\n", lst);
 	process_numeric_arg(cnt_str, lst->content, type);
 	process_non_numeric_arg(cnt_str, lst->content, type);
-	printf("\t\tlst->content: %s\n", cnt_str);
+	printf("\t\t(%p)->content: %s\n", lst, cnt_str);
 	print_list(lst, 2);
 	free(format);
 	return (lst);
