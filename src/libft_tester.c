@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:51:25 by dchernik          #+#    #+#             */
-/*   Updated: 2025/01/07 19:27:47 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/01/08 16:27:06 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,5 +87,5 @@ void	test_linked_list(void)
 
 	strncpy(text, "just some text", 64);
 	head_ptr = lstnew_test((void *)&text, STRING);
-	printf("head_ptr = %p\n", head_ptr);
+	lstsize_test(&head_ptr);
 }

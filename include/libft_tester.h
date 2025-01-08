@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:42:27 by dchernik          #+#    #+#             */
-/*   Updated: 2025/01/07 19:07:45 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/01/08 16:08:01 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,7 @@
 # define PUTENDL_FORMAT				"(\"%s\", fd): \"%s\"\n"
 # define PUTNBR_FORMAT				"(%d, fd): \"%s\"\n"
 
-/*
- * Each testing function has its unique identifier (ID).
+/* Each testing function has its unique identifier (ID).
  * This ID is passed to the ps_test_helper() function so
  * that it knows which function should be tested. */
 typedef enum func_id
@@ -106,8 +105,7 @@ typedef enum list_cnt_type
 	VOID
 }	t_cnt_type;
 
-/*
- * This structure defines all the tests to be performed on
+/* This structure defines all the tests to be performed on
  * the function being tested.
  * In this structure, we store all possible arguments that
  * may be accepted by the ps_fd() family of functions,
@@ -232,7 +230,7 @@ void	putnbr_fd_test(void);
 
 t_list	*lstnew_test(void *cnt, t_cnt_type type);
 void	lstadd_front(void);
-void	lstsize(void);
+void	lstsize_test(t_list **head);
 void	lstlast(void);
 void	lstadd_back(void);
 void	lstdel_one(void);
