@@ -12,7 +12,6 @@ void	lstsize_test(t_list **head)
 	print_test_footer();
 }
 
-/* cnt_str - list content represented as string */
 static void	test_helper(t_char_c *fname, int ntest, t_list **head)
 {
 	char	format[MAX_FORMAT_STR_LEN];

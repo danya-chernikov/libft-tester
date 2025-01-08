@@ -33,7 +33,6 @@ static t_list	*test_helper(t_char_c *fn, int nt, void *cnt, t_cnt_type type)
 	process_numeric_arg(cnt_str, lst->content, type);
 	process_non_numeric_arg(cnt_str, lst->content, type);
 	printf("\t\t(%p)->content: %s\n", lst, cnt_str);
-	print_list(lst, 2);
 	free(format);
 	return (lst);
 }

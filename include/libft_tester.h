@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:42:27 by dchernik          #+#    #+#             */
-/*   Updated: 2025/01/08 16:08:01 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/01/08 19:28:57 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,15 @@
  *						the `putchar_fd()` function (used in the
  *						`print_special_test_result()`);
  * MAX_CNT_STR_LEN    - The maximum length of a string representing the
- *						content of a node of a singly linked list.
- */
+ *						content of a node of a singly linked list;
+ * DATA_TYPES_NUMBER  - The capacity of the `list_cnt_type` enum */
 # define ERROR						0
 # define SUCCESS					1
 # define STDIN						0
 # define STDOUT						1
 # define STDERR						2
 # define NO_STD_STREAM				0
+# define DATA_TYPES_NUMBER			15
 # define MAX_FUNC_NAME_LEN			128
 # define MAX_FORMAT_STR_LEN			1024
 # define MAX_STRNCMP_STR_LEN		128
@@ -229,7 +230,7 @@ void	putendl_fd_test(void);
 void	putnbr_fd_test(void);
 
 t_list	*lstnew_test(void *cnt, t_cnt_type type);
-void	lstadd_front(void);
+void	lstadd_front_test(t_list **head, t_list *new);
 void	lstsize_test(t_list **head);
 void	lstlast(void);
 void	lstadd_back(void);

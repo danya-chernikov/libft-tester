@@ -21,6 +21,10 @@ char	*create_format_str(void *cnt, t_cnt_type type)
 	return (fstr);
 }
 
+/* It generates the textual representation of the `cnt` value of a
+ * node based on its content type `type` and stores this representation
+ * in the `arg` string. This version of the function implements the
+ * described behavior for numeric data types */
 void	process_numeric_arg(char *arg, void *cnt, t_cnt_type type)
 {
 	if (type == SHORT)
@@ -47,6 +51,8 @@ void	process_numeric_arg(char *arg, void *cnt, t_cnt_type type)
 		snprintf(arg, MAX_FORMAT_STR_LEN, "%Lf", *((long double *)cnt));
 }
 
+/* It performs the same operation as the process_numeric_arg() function
+ * but handles non-numeric data types instead */
 void	process_non_numeric_arg(char *arg, void *cnt, t_cnt_type type)
 {
 	if (type == CHAR)
@@ -59,9 +65,15 @@ void	process_non_numeric_arg(char *arg, void *cnt, t_cnt_type type)
 		snprintf(arg, MAX_FORMAT_STR_LEN, "%p", cnt);
 }
 
-void	print_list(t_list *head_ptr, int tabs)
+/* It prints the pointers representing all the nodes of the
+ * singly linked list, starting from the head node that `head_ptr`
+ * points to, in the form of a chain. The chain begins with tabs
+ * number of '\t' symbols. The `types` array contains the data
+ * types of the nodes in the list, beginning with the head node */
+void	print_list(t_list *head_ptr, t_cnt_type *types, int tabs)
 {
 	t_list	*nptr;
+	char	*arg;
 	int		i;
 
 	i = 0;
@@ -70,12 +82,18 @@ void	print_list(t_list *head_ptr, int tabs)
 		printf("\t");
 		i++;
 	}
-	printf("%p -> ", head_ptr);
+	process_numeric_arg(arg, head_ptr->content, types[0]);
+	process_non_numeric_arg(arg, head_ptr->content, types[0]);
+	printf("[%p | %s] -> ", head_ptr, arg);
 	nptr = head_ptr->next;
+	i = 1;
 	while (nptr != NULL)
 	{
-		printf("%p -> ", nptr);
+		process_numeric_arg(arg, head_ptr->content, types[i]);
+		process_non_numeric_arg(arg, head_ptr->content, types[i]);
+		printf("[%p | %s] -> ", nptr);
 		nptr = nptr->next;
+		i++;
 	}
 	printf("NULL\n");
 }

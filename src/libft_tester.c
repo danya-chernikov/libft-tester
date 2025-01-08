@@ -6,11 +6,12 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:51:25 by dchernik          #+#    #+#             */
-/*   Updated: 2025/01/08 16:27:06 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/01/08 18:46:52 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libft_tester.h"
+#include "../include/list.h"
 
 void	launch_tester(void)
 {
@@ -70,22 +71,27 @@ void	test_addit_funcs(void)
 /* It launches test of our
  * singly linked list
  * implementation */
-/*lstsize();
-lstadd_front();
-lstlast();
+/*lstlast();
 lstadd_back();
 lstdel_one();
 lstclear();
 lstiter();
-lstmap();
-t_list	*tmp;
-*/
+lstmap(); */
 void	test_linked_list(void)
 {
 	t_list	*head_ptr;
+	t_list	*lst;
 	char	text[64];
+	int		number;
 
 	strncpy(text, "just some text", 64);
+	number = 10;
 	head_ptr = lstnew_test((void *)&text, STRING);
+	print_list(head_ptr, 0);
+	lstsize_test(&head_ptr);
+	lst = lstnew_test((void *)&number, INT);
+	lstadd_front_test(&head_ptr, lst);
+	head_ptr = lst;
+	print_list(head_ptr, 0);
 	lstsize_test(&head_ptr);
 }
