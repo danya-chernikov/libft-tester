@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:42:27 by dchernik          #+#    #+#             */
-/*   Updated: 2025/01/08 19:28:57 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/01/10 17:01:20 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@
 # define MAX_TESTS_NUM				128
 # define MAX_TEST_STR_LEN			256
 # define MAX_CNT_STR_LEN			1024
+# define MAX_LST_NODES_NUM			4096
 # define TEMP_FILE_NAME				"text.txt"
 # define TOO_MANY_TESTS_ERR_MSG		"too many tests"
 # define PUTSMTH_MEM_ERR_STRS		"unable to allocate mem for an arr of strs"

@@ -19,7 +19,7 @@ OBJS=common_tester.o alg.o print.o cprint.o alloc.o packer.o \
 	 putsmth_fd_aux.o putsmth_fd_regular.o \
 	 putsmth_fd_special.o putsmth_fd_write.o putsmth_fd_print.o \
 	 putsmth_fd_errors.o \
-	 lstnew.o list_aux.o lstsize.o lstadd_front.o
+	 lstnew.o list_aux.o list_aux2.o lstsize.o lstadd_front.o
 
 
 $(NAME) : $(OBJS) $(BSDOBJS)
@@ -214,6 +214,9 @@ putsmth_fd_errors.o : src/putsmth_fd_errors.c include/putsmth_fd.h include/libft
 
 list_aux.o : src/list_aux.c include/list.h include/libft_tester.h
 	$(CC) $(CFLAGS) -c src/list_aux.c
+
+list_aux2.o : src/list_aux2.c include/list.h include/libft_tester.h
+	$(CC) $(CFLAGS) -c src/list_aux2.c
 
 lstnew.o : src/lstnew.c include/list.h include/libft_tester.h
 	$(CC) $(CFLAGS) -c src/lstnew.c

@@ -70,32 +70,34 @@ void	process_non_numeric_arg(char *arg, void *cnt, t_cnt_type type)
  * points to, in the form of a chain. The chain begins with tabs
  * number of '\t' symbols. The `types` array contains the data
  * types of the nodes in the list, beginning with the head node */
-void	print_list(t_list *head_ptr, t_cnt_type *types, int tabs)
+int	print_list(t_list *head_ptr, t_cnt_type *types, int ntabs)
 {
 	t_list	*nptr;
 	char	*arg;
+	int		lsize;
 	int		i;
 
-	i = 0;
-	while (i < tabs)
-	{
-		printf("\t");
-		i++;
-	}
-	process_numeric_arg(arg, head_ptr->content, types[0]);
-	process_non_numeric_arg(arg, head_ptr->content, types[0]);
-	printf("[%p | %s] -> ", head_ptr, arg);
+	lsize = lstsize(&head_ptr);
+	arg = (char *)malloc((MAX_FORMAT_STR_LEN + 1) * sizeof (char));
+	if (arg == NULL)
+		return (0);
+	print_tabs(ntabs);
+	process_numeric_arg(arg, head_ptr->content, types[lsize - 1]);
+	process_non_numeric_arg(arg, head_ptr->content, types[lsize - 1]);
+	printf("[ %p | %s ] -> ", head_ptr, arg);
 	nptr = head_ptr->next;
-	i = 1;
+	i = lsize - 2;
 	while (nptr != NULL)
 	{
-		process_numeric_arg(arg, head_ptr->content, types[i]);
-		process_non_numeric_arg(arg, head_ptr->content, types[i]);
-		printf("[%p | %s] -> ", nptr);
+		process_numeric_arg(arg, nptr->content, types[i]);
+		process_non_numeric_arg(arg, nptr->content, types[i]);
+		printf("[ %p | %s ] -> ", nptr, arg);
 		nptr = nptr->next;
-		i++;
+		i--;
 	}
 	printf("NULL\n");
+	free(arg);
+	return (1);
 }
 
 void	free_node(void *ptr)

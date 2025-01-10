@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:51:25 by dchernik          #+#    #+#             */
-/*   Updated: 2025/01/08 18:46:52 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/01/10 17:09:12 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,19 +79,28 @@ lstiter();
 lstmap(); */
 void	test_linked_list(void)
 {
-	t_list	*head_ptr;
-	t_list	*lst;
-	char	text[64];
-	int		number;
+	t_cnt_type	types[MAX_LST_NODES_NUM];
+	t_list		*head_ptr;
+	char		text[64];
+	int			number;
+	float		fnum;
 
 	strncpy(text, "just some text", 64);
 	number = 10;
-	head_ptr = lstnew_test((void *)&text, STRING);
-	print_list(head_ptr, 0);
+	fnum = 5.6;
+
+	types[0] = STRING;
+	head_ptr = lstnew_test((void *)text, STRING);
+	print_list(head_ptr, types, 0);
 	lstsize_test(&head_ptr);
-	lst = lstnew_test((void *)&number, INT);
-	lstadd_front_test(&head_ptr, lst);
-	head_ptr = lst;
-	print_list(head_ptr, 0);
+
+	types[1] = INT;
+	addfront_quick(&head_ptr, (void *)&number, INT);
+	print_list(head_ptr, types, 0);
+	lstsize_test(&head_ptr);
+
+	types[2] = FLOAT;
+	addfront_quick(&head_ptr, (void *)&fnum, FLOAT);
+	print_list(head_ptr, types, 0);
 	lstsize_test(&head_ptr);
 }
