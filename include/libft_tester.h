@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:42:27 by dchernik          #+#    #+#             */
-/*   Updated: 2025/01/10 17:01:20 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/01/10 18:14:49 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,29 @@ typedef enum list_cnt_type
 	STRING,
 	VOID
 }	t_cnt_type;
+
+/* This structure is designed
+ * to store data used by the
+ * testing component of a singly
+ * linked list */
+typedef struct lst_test
+{
+	char		*chars;
+	u_char		*uchars;
+	short		*shorts;
+	u_short		*ushorts;
+	int			*ints;
+	u_int		*uints;
+	long		*longs;
+	t_ul		*ulongs;
+	long long	*lls;
+	t_ull		*ulls;
+	float		*floats;
+	double		*doubles;
+	long double	*ldoubles;
+	char		**strs;
+	void		*voids;
+} t_lst_test;
 
 /* This structure defines all the tests to be performed on
  * the function being tested.
