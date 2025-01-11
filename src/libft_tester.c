@@ -6,11 +6,12 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:51:25 by dchernik          #+#    #+#             */
-/*   Updated: 2025/01/10 18:40:36 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/01/11 19:28:33 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libft_tester.h"
+#include "../include/putsmth_fd.h"
 #include "../include/list.h"
 
 void	launch_tester(void)
@@ -79,74 +80,21 @@ lstiter();
 lstmap(); */
 void	test_linked_list(void)
 {
-	
-	t_cnt_type	types[MAX_LST_NODES_NUM];
-	t_list		*head_ptr;
+	char		fname[MAX_FUNC_NAME_LEN];
+	char		errbuf[MAX_ERR_BUF_SIZE];
 	t_lst_test	tests;
-	int			i;
-	char		text[64];
-	int			number;
-	float		fnum;
 
-	if (!alloc_lst_test_strs(tests))
+	strncpy(fname, "test_linked_list", MAX_FUNC_NAME_LEN);
+	init_lst_tests(&tests);
+	if (!alloc_lst_test_strs(&tests) ||
+		!alloc_lst_test_ints(&tests) ||
+		!alloc_lst_test_floats(&tests))
 	{
-		printf("test_linked_list(): Unable to alloate memory\n");
+		form_common_err_msg(errbuf, fname, MEM_ERR_MSG);
+		perror(errbuf);
 		return ;
 	}
-
-	strncpy(text, "just some text", 64);
-	number = 10;
-	fnum = 5.6;
-
-	types[0] = STRING;
-	head_ptr = lstnew_test((void *)text, STRING);
-	print_list(head_ptr, types, 0);
-	lstsize_test(&head_ptr);
-
-	types[1] = INT;
-	addfront_quick(&head_ptr, (void *)&number, INT);
-	print_list(head_ptr, types, 0);
-	lstsize_test(&head_ptr);
-
-	types[2] = FLOAT;
-	addfront_quick(&head_ptr, (void *)&fnum, FLOAT);
-	print_list(head_ptr, types, 0);
-	lstsize_test(&head_ptr);
-
-	free_all_lst_test_data(tests);
-}
-
-int		alloc_lst_test_strs(t_lst_test *tests)
-{
-
-	tests->strs = (char **)malloc(MAX_LST_NODES_NUM * sizeof (char *));
-	if (tests->strs == NULL)
-		return (0);
-	i = 0;
-	while (i < MAX_LST_NODES_NUM)
-	{
-		tests->strs[i] = (char *)malloc(MAX_TEST_STR_LEN * sizeof (char));
-		if (tests->strs[i] == NULL)
-		{	
-			i--;
-			while (i >= 0)
-			{
-				free(tests->strs[i]);
-				i--;
-			}
-			free(tests->strs);
-			return (0);
-		}
-		i++;
-	}
-}
-
-free_all_lst_test_data(tests)
-{
-
-}
-
-void	test_linked_list_first()
-{
-
+	add_list_tests(&tests);
+	test_linked_list_1(&tests);
+	free_all_lst_tests(&tests);
 }

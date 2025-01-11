@@ -19,7 +19,8 @@ OBJS=common_tester.o alg.o print.o cprint.o alloc.o packer.o \
 	 putsmth_fd_aux.o putsmth_fd_regular.o \
 	 putsmth_fd_special.o putsmth_fd_write.o putsmth_fd_print.o \
 	 putsmth_fd_errors.o \
-	 lstnew.o list_aux.o list_aux2.o lstsize.o lstadd_front.o
+	 list_aux.o list_aux2.o list_aux3.o list_aux4.o list_aux5.o list_aux6.o \
+	 lstnew.o lstsize.o lstadd_front.o
 
 
 $(NAME) : $(OBJS) $(BSDOBJS)
@@ -217,6 +218,18 @@ list_aux.o : src/list_aux.c include/list.h include/libft_tester.h
 
 list_aux2.o : src/list_aux2.c include/list.h include/libft_tester.h
 	$(CC) $(CFLAGS) -c src/list_aux2.c
+
+list_aux3.o : src/list_aux3.c include/list.h include/libft_tester.h
+	$(CC) $(CFLAGS) -c src/list_aux3.c
+
+list_aux4.o : src/list_aux4.c include/list.h include/libft_tester.h
+	$(CC) $(CFLAGS) -c src/list_aux4.c
+
+list_aux5.o : src/list_aux5.c include/list.h include/libft_tester.h
+	$(CC) $(CFLAGS) -c src/list_aux5.c
+
+list_aux6.o : src/list_aux6.c include/list.h include/libft_tester.h
+	$(CC) $(CFLAGS) -c src/list_aux6.c
 
 lstnew.o : src/lstnew.c include/list.h include/libft_tester.h
 	$(CC) $(CFLAGS) -c src/lstnew.c

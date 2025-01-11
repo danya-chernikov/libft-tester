@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:42:05 by dchernik          #+#    #+#             */
-/*   Updated: 2025/01/07 16:19:41 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/01/11 19:11:18 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ typedef char const			t_char_c;
 typedef void const			t_void_c;
 typedef unsigned long		t_ul;
 typedef unsigned long long	t_ull;
+typedef long double			t_ld;
 
 /* cprintf() - colored printf;
  * cperror() - colored perror;
