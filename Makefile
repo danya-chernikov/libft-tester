@@ -19,8 +19,10 @@ OBJS=common_tester.o alg.o print.o cprint.o alloc.o packer.o \
 	 putsmth_fd_aux.o putsmth_fd_regular.o \
 	 putsmth_fd_special.o putsmth_fd_write.o putsmth_fd_print.o \
 	 putsmth_fd_errors.o \
-	 list_aux.o list_aux2.o list_aux3.o list_aux4.o list_aux5.o list_aux6.o \
-	 list_aux7.o lstnew.o lstsize.o lstadd_front.o lstlast.o
+	 list.o list2.o list3.o \
+	 list_alloc.o list_alloc2.o list_alloc3.o \
+	 list_free.o list_free2.o list_free3.o list_free4.o \
+	 lstnew.o lstsize.o lstadd_front.o lstlast.o lstadd_back.o
 
 $(NAME) : $(OBJS) $(BSDOBJS)
 	cd .. && $(MAKE) all # First let's build the Libft
@@ -212,37 +214,49 @@ putsmth_fd_print.o : src/putsmth_fd_print.c include/putsmth_fd.h include/libft_t
 putsmth_fd_errors.o : src/putsmth_fd_errors.c include/putsmth_fd.h include/libft_tester.h
 	$(CC) $(CFLAGS) -c src/putsmth_fd_errors.c
 
-list_aux.o : src/list_aux.c include/list.h include/libft_tester.h
-	$(CC) $(CFLAGS) -c src/list_aux.c
+list.o : src/list.c include/list.h include/libft_tester.h
+	$(CC) $(CFLAGS) -c src/list.c
 
-list_aux2.o : src/list_aux2.c include/list.h include/libft_tester.h
-	$(CC) $(CFLAGS) -c src/list_aux2.c
+list2.o : src/list2.c include/list.h include/libft_tester.h
+	$(CC) $(CFLAGS) -c src/list2.c
 
-list_aux3.o : src/list_aux3.c include/list.h include/libft_tester.h
-	$(CC) $(CFLAGS) -c src/list_aux3.c
+list3.o : src/list3.c include/list.h include/libft_tester.h
+	$(CC) $(CFLAGS) -c src/list3.c
 
-list_aux4.o : src/list_aux4.c include/list.h include/libft_tester.h
-	$(CC) $(CFLAGS) -c src/list_aux4.c
+list_alloc.o : src/list_alloc.c include/list.h
+	$(CC) $(CFLAGS) -c src/list_alloc.c
 
-list_aux5.o : src/list_aux5.c include/list.h include/libft_tester.h
-	$(CC) $(CFLAGS) -c src/list_aux5.c
+list_alloc2.o : src/list_alloc2.c include/list.h
+	$(CC) $(CFLAGS) -c src/list_alloc2.c
 
-list_aux6.o : src/list_aux6.c include/list.h include/libft_tester.h
-	$(CC) $(CFLAGS) -c src/list_aux6.c
+list_alloc3.o : src/list_alloc3.c include/list.h
+	$(CC) $(CFLAGS) -c src/list_alloc3.c
 
-list_aux7.o : src/list_aux7.c include/list.h include/libft_tester.h
-	$(CC) $(CFLAGS) -c src/list_aux7.c
+list_free.o : src/list_free.c include/list.h
+	$(CC) $(CFLAGS) -c src/list_free.c
+
+list_free2.o : src/list_free2.c include/list.h
+	$(CC) $(CFLAGS) -c src/list_free2.c
+
+list_free3.o : src/list_free3.c include/list.h
+	$(CC) $(CFLAGS) -c src/list_free3.c
+
+list_free4.o : src/list_free4.c include/list.h
+	$(CC) $(CFLAGS) -c src/list_free4.c
 
 lstnew.o : src/lstnew.c include/list.h include/libft_tester.h
 	$(CC) $(CFLAGS) -c src/lstnew.c
 
-lstsize.o : src/lstsize.c include/list.h include/libft_tester.h
+lstsize.o : src/lstsize.c include/libft_tester.h
 	$(CC) $(CFLAGS) -c src/lstsize.c
 
-lstadd_front.o : src/lstadd_front.c include/list.h include/libft_tester.h
+lstadd_front.o : src/lstadd_front.c include/libft_tester.h
 	$(CC) $(CFLAGS) -c src/lstadd_front.c
 
 lstlast.o : src/lstlast.c include/list.h include/libft_tester.h
 	$(CC) $(CFLAGS) -c src/lstlast.c
+
+lstadd_back.o : src/lstadd_back.c include/list.h include/libft_tester.h
+	$(CC) $(CFLAGS) -c src/lstadd_back.c
 
 .PHONY: all clean fclean re

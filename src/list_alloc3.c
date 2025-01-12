@@ -1,13 +1,5 @@
 #include "../include/list.h"
 
-int	alloc_lst_test_ulls(t_lst_test *tests)
-{
-	tests->ulls = (t_ull *)malloc(MAX_LST_NODES_NUM * sizeof (t_ull));
-	if (tests->ulls == NULL)
-		return (0);
-	return (1);
-}
-
 int	alloc_lst_test_floats(t_lst_test *tests)
 {
 	tests->floats = (float *)malloc(MAX_LST_NODES_NUM * sizeof (float));
@@ -56,5 +48,13 @@ int	alloc_lst_test_strs(t_lst_test *tests)
 		}
 		i++;
 	}
+	return (1);
+}
+
+int	alloc_lst_test_voids(t_lst_test *tests)
+{
+	tests->voids = (void *)malloc(MAX_LST_NODES_NUM * sizeof (void));
+	if (tests->voids == NULL)
+		return (0);
 	return (1);
 }

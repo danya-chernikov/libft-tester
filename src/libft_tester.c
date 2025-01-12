@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:51:25 by dchernik          #+#    #+#             */
-/*   Updated: 2025/01/12 15:44:18 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/01/12 18:20:47 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,9 @@ void	test_linked_list(void)
 	init_lst_tests(&tests);
 	if (!alloc_lst_test_strs(&tests)
 		|| !alloc_lst_test_ints(&tests)
-		|| !alloc_lst_test_floats(&tests))
+		|| !alloc_lst_test_floats(&tests)
+		|| !alloc_lst_test_chars(&tests)
+		|| !alloc_lst_test_shorts(&tests))
 	{
 		form_common_err_msg(errbuf, fname, MEM_ERR_MSG);
 		perror(errbuf);

@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:42:27 by dchernik          #+#    #+#             */
-/*   Updated: 2025/01/12 15:44:12 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/01/12 17:37:13 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -257,10 +257,10 @@ t_list	*lstnew_test(void *cnt, t_cnt_type type);
 void	lstadd_front_test(t_list **head, t_list *new);
 void	lstsize_test(t_list **head);
 void	lstlast_test(t_list *head, t_cnt_type type);
-void	lstadd_back(void);
-void	lstdel_one(void);
-void	lstclear(void);
-void	lstiter(void);
-void	lstmap(void);
+void	lstadd_back_test(t_list **head, t_list *new);
+void	lstdel_one_test(void);
+void	lstclear_test(void);
+void	lstiter_test(void);
+void	lstmap_test(void);
 
 #endif
