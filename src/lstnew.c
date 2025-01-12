@@ -30,8 +30,7 @@ static t_list	*test_helper(t_char_c *fn, int nt, void *cnt, t_cnt_type type)
 	cprintf(YELLOW, "%s", fn);
 	printf(format, lst);
 	printf("\t\tThe list [ %p | %p ] was created\n", lst, cnt);
-	process_numeric_arg(cnt_str, lst->content, type);
-	process_non_numeric_arg(cnt_str, lst->content, type);
+	process_arg(cnt_str, lst->content, type);
 	printf("\t\t(%p)->content: %s\n", lst, cnt_str);
 	free(format);
 	return (lst);

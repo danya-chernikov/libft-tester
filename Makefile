@@ -20,8 +20,7 @@ OBJS=common_tester.o alg.o print.o cprint.o alloc.o packer.o \
 	 putsmth_fd_special.o putsmth_fd_write.o putsmth_fd_print.o \
 	 putsmth_fd_errors.o \
 	 list_aux.o list_aux2.o list_aux3.o list_aux4.o list_aux5.o list_aux6.o \
-	 list_aux7.o lstnew.o lstsize.o lstadd_front.o
-
+	 list_aux7.o lstnew.o lstsize.o lstadd_front.o lstlast.o
 
 $(NAME) : $(OBJS) $(BSDOBJS)
 	cd .. && $(MAKE) all # First let's build the Libft
@@ -237,10 +236,13 @@ list_aux7.o : src/list_aux7.c include/list.h include/libft_tester.h
 lstnew.o : src/lstnew.c include/list.h include/libft_tester.h
 	$(CC) $(CFLAGS) -c src/lstnew.c
 
-lstsize.o : src/lstsize.c include/libft_tester.h
+lstsize.o : src/lstsize.c include/list.h include/libft_tester.h
 	$(CC) $(CFLAGS) -c src/lstsize.c
 
-lstadd_front.o : src/lstadd_front.c include/libft_tester.h
+lstadd_front.o : src/lstadd_front.c include/list.h include/libft_tester.h
 	$(CC) $(CFLAGS) -c src/lstadd_front.c
+
+lstlast.o : src/lstlast.c include/list.h include/libft_tester.h
+	$(CC) $(CFLAGS) -c src/lstlast.c
 
 .PHONY: all clean fclean re

@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:51:25 by dchernik          #+#    #+#             */
-/*   Updated: 2025/01/12 14:57:09 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/01/12 15:44:18 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,7 @@ void	test_addit_funcs(void)
 /* It launches test of our
  * singly linked list
  * implementation */
-/*lstlast();
-lstadd_back();
+/*lstadd_back();
 lstdel_one();
 lstclear();
 lstiter();

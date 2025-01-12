@@ -17,4 +17,5 @@ void	test_linked_list_1(t_lst_test *tests)
 	addfront_quick(&head_ptr, (float *)&(tests->floats[0]), FLOAT);
 	print_list(head_ptr, types, 0);
 	lstsize_test(&head_ptr);
+	lstlast_test(head_ptr, STRING);
 }
