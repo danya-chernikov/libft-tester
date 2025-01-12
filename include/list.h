@@ -4,6 +4,7 @@
 # include "libft_tester.h"
 
 char	*create_format_str(void *cnt, t_cnt_type type);
+void	process_arg(char *arg, void *cnt, t_cnt_type type);
 void	process_numeric_arg(char *arg, void *cnt, t_cnt_type type);
 void	process_non_numeric_arg(char *arg, void *cnt, t_cnt_type type);
 int		print_list(t_list *head_ptr, t_cnt_type *types, int ntabs);

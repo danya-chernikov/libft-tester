@@ -14,11 +14,16 @@ char	*create_format_str(void *cnt, t_cnt_type type)
 		free(arg);
 		return (NULL);
 	}
-	process_numeric_arg(arg, cnt, type);
-	process_non_numeric_arg(arg, cnt, type);
+	process_arg(arg, cnt, type);
 	snprintf(fstr, MAX_FORMAT_STR_LEN, "(%s) = %%p\n", arg);
 	free(arg);
 	return (fstr);
+}
+
+void	process_arg(char *arg, void *cnt, t_cnt_type type)
+{
+	process_numeric_arg(arg, cnt, type);
+	process_non_numeric_arg(arg, cnt, type);
 }
 
 /* It generates the textual representation of the `cnt` value of a
@@ -82,8 +87,7 @@ int	print_list(t_list *head_ptr, t_cnt_type *types, int ntabs)
 	if (arg == NULL)
 		return (0);
 	print_tabs(ntabs);
-	process_numeric_arg(arg, head_ptr->content, types[lsize - 1]);
-	process_non_numeric_arg(arg, head_ptr->content, types[lsize - 1]);
+	process_arg(arg, head_ptr->content, types[lsize - 1]);
 	printf("[ %p | %s ] -> ", head_ptr, arg);
 	nptr = head_ptr->next;
 	i = lsize - 2;
@@ -98,9 +102,4 @@ int	print_list(t_list *head_ptr, t_cnt_type *types, int ntabs)
 	printf("NULL\n");
 	free(arg);
 	return (1);
-}
-
-void	free_node(void *ptr)
-{
-	free(ptr);
 }

@@ -1,6 +1,6 @@
 #include "../include/list.h"
 
-int		alloc_lst_test_voids(t_lst_test *tests)
+int	alloc_lst_test_voids(t_lst_test *tests)
 {
 	tests->voids = (void *)malloc(MAX_LST_NODES_NUM * sizeof (void));
 	if (tests->voids == NULL)

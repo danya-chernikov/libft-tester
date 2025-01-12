@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:51:25 by dchernik          #+#    #+#             */
-/*   Updated: 2025/01/11 19:28:33 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/01/12 14:57:09 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,9 @@ void	test_linked_list(void)
 
 	strncpy(fname, "test_linked_list", MAX_FUNC_NAME_LEN);
 	init_lst_tests(&tests);
-	if (!alloc_lst_test_strs(&tests) ||
-		!alloc_lst_test_ints(&tests) ||
-		!alloc_lst_test_floats(&tests))
+	if (!alloc_lst_test_strs(&tests)
+		|| !alloc_lst_test_ints(&tests)
+		|| !alloc_lst_test_floats(&tests))
 	{
 		form_common_err_msg(errbuf, fname, MEM_ERR_MSG);
 		perror(errbuf);
