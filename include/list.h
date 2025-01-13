@@ -14,17 +14,19 @@ int		print_list(t_lst_d *list, int ntabs);
 void	print_tabs(int n);
 int		lstsize(t_list **lst);
 void	init_list_tests(t_lst_test *tests);
-void	addfront_test_type(t_cnt_type *types, int type_cnt, t_cnt_type type);
-int		create_list_tests(t_lst_test *tests);
+void	init_static_list_tests(t_lst_test *tests);
+void	init_heap_list_tests(t_lst_test *tests);
 
 /* list3.c */
+void	addfront_test_type(t_cnt_type *types, int type_cnt, t_cnt_type type);
+int		create_list_tests(t_lst_test *tests);
 void	add_list_tests(t_lst_test *tests);
 void	linked_list_launch_tests(t_lst_test *tests);
 t_lst_d	*list_debug_init(void *cnt, t_cnt_type type);
-void	addfront_quick(t_lst_d *list, void *cnt, t_cnt_type type);
-void	addback_quick(t_lst_d *list, void *cnt, t_cnt_type type);
 
 /* list4.c */
+void	addfront_quick(t_lst_d *list, void *cnt, t_cnt_type type);
+void	addback_quick(t_lst_d *list, void *cnt, t_cnt_type type);
 
 /* alloc.c */
 int		alloc_lst_test_chars(t_lst_test *tests);

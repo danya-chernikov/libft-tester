@@ -31,6 +31,12 @@ int	lstsize(t_list **lst)
 
 void	init_list_tests(t_lst_test *tests)
 {
+	init_static_list_tests(tests);
+	init_heap_list_tests(tests);
+}
+
+void	init_static_list_tests(t_lst_test *tests)
+{
 	tests->chars = NULL;
 	tests->uchars = NULL;
 	tests->shorts = NULL;
@@ -48,38 +54,21 @@ void	init_list_tests(t_lst_test *tests)
 	tests->voids = NULL;
 }
 
-/* It inserts the `type` type at the beginning of the `types` array, which had
- * previously shifted all other elements to the right */
-void	addfront_test_type(t_cnt_type *types, int type_cnt, t_cnt_type type)
+void	init_heap_list_tests(t_lst_test *tests)
 {
-	int	i;
-
-	i = type_cnt;
-	while (i > 0)
-	{
-		types[i] = types[i - 1];
-		i--;
-	}
-	types[0] = type;
-}
-
-int	create_list_tests(t_lst_test *tests)
-{
-	char	fname[MAX_FUNC_NAME_LEN];
-	char	errbuf[MAX_ERR_BUF_SIZE];
-
-	strncpy(fname, "create_list_tests", MAX_FUNC_NAME_LEN);
-	init_list_tests(tests);
-	if (!alloc_lst_test_strs(tests)
-		|| !alloc_lst_test_ints(tests)
-		|| !alloc_lst_test_floats(tests)
-		|| !alloc_lst_test_chars(tests)
-		|| !alloc_lst_test_shorts(tests))
-	{
-		form_common_err_msg(errbuf, fname, MEM_ERR_MSG);
-		perror(errbuf);
-		return (0);
-	}
-	add_list_tests(tests);
-	return (1);
+	tests->chars_ptrs = NULL;
+	tests->uchars_ptrs = NULL;
+	tests->shorts_ptrs = NULL;
+	tests->ushorts_ptrs = NULL;
+	tests->ints_ptrs = NULL;
+	tests->uints_ptrs = NULL;
+	tests->longs_ptrs = NULL;
+	tests->ulongs_ptrs = NULL;
+	tests->lls_ptrs = NULL;
+	tests->ulls_ptrs = NULL;
+	tests->floats_ptrs = NULL;
+	tests->doubles_ptrs = NULL;
+	tests->ldoubles_ptrs = NULL;
+	tests->strs_ptrs = NULL;
+	tests->voids_ptrs = NULL;
 }

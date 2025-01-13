@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:42:27 by dchernik          #+#    #+#             */
-/*   Updated: 2025/01/13 17:15:35 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/01/13 18:01:09 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,10 +107,17 @@ typedef enum list_cnt_type
 	VOID
 }	t_cnt_type;
 
-/* This structure is designed
- * to store data used by the
- * testing component of a singly
- * linked list */
+/* This structure is designed to
+ * store data used by the testing
+ * component of a singly linked list.
+ * Single pointers represent arrays
+ * that store static (real) values
+ * entered by the user via the
+ * add_list_tests() function. Double
+ * pointers represent arrays that
+ * store other pointers, requiring
+ * the user to allocate dynamic memory
+ * before using them */
 typedef struct lst_test
 {
 	char		*chars;
@@ -128,6 +135,21 @@ typedef struct lst_test
 	t_ld		*ldoubles;
 	char		**strs;
 	void		*voids;
+	char		**chars_ptrs;
+	u_char		**uchars_ptrs;
+	short		**shorts_ptrs;
+	u_short		**ushorts_ptrs;
+	int			**ints_ptrs;
+	u_int		**uints_ptrs;
+	long		**longs_ptrs;
+	t_ul		**ulongs_ptrs;
+	long long	**lls_ptrs;
+	t_ull		**ulls_ptrs;
+	float		**floats_ptrs;
+	double		**doubles_ptrs;
+	t_ld		**ldoubles_ptrs;
+	char		**strs_ptrs;
+	void		**voids_ptrs;
 } t_lst_test;
 
 /* It represents a singly
@@ -269,7 +291,7 @@ void	lstadd_front_test(t_list **head, t_list *new);
 void	lstsize_test(t_list **head);
 void	lstlast_test(t_list *head, t_cnt_type type);
 void	lstadd_back_test(t_list **head, t_list *new);
-void	lstdel_one_test(void);
+void	lstdelone_test(t_list *node, void (*del)(void *));
 void	lstclear_test(void);
 void	lstiter_test(void);
 void	lstmap_test(void);
