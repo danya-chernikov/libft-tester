@@ -75,7 +75,7 @@ void	process_non_numeric_arg(char *arg, void *cnt, t_cnt_type type)
  * points to, in the form of a chain. The chain begins with tabs
  * number of '\t' symbols. The `types` array contains the data
  * types of the nodes in the list, beginning with the head node */
-int	print_list(t_list_debug *list, int ntabs)
+int	print_list(t_lst_d *list, int ntabs)
 {
 	t_list	*nptr;
 	char	*arg;

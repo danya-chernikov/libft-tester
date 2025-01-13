@@ -1,4 +1,5 @@
 #include "../include/list.h"
+#include "../include/putsmth_fd.h"
 
 /* It prints n tabs consecutively */
 void	print_tabs(int n)
@@ -62,11 +63,23 @@ void	addfront_test_type(t_cnt_type *types, int type_cnt, t_cnt_type type)
 	types[0] = type;
 }
 
-void	add_list_tests(t_lst_test *tests)
+int	create_list_tests(t_lst_test *tests)
 {
-	strncpy(tests->strs[0], "just some text", MAX_TEST_STR_LEN);
-	tests->ints[0] = 10;
-	tests->floats[0] = 5.6;
-	tests->chars[0] = 'X';
-	tests->shorts[0] = -512;
+	char	fname[MAX_FUNC_NAME_LEN];
+	char	errbuf[MAX_ERR_BUF_SIZE];
+
+	strncpy(fname, "create_list_tests", MAX_FUNC_NAME_LEN);
+	init_list_tests(tests);
+	if (!alloc_lst_test_strs(tests)
+		|| !alloc_lst_test_ints(tests)
+		|| !alloc_lst_test_floats(tests)
+		|| !alloc_lst_test_chars(tests)
+		|| !alloc_lst_test_shorts(tests))
+	{
+		form_common_err_msg(errbuf, fname, MEM_ERR_MSG);
+		perror(errbuf);
+		return (0);
+	}
+	add_list_tests(tests);
+	return (1);
 }

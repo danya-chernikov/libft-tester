@@ -6,12 +6,11 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:51:25 by dchernik          #+#    #+#             */
-/*   Updated: 2025/01/13 15:20:35 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/01/13 17:20:05 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libft_tester.h"
-#include "../include/putsmth_fd.h"
 #include "../include/list.h"
 
 void	launch_tester(void)
@@ -72,30 +71,16 @@ void	test_addit_funcs(void)
 /* It launches test of our
  * singly linked list
  * implementation */
-/*lstadd_back();
-lstdel_one();
+/* lstdel_one();
 lstclear();
 lstiter();
 lstmap(); */
 void	test_linked_list(void)
 {
-	char		fname[MAX_FUNC_NAME_LEN];
-	char		errbuf[MAX_ERR_BUF_SIZE];
 	t_lst_test	tests;
 
-	strncpy(fname, "test_linked_list", MAX_FUNC_NAME_LEN);
-	init_list_tests(&tests);
-	if (!alloc_lst_test_strs(&tests)
-		|| !alloc_lst_test_ints(&tests)
-		|| !alloc_lst_test_floats(&tests)
-		|| !alloc_lst_test_chars(&tests)
-		|| !alloc_lst_test_shorts(&tests))
-	{
-		form_common_err_msg(errbuf, fname, MEM_ERR_MSG);
-		perror(errbuf);
+	if (!create_list_tests(&tests))
 		return ;
-	}
-	add_list_tests(&tests);
-	test_linked_list_1(&tests);
-	free_all_lst_tests(&tests);
+	linked_list_launch_tests(&tests);
+	delete_all_lst_tests(&tests);
 }

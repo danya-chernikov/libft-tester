@@ -217,7 +217,7 @@ putsmth_fd_errors.o : src/putsmth_fd_errors.c include/putsmth_fd.h include/libft
 list.o : src/list.c include/list.h
 	$(CC) $(CFLAGS) -c src/list.c
 
-list2.o : src/list2.c include/list.h
+list2.o : src/list2.c include/list.h include/putsmth_fd.h
 	$(CC) $(CFLAGS) -c src/list2.c
 
 list3.o : src/list3.c include/list.h

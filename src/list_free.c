@@ -1,6 +1,6 @@
 #include "../include/list.h"
 
-void	free_all_lst_tests(t_lst_test *tests)
+void	delete_all_lst_tests(t_lst_test *tests)
 {
 	free_numeric_lst_tests(tests);
 	free_non_numeric_lst_tests(tests);
@@ -42,6 +42,12 @@ void	free_non_numeric_lst_tests(t_lst_test *tests)
 		free_lst_test_strs(tests);
 	if (tests->voids)
 		free_voids(tests);
+}
+
+void	free_list_debug(t_lst_d *list)
+{
+	free(list->types);
+	free(list);
 }
 
 void	free_node(void *ptr)

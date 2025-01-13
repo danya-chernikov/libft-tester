@@ -5,8 +5,8 @@ static t_list	*test_helper(t_char_c *fn, int nt, void *cnt, t_cnt_type type);
 
 t_list	*lstnew_test(void *cnt, t_cnt_type type)
 {
-	t_list	*head_ptr;
 	char	fname[MAX_FUNC_NAME_LEN];
+	t_list	*head_ptr;
 
 	strncpy(fname, "ft_lstnew", MAX_FUNC_NAME_LEN);
 	print_test_header(fname);

@@ -2,9 +2,9 @@
 
 /* This is the main function that manages all
  * the test logic */
-void	test_linked_list_1(t_lst_test *tests)
+void	linked_list_launch_tests(t_lst_test *tests)
 {
-	t_list_debug	*list;
+	t_lst_d	*list;
 
 	list = list_debug_init((char *)tests->strs[0], STRING);
 	if (list == NULL)
@@ -14,17 +14,27 @@ void	test_linked_list_1(t_lst_test *tests)
 	lstlast_test(list->head, STRING);
 	addfront_quick(list, (char *)&(tests->chars[0]), CHAR);
 	addback_quick(list, (short *)&(tests->shorts[0]), SHORT);
-	list_debug_free(list);
+	lstlast_test(list->head, SHORT);
+	free_list_debug(list);
+}
+
+void	add_list_tests(t_lst_test *tests)
+{
+	strncpy(tests->strs[0], "just some text", MAX_TEST_STR_LEN);
+	tests->ints[0] = 10;
+	tests->floats[0] = 5.6;
+	tests->chars[0] = 'X';
+	tests->shorts[0] = -512;
 }
 
 /* It creates a new singly linked list, allocates memory for an
  * array of all possible node content types, and initializes the
  * list by adding the first node with content `cnt` of `type` type */
-t_list_debug	*list_debug_init(void *cnt, t_cnt_type type)
+t_lst_d	*list_debug_init(void *cnt, t_cnt_type type)
 {
-	t_list_debug	*list;
+	t_lst_d	*list;
 
-	list = (t_list_debug *)malloc(1 * sizeof (t_list_debug));
+	list = (t_lst_d *)malloc(1 * sizeof (t_lst_d));
 	if (list == NULL)
 		return (NULL);
 	list->type_cnt = 0;
@@ -39,7 +49,7 @@ t_list_debug	*list_debug_init(void *cnt, t_cnt_type type)
 	return (list);
 }
 
-void	addfront_quick(t_list_debug *list, void *cnt, t_cnt_type type)
+void	addfront_quick(t_lst_d *list, void *cnt, t_cnt_type type)
 {
 	t_list	*lst;
 
@@ -52,7 +62,7 @@ void	addfront_quick(t_list_debug *list, void *cnt, t_cnt_type type)
 	lstsize_test(&list->head);
 }
 
-void	addback_quick(t_list_debug *list, void *cnt, t_cnt_type type)
+void	addback_quick(t_lst_d *list, void *cnt, t_cnt_type type)
 {
 	t_list	*lst;
 
@@ -62,10 +72,4 @@ void	addback_quick(t_list_debug *list, void *cnt, t_cnt_type type)
 	list->type_cnt++;
 	print_list(list, 0);
 	lstsize_test(&list->head);
-}
-
-void	list_debug_free(t_list_debug *list)
-{
-	free(list->types);
-	free(list);
 }
