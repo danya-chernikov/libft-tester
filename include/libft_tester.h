@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:42:27 by dchernik          #+#    #+#             */
-/*   Updated: 2025/01/12 17:37:13 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/01/13 15:50:26 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,14 @@ typedef struct lst_test
 	char		**strs;
 	void		*voids;
 } t_lst_test;
+
+typedef struct list_debug
+{
+	t_cnt_type	*types;
+	t_list		*head;
+	int			type_cnt;
+
+}	t_list_debug;
 
 /* This structure defines all the tests to be performed on
  * the function being tested.

@@ -1,74 +1,71 @@
 #include "../include/list.h"
 
-void	add_list_tests(t_lst_test *tests)
-{
-	strncpy(tests->strs[0], "just some text", MAX_TEST_STR_LEN);
-	tests->ints[0] = 10;
-	tests->floats[0] = 5.6;
-	tests->chars[0] = 'X';
-	tests->shorts[0] = -512;
-}
-
 /* This is the main function that manages all
  * the test logic */
 void	test_linked_list_1(t_lst_test *tests)
 {
-	t_cnt_type	types[MAX_LST_NODES_NUM];
-	t_list		*head_ptr;
-	int			type_cnt;
+	t_list_debug	*list;
 
-	type_cnt = 0;
-	types[type_cnt] = STRING;
-	head_ptr = lstnew_test((char *)tests->strs[0], STRING);
-	type_cnt++;
-
-	print_list(head_ptr, types, 0);
-	lstsize_test(&head_ptr);
-
-	types[type_cnt] = INT;
-	addfront_quick(&head_ptr, (int *)&(tests->ints[0]), INT);
-	type_cnt++;
-
-	print_list(head_ptr, types, 0);
-	lstsize_test(&head_ptr);
-
-	types[type_cnt] = FLOAT;
-	addfront_quick(&head_ptr, (float *)&(tests->floats[0]), FLOAT);
-	type_cnt++;
-
-	print_list(head_ptr, types, 0);
-	lstsize_test(&head_ptr);
-
-	lstlast_test(head_ptr, STRING);
-
-	types[type_cnt] = CHAR;
-	addfront_quick(&head_ptr, (char *)&(tests->chars[0]), CHAR);
-	type_cnt++;
-
-	print_list(head_ptr, types, 0);
-	lstsize_test(&head_ptr);
-
-	addfront_test_type(types, type_cnt, SHORT);
-	addback_quick(&head_ptr, (short *)&(tests->shorts[0]), SHORT);
-	type_cnt++;
-
-	print_list(head_ptr, types, 0);
-	lstsize_test(&head_ptr);
+	list = list_debug_init((char *)tests->strs[0], STRING);
+	if (list == NULL)
+		return ;
+	addfront_quick(list, (int *)&(tests->ints[0]), INT);
+	addfront_quick(list, (float *)&(tests->floats[0]), FLOAT);
+	lstlast_test(list->head, STRING);
+	addfront_quick(list, (char *)&(tests->chars[0]), CHAR);
+	addback_quick(list, (short *)&(tests->shorts[0]), SHORT);
+	list_debug_free(list);
 }
 
-void	addfront_quick(t_list **head_ptr, void *cnt, t_cnt_type type)
+/* It creates a new singly linked list, allocates memory for an
+ * array of all possible node content types, and initializes the
+ * list by adding the first node with content `cnt` of `type` type */
+t_list_debug	*list_debug_init(void *cnt, t_cnt_type type)
+{
+	t_list_debug	*list;
+
+	list = (t_list_debug *)malloc(1 * sizeof (t_list_debug));
+	if (list == NULL)
+		return (NULL);
+	list->type_cnt = 0;
+	list->types = (t_cnt_type *)malloc(MAX_LST_NODES_NUM * sizeof (t_cnt_type));
+	if (list->types == NULL)
+		return (NULL);
+	list->types[list->type_cnt] = type;
+	list->head = lstnew_test(cnt, type);
+	list->type_cnt++;
+	print_list(list, 0);
+	lstsize_test(&list->head);
+	return (list);
+}
+
+void	addfront_quick(t_list_debug *list, void *cnt, t_cnt_type type)
 {
 	t_list	*lst;
 
+	list->types[list->type_cnt] = type;
 	lst = lstnew_test(cnt, type);
-	lstadd_front_test(head_ptr, lst);
-	*head_ptr = lst;
+	lstadd_front_test(&list->head, lst);
+	list->head = lst;
+	list->type_cnt++;
+	print_list(list, 0);
+	lstsize_test(&list->head);
 }
 
-void	addback_quick(t_list **head_ptr, void *cnt, t_cnt_type type)
+void	addback_quick(t_list_debug *list, void *cnt, t_cnt_type type)
 {
 	t_list	*lst;
 
+	addfront_test_type(list->types, list->type_cnt, type);
 	lst = lstnew_test(cnt, type);
-	lstadd_back_test(head_ptr, lst);
+	lstadd_back_test(&list->head, lst);
+	list->type_cnt++;
+	print_list(list, 0);
+	lstsize_test(&list->head);
+}
+
+void	list_debug_free(t_list_debug *list)
+{
+	free(list->types);
+	free(list);
 }

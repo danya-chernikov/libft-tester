@@ -8,19 +8,23 @@ char	*create_format_str(void *cnt, t_cnt_type type);
 void	process_arg(char *arg, void *cnt, t_cnt_type type);
 void	process_numeric_arg(char *arg, void *cnt, t_cnt_type type);
 void	process_non_numeric_arg(char *arg, void *cnt, t_cnt_type type);
-int		print_list(t_list *head_ptr, t_cnt_type *types, int ntabs);
+int		print_list(t_list_debug *list, int ntabs);
 
 /* list2.c */
 void	print_tabs(int n);
 int		lstsize(t_list **lst);
-void	init_lst_tests(t_lst_test *tests);
+void	init_list_tests(t_lst_test *tests);
 void	addfront_test_type(t_cnt_type *types, int type_cnt, t_cnt_type type);
+void	add_list_tests(t_lst_test *tests);
 
 /* list3.c */
-void	add_list_tests(t_lst_test *tests);
-void	test_linked_list_1(t_lst_test *tests);
-void	addfront_quick(t_list **head_ptr, void *cnt, t_cnt_type type);
-void	addback_quick(t_list **head_ptr, void *cnt, t_cnt_type type);
+void			test_linked_list_1(t_lst_test *tests);
+t_list_debug	*list_debug_init(void *cnt, t_cnt_type type);
+void			addfront_quick(t_list_debug *list, void *cnt, t_cnt_type type);
+void			addback_quick(t_list_debug *list, void *cnt, t_cnt_type type);
+void			list_debug_free(t_list_debug *list);
+
+/* list4.c */
 
 /* alloc.c */
 int		alloc_lst_test_chars(t_lst_test *tests);

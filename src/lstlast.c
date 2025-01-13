@@ -3,6 +3,8 @@
 
 static void	test_helper(t_char_c *fn, int nt, t_list *head, t_cnt_type type);
 
+/* This function needs to accept the content type type of
+ * the last element in the list list to interpret its content */
 void	lstlast_test(t_list *head, t_cnt_type type)
 {
 	char	fname[MAX_FUNC_NAME_LEN];

@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:51:25 by dchernik          #+#    #+#             */
-/*   Updated: 2025/01/12 18:20:47 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/01/13 15:20:35 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	test_linked_list(void)
 	t_lst_test	tests;
 
 	strncpy(fname, "test_linked_list", MAX_FUNC_NAME_LEN);
-	init_lst_tests(&tests);
+	init_list_tests(&tests);
 	if (!alloc_lst_test_strs(&tests)
 		|| !alloc_lst_test_ints(&tests)
 		|| !alloc_lst_test_floats(&tests)

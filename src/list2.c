@@ -28,7 +28,7 @@ int	lstsize(t_list **lst)
 	return (size);
 }
 
-void	init_lst_tests(t_lst_test *tests)
+void	init_list_tests(t_lst_test *tests)
 {
 	tests->chars = NULL;
 	tests->uchars = NULL;
@@ -60,4 +60,13 @@ void	addfront_test_type(t_cnt_type *types, int type_cnt, t_cnt_type type)
 		i--;
 	}
 	types[0] = type;
+}
+
+void	add_list_tests(t_lst_test *tests)
+{
+	strncpy(tests->strs[0], "just some text", MAX_TEST_STR_LEN);
+	tests->ints[0] = 10;
+	tests->floats[0] = 5.6;
+	tests->chars[0] = 'X';
+	tests->shorts[0] = -512;
 }
