@@ -21,7 +21,7 @@ int	alloc_lst_test_chars(t_lst_test *tests)
 	i = 0;
 	while (i < MAX_LST_NODES_NUM)
 	{
-		chars_ptrs[i] = NULL;
+		tests->chars_ptrs[i] = NULL;
 		i++;
 	}
 	return (1);
@@ -43,7 +43,7 @@ int	alloc_lst_test_uchars(t_lst_test *tests)
 	i = 0;
 	while (i < MAX_LST_NODES_NUM)
 	{
-		uchars_ptrs[i] = NULL;
+		tests->uchars_ptrs[i] = NULL;
 		i++;
 	}
 	return (1);
@@ -65,7 +65,7 @@ int	alloc_lst_test_shorts(t_lst_test *tests)
 	i = 0;
 	while (i < MAX_LST_NODES_NUM)
 	{
-		shorts_ptrs[i] = NULL;
+		tests->shorts_ptrs[i] = NULL;
 		i++;
 	}
 	return (1);
@@ -87,7 +87,7 @@ int	alloc_lst_test_ushorts(t_lst_test *tests)
 	i = 0;
 	while (i < MAX_LST_NODES_NUM)
 	{
-		ushorts_ptrs[i] = NULL;
+		tests->ushorts_ptrs[i] = NULL;
 		i++;
 	}
 	return (1);
@@ -109,7 +109,7 @@ int	alloc_lst_test_ints(t_lst_test *tests)
 	i = 0;
 	while (i < MAX_LST_NODES_NUM)
 	{
-		ints_ptrs[i] = NULL;
+		tests->ints_ptrs[i] = NULL;
 		i++;
 	}
 	return (1);

@@ -1,7 +1,7 @@
 #include "../include/list.h"
 #include "../include/libft_tester.h"
 
-static void	test_helper(t_char_c *fname, int ntest, t_list **head, t_list *new);
+static void	test_helper(t_char_c *fname, int ntest, t_list *node, void (*del)(void *));
 
 void	lstdelone_test(t_list *node, void (*del)(void *))
 {

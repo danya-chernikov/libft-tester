@@ -50,10 +50,9 @@ void	free_list_debug(t_lst_d *list)
 	free(list);
 }
 
-/* This function is used to
- * test how the ft_lstdelone()
- * works */
-void	free_node(void *ptr)
+/* This function is used to test
+ * how the ft_lstdelone() works */
+void	del(void *node_cnt)
 {
-	free(ptr);
+	free(node_cnt);
 }

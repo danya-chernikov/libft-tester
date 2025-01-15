@@ -1,5 +1,4 @@
 #include "../include/list.h"
-#include "../include/putsmth_fd.h"
 
 /* It prints n tabs consecutively */
 void	print_tabs(int n)
@@ -67,8 +66,8 @@ void	init_heap_list_tests(t_lst_test *tests)
 	tests->lls_ptrs = NULL;
 	tests->ulls_ptrs = NULL;
 	tests->floats_ptrs = NULL;
-	tests->doubles_ptrs = NULL;
-	tests->ldoubles_ptrs = NULL;
+	tests->dbls_ptrs = NULL;
+	tests->ldbls_ptrs = NULL;
 	tests->strs_ptrs = NULL;
 	tests->voids_ptrs = NULL;
 }

@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:42:27 by dchernik          #+#    #+#             */
-/*   Updated: 2025/01/13 18:01:09 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/01/15 15:03:35 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,10 @@ typedef enum list_cnt_type
  * pointers represent arrays that
  * store other pointers, requiring
  * the user to allocate dynamic memory
- * before using them */
+ * before using them. The difference
+ * between strs and strs_ptrs is that
+ * the cells in the latter are filled
+ * with NULL pointers*/
 typedef struct lst_test
 {
 	char		*chars;
@@ -146,8 +149,8 @@ typedef struct lst_test
 	long long	**lls_ptrs;
 	t_ull		**ulls_ptrs;
 	float		**floats_ptrs;
-	double		**doubles_ptrs;
-	t_ld		**ldoubles_ptrs;
+	double		**dbls_ptrs;
+	t_ld		**ldbls_ptrs;
 	char		**strs_ptrs;
 	void		**voids_ptrs;
 } t_lst_test;

@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:42:05 by dchernik          #+#    #+#             */
-/*   Updated: 2025/01/11 19:11:18 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/01/15 14:43:30 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@
 typedef char const			t_char_c;
 typedef void const			t_void_c;
 typedef unsigned long		t_ul;
+typedef long long			t_ll;
 typedef unsigned long long	t_ull;
 typedef long double			t_ld;
 
