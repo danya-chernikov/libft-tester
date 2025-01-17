@@ -7,6 +7,7 @@
 void	linked_list_launch_tests(t_lst_test *tests)
 {
 	t_lst_d	*list;
+	t_list	*node;
 
 	list = list_debug_init((char *)tests->strs_ptrs[0], STRING);
 	if (list == NULL)
@@ -18,7 +19,11 @@ void	linked_list_launch_tests(t_lst_test *tests)
 	addback_quick(list, (short *)tests->shorts_ptrs[0], SHORT);
 	lstlast_test(list->head, SHORT);
 	addback_quick(list, (long *)tests->longs_ptrs[0], LONG);
-	addback_quick(list, (int *)tests->ints_ptrs[0], INT);
+	addback_quick(list, (int *)tests->ints_ptrs[1], INT);
+	node = get_node(list, 6);
+	printf("node = %p\n", node);
+	lstclear_test(&node, del);
+	tests->ints_ptrs[1] = NULL;
 	free_list_debug(list);
 }
 
@@ -29,19 +34,19 @@ int	create_list_tests(t_lst_test *tests)
 
 	strncpy(fname, "create_list_tests", MAX_FUNC_NAME_LEN);
 	init_list_tests(tests);
-	if (!alloc_lst_test_strings(tests)
-		|| !alloc_lst_test_ints(tests)
-		|| !alloc_lst_test_floats(tests)
-		|| !alloc_lst_test_chars(tests)
-		|| !alloc_lst_test_shorts(tests)
-		|| !alloc_lst_test_longs(tests))
+	if ((alloc_lst_test_strings(tests) == ERROR)
+		|| (alloc_lst_test_ints(tests) == ERROR)
+		|| (alloc_lst_test_floats(tests) == ERROR)
+		|| (alloc_lst_test_chars(tests) == ERROR)
+		|| (alloc_lst_test_shorts(tests) == ERROR)
+		|| (alloc_lst_test_longs(tests) == ERROR))
 	{
 		form_common_err_msg(errbuf, fname, MEM_ERR_MSG);
 		perror(errbuf);
-		return (0);
+		return (ERROR);
 	}
 	add_list_tests(tests);
-	return (1);
+	return (SUCCESS);
 }
 
 void	add_list_tests(t_lst_test *tests)
@@ -52,7 +57,7 @@ void	add_list_tests(t_lst_test *tests)
 	tests->chars_ptrs[0] = alloc_char('X');
 	tests->shorts_ptrs[0] = alloc_short(-512);
 	tests->longs_ptrs[0] = alloc_long(1340802489);
-	tests->ints_ptrs[0] = alloc_int(948010);
+	tests->ints_ptrs[1] = alloc_int(948010);
 }
 
 /* It creates a new singly linked list, allocates

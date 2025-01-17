@@ -4,8 +4,11 @@ void	free_uints(t_lst_test *tests)
 {
 	int	i;
 
-	free(tests->uints);
-	tests->uints = NULL;
+	if (tests->uints != NULL)
+	{
+		free(tests->uints);
+		tests->uints = NULL;
+	}
 	i = 0;
 	while (i < MAX_LST_NODES_NUM)
 	{
@@ -16,16 +19,22 @@ void	free_uints(t_lst_test *tests)
 		}
 		i++;
 	}
-	free(tests->uints_ptrs);
-	tests->uints_ptrs = NULL;
+	if (tests->uints_ptrs != NULL)
+	{
+		free(tests->uints_ptrs);
+		tests->uints_ptrs = NULL;
+	}
 }
 
 void	free_longs(t_lst_test *tests)
 {
 	int	i;
 
-	free(tests->longs);
-	tests->longs = NULL;
+	if (tests->longs != NULL)
+	{
+		free(tests->longs);
+		tests->longs = NULL;
+	}
 	i = 0;
 	while (i < MAX_LST_NODES_NUM)
 	{
@@ -36,16 +45,22 @@ void	free_longs(t_lst_test *tests)
 		}
 		i++;
 	}
-	free(tests->longs_ptrs);
-	tests->longs_ptrs = NULL;
+	if (tests->longs_ptrs != NULL)
+	{
+		free(tests->longs_ptrs);
+		tests->longs_ptrs = NULL;
+	}
 }
 
 void	free_ulongs(t_lst_test *tests)
 {
 	int	i;
 
-	free(tests->ulongs);
-	tests->ulongs = NULL;
+	if (tests->ulongs != NULL)
+	{
+		free(tests->ulongs);
+		tests->ulongs = NULL;
+	}
 	i = 0;
 	while (i < MAX_LST_NODES_NUM)
 	{
@@ -56,16 +71,22 @@ void	free_ulongs(t_lst_test *tests)
 		}
 		i++;
 	}
-	free(tests->ulongs_ptrs);
-	tests->ulongs_ptrs = NULL;
+	if (tests->ulongs_ptrs != NULL)
+	{
+		free(tests->ulongs_ptrs);
+		tests->ulongs_ptrs = NULL;
+	}
 }
 
 void	free_lls(t_lst_test *tests)
 {
 	int	i;
 
-	free(tests->lls);
-	tests->lls = NULL;
+	if (tests->lls != NULL)
+	{
+		free(tests->lls);
+		tests->lls = NULL;
+	}
 	i = 0;
 	while (i < MAX_LST_NODES_NUM)
 	{
@@ -76,16 +97,22 @@ void	free_lls(t_lst_test *tests)
 		}
 		i++;
 	}
-	free(tests->lls_ptrs);
-	tests->lls_ptrs = NULL;
+	if (tests->lls_ptrs != NULL)
+	{
+		free(tests->lls_ptrs);
+		tests->lls_ptrs = NULL;
+	}
 }
 
 void	free_ulls(t_lst_test *tests)
 {
 	int	i;
 
-	free(tests->ulls);
-	tests->ulls = NULL;
+	if (tests->ulls != NULL)
+	{
+		free(tests->ulls);
+		tests->ulls = NULL;
+	}
 	i = 0;
 	while (i < MAX_LST_NODES_NUM)
 	{
@@ -96,6 +123,9 @@ void	free_ulls(t_lst_test *tests)
 		}
 		i++;
 	}
-	free(tests->ulls_ptrs);
-	tests->ulls_ptrs = NULL;
+	if (tests->ulls_ptrs != NULL)
+	{
+		free(tests->ulls_ptrs);
+		tests->ulls_ptrs = NULL;
+	}
 }

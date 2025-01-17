@@ -2,86 +2,100 @@
 
 int	alloc_lst_test_floats(t_lst_test *tests)
 {
-	int	i;
+	float	**floats_ptrs;
+	float	*floats;
+	int		i;
 
-	tests->floats = (float *)malloc(MAX_LST_NODES_NUM * sizeof (float));
-	if (tests->floats == NULL)
-		return (0);
-	tests->floats_ptrs = (float **)malloc(MAX_LST_NODES_NUM * sizeof (float *));
-	if (tests->floats_ptrs == NULL)
+	floats = (float *)malloc(MAX_LST_NODES_NUM * sizeof (float));
+	if (floats == NULL)
+		return (ERROR);
+	tests->floats = floats;
+	floats_ptrs = (float **)malloc(MAX_LST_NODES_NUM * sizeof (float *));
+	if (floats_ptrs == NULL)
 	{
 		free(tests->floats);
-		return (0);
+		return (ERROR);
 	}
+	tests->floats_ptrs = floats_ptrs;
 	i = 0;
 	while (i < MAX_LST_NODES_NUM)
 	{
 		tests->floats_ptrs[i] = NULL;
 		i++;
 	}
-	return (1);
+	return (SUCCESS);
 }
 
 int	alloc_lst_test_doulbes(t_lst_test *tests)
 {
-	int	i;
+	double	**dbls_ptrs;
+	double	*doubles;
+	int		i;
 
-	tests->doubles = (double *)malloc(MAX_LST_NODES_NUM * sizeof (double));
-	if (tests->doubles == NULL)
-		return (0);
-	tests->dbls_ptrs = (double **)malloc(MAX_LST_NODES_NUM * sizeof (double *));
-	if (tests->dbls_ptrs == NULL)
+	doubles = (double *)malloc(MAX_LST_NODES_NUM * sizeof (double));
+	if (doubles == NULL)
+		return (ERROR);
+	tests->doubles = doubles;
+	dbls_ptrs = (double **)malloc(MAX_LST_NODES_NUM * sizeof (double *));
+	if (dbls_ptrs == NULL)
 	{
 		free(tests->doubles);
-		return (0);
+		return (ERROR);
 	}
+	tests->dbls_ptrs = dbls_ptrs;
 	i = 0;
 	while (i < MAX_LST_NODES_NUM)
 	{
 		tests->dbls_ptrs[i] = NULL;
 		i++;
 	}
-	return (1);
+	return (SUCCESS);
 }
 
 int	alloc_lst_test_ldoulbes(t_lst_test *tests)
 {
-	int	i;
+	t_ld	**ldbls_ptrs;
+	t_ld	*ldoubles;
+	int		i;
 
-	tests->ldoubles = (t_ld *)malloc(MAX_LST_NODES_NUM * sizeof (t_ld));
-	if (tests->ldoubles == NULL)
-		return (0);
-	tests->ldbls_ptrs = (t_ld **)malloc(MAX_LST_NODES_NUM * sizeof (t_ld *));
-	if (tests->ldbls_ptrs == NULL)
+	ldoubles = (t_ld *)malloc(MAX_LST_NODES_NUM * sizeof (t_ld));
+	if (ldoubles == NULL)
+		return (ERROR);
+	tests->ldoubles = ldoubles;
+	ldbls_ptrs = (t_ld **)malloc(MAX_LST_NODES_NUM * sizeof (t_ld *));
+	if (ldbls_ptrs == NULL)
 	{
 		free(tests->ldoubles);
-		return (0);
+		return (ERROR);
 	}
+	tests->ldbls_ptrs = ldbls_ptrs;
 	i = 0;
 	while (i < MAX_LST_NODES_NUM)
 	{
 		tests->ldbls_ptrs[i] = NULL;
 		i++;
 	}
-	return (1);
+	return (SUCCESS);
 }
 
 int	alloc_lst_test_strings(t_lst_test *tests)
 {
 	if (!alloc_lst_test_strs(tests))
-		return (0);
+		return (ERROR);
 	if (!alloc_lst_test_strs_ptrs(tests))
-		return (0);
-	return (1);
+		return (ERROR);
+	return (SUCCESS);
 }
 
 int	alloc_lst_test_strs(t_lst_test *tests)
 {
-	int	i;
+	char	**strs;
+	int		i;
 
-	tests->strs = (char **)malloc(MAX_LST_NODES_NUM * sizeof (char *));
-	if (tests->strs == NULL)
-		return (0);
+	strs = (char **)malloc(MAX_LST_NODES_NUM * sizeof (char *));
+	if (strs == NULL)
+		return (ERROR);
+	tests->strs = strs;
 	i = 0;
 	while (i < MAX_LST_NODES_NUM)
 	{
@@ -95,9 +109,9 @@ int	alloc_lst_test_strs(t_lst_test *tests)
 				i--;
 			}
 			free(tests->strs);
-			return (0);
+			return (ERROR);
 		}
 		i++;
 	}
-	return (1);
+	return (SUCCESS);
 }

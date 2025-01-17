@@ -4,8 +4,11 @@ void	free_floats(t_lst_test *tests)
 {
 	int	i;
 
-	free(tests->floats);
-	tests->floats = NULL;
+	if (tests->floats != NULL)
+	{
+		free(tests->floats);
+		tests->floats = NULL;
+	}
 	i = 0;
 	while (i < MAX_LST_NODES_NUM)
 	{
@@ -16,16 +19,22 @@ void	free_floats(t_lst_test *tests)
 		}
 		i++;
 	}
-	free(tests->floats_ptrs);
-	tests->floats_ptrs = NULL;
+	if (tests->floats_ptrs != NULL)
+	{
+		free(tests->floats_ptrs);
+		tests->floats_ptrs = NULL;
+	}
 }
 
 void	free_doubles(t_lst_test *tests)
 {
 	int	i;
 
-	free(tests->doubles);
-	tests->doubles = NULL;
+	if (tests->doubles != NULL)
+	{
+		free(tests->doubles);
+		tests->doubles = NULL;
+	}
 	i = 0;
 	while (i < MAX_LST_NODES_NUM)
 	{
@@ -36,16 +45,22 @@ void	free_doubles(t_lst_test *tests)
 		}
 		i++;
 	}
-	free(tests->dbls_ptrs);
-	tests->dbls_ptrs = NULL;
+	if (tests->dbls_ptrs != NULL)
+	{
+		free(tests->dbls_ptrs);
+		tests->dbls_ptrs = NULL;
+	}
 }
 
 void	free_ldoubles(t_lst_test *tests)
 {
 	int	i;
 
-	free(tests->ldoubles);
-	tests->ldoubles = NULL;
+	if (tests->ldoubles != NULL)
+	{
+		free(tests->ldoubles);
+		tests->ldoubles = NULL;
+	}
 	i = 0;
 	while (i < MAX_LST_NODES_NUM)
 	{
@@ -56,8 +71,11 @@ void	free_ldoubles(t_lst_test *tests)
 		}
 		i++;
 	}
-	free(tests->ldbls_ptrs);
-	tests->ldbls_ptrs = NULL;
+	if (tests->ldbls_ptrs != NULL)
+	{
+		free(tests->ldbls_ptrs);
+		tests->ldbls_ptrs = NULL;
+	}
 }
 
 void	free_lst_test_strs(t_lst_test *tests)
@@ -70,8 +88,11 @@ void	free_lst_test_strs(t_lst_test *tests)
 		free(tests->strs[i]);
 		i++;
 	}
-	free(tests->strs);
-	tests->strs = NULL;
+	if (tests->strs != NULL)
+	{
+		free(tests->strs);
+		tests->strs = NULL;
+	}
 	i = 0;
 	while (i < MAX_LST_NODES_NUM)
 	{
@@ -82,16 +103,22 @@ void	free_lst_test_strs(t_lst_test *tests)
 		}
 		i++;
 	}
-	free(tests->strs_ptrs);
-	tests->strs_ptrs = NULL;
+	if (tests->strs_ptrs != NULL)
+	{
+		free(tests->strs_ptrs);
+		tests->strs_ptrs = NULL;
+	}
 }
 
 void	free_voids(t_lst_test *tests)
 {
 	int	i;
 
-	free(tests->voids);
-	tests->voids = NULL;
+	if (tests->voids != NULL)
+	{
+		free(tests->voids);
+		tests->voids = NULL;
+	}
 	i = 0;
 	while (i < MAX_LST_NODES_NUM)
 	{
@@ -102,6 +129,9 @@ void	free_voids(t_lst_test *tests)
 		}
 		i++;
 	}
-	free(tests->voids_ptrs);
-	tests->voids_ptrs = NULL;
+	if (tests->voids_ptrs != NULL)
+	{
+		free(tests->voids_ptrs);
+		tests->voids_ptrs = NULL;
+	}
 }

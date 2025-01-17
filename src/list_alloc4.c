@@ -2,40 +2,46 @@
 
 int	alloc_lst_test_strs_ptrs(t_lst_test *tests)
 {
-	int	i;
+	char	**strs_ptrs;
+	int		i;
 
-	tests->strs_ptrs = (char **)malloc(MAX_LST_NODES_NUM * sizeof (char *));
-	if (tests->strs_ptrs == NULL)
-		return (0);
+	strs_ptrs = (char **)malloc(MAX_LST_NODES_NUM * sizeof (char *));
+	if (strs_ptrs == NULL)
+		return (ERROR);
+	tests->strs_ptrs = strs_ptrs;
 	i = 0;
 	while (i < MAX_LST_NODES_NUM)
 	{
 		tests->strs_ptrs[i] = NULL;
 		i++;
 	}
-	return (1);
+	return (SUCCESS);
 }
 
 int	alloc_lst_test_voids(t_lst_test *tests)
 {
-	int	i;
+	void	**voids_ptrs;
+	void	*voids;
+	int		i;
 
-	tests->voids = (void *)malloc(MAX_LST_NODES_NUM * sizeof (void));
-	if (tests->voids == NULL)
-		return (0);
-	tests->voids_ptrs = (void **)malloc(MAX_LST_NODES_NUM * sizeof (void *));
-	if (tests->voids_ptrs == NULL)
+	voids = (void *)malloc(MAX_LST_NODES_NUM * sizeof (void));
+	if (voids == NULL)
+		return (ERROR);
+	tests->voids = voids;
+	voids_ptrs = (void **)malloc(MAX_LST_NODES_NUM * sizeof (void *));
+	if (voids_ptrs == NULL)
 	{
 		free(tests->voids);
-		return (0);
+		return (ERROR);
 	}
+	tests->voids_ptrs = voids_ptrs;
 	i = 0;
 	while (i < MAX_LST_NODES_NUM)
 	{
 		tests->voids_ptrs[i] = NULL;
 		i++;
 	}
-	return (1);
+	return (SUCCESS);
 }
 
 /* It allocates memory for a char

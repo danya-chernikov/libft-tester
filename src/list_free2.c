@@ -4,8 +4,11 @@ void	free_chars(t_lst_test *tests)
 {
 	int	i;
 
-	free(tests->chars);
-	tests->chars = NULL;
+	if (tests->chars != NULL)
+	{
+		free(tests->chars);
+		tests->chars = NULL;
+	}
 	i = 0;
 	while (i < MAX_LST_NODES_NUM)
 	{
@@ -16,16 +19,22 @@ void	free_chars(t_lst_test *tests)
 		}
 		i++;
 	}
-	free(tests->chars_ptrs);
-	tests->chars_ptrs = NULL;
+	if (tests->chars_ptrs != NULL)
+	{
+		free(tests->chars_ptrs);
+		tests->chars_ptrs = NULL;
+	}
 }
 
 void	free_uchars(t_lst_test *tests)
 {
 	int	i;
 
-	free(tests->uchars);
-	tests->uchars = NULL;
+	if (tests->uchars != NULL)
+	{
+		free(tests->uchars);
+		tests->uchars = NULL;
+	}
 	i = 0;
 	while (i < MAX_LST_NODES_NUM)
 	{
@@ -36,16 +45,22 @@ void	free_uchars(t_lst_test *tests)
 		}
 		i++;
 	}
-	free(tests->uchars_ptrs);
-	tests->uchars_ptrs = NULL;
+	if (tests->uchars_ptrs != NULL)
+	{
+		free(tests->uchars_ptrs);
+		tests->uchars_ptrs = NULL;
+	}
 }
 
 void	free_shorts(t_lst_test *tests)
 {
 	int	i;
 
-	free(tests->shorts);
-	tests->shorts = NULL;
+	if (tests->shorts != NULL)
+	{
+		free(tests->shorts);
+		tests->shorts = NULL;
+	}
 	i = 0;
 	while (i < MAX_LST_NODES_NUM)
 	{
@@ -56,16 +71,22 @@ void	free_shorts(t_lst_test *tests)
 		}
 		i++;
 	}
-	free(tests->shorts_ptrs);
-	tests->shorts_ptrs = NULL;
+	if (tests->shorts_ptrs != NULL)
+	{
+		free(tests->shorts_ptrs);
+		tests->shorts_ptrs = NULL;
+	}
 }
 
 void	free_ushorts(t_lst_test *tests)
 {
 	int	i;
 
-	free(tests->ushorts);
-	tests->ushorts = NULL;
+	if (tests->ushorts != NULL)
+	{
+		free(tests->ushorts);
+		tests->ushorts = NULL;
+	}
 	i = 0;
 	while (i < MAX_LST_NODES_NUM)
 	{
@@ -76,26 +97,40 @@ void	free_ushorts(t_lst_test *tests)
 		}
 		i++;
 	}
-	free(tests->shorts_ptrs);
-	tests->shorts_ptrs = NULL;
+	if (tests->shorts_ptrs != NULL)
+	{
+		free(tests->shorts_ptrs);
+		tests->shorts_ptrs = NULL;
+	}
 }
 
 void	free_ints(t_lst_test *tests)
 {
+	printf("free_ints() says hello!\n");
 	int	i;
 
-	free(tests->ints);
-	tests->ints = NULL;
+	if (tests->ints != NULL)
+	{
+		free(tests->ints);
+		tests->ints = NULL;
+	}
 	i = 0;
 	while (i < MAX_LST_NODES_NUM)
 	{
+		printf("i = %d\n", i);
 		if (tests->ints_ptrs[i] != NULL)
 		{
+			printf("tests->ints_ptrs[%d] != NULL = %p\n", i, tests->ints_ptrs[i]);
 			free(tests->ints_ptrs[i]);
 			tests->ints_ptrs[i] = NULL;
 		}
 		i++;
 	}
-	free(tests->ints_ptrs);
-	tests->ints_ptrs = NULL;
+	printf("after while (i < MAX_LST_NODES_NUM)\n");
+	if (tests->ints_ptrs != NULL)
+	{
+		free(tests->ints_ptrs);
+		tests->ints_ptrs = NULL;
+	}
+	printf("free_ints() says goodbye!\n");
 }

@@ -24,7 +24,7 @@ OBJS=common_tester.o alg.o print.o cprint.o alloc.o packer.o \
 	 list_alloc5.o list_alloc6.o list_alloc7.o \
 	 list_free.o list_free2.o list_free3.o list_free4.o \
 	 lstnew.o lstsize.o lstadd_front.o lstlast.o lstadd_back.o \
-	 lstdelone.o
+	 lstdelone.o lstclear.o
 
 $(NAME) : $(OBJS) $(BSDOBJS)
 	cd .. && $(MAKE) all # First let's build the Libft
@@ -278,5 +278,8 @@ lstadd_back.o : src/lstadd_back.c include/list.h include/libft_tester.h
 
 lstdelone.o : src/lstdelone.c include/list.h include/libft_tester.h
 	$(CC) $(CFLAGS) -c src/lstdelone.c
+
+lstclear.o : src/lstclear.c include/list.h include/libft_tester.h
+	$(CC) $(CFLAGS) -c src/lstclear.c
 
 .PHONY: all clean fclean re

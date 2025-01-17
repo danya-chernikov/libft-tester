@@ -85,7 +85,7 @@ int	print_list(t_lst_d *list, int ntabs)
 	lsize = lstsize(&list->head);
 	arg = (char *)malloc((MAX_FORMAT_STR_LEN + 1) * sizeof (char));
 	if (arg == NULL)
-		return (0);
+		return (ERROR);
 	print_tabs(ntabs);
 	process_arg(arg, list->head->content, list->types[lsize - 1]);
 	printf("[ %p | %s ] -> ", list->head, arg);
@@ -100,5 +100,5 @@ int	print_list(t_lst_d *list, int ntabs)
 	}
 	printf("NULL\n");
 	free(arg);
-	return (1);
+	return (SUCCESS);
 }
