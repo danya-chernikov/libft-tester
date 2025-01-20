@@ -104,9 +104,9 @@ void	free_ushorts(t_lst_test *tests)
 	}
 }
 
+
 void	free_ints(t_lst_test *tests)
 {
-	printf("free_ints() says hello!\n");
 	int	i;
 
 	if (tests->ints != NULL)
@@ -117,20 +117,19 @@ void	free_ints(t_lst_test *tests)
 	i = 0;
 	while (i < MAX_LST_NODES_NUM)
 	{
-		printf("i = %d\n", i);
 		if (tests->ints_ptrs[i] != NULL)
 		{
-			printf("tests->ints_ptrs[%d] != NULL = %p\n", i, tests->ints_ptrs[i]);
-			free(tests->ints_ptrs[i]);
-			tests->ints_ptrs[i] = NULL;
+			if (!cnt_was_freed(tests->ints_ptrs[i], tests))
+			{
+				free(tests->ints_ptrs[i]);
+				tests->ints_ptrs[i] = NULL;
+			}
 		}
 		i++;
 	}
-	printf("after while (i < MAX_LST_NODES_NUM)\n");
 	if (tests->ints_ptrs != NULL)
 	{
 		free(tests->ints_ptrs);
 		tests->ints_ptrs = NULL;
 	}
-	printf("free_ints() says goodbye!\n");
 }

@@ -22,8 +22,9 @@ void	linked_list_launch_tests(t_lst_test *tests)
 	addback_quick(list, (int *)tests->ints_ptrs[1], INT);
 	node = get_node(list, 6);
 	printf("node = %p\n", node);
-	lstclear_test(&node, del);
-	tests->ints_ptrs[1] = NULL;
+	printf("node->content = %p\n", node->content);
+	lstclear_test(&node, del, tests);
+	//tests->ints_ptrs[1] = NULL;
 	free_list_debug(list);
 }
 

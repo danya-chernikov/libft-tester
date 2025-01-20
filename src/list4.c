@@ -42,3 +42,41 @@ t_list	*get_node(t_lst_d *list, int node_num)
 	}
 	return (node);
 }
+
+bool	cnt_was_freed(void *cnt, t_lst_test *tests)
+{
+	bool	was_freed;
+	int		i;
+
+	i = 0;
+	was_freed = 0;
+	while (i < tests->cnts_num_to_free)
+	{
+		if (cnt == tests->cnts_to_free[i])
+		{
+			was_freed = 1;
+			break;
+		}
+		i++;
+	}
+	return (was_freed);
+}
+
+bool	node_was_freed(void *node, t_lst_test *tests)
+{
+	bool	was_freed;
+	int		i;
+
+	i = 0;
+	was_freed = 0;
+	while (i < tests->nodes_num_to_free)
+	{
+		if (node == tests->nodes_to_free[i])
+		{
+			was_freed = 1;
+			break;
+		}
+		i++;
+	}
+	return (was_freed);
+}

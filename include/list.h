@@ -28,6 +28,8 @@ void	addfront_test_type(t_cnt_type *types, int type_cnt, t_cnt_type type);
 void	addfront_quick(t_lst_d *list, void *cnt, t_cnt_type type);
 void	addback_quick(t_lst_d *list, void *cnt, t_cnt_type type);
 t_list	*get_node(t_lst_d *list, int node_num);
+bool	cnt_was_freed(void *cnt, t_lst_test *tests);
+bool	node_was_freed(void *node, t_lst_test *tests);
 
 /* list_alloc.c */
 int		alloc_lst_test_chars(t_lst_test *tests);

@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:42:27 by dchernik          #+#    #+#             */
-/*   Updated: 2025/01/17 14:30:29 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/01/20 19:39:23 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <locale.h>
 # include <limits.h>
 # include <stdint.h>
+# include <stdbool.h>
 
 /*
  * MEM_ERR_BUF        - The size of a buffer in which we put the text
@@ -123,6 +124,11 @@ typedef enum list_cnt_type
  * with NULL pointers*/
 typedef struct lst_test
 {
+	int			nodes_num_to_free;
+	int			cnts_num_to_free;
+	void		*nodes_to_free[MAX_LST_NODES_NUM];
+	void		*cnts_to_free[MAX_LST_NODES_NUM];
+
 	char		*chars;
 	u_char		*uchars;
 	short		*shorts;
@@ -295,7 +301,7 @@ void	lstsize_test(t_list **head);
 void	lstlast_test(t_list *head, t_cnt_type type);
 void	lstadd_back_test(t_list **head, t_list *new);
 void	lstdelone_test(t_list *node, void (*del)(void *));
-void	lstclear_test(t_list **node, void (*del)(void *));
+void	lstclear_test(t_list **node, void (*del)(void *), t_lst_test *tests);
 void	lstiter_test(void);
 void	lstmap_test(void);
 

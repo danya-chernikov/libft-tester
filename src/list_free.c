@@ -83,4 +83,5 @@ void	del(void *node_cnt)
 	{
 		free(node_cnt);
 	}
+	node_cnt = NULL;
 }

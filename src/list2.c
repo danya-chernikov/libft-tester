@@ -30,6 +30,8 @@ int	lstsize(t_list **lst)
 
 void	init_list_tests(t_lst_test *tests)
 {
+	tests->nodes_num_to_free = 0;
+	tests->cnts_num_to_free = 0;
 	init_static_list_tests(tests);
 	init_heap_list_tests(tests);
 }
