@@ -82,6 +82,8 @@ int	print_list(t_lst_d *list, int ntabs)
 	int		lsize;
 	int		i;
 
+	if (list->head == NULL)
+		return (ERROR);
 	lsize = lstsize(&list->head);
 	arg = (char *)malloc((MAX_FORMAT_STR_LEN + 1) * sizeof (char));
 	if (arg == NULL)
@@ -100,5 +102,23 @@ int	print_list(t_lst_d *list, int ntabs)
 	}
 	printf("NULL\n");
 	free(arg);
+	return (SUCCESS);
+}
+
+int	print_list2(t_lst_d *list, int ntabs)
+{
+	t_list	*nptr;
+
+	if (list->head == NULL)
+		return (ERROR);
+	print_tabs(ntabs);
+	printf("[ %p | %p ] -> ", list->head, list->head->content);
+	nptr = list->head->next;
+	while (nptr != NULL)
+	{
+		printf("[ %p | %p ] -> ", nptr, nptr->content);
+		nptr = nptr->next;
+	}
+	printf("NULL\n");
 	return (SUCCESS);
 }

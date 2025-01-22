@@ -18,6 +18,8 @@ int	lstsize(t_list **lst)
 	t_list	*nptr;
 	int		size;
 
+	if (*lst == NULL)
+		return (0);
 	size = 1;
 	nptr = (*lst)->next;
 	while (nptr != NULL)

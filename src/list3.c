@@ -20,13 +20,15 @@ void	linked_list_launch_tests(t_lst_test *tests)
 	lstlast_test(list->head, SHORT);
 	addback_quick(list, (long *)tests->longs_ptrs[0], LONG);
 	addback_quick(list, (int *)tests->ints_ptrs[1], INT);
-	node = get_node(list, 0);
+	node = get_node(list, 6);
 	if (node != NULL)
 	{
 		printf("node = %p\n", node);
 		printf("node->content = %p\n", node->content);
-		lstclear_test(&node, del, tests);
+		lstclear_test(list, &node, del, tests);
 	}
+	printf("node = %p\n", node);
+	printf("list->head = %p\n", list->head);
 	print_list(list, 0);
 	lstsize_test(&list->head);
 	free_list_debug(list);

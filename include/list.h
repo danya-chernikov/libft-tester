@@ -9,6 +9,7 @@ void	process_arg(char *arg, void *cnt, t_cnt_type type);
 void	process_numeric_arg(char *arg, void *cnt, t_cnt_type type);
 void	process_non_numeric_arg(char *arg, void *cnt, t_cnt_type type);
 int		print_list(t_lst_d *list, int ntabs);
+int		print_list2(t_lst_d *list, int ntabs);
 
 /* list2.c */
 void	print_tabs(int n);
@@ -32,7 +33,8 @@ bool	cnt_was_freed(void *cnt, t_lst_test *tests);
 bool	node_was_freed(void *node, t_lst_test *tests);
 
 /* list5.c */
-void	detect_nodes_to_free(t_list **node, t_lst_test *tests);
+void	detect_nodes_to_free(t_lst_d *list, t_list **node, t_lst_test *tests);
+void	nullify_node_ptr(t_lst_d *list, t_list **node);
 
 /* list_alloc.c */
 int		alloc_lst_test_chars(t_lst_test *tests);
