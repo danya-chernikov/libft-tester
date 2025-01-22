@@ -20,11 +20,15 @@ void	linked_list_launch_tests(t_lst_test *tests)
 	lstlast_test(list->head, SHORT);
 	addback_quick(list, (long *)tests->longs_ptrs[0], LONG);
 	addback_quick(list, (int *)tests->ints_ptrs[1], INT);
-	node = get_node(list, 6);
-	printf("node = %p\n", node);
-	printf("node->content = %p\n", node->content);
-	lstclear_test(&node, del, tests);
-	//tests->ints_ptrs[1] = NULL;
+	node = get_node(list, 0);
+	if (node != NULL)
+	{
+		printf("node = %p\n", node);
+		printf("node->content = %p\n", node->content);
+		lstclear_test(&node, del, tests);
+	}
+	print_list(list, 0);
+	lstsize_test(&list->head);
 	free_list_debug(list);
 }
 
@@ -86,7 +90,7 @@ t_lst_d	*list_debug_init(void *cnt, t_cnt_type type)
 
 /* It inserts the `type` type at the beginning of the `types` array, which had
  * previously shifted all other elements to the right */
-void	addfront_test_type(t_cnt_type *types, int type_cnt, t_cnt_type type)
+void	insert_type_at_begin(t_cnt_type *types, int type_cnt, t_cnt_type type)
 {
 	int	i;
 

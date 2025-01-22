@@ -14,8 +14,11 @@ void	free_chars(t_lst_test *tests)
 	{
 		if (tests->chars_ptrs[i] != NULL)
 		{
-			free(tests->chars_ptrs[i]);
-			tests->chars_ptrs[i] = NULL;
+			if (!cnt_was_freed(tests->chars_ptrs[i], tests))
+			{
+				free(tests->chars_ptrs[i]);
+				tests->chars_ptrs[i] = NULL;
+			}
 		}
 		i++;
 	}
@@ -40,8 +43,11 @@ void	free_uchars(t_lst_test *tests)
 	{
 		if (tests->uchars_ptrs[i] != NULL)
 		{
-			free(tests->uchars_ptrs[i]);
-			tests->uchars_ptrs[i] = NULL;
+			if (!cnt_was_freed(tests->uchars_ptrs[i], tests))
+			{
+				free(tests->uchars_ptrs[i]);
+				tests->uchars_ptrs[i] = NULL;
+			}
 		}
 		i++;
 	}
@@ -66,8 +72,11 @@ void	free_shorts(t_lst_test *tests)
 	{
 		if (tests->shorts_ptrs[i] != NULL)
 		{
-			free(tests->shorts_ptrs[i]);
-			tests->shorts_ptrs[i] = NULL;
+			if (!cnt_was_freed(tests->shorts_ptrs[i], tests))
+			{
+				free(tests->shorts_ptrs[i]);
+				tests->shorts_ptrs[i] = NULL;
+			}
 		}
 		i++;
 	}
@@ -92,8 +101,11 @@ void	free_ushorts(t_lst_test *tests)
 	{
 		if (tests->ushorts_ptrs[i] != NULL)
 		{
-			free(tests->ushorts_ptrs[i]);
-			tests->ushorts_ptrs[i] = NULL;
+			if (!cnt_was_freed(tests->ushorts_ptrs[i], tests))
+			{
+				free(tests->ushorts_ptrs[i]);
+				tests->ushorts_ptrs[i] = NULL;
+			}
 		}
 		i++;
 	}
@@ -103,7 +115,6 @@ void	free_ushorts(t_lst_test *tests)
 		tests->shorts_ptrs = NULL;
 	}
 }
-
 
 void	free_ints(t_lst_test *tests)
 {

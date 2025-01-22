@@ -22,14 +22,17 @@ void	linked_list_launch_tests(t_lst_test *tests);
 int		create_list_tests(t_lst_test *tests);
 void	add_list_tests(t_lst_test *tests);
 t_lst_d	*list_debug_init(void *cnt, t_cnt_type type);
-void	addfront_test_type(t_cnt_type *types, int type_cnt, t_cnt_type type);
+void	insert_type_at_begin(t_cnt_type *types, int type_cnt, t_cnt_type type);
 
 /* list4.c */
 void	addfront_quick(t_lst_d *list, void *cnt, t_cnt_type type);
 void	addback_quick(t_lst_d *list, void *cnt, t_cnt_type type);
-t_list	*get_node(t_lst_d *list, int node_num);
+t_list	*get_node(t_lst_d *list, int node_ind);
 bool	cnt_was_freed(void *cnt, t_lst_test *tests);
 bool	node_was_freed(void *node, t_lst_test *tests);
+
+/* list5.c */
+void	detect_nodes_to_free(t_list **node, t_lst_test *tests);
 
 /* list_alloc.c */
 int		alloc_lst_test_chars(t_lst_test *tests);
@@ -101,7 +104,11 @@ void	free_ulls(t_lst_test *tests);
 void	free_floats(t_lst_test *tests);
 void	free_doubles(t_lst_test *tests);
 void	free_ldoubles(t_lst_test *tests);
-void	free_lst_test_strs(t_lst_test *tests);
+void	free_strings(t_lst_test *tests);
+void	free_strs(t_lst_test *tests);
+
+/* list_free5.c */
+void	free_strs_ptrs(t_lst_test *tests);
 void	free_voids(t_lst_test *tests);
 
 #endif

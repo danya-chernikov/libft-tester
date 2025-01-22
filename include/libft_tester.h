@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:42:27 by dchernik          #+#    #+#             */
-/*   Updated: 2025/01/20 19:39:23 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/01/22 15:55:41 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,6 @@ typedef enum list_cnt_type
 typedef struct lst_test
 {
 	int			nodes_num_to_free;
-	int			cnts_num_to_free;
 	void		*nodes_to_free[MAX_LST_NODES_NUM];
 	void		*cnts_to_free[MAX_LST_NODES_NUM];
 

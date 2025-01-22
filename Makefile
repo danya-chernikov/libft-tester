@@ -19,10 +19,10 @@ OBJS=common_tester.o alg.o print.o cprint.o alloc.o packer.o \
 	 putsmth_fd_aux.o putsmth_fd_regular.o \
 	 putsmth_fd_special.o putsmth_fd_write.o putsmth_fd_print.o \
 	 putsmth_fd_errors.o \
-	 list.o list2.o list3.o list4.o \
+	 list.o list2.o list3.o list4.o list5.o \
 	 list_alloc.o list_alloc2.o list_alloc3.o list_alloc4.o \
 	 list_alloc5.o list_alloc6.o list_alloc7.o \
-	 list_free.o list_free2.o list_free3.o list_free4.o \
+	 list_free.o list_free2.o list_free3.o list_free4.o list_free5.o \
 	 lstnew.o lstsize.o lstadd_front.o lstlast.o lstadd_back.o \
 	 lstdelone.o lstclear.o
 
@@ -228,6 +228,9 @@ list3.o : src/list3.c include/list.h include/putsmth_fd.h
 list4.o : src/list4.c include/list.h
 	$(CC) $(CFLAGS) -c src/list4.c
 
+list5.o : src/list5.c include/list.h
+	$(CC) $(CFLAGS) -c src/list5.c
+
 list_alloc.o : src/list_alloc.c include/list.h
 	$(CC) $(CFLAGS) -c src/list_alloc.c
 
@@ -260,6 +263,9 @@ list_free3.o : src/list_free3.c include/list.h
 
 list_free4.o : src/list_free4.c include/list.h
 	$(CC) $(CFLAGS) -c src/list_free4.c
+
+list_free5.o : src/list_free5.c include/list.h
+	$(CC) $(CFLAGS) -c src/list_free5.c
 
 lstnew.o : src/lstnew.c include/list.h include/libft_tester.h
 	$(CC) $(CFLAGS) -c src/lstnew.c

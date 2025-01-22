@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:51:25 by dchernik          #+#    #+#             */
-/*   Updated: 2025/01/17 18:14:21 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/01/22 16:37:11 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,11 +75,8 @@ void	test_linked_list(void)
 {
 	t_lst_test	tests;
 
-	printf("sizeof (t_lst_test) = %lu\n", sizeof (tests));
 	if (create_list_tests(&tests) == ERROR)
 		return ;
 	linked_list_launch_tests(&tests);
-	printf("before delete_all_lst_tests()\n");
 	delete_all_lst_tests(&tests);
-	printf("after delete_all_lst_tests()\n");
 }
