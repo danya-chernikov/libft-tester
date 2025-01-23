@@ -19,7 +19,8 @@ OBJS=common_tester.o alg.o print.o cprint.o alloc.o packer.o \
 	 putsmth_fd_aux.o putsmth_fd_regular.o \
 	 putsmth_fd_special.o putsmth_fd_write.o putsmth_fd_print.o \
 	 putsmth_fd_errors.o \
-	 list.o list2.o list3.o list4.o list5.o \
+	 list_aux.o list_aux2.o list_aux3.o list_aux4.o list_init.o \
+	 list_tests.o list_tests2.o \
 	 list_alloc.o list_alloc2.o list_alloc3.o list_alloc4.o \
 	 list_alloc5.o list_alloc6.o list_alloc7.o \
 	 list_free.o list_free2.o list_free3.o list_free4.o list_free5.o \
@@ -216,20 +217,23 @@ putsmth_fd_print.o : src/putsmth_fd_print.c include/putsmth_fd.h include/libft_t
 putsmth_fd_errors.o : src/putsmth_fd_errors.c include/putsmth_fd.h include/libft_tester.h
 	$(CC) $(CFLAGS) -c src/putsmth_fd_errors.c
 
-list.o : src/list.c include/list.h
-	$(CC) $(CFLAGS) -c src/list.c
+list_aux.o : src/list_aux.c include/list.h
+	$(CC) $(CFLAGS) -c src/list_aux.c
 
-list2.o : src/list2.c include/list.h
-	$(CC) $(CFLAGS) -c src/list2.c
+list_aux2.o : src/list_aux2.c include/list.h
+	$(CC) $(CFLAGS) -c src/list_aux2.c
 
-list3.o : src/list3.c include/list.h include/putsmth_fd.h
-	$(CC) $(CFLAGS) -c src/list3.c
+list_aux3.o : src/list_aux3.c include/list.h
+	$(CC) $(CFLAGS) -c src/list_aux3.c
 
-list4.o : src/list4.c include/list.h
-	$(CC) $(CFLAGS) -c src/list4.c
+list_aux4.o : src/list_aux4.c include/list.h
+	$(CC) $(CFLAGS) -c src/list_aux4.c
 
-list5.o : src/list5.c include/list.h
-	$(CC) $(CFLAGS) -c src/list5.c
+list_init.o : src/list_init.c include/list.h
+	$(CC) $(CFLAGS) -c src/list_init.c
+
+list_tests.o : src/list_tests.c include/list.h include/putsmth_fd.h
+	$(CC) $(CFLAGS) -c src/list_tests.c
 
 list_alloc.o : src/list_alloc.c include/list.h
 	$(CC) $(CFLAGS) -c src/list_alloc.c

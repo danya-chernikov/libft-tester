@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:51:25 by dchernik          #+#    #+#             */
-/*   Updated: 2025/01/22 16:37:11 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/01/23 17:31:02 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,8 @@ void	test_addit_funcs(void)
 	putnbr_fd_test();
 }
 
-/* It launches test of our
- * singly linked list
- * implementation */
+/* It launches test of our singly
+ * linked list implementation */
 void	test_linked_list(void)
 {
 	t_lst_test	tests;

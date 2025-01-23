@@ -1,33 +1,26 @@
 #include "../include/list.h"
 
-/* It prints n tabs consecutively */
-void	print_tabs(int n)
+/* It creates a new singly linked list, allocates
+ * memory for an array of all possible node content
+ * types, and initializes the list by adding the
+ * first node with content `cnt` of `type` type */
+t_lst_d	*list_debug_init(void *cnt, t_cnt_type type)
 {
-	int	i;
+	t_lst_d	*list;
 
-	i = 0;
-	while (i < n)
-	{
-		printf("\t");
-		i++;
-	}
-}
-
-int	lstsize(t_list **lst)
-{
-	t_list	*nptr;
-	int		size;
-
-	if (*lst == NULL)
-		return (0);
-	size = 1;
-	nptr = (*lst)->next;
-	while (nptr != NULL)
-	{
-		nptr = nptr->next;
-		size++;
-	}
-	return (size);
+	list = (t_lst_d *)malloc(1 * sizeof (t_lst_d));
+	if (list == NULL)
+		return (NULL);
+	list->type_cnt = 0;
+	list->types = (t_cnt_type *)malloc(MAX_LST_NODES_NUM * sizeof (t_cnt_type));
+	if (list->types == NULL)
+		return (NULL);
+	list->types[list->type_cnt] = type;
+	list->head = lstnew_test(cnt, type);
+	list->type_cnt++;
+	print_list(list, 0);
+	lstsize_test(&list->head);
+	return (list);
 }
 
 void	init_list_tests(t_lst_test *tests)

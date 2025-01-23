@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:42:27 by dchernik          #+#    #+#             */
-/*   Updated: 2025/01/22 19:17:24 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/01/23 18:43:34 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,24 +23,36 @@
 # include <stdint.h>
 # include <stdbool.h>
 
-/*
- * MEM_ERR_BUF        - The size of a buffer in which we put the text
- *						to indicate an error during memory allocation
- *						when launching the `alloc_mem()` function in
- *						the `pus_smth_fd.c` file;
- * MEM_ERR            - The common message indicating an error in memory
- *						allocation (used in `ft_split.c`);
- * ERR_FUNC		      - The name of a function where the error occurred;
- * FILE_READ_BUF_SIZE - The size of the buffer used by the `read()` system
- *						call (used in `put_smth_fd.c`);
- * TEMP_FILE_NAME     - The name of the temporary file created when testing
- *						the `put_smth_fd()` family of functions;
- * PUTCHAR_FORMAT	  - The format string used to print the test result of
- *						the `putchar_fd()` function (used in the
- *						`print_special_test_result()`);
- * MAX_CNT_STR_LEN    - The maximum length of a string representing the
- *						content of a node of a singly linked list;
- * LSTDATA_TYPES_NUM  - The capacity of the `list_cnt_type` enum */
+/* MEM_ERR_BUF          - The size of a buffer in which we put the text
+ *						  to indicate an error during memory allocation
+ *						  when launching the `alloc_mem()` function in
+ *						  the `pus_smth_fd.c` file;
+ *
+ * MEM_ERR              - The common message indicating an error in memory
+ *						  allocation (used in `ft_split.c`);
+ *
+ * ERR_FUNC		        - The name of a function where the error occurred;
+ *
+ * FILE_READ_BUF_SIZE   - The size of the buffer used by the `read()` system
+ *						  call (used in `put_smth_fd.c`);
+ *						
+ * TEMP_FILE_NAME       - The name of the temporary file created when testing
+ *						  the `put_smth_fd()` family of functions;
+ *
+ * PUTCHAR_FORMAT	    - The format string used to print the test result of
+ *						  the `putchar_fd()` function (used in the
+ *						  `print_special_test_result()`);
+ *
+ * MAX_CNT_STR_LEN      - The maximum length of a string representing the
+ *						  content of a node of a singly linked list;
+ *
+ * LSTDATA_TYPES_NUM    - The capacity of the `list_cnt_type` enum;
+ *
+ * MAX_LST_ATTEMPTS_NUM - The maximum number of attempts a user can make
+ *						  to enter a valid command when they are asked
+ *						  about what kind of testing of the linked list
+ *						  they would prefer */
+
 # define ERROR						0
 # define SUCCESS					1
 # define STDIN						0
@@ -62,6 +74,9 @@
 # define MAX_TEST_STR_LEN			256
 # define MAX_CNT_STR_LEN			1024
 # define MAX_LST_NODES_NUM			4096
+# define MAX_LST_ATTEMPTS_NUM		8
+# define MAX_CMD_BUF_LEN			4096
+
 # define TEMP_FILE_NAME				"text.txt"
 # define TOO_MANY_TESTS_ERR_MSG		"too many tests"
 # define PUTSMTH_MEM_ERR_STRS		"unable to allocate mem for an arr of strs"
@@ -76,6 +91,14 @@
 # define PUTSTR_FORMAT				"(\"%s\", fd): \"%s\"\n"
 # define PUTENDL_FORMAT				"(\"%s\", fd): \"%s\"\n"
 # define PUTNBR_FORMAT				"(%d, fd): \"%s\"\n"
+# define CMD_MAN					"man"
+# define CMD_NEW					"new"
+# define CMD_ADDFRONT				"addfront"
+# define CMD_SIZE					"size"
+# define CMD_LAST					"last"
+# define CMD_ADDBACK				"addback"
+# define CMD_CLEAR					"clear"
+# define CMD_QUIT					"quit"
 
 /* Each testing function has its unique identifier (ID).
  * This ID is passed to the ps_test_helper() function so

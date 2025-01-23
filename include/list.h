@@ -3,38 +3,46 @@
 
 # include "libft_tester.h"
 
-/* list.c */
+/* list_aux.c */
+int		print_list(t_lst_d *list, int ntabs);
+void	print_tabs(int n);
+int		lstsize(t_list **lst);
+void	lst_ask_user(char *choice);
+void	insert_type_at_begin(t_cnt_type *types, int type_cnt, t_cnt_type type);
+
+/* list_aux2.c */
+void	addfront_quick(t_lst_d *list, void *cnt, t_cnt_type type, bool debug);
+void	addback_quick(t_lst_d *list, void *cnt, t_cnt_type type, bool debug);
+void	detect_nodes_to_free(t_lst_d *list, t_list **node, t_lst_test *tests);
+void	nullify_node_ptr(t_lst_d *list, t_list **node);
+t_list	*get_node(t_lst_d *list, int node_ind);
+
+/* list_aux3.c */
+bool	cnt_was_freed(void *cnt, t_lst_test *tests);
+bool	node_was_freed(void *node, t_lst_test *tests);
+void	get_line(char *str);
+
+/* list_aux4.c */
 char	*create_format_str(void *cnt, t_cnt_type type);
 void	process_arg(char *arg, void *cnt, t_cnt_type type);
 void	process_numeric_arg(char *arg, void *cnt, t_cnt_type type);
 void	process_non_numeric_arg(char *arg, void *cnt, t_cnt_type type);
-int		print_list(t_lst_d *list, int ntabs);
-int		print_list2(t_lst_d *list, int ntabs);
 
-/* list2.c */
-void	print_tabs(int n);
-int		lstsize(t_list **lst);
+/* list_init.c */
+t_lst_d	*list_debug_init(void *cnt, t_cnt_type type);
 void	init_list_tests(t_lst_test *tests);
 void	init_static_list_tests(t_lst_test *tests);
 void	init_heap_list_tests(t_lst_test *tests);
 
-/* list3.c */
+/* list_tests.c */
 void	linked_list_launch_tests(t_lst_test *tests);
+void	linked_list_launch_static_testing(t_lst_test *tests);
+void	linked_list_launch_dynamic_testing(t_lst_test *tests);
 int		create_list_tests(t_lst_test *tests);
 void	add_list_tests(t_lst_test *tests);
-t_lst_d	*list_debug_init(void *cnt, t_cnt_type type);
-void	insert_type_at_begin(t_cnt_type *types, int type_cnt, t_cnt_type type);
 
-/* list4.c */
-void	addfront_quick(t_lst_d *list, void *cnt, t_cnt_type type);
-void	addback_quick(t_lst_d *list, void *cnt, t_cnt_type type);
-t_list	*get_node(t_lst_d *list, int node_ind);
-bool	cnt_was_freed(void *cnt, t_lst_test *tests);
-bool	node_was_freed(void *node, t_lst_test *tests);
-
-/* list5.c */
-void	detect_nodes_to_free(t_lst_d *list, t_list **node, t_lst_test *tests);
-void	nullify_node_ptr(t_lst_d *list, t_list **node);
+/* list_tests2.c */
+void	lst_print_man(void);
 
 /* list_alloc.c */
 int		alloc_lst_test_chars(t_lst_test *tests);
