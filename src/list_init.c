@@ -25,6 +25,14 @@ t_lst_d	*list_debug_init(void *cnt, t_cnt_type type)
 
 void	init_list_tests(t_lst_test *tests)
 {
+	int	i;
+
+	i = 0;
+	while (i < LST_DATA_TYPES_NUM * 2)
+	{
+		tests->counters[i] = 0;
+		i++;
+	}
 	tests->nodes_num_to_free = 0;
 	init_static_list_tests(tests);
 	init_heap_list_tests(tests);

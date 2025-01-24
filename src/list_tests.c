@@ -12,13 +12,13 @@ void	linked_list_launch_tests(t_lst_test *tests)
 	attempts_cnt = 0;
 	while (attempts_cnt < MAX_LST_ATTEMPTS_NUM)
 	{
-		if (choice[0] == 'S')
+		lst_ask_user(&choice);
+		if (choice == 'S')
 		{
-			lst_ask_user(&choice);
 			linked_list_launch_static_testing(tests);
 			break ;
 		}
-		else if (choice[0] == 'D')
+		else if (choice == 'D')
 		{
 			linked_list_launch_dynamic_testing(tests);
 			break ;
@@ -62,56 +62,162 @@ void	linked_list_launch_static_testing(t_lst_test *tests)
 /* It performs  */
 void	linked_list_launch_dynamic_testing(t_lst_test *tests)
 {
-	char	cmd[MAX_CMD_BUF_LEN];
+	char	input_buf[MAX_USER_INPUT_BUF_LEN];
+	char	cmd_type[MAX_CMD_TYPE_LEN];
+	char	arg_type[MAX_CMD_ARG_TYPE_LEN];
+	char	arg[MAX_CMD_ARG_LEN];
+
 	int		attempts_cnt;
 	t_lst_d	*list;
-	//t_list	*node;
+	t_list	*node;
 
 	attempts_cnt = 0;
 	while (attempts_cnt < MAX_LST_ATTEMPTS_NUM)
 	{
 		printf("Enter command ('man' for help): ");
-		get_line(cmd);
-		if (strcmp(cmd, CMD_MAN))
-		{
-			lst_print_man();
-		}
-		else if (strcmp(cmd, CMD_NEW))
-		{
-			printf("new\n");
-			list = list_debug_init((char *)tests->strs_ptrs[0], STRING);
-			if (list == NULL)
-				return ;
-		}
-		else if (strcmp(cmd, CMD_ADDFRONT))
-		{
-			printf("addfront\n");
-		}
-		else if (strcmp(cmd, CMD_SIZE))
-		{
-			printf("size\n");
-		}
-		else if (strcmp(cmd, CMD_LAST))
-		{
-			printf("last\n");
-		}
-		else if (strcmp(cmd, CMD_ADDBACK))
-		{
-			printf("addback\n");
-		}
-		else if (strcmp(cmd, CMD_CLEAR))
-		{
-			printf("clear\n");
-		}
-		else if (strcmp(cmd, CMD_QUIT))
-		{
-			printf("quit\n");
-			break ;
-		}
-		else
+		get_line(input_buf);
+		if (parse_user_input(input_buf, cmd_type, arg_type, arg) == ERROR)
 		{
 			printf("You entered an incorrect command. Please try again.\n");
 			attempts_cnt++;
+			continue ;
+		}
+		if (strcmp(cmd_type, CMD_MAN) == 0)
+		{
+			lst_print_man();
+		}
+		else if (strcmp(cmd_type, CMD_NEW) == 0)
+		{
+			printf("new\n");
+			printf("\tinput_buf = \"%s\"\n", input_buf);
+			printf("\tcmd_type = \"%s\"\n", cmd_type);
+			printf("\targ_type = \"%s\"\n", arg_type);
+			printf("\targ = \"%s\"\n", arg);
+
+			t_cnt_type	data_type;
+
+			data_type = determine_data_type(arg_type);
+			if (data_type == CHAR)
+			{
+				int	pos = counters[(int)CHAR];
+
+				if (strlen(arg) > 1)
+				{
+					printf("The passed argument is not a char\n");
+					break ;
+				}
+				tests->chars_ptrs[pos] = alloc_char(arg[0]);
+				list = list_debug_init((char *)tests->chars_ptrs[pos], data_type);
+				if (list == NULL)
+					return ;
+				counters[(int)CHAR]++;
+			}
+			if (data_type == U_CHAR)
+			{
+
+			}
+			if (data_type == SHORT)
+			{
+
+			}
+			if (data_type == U_SHORT)
+			{
+
+			}
+			if (data_type == INT)
+			{
+
+			}
+			if (data_type == U_INT)
+			{
+
+			}
+			if (data_type == LONG)
+			{
+
+			}
+			if (data_type == U_LONG)
+			{
+
+			}
+			if (data_type == LONG_LONG)
+			{
+
+			}
+			if (data_type == U_LONG_LONG)
+			{
+
+			}
+			if (data_type == FLOAT)
+			{
+
+			}
+			if (data_type == DOUBLE)
+			{
+
+			}
+			if (data_type == LONG_DOUBLE)
+			{
+
+			}
+			if (data_type == STRING)
+			{
+
+			}
+			if (data_type == INVALID_TYPE)
+			{
+				printf("You entered an invalid argument\n");
+				break ;
+			}
+		}
+		else if (strcmp(cmd_type, CMD_ADDFRONT) == 0)
+		{
+			printf("addfront\n");
+			printf("\tinput_buf = \"%s\"\n", input_buf);
+			printf("\tcmd_type = \"%s\"\n", cmd_type);
+			printf("\targ_type = \"%s\"\n", arg_type);
+			printf("\targ = \"%s\"\n", arg);
+		}
+		else if (strcmp(cmd_type, CMD_SIZE) == 0)
+		{
+			printf("size\n");
+			printf("\tinput_buf = \"%s\"\n", input_buf);
+			printf("\tcmd_type = \"%s\"\n", cmd_type);
+			printf("\targ_type = \"%s\"\n", arg_type);
+			printf("\targ = \"%s\"\n", arg);
+		}
+		else if (strcmp(cmd_type, CMD_LAST) == 0)
+		{
+			printf("last\n");
+			printf("\tinput_buf = \"%s\"\n", input_buf);
+			printf("\tcmd_type = \"%s\"\n", cmd_type);
+			printf("\targ_type = \"%s\"\n", arg_type);
+			printf("\targ = \"%s\"\n", arg);
+		}
+		else if (strcmp(cmd_type, CMD_ADDBACK) == 0)
+		{
+			printf("addback\n");
+			printf("\tinput_buf = \"%s\"\n", input_buf);
+			printf("\tcmd_type = \"%s\"\n", cmd_type);
+			printf("\targ_type = \"%s\"\n", arg_type);
+			printf("\targ = \"%s\"\n", arg);
+		}
+		else if (strcmp(cmd_type, CMD_CLEAR) == 0)
+		{
+			printf("clear\n");
+			printf("\tinput_buf = \"%s\"\n", input_buf);
+			printf("\tcmd_type = \"%s\"\n", cmd_type);
+			printf("\targ_type = \"%s\"\n", arg_type);
+			printf("\targ = \"%s\"\n", arg);
+		}
+		else if (strcmp(cmd_type, CMD_QUIT) == 0)
+		{
+			printf("quit\n");
+			printf("\tinput_buf = \"%s\"\n", input_buf);
+			printf("\tcmd_type = \"%s\"\n", cmd_type);
+			printf("\targ_type = \"%s\"\n", arg_type);
+			printf("\targ = \"%s\"\n", arg);
+			break ;
 		}
 	}
 	if (list != NULL)

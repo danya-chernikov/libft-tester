@@ -1,7 +1,5 @@
 #include "../include/list.h"
 
-
-
 void	lst_print_man(void)
 {
 	printf("Usage: {command} [contenttype] [content]\n");

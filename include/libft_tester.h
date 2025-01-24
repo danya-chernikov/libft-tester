@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:42:27 by dchernik          #+#    #+#             */
-/*   Updated: 2025/01/23 18:43:34 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/01/24 19:56:56 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@
  * MAX_LST_ATTEMPTS_NUM - The maximum number of attempts a user can make
  *						  to enter a valid command when they are asked
  *						  about what kind of testing of the linked list
- *						  they would prefer */
+ *						  they would prefer;
+ * AT_CHAR				- Represents the `CHAR` argument type */
 
 # define ERROR						0
 # define SUCCESS					1
@@ -59,7 +60,7 @@
 # define STDOUT						1
 # define STDERR						2
 # define NO_STD_STREAM				0
-# define LST_DATA_TYPES_NUM			15
+
 # define MAX_FUNC_NAME_LEN			128
 # define MAX_FORMAT_STR_LEN			1024
 # define MAX_STRNCMP_STR_LEN		128
@@ -68,29 +69,39 @@
 # define MAX_STRDUP_STR_LEN			256
 # define MAX_SUBSTR_STR_LEN			128
 # define MAX_SPLIT_STR_LEN			256
-# define FILE_READ_BUF_SIZE			256
 # define MAX_ERR_BUF_SIZE			256
 # define MAX_TESTS_NUM				128
 # define MAX_TEST_STR_LEN			256
 # define MAX_CNT_STR_LEN			1024
+
 # define MAX_LST_NODES_NUM			4096
 # define MAX_LST_ATTEMPTS_NUM		8
-# define MAX_CMD_BUF_LEN			4096
+# define MAX_USER_INPUT_BUF_LEN		8192
+# define MAX_CMD_TYPE_LEN			16
+# define MAX_CMD_ARG_TYPE_LEN		16
+# define MAX_CMD_ARG_LEN			4096
+
+# define FILE_READ_BUF_SIZE			256
+# define LST_DATA_TYPES_NUM			15
 
 # define TEMP_FILE_NAME				"text.txt"
-# define TOO_MANY_TESTS_ERR_MSG		"too many tests"
-# define PUTSMTH_MEM_ERR_STRS		"unable to allocate mem for an arr of strs"
-# define MEM_ERR_BUF_MSG			"unable to allocate mem for the error buf"
-# define MEM_ERR_FILE_READ_BUF_MSG	"unable to allocate mem for the file buf"
-# define MEM_ERR_MSG				"unable to allocate memory"
-# define FILE_CREAT_ERR_MSG			"error creating file"
-# define FILE_OPEN_ERR_MSG			"error opening file"
-# define FILE_DEL_ERR_MSG			"unable delete file"
-# define FILE_READ_ERR_MSG			"error reading from the file"
+# define TOO_MANY_TESTS_ERR_MSG		"Too many tests"
+
+# define PUTSMTH_MEM_ERR_STRS		"Unable to allocate mem for an arr of strs"
+# define MEM_ERR_BUF_MSG			"Unable to allocate mem for the error buf"
+# define MEM_ERR_FILE_READ_BUF_MSG	"Unable to allocate mem for the file buf"
+# define MEM_ERR_MSG				"Unable to allocate memory"
+
+# define FILE_CREAT_ERR_MSG			"Error creating file"
+# define FILE_OPEN_ERR_MSG			"Error opening file"
+# define FILE_DEL_ERR_MSG			"Enable delete file"
+# define FILE_READ_ERR_MSG			"Error reading from the file"
+
 # define PUTCHAR_FORMAT				"('%c', fd): \"%s\"\n"
 # define PUTSTR_FORMAT				"(\"%s\", fd): \"%s\"\n"
 # define PUTENDL_FORMAT				"(\"%s\", fd): \"%s\"\n"
 # define PUTNBR_FORMAT				"(%d, fd): \"%s\"\n"
+
 # define CMD_MAN					"man"
 # define CMD_NEW					"new"
 # define CMD_ADDFRONT				"addfront"
@@ -100,16 +111,20 @@
 # define CMD_CLEAR					"clear"
 # define CMD_QUIT					"quit"
 
-/* Each testing function has its unique identifier (ID).
- * This ID is passed to the ps_test_helper() function so
- * that it knows which function should be tested. */
-typedef enum func_id
-{
-	PUTCHAR_FD_ID,
-	PUTSTR_FD_ID,
-	PUTENDL_FD_ID,
-	PUTNBR_FD_ID
-}	t_func_id;
+# define AT_CHAR					"CHAR"
+# define AT_UCHAR					"U_CHAR"
+# define AT_SHORT					"SHORT"
+# define AT_USHORT					"U_SHORT"
+# define AT_INT						"INT"
+# define AT_UINT					"U_INT"
+# define AT_LONG					"LONG"
+# define AT_ULONG					"U_LONG"
+# define AT_LONGLONG				"LONG_LONG"
+# define AT_ULONGLONG				"U_LONG_LONG"
+# define AT_FLOAT					"FLOAT"
+# define AT_DOUBLE					"DOUBLE"
+# define AT_LONGDOUBLE				"LONG_DOUBLE"
+# define AT_STRING					"STRING"
 
 /* The type of a list's content */
 typedef enum list_cnt_type
@@ -128,7 +143,8 @@ typedef enum list_cnt_type
 	DOUBLE,
 	LONG_DOUBLE,
 	STRING,
-	VOID
+	VOID,
+	INVALID_TYPE
 }	t_cnt_type;
 
 /* This structure is designed to
@@ -150,6 +166,7 @@ typedef struct lst_test
 	int			nodes_num_to_free;
 	void		*nodes_to_free[MAX_LST_NODES_NUM];
 	void		*cnts_to_free[MAX_LST_NODES_NUM];
+	int			counters[LST_DATA_TYPES_NUM * 2];
 
 	char		*chars;
 	u_char		*uchars;
@@ -275,6 +292,17 @@ typedef struct ps_tests
 		int	fd[MAX_TESTS_NUM + 1];
 	}	second;
 }	t_ps_tests;
+
+/* Each testing function has its unique identifier (ID).
+ * This ID is passed to the ps_test_helper() function so
+ * that it knows which function should be tested. */
+typedef enum func_id
+{
+	PUTCHAR_FD_ID,
+	PUTSTR_FD_ID,
+	PUTENDL_FD_ID,
+	PUTNBR_FD_ID
+}	t_func_id;
 
 void	launch_tester(void);
 void	test_glibc_funcs(void);

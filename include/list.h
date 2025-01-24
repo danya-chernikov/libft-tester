@@ -21,12 +21,18 @@ t_list	*get_node(t_lst_d *list, int node_ind);
 bool	cnt_was_freed(void *cnt, t_lst_test *tests);
 bool	node_was_freed(void *node, t_lst_test *tests);
 void	get_line(char *str);
+int		parse_user_input(char *buf, char *cmd_type, char *arg_type, char *arg);
 
 /* list_aux4.c */
 char	*create_format_str(void *cnt, t_cnt_type type);
 void	process_arg(char *arg, void *cnt, t_cnt_type type);
 void	process_numeric_arg(char *arg, void *cnt, t_cnt_type type);
 void	process_non_numeric_arg(char *arg, void *cnt, t_cnt_type type);
+
+/* list_aux5.c */
+t_cnt_type	determine_data_type(char *type);
+t_cnt_type	determine_numeric_data_types(char *type);
+t_cnt_type	determine_non_numeric_data_types(char *type);
 
 /* list_init.c */
 t_lst_d	*list_debug_init(void *cnt, t_cnt_type type);
