@@ -34,11 +34,11 @@ void	init_list_tests(t_lst_test *tests)
 		i++;
 	}
 	tests->nodes_num_to_free = 0;
-	init_static_list_tests(tests);
-	init_heap_list_tests(tests);
+	nullify_static_list_tests(tests);
+	nullify_heap_list_tests(tests);
 }
 
-void	init_static_list_tests(t_lst_test *tests)
+void	nullify_static_list_tests(t_lst_test *tests)
 {
 	tests->chars = NULL;
 	tests->uchars = NULL;
@@ -57,7 +57,7 @@ void	init_static_list_tests(t_lst_test *tests)
 	tests->voids = NULL;
 }
 
-void	init_heap_list_tests(t_lst_test *tests)
+void	nullify_heap_list_tests(t_lst_test *tests)
 {
 	tests->chars_ptrs = NULL;
 	tests->uchars_ptrs = NULL;

@@ -1,6 +1,6 @@
 #include "../include/list.h"
 
-void	delete_all_lst_tests(t_lst_test *tests)
+void	release_all_lst_tests(t_lst_test *tests)
 {
 	free_numeric_lst_tests(tests);
 	free_non_numeric_lst_tests(tests);

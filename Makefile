@@ -19,8 +19,9 @@ OBJS=common_tester.o alg.o print.o cprint.o alloc.o packer.o \
 	 putsmth_fd_aux.o putsmth_fd_regular.o \
 	 putsmth_fd_special.o putsmth_fd_write.o putsmth_fd_print.o \
 	 putsmth_fd_errors.o \
-	 list_aux.o list_aux2.o list_aux3.o list_aux4.o list_init.o \
-	 list_tests.o list_tests2.o \
+	 list_aux.o list_aux2.o list_aux3.o list_aux4.o list_aux5.o \
+	 list_init.o list_tests.o list_tests2.o list_cmd_processor.o \
+	 list_cmd_new.o list_cmd_new2.o list_cmd_new3.o \
 	 list_alloc.o list_alloc2.o list_alloc3.o list_alloc4.o \
 	 list_alloc5.o list_alloc6.o list_alloc7.o \
 	 list_free.o list_free2.o list_free3.o list_free4.o list_free5.o \
@@ -42,6 +43,7 @@ fclean : clean
 
 re : fclean all
 
+
 # Let's compile the original strlcpy() from FreeBSD
 bsd_strlcpy.o : libbsd/bsd_strlcpy.c libbsd/bsd_string.h
 	$(CC) $(CFLAGS) -c libbsd/bsd_strlcpy.c
@@ -53,6 +55,7 @@ bsd_strlcat.o : libbsd/bsd_strlcat.c libbsd/bsd_string.h
 # Let's compile the original strnstr() from FreeBSD
 bsd_strnstr.o : libbsd/bsd_strnstr.c libbsd/bsd_string.h
 	$(CC) $(CFLAGS) -c libbsd/bsd_strnstr.c
+
 
 # Let's compile common tester library
 common_tester.o : common_tester/common_tester.c common_tester/common_tester.h
@@ -71,6 +74,7 @@ alloc.o : common_tester/alloc.c common_tester/common_tester.h
 
 packer.o : common_tester/packer.c common_tester/common_tester.h
 	$(CC) $(CFLAGS) -c common_tester/packer.c
+
 
 # Let's compile all the sources of libft_tester library
 libft_tester.o : src/libft_tester.c include/libft_tester.h
@@ -217,6 +221,7 @@ putsmth_fd_print.o : src/putsmth_fd_print.c include/putsmth_fd.h include/libft_t
 putsmth_fd_errors.o : src/putsmth_fd_errors.c include/putsmth_fd.h include/libft_tester.h
 	$(CC) $(CFLAGS) -c src/putsmth_fd_errors.c
 
+
 list_aux.o : src/list_aux.c include/list.h
 	$(CC) $(CFLAGS) -c src/list_aux.c
 
@@ -229,11 +234,35 @@ list_aux3.o : src/list_aux3.c include/list.h
 list_aux4.o : src/list_aux4.c include/list.h
 	$(CC) $(CFLAGS) -c src/list_aux4.c
 
+list_aux5.o : src/list_aux5.c include/list.h
+	$(CC) $(CFLAGS) -c src/list_aux5.c
+
 list_init.o : src/list_init.c include/list.h
 	$(CC) $(CFLAGS) -c src/list_init.c
 
 list_tests.o : src/list_tests.c include/list.h include/putsmth_fd.h
 	$(CC) $(CFLAGS) -c src/list_tests.c
+
+list_tests2.o : src/list_tests2.c include/list.h
+	$(CC) $(CFLAGS) -c src/list_tests2.c
+
+list_cmd_new.o : src/list_cmd_new.c include/list.h
+	$(CC) $(CFLAGS) -c src/list_cmd_new.c
+
+list_cmd_new2.o : src/list_cmd_new2.c include/list.h
+	$(CC) $(CFLAGS) -c src/list_cmd_new2.c
+
+list_cmd_new3.o : src/list_cmd_new3.c include/list.h
+	$(CC) $(CFLAGS) -c src/list_cmd_new3.c
+
+list_cmd_processor.o : src/list_cmd_processor.c include/list.h
+	$(CC) $(CFLAGS) -c src/list_cmd_processor.c
+
+list_cmd_processor2.o : src/list_cmd_processor2.c include/list.h
+	$(CC) $(CFLAGS) -c src/list_cmd_processor2.c
+
+list_cmd_processor3.o : src/list_cmd_processor3.c include/list.h
+	$(CC) $(CFLAGS) -c src/list_cmd_processor3.c
 
 list_alloc.o : src/list_alloc.c include/list.h
 	$(CC) $(CFLAGS) -c src/list_alloc.c
@@ -256,6 +285,7 @@ list_alloc6.o : src/list_alloc6.c include/list.h
 list_alloc7.o : src/list_alloc7.c include/list.h
 	$(CC) $(CFLAGS) -c src/list_alloc7.c
 
+
 list_free.o : src/list_free.c include/list.h
 	$(CC) $(CFLAGS) -c src/list_free.c
 
@@ -270,6 +300,7 @@ list_free4.o : src/list_free4.c include/list.h
 
 list_free5.o : src/list_free5.c include/list.h
 	$(CC) $(CFLAGS) -c src/list_free5.c
+
 
 lstnew.o : src/lstnew.c include/list.h include/libft_tester.h
 	$(CC) $(CFLAGS) -c src/lstnew.c

@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:42:27 by dchernik          #+#    #+#             */
-/*   Updated: 2025/01/24 19:56:56 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/01/25 15:34:14 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,16 +73,7 @@
 # define MAX_TESTS_NUM				128
 # define MAX_TEST_STR_LEN			256
 # define MAX_CNT_STR_LEN			1024
-
-# define MAX_LST_NODES_NUM			4096
-# define MAX_LST_ATTEMPTS_NUM		8
-# define MAX_USER_INPUT_BUF_LEN		8192
-# define MAX_CMD_TYPE_LEN			16
-# define MAX_CMD_ARG_TYPE_LEN		16
-# define MAX_CMD_ARG_LEN			4096
-
 # define FILE_READ_BUF_SIZE			256
-# define LST_DATA_TYPES_NUM			15
 
 # define TEMP_FILE_NAME				"text.txt"
 # define TOO_MANY_TESTS_ERR_MSG		"Too many tests"
@@ -102,114 +93,6 @@
 # define PUTENDL_FORMAT				"(\"%s\", fd): \"%s\"\n"
 # define PUTNBR_FORMAT				"(%d, fd): \"%s\"\n"
 
-# define CMD_MAN					"man"
-# define CMD_NEW					"new"
-# define CMD_ADDFRONT				"addfront"
-# define CMD_SIZE					"size"
-# define CMD_LAST					"last"
-# define CMD_ADDBACK				"addback"
-# define CMD_CLEAR					"clear"
-# define CMD_QUIT					"quit"
-
-# define AT_CHAR					"CHAR"
-# define AT_UCHAR					"U_CHAR"
-# define AT_SHORT					"SHORT"
-# define AT_USHORT					"U_SHORT"
-# define AT_INT						"INT"
-# define AT_UINT					"U_INT"
-# define AT_LONG					"LONG"
-# define AT_ULONG					"U_LONG"
-# define AT_LONGLONG				"LONG_LONG"
-# define AT_ULONGLONG				"U_LONG_LONG"
-# define AT_FLOAT					"FLOAT"
-# define AT_DOUBLE					"DOUBLE"
-# define AT_LONGDOUBLE				"LONG_DOUBLE"
-# define AT_STRING					"STRING"
-
-/* The type of a list's content */
-typedef enum list_cnt_type
-{
-	CHAR,
-	U_CHAR,
-	SHORT,
-	U_SHORT,
-	INT,
-	U_INT,
-	LONG,
-	U_LONG,
-	LONG_LONG,
-	U_LONG_LONG,
-	FLOAT,
-	DOUBLE,
-	LONG_DOUBLE,
-	STRING,
-	VOID,
-	INVALID_TYPE
-}	t_cnt_type;
-
-/* This structure is designed to
- * store data used by the testing
- * component of a singly linked list.
- * Single pointers represent arrays
- * that store static (real) values
- * entered by the user via the
- * add_list_tests() function. Double
- * pointers represent arrays that
- * store other pointers, requiring
- * the user to allocate dynamic memory
- * before using them. The difference
- * between strs and strs_ptrs is that
- * the cells in the latter are filled
- * with NULL pointers*/
-typedef struct lst_test
-{
-	int			nodes_num_to_free;
-	void		*nodes_to_free[MAX_LST_NODES_NUM];
-	void		*cnts_to_free[MAX_LST_NODES_NUM];
-	int			counters[LST_DATA_TYPES_NUM * 2];
-
-	char		*chars;
-	u_char		*uchars;
-	short		*shorts;
-	u_short		*ushorts;
-	int			*ints;
-	u_int		*uints;
-	long		*longs;
-	t_ul		*ulongs;
-	long long	*lls;
-	t_ull		*ulls;
-	float		*floats;
-	double		*doubles;
-	t_ld		*ldoubles;
-	char		**strs;
-	void		*voids;
-	char		**chars_ptrs;
-	u_char		**uchars_ptrs;
-	short		**shorts_ptrs;
-	u_short		**ushorts_ptrs;
-	int			**ints_ptrs;
-	u_int		**uints_ptrs;
-	long		**longs_ptrs;
-	t_ul		**ulongs_ptrs;
-	long long	**lls_ptrs;
-	t_ull		**ulls_ptrs;
-	float		**floats_ptrs;
-	double		**dbls_ptrs;
-	t_ld		**ldbls_ptrs;
-	char		**strs_ptrs;
-	void		**voids_ptrs;
-} t_lst_test;
-
-/* It represents a singly
- * linked list in a more
- * convenient format for
- * working with and debugging */
-typedef struct list_debug
-{
-	t_cnt_type	*types;
-	t_list		*head;
-	int			type_cnt;
-}	t_lst_d;
 
 /* This structure defines all the tests to be performed on
  * the function being tested.

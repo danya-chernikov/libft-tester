@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:42:05 by dchernik          #+#    #+#             */
-/*   Updated: 2025/01/15 14:43:30 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/01/25 18:57:23 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@
 # define MAGENTA			"\033[35m"
 # define CYAN				"\033[36m"
 # define WHITE				"\033[37m"
+
 # define GL_COLOR_FLAG		1
 # define MAX_ERR_BUF_SIZE	256
 # define TEST_HD_FT_LEN		50

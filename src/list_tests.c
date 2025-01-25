@@ -4,7 +4,7 @@
  * the `form_common_err_msg()` function */
 
 /* This is the main function that launches all the tests */
-void	linked_list_launch_tests(t_lst_test *tests)
+void	linked_list_choose_testing_type(t_lst_test *tests)
 {
 	int		attempts_cnt;
 	char	choice;
@@ -15,6 +15,7 @@ void	linked_list_launch_tests(t_lst_test *tests)
 		lst_ask_user(&choice);
 		if (choice == 'S')
 		{
+			add_static_list_tests(tests);
 			linked_list_launch_static_testing(tests);
 			break ;
 		}
@@ -59,194 +60,122 @@ void	linked_list_launch_static_testing(t_lst_test *tests)
 	free_list_debug(list);
 }
 
-/* It performs  */
+/* It performs dynamic testing of singly linked lists. It means
+ * the user will have ability to construct thier own list using
+ * predefined command set, entering each command in the loop
+ * manually */
 void	linked_list_launch_dynamic_testing(t_lst_test *tests)
 {
-	char	input_buf[MAX_USER_INPUT_BUF_LEN];
-	char	cmd_type[MAX_CMD_TYPE_LEN];
-	char	arg_type[MAX_CMD_ARG_TYPE_LEN];
-	char	arg[MAX_CMD_ARG_LEN];
+	char		input_buf[MAX_USER_INPUT_BUF_LEN];
+	char		cmd_type[MAX_CMD_TYPE_LEN];
+	char		arg_type[MAX_CMD_ARG_TYPE_LEN];
+	char		arg[MAX_CMD_ARG_LEN];
+	t_lst_d		*list;
+	t_list		*node;
 
-	int		attempts_cnt;
-	t_lst_d	*list;
-	t_list	*node;
-
-	attempts_cnt = 0;
-	while (attempts_cnt < MAX_LST_ATTEMPTS_NUM)
+	while (true)
 	{
 		printf("Enter command ('man' for help): ");
 		get_line(input_buf);
+
+		printf("input_buf = \"%s\"\n", input_buf);
+
 		if (parse_user_input(input_buf, cmd_type, arg_type, arg) == ERROR)
 		{
 			printf("You entered an incorrect command. Please try again.\n");
-			attempts_cnt++;
 			continue ;
 		}
 		if (strcmp(cmd_type, CMD_MAN) == 0)
 		{
+			printf("\tman\n");
+			print_parsed_cmd_args(input_buf, cmd_type, arg_type, arg);
 			lst_print_man();
 		}
-		else if (strcmp(cmd_type, CMD_NEW) == 0)
+		if (strcmp(cmd_type, CMD_NEW) == 0)
 		{
-			printf("new\n");
-			printf("\tinput_buf = \"%s\"\n", input_buf);
-			printf("\tcmd_type = \"%s\"\n", cmd_type);
-			printf("\targ_type = \"%s\"\n", arg_type);
-			printf("\targ = \"%s\"\n", arg);
-
-			t_cnt_type	data_type;
-
-			data_type = determine_data_type(arg_type);
-			if (data_type == CHAR)
-			{
-				int	pos = counters[(int)CHAR];
-
-				if (strlen(arg) > 1)
-				{
-					printf("The passed argument is not a char\n");
-					break ;
-				}
-				tests->chars_ptrs[pos] = alloc_char(arg[0]);
-				list = list_debug_init((char *)tests->chars_ptrs[pos], data_type);
-				if (list == NULL)
-					return ;
-				counters[(int)CHAR]++;
-			}
-			if (data_type == U_CHAR)
-			{
-
-			}
-			if (data_type == SHORT)
-			{
-
-			}
-			if (data_type == U_SHORT)
-			{
-
-			}
-			if (data_type == INT)
-			{
-
-			}
-			if (data_type == U_INT)
-			{
-
-			}
-			if (data_type == LONG)
-			{
-
-			}
-			if (data_type == U_LONG)
-			{
-
-			}
-			if (data_type == LONG_LONG)
-			{
-
-			}
-			if (data_type == U_LONG_LONG)
-			{
-
-			}
-			if (data_type == FLOAT)
-			{
-
-			}
-			if (data_type == DOUBLE)
-			{
-
-			}
-			if (data_type == LONG_DOUBLE)
-			{
-
-			}
-			if (data_type == STRING)
-			{
-
-			}
-			if (data_type == INVALID_TYPE)
-			{
-				printf("You entered an invalid argument\n");
-				break ;
-			}
+			printf("\tnew\n");
+			print_parsed_cmd_args(input_buf, cmd_type, arg_type, arg);
+			process_cmd_new(list, tests, arg, arg_type);
 		}
-		else if (strcmp(cmd_type, CMD_ADDFRONT) == 0)
+		if (strcmp(cmd_type, CMD_ADDFRONT) == 0)
 		{
-			printf("addfront\n");
-			printf("\tinput_buf = \"%s\"\n", input_buf);
-			printf("\tcmd_type = \"%s\"\n", cmd_type);
-			printf("\targ_type = \"%s\"\n", arg_type);
-			printf("\targ = \"%s\"\n", arg);
+			printf("\taddfront\n");
+			print_parsed_cmd_args(input_buf, cmd_type, arg_type, arg);
+			process_cmd_addfront(list, tests, arg, arg_type);
 		}
-		else if (strcmp(cmd_type, CMD_SIZE) == 0)
+		if (strcmp(cmd_type, CMD_SIZE) == 0)
 		{
-			printf("size\n");
-			printf("\tinput_buf = \"%s\"\n", input_buf);
-			printf("\tcmd_type = \"%s\"\n", cmd_type);
-			printf("\targ_type = \"%s\"\n", arg_type);
-			printf("\targ = \"%s\"\n", arg);
+			printf("\tsize\n");
+			print_parsed_cmd_args(input_buf, cmd_type, arg_type, arg);
+			process_cmd_size(list, tests, arg, arg_type);
 		}
-		else if (strcmp(cmd_type, CMD_LAST) == 0)
+		if (strcmp(cmd_type, CMD_LAST) == 0)
 		{
-			printf("last\n");
-			printf("\tinput_buf = \"%s\"\n", input_buf);
-			printf("\tcmd_type = \"%s\"\n", cmd_type);
-			printf("\targ_type = \"%s\"\n", arg_type);
-			printf("\targ = \"%s\"\n", arg);
+			printf("\tlast\n");
+			print_parsed_cmd_args(input_buf, cmd_type, arg_type, arg);
+			process_cmd_last(list, tests, arg, arg_type);
 		}
-		else if (strcmp(cmd_type, CMD_ADDBACK) == 0)
+		if (strcmp(cmd_type, CMD_ADDBACK) == 0)
 		{
-			printf("addback\n");
-			printf("\tinput_buf = \"%s\"\n", input_buf);
-			printf("\tcmd_type = \"%s\"\n", cmd_type);
-			printf("\targ_type = \"%s\"\n", arg_type);
-			printf("\targ = \"%s\"\n", arg);
+			printf("\taddback\n");
+			print_parsed_cmd_args(input_buf, cmd_type, arg_type, arg);
+			process_cmd_addback(list, tests, arg, arg_type);
 		}
-		else if (strcmp(cmd_type, CMD_CLEAR) == 0)
+		if (strcmp(cmd_type, CMD_CLEAR) == 0)
 		{
-			printf("clear\n");
-			printf("\tinput_buf = \"%s\"\n", input_buf);
-			printf("\tcmd_type = \"%s\"\n", cmd_type);
-			printf("\targ_type = \"%s\"\n", arg_type);
-			printf("\targ = \"%s\"\n", arg);
+			printf("\tclear\n");
+			print_parsed_cmd_args(input_buf, cmd_type, arg_type, arg);
+			process_cmd_clear(list, tests, arg, arg_type);
 		}
-		else if (strcmp(cmd_type, CMD_QUIT) == 0)
+		if (strcmp(cmd_type, CMD_PRINT) == 0)
 		{
-			printf("quit\n");
-			printf("\tinput_buf = \"%s\"\n", input_buf);
-			printf("\tcmd_type = \"%s\"\n", cmd_type);
-			printf("\targ_type = \"%s\"\n", arg_type);
-			printf("\targ = \"%s\"\n", arg);
+			printf("\tprint\n");
+			print_parsed_cmd_args(input_buf, cmd_type, arg_type, arg);
+			print_list(list);
+		}
+		if (strcmp(cmd_type, CMD_QUIT) == 0)
+		{
+			printf("\tquit\n");
+			print_parsed_cmd_args(input_buf, cmd_type, arg_type, arg);
+			print_list(list);
 			break ;
 		}
-	}
+	} // while (true)
+
 	if (list != NULL)
 		free_list_debug(list);
 }
 
-int	create_list_tests(t_lst_test *tests)
+int	alloc_mem_for_tests(t_lst_test *tests)
 {
 	char	fname[MAX_FUNC_NAME_LEN];
 	char	errbuf[MAX_ERR_BUF_SIZE];
 
 	strncpy(fname, "create_list_tests", MAX_FUNC_NAME_LEN);
-	init_list_tests(tests);
-	if ((alloc_lst_test_strings(tests) == ERROR)
-		|| (alloc_lst_test_ints(tests) == ERROR)
-		|| (alloc_lst_test_floats(tests) == ERROR)
-		|| (alloc_lst_test_chars(tests) == ERROR)
-		|| (alloc_lst_test_shorts(tests) == ERROR)
-		|| (alloc_lst_test_longs(tests) == ERROR))
+	if (!alloc_lst_test_chars(tests)
+		|| !alloc_lst_test_uchars(tests)
+		|| !alloc_lst_test_shorts(tests)
+		|| !alloc_lst_test_uhorts(tests)
+		|| !alloc_lst_test_ints(tests)
+		|| !alloc_lst_test_uints(tests)
+		|| !alloc_lst_test_longs(tests)
+		|| !alloc_lst_test_ulongs(tests)
+		|| !alloc_lst_test_lls(tests)
+		|| !alloc_lst_test_ulls(tests)
+		|| !alloc_lst_test_floats(tests)
+		|| !alloc_lst_test_doubles(tests)
+		|| !alloc_lst_test_ldoubles(tests)
+		|| !alloc_lst_test_strings(tests)
+		|| !alloc_lst_test_voids(tests))
 	{
 		form_common_err_msg(errbuf, fname, MEM_ERR_MSG);
 		perror(errbuf);
 		return (ERROR);
 	}
-	add_list_tests(tests);
 	return (SUCCESS);
 }
 
-void	add_list_tests(t_lst_test *tests)
+void	add_static_list_tests(t_lst_test *tests)
 {
 	tests->strs_ptrs[0] = alloc_string("just some text");
 	tests->ints_ptrs[0] = alloc_int(10);

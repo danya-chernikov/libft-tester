@@ -1,7 +1,128 @@
 #ifndef LIST_H
 # define LIST_H
 
-# include "libft_tester.h"
+#include "../include/libft_tester.h"
+
+# define MAX_LST_NODES_NUM			4096
+# define MAX_LST_ATTEMPTS_NUM		8
+# define MAX_USER_INPUT_BUF_LEN		8192
+# define MAX_CMD_TYPE_LEN			16
+# define MAX_CMD_ARG_TYPE_LEN		16
+# define MAX_CMD_ARG_LEN			4096
+# define LST_DATA_TYPES_NUM			15
+
+# define CMD_MAN					"man"
+# define CMD_NEW					"new"
+# define CMD_ADDFRONT				"addfront"
+# define CMD_SIZE					"size"
+# define CMD_LAST					"last"
+# define CMD_ADDBACK				"addback"
+# define CMD_CLEAR					"clear"
+# define CMD_PRINT					"print"
+# define CMD_QUIT					"quit"
+
+# define AT_CHAR					"CHAR"
+# define AT_UCHAR					"U_CHAR"
+# define AT_SHORT					"SHORT"
+# define AT_USHORT					"U_SHORT"
+# define AT_INT						"INT"
+# define AT_UINT					"U_INT"
+# define AT_LONG					"LONG"
+# define AT_ULONG					"U_LONG"
+# define AT_LONGLONG				"LONG_LONG"
+# define AT_ULONGLONG				"U_LONG_LONG"
+# define AT_FLOAT					"FLOAT"
+# define AT_DOUBLE					"DOUBLE"
+# define AT_LONGDOUBLE				"LONG_DOUBLE"
+# define AT_STRING					"STRING"
+
+
+/* The type of a list's content */
+typedef enum list_cnt_type
+{
+	CHAR,
+	U_CHAR,
+	SHORT,
+	U_SHORT,
+	INT,
+	U_INT,
+	LONG,
+	U_LONG,
+	LONG_LONG,
+	U_LONG_LONG,
+	FLOAT,
+	DOUBLE,
+	LONG_DOUBLE,
+	STRING,
+	VOID,
+	INVALID_TYPE
+}	t_cnt_type;
+
+
+/* This structure is designed to
+ * store data used by the testing
+ * component of a singly linked list.
+ * Single pointers represent arrays
+ * that store static (real) values
+ * entered by the user via the
+ * add_list_tests() function. Double
+ * pointers represent arrays that
+ * store other pointers, requiring
+ * the user to allocate dynamic memory
+ * before using them. The difference
+ * between strs and strs_ptrs is that
+ * the cells in the latter are filled
+ * with NULL pointers*/
+typedef struct lst_test
+{
+	int			nodes_num_to_free;
+	void		*nodes_to_free[MAX_LST_NODES_NUM];
+	void		*cnts_to_free[MAX_LST_NODES_NUM];
+	int			counters[LST_DATA_TYPES_NUM * 2];
+
+	char		*chars;
+	u_char		*uchars;
+	short		*shorts;
+	u_short		*ushorts;
+	int			*ints;
+	u_int		*uints;
+	long		*longs;
+	t_ul		*ulongs;
+	long long	*lls;
+	t_ull		*ulls;
+	float		*floats;
+	double		*doubles;
+	t_ld		*ldoubles;
+	char		**strs;
+	void		*voids;
+	char		**chars_ptrs;
+	u_char		**uchars_ptrs;
+	short		**shorts_ptrs;
+	u_short		**ushorts_ptrs;
+	int			**ints_ptrs;
+	u_int		**uints_ptrs;
+	long		**longs_ptrs;
+	t_ul		**ulongs_ptrs;
+	long long	**lls_ptrs;
+	t_ull		**ulls_ptrs;
+	float		**floats_ptrs;
+	double		**dbls_ptrs;
+	t_ld		**ldbls_ptrs;
+	char		**strs_ptrs;
+	void		**voids_ptrs;
+} t_lst_test;
+
+/* It represents a singly
+ * linked list in a more
+ * convenient format for
+ * working with and debugging */
+typedef struct list_debug
+{
+	t_cnt_type	*types;
+	t_list		*head;
+	int			type_cnt;
+}	t_lst_d;
+
 
 /* list_aux.c */
 int		print_list(t_lst_d *list, int ntabs);
@@ -18,16 +139,17 @@ void	nullify_node_ptr(t_lst_d *list, t_list **node);
 t_list	*get_node(t_lst_d *list, int node_ind);
 
 /* list_aux3.c */
+int		parse_user_input(char *buf, char *cmd_type, char *arg_type, char *arg);
 bool	cnt_was_freed(void *cnt, t_lst_test *tests);
 bool	node_was_freed(void *node, t_lst_test *tests);
 void	get_line(char *str);
-int		parse_user_input(char *buf, char *cmd_type, char *arg_type, char *arg);
 
 /* list_aux4.c */
 char	*create_format_str(void *cnt, t_cnt_type type);
 void	process_arg(char *arg, void *cnt, t_cnt_type type);
 void	process_numeric_arg(char *arg, void *cnt, t_cnt_type type);
 void	process_non_numeric_arg(char *arg, void *cnt, t_cnt_type type);
+void	print_parsed_cmd_args(char *cmd_type, char *arg_type, char *arg);
 
 /* list_aux5.c */
 t_cnt_type	determine_data_type(char *type);
@@ -37,18 +159,38 @@ t_cnt_type	determine_non_numeric_data_types(char *type);
 /* list_init.c */
 t_lst_d	*list_debug_init(void *cnt, t_cnt_type type);
 void	init_list_tests(t_lst_test *tests);
-void	init_static_list_tests(t_lst_test *tests);
-void	init_heap_list_tests(t_lst_test *tests);
+void	nullify_static_list_tests(t_lst_test *tests);
+void	nullify_heap_list_tests(t_lst_test *tests);
 
 /* list_tests.c */
-void	linked_list_launch_tests(t_lst_test *tests);
+void	linked_list_choose_testing_type(t_lst_test *tests);
 void	linked_list_launch_static_testing(t_lst_test *tests);
 void	linked_list_launch_dynamic_testing(t_lst_test *tests);
-int		create_list_tests(t_lst_test *tests);
-void	add_list_tests(t_lst_test *tests);
+int		alloc_mem_for_tests(t_lst_test *tests);
+void	add_static_list_tests(t_lst_test *tests);
 
 /* list_tests2.c */
 void	lst_print_man(void);
+
+/* list_cmd_processor.c */
+int		proc_cmd_new(t_lst_d *l, t_lst_test *t, char *arg, char *arg_type);
+int		proc_cmd_addfront(t_lst_d *l, t_lst_test *t, char *arg, char *arg_type);
+int		proc_cmd_size(t_lst_d *l, t_lst_test *t, char *arg, char *arg_type);
+
+/* list_cmd_processor2.c */
+int		proc_cmd_last(t_lst_d *l, t_lst_test *t, char *arg, char *arg_type);
+int		proc_cmd_addback(t_lst_d *l, t_lst_test *t, char *arg, char *arg_type);
+int		proc_cmd_clear(t_lst_d *l, t_lst_test *t, char *arg, char *arg_type);
+
+/* list_cmd_processor3.c */
+int		proc_cmd_print(t_lst_d *l, t_lst_test *t, char *arg, char *arg_type);
+int		proc_cmd_quit(t_lst_d *l, t_lst_test *t, char *arg, char *arg_type);
+
+/* list_cmd_new.c */
+int		create_lst_char(t_lst_d *list, t_lst_test *tests, char *arg);
+int		create_lst_uchar(t_lst_d *list, t_lst_test *tests, char *arg);
+
+
 
 /* list_alloc.c */
 int		alloc_lst_test_chars(t_lst_test *tests);
@@ -95,8 +237,10 @@ t_ld	*alloc_ldouble(t_ld val);
 /* list_alloc7.c */
 char	*alloc_string(char *val);
 
+
+
 /* list_free.c */
-void	delete_all_lst_tests(t_lst_test *tests);
+void	release_all_lst_tests(t_lst_test *tests);
 void	free_numeric_lst_tests(t_lst_test *tests);
 void	free_non_numeric_lst_tests(t_lst_test *tests);
 void	free_list_debug(t_lst_d *list);

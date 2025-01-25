@@ -69,3 +69,11 @@ void	process_non_numeric_arg(char *arg, void *cnt, t_cnt_type type)
 	if (type == VOID)
 		snprintf(arg, MAX_FORMAT_STR_LEN, "%p", cnt);
 }
+
+/* REMOVE THIS FUNCTION LATER. IT'S ONLY FOR DEBUGGING PURPOSES */
+void	print_parsed_cmd_args(char *cmd_type, char *arg_type, char *arg)
+{
+	printf("\tcmd_type = \"%s\"\n", cmd_type);
+	printf("\targ_type = \"%s\"\n", arg_type);
+	printf("\targ = \"%s\"\n", arg);
+}
