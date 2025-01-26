@@ -67,9 +67,7 @@ void	linked_list_launch_static_testing(t_lst_test *tests)
 void	linked_list_launch_dynamic_testing(t_lst_test *tests)
 {
 	char		input_buf[MAX_USER_INPUT_BUF_LEN];
-	char		cmd_type[MAX_CMD_TYPE_LEN];
-	char		arg_type[MAX_CMD_ARG_TYPE_LEN];
-	char		arg[MAX_CMD_ARG_LEN];
+	t_cmd		command;
 	t_lst_d		*list;
 	t_list		*node;
 
@@ -80,7 +78,7 @@ void	linked_list_launch_dynamic_testing(t_lst_test *tests)
 
 		printf("input_buf = \"%s\"\n", input_buf);
 
-		if (parse_user_input(input_buf, cmd_type, arg_type, arg) == ERROR)
+		if (parse_user_input(input_buf, &command) == ERROR)
 		{
 			printf("You entered an incorrect command. Please try again.\n");
 			continue ;
@@ -88,56 +86,55 @@ void	linked_list_launch_dynamic_testing(t_lst_test *tests)
 		if (strcmp(cmd_type, CMD_MAN) == 0)
 		{
 			printf("\tman\n");
-			print_parsed_cmd_args(input_buf, cmd_type, arg_type, arg);
+			print_parsed_cmd_args(&cmd);
 			lst_print_man();
 		}
 		if (strcmp(cmd_type, CMD_NEW) == 0)
 		{
 			printf("\tnew\n");
-			print_parsed_cmd_args(input_buf, cmd_type, arg_type, arg);
-			process_cmd_new(list, tests, arg, arg_type);
+			print_parsed_cmd_args(&cmd);
+			process_cmd_new(list, tests, &cmd);
 		}
 		if (strcmp(cmd_type, CMD_ADDFRONT) == 0)
 		{
 			printf("\taddfront\n");
-			print_parsed_cmd_args(input_buf, cmd_type, arg_type, arg);
-			process_cmd_addfront(list, tests, arg, arg_type);
+			print_parsed_cmd_args(&cmd);
+			process_cmd_addfront(list, tests, &cmd);
 		}
 		if (strcmp(cmd_type, CMD_SIZE) == 0)
 		{
 			printf("\tsize\n");
-			print_parsed_cmd_args(input_buf, cmd_type, arg_type, arg);
-			process_cmd_size(list, tests, arg, arg_type);
+			print_parsed_cmd_args(&cmd);
+			lstsize_test(&list->head);
 		}
 		if (strcmp(cmd_type, CMD_LAST) == 0)
 		{
 			printf("\tlast\n");
-			print_parsed_cmd_args(input_buf, cmd_type, arg_type, arg);
-			process_cmd_last(list, tests, arg, arg_type);
+			print_parsed_cmd_args(&cmd);
+			lstlast_test(list->head, SHORT); // Improve this!
 		}
 		if (strcmp(cmd_type, CMD_ADDBACK) == 0)
 		{
 			printf("\taddback\n");
-			print_parsed_cmd_args(input_buf, cmd_type, arg_type, arg);
-			process_cmd_addback(list, tests, arg, arg_type);
+			print_parsed_cmd_args(&cmd);
+			process_cmd_addback(list, tests, &cmd);
 		}
 		if (strcmp(cmd_type, CMD_CLEAR) == 0)
 		{
 			printf("\tclear\n");
-			print_parsed_cmd_args(input_buf, cmd_type, arg_type, arg);
-			process_cmd_clear(list, tests, arg, arg_type);
+			print_parsed_cmd_args(&cmd);
+			process_cmd_clear(list, tests, &cmd);
 		}
 		if (strcmp(cmd_type, CMD_PRINT) == 0)
 		{
 			printf("\tprint\n");
-			print_parsed_cmd_args(input_buf, cmd_type, arg_type, arg);
+			print_parsed_cmd_args(&cmd);
 			print_list(list);
 		}
 		if (strcmp(cmd_type, CMD_QUIT) == 0)
 		{
 			printf("\tquit\n");
-			print_parsed_cmd_args(input_buf, cmd_type, arg_type, arg);
-			print_list(list);
+			print_parsed_cmd_args(&cmd);
 			break ;
 		}
 	} // while (true)
@@ -155,7 +152,7 @@ int	alloc_mem_for_tests(t_lst_test *tests)
 	if (!alloc_lst_test_chars(tests)
 		|| !alloc_lst_test_uchars(tests)
 		|| !alloc_lst_test_shorts(tests)
-		|| !alloc_lst_test_uhorts(tests)
+		|| !alloc_lst_test_ushorts(tests)
 		|| !alloc_lst_test_ints(tests)
 		|| !alloc_lst_test_uints(tests)
 		|| !alloc_lst_test_longs(tests)

@@ -71,9 +71,9 @@ void	process_non_numeric_arg(char *arg, void *cnt, t_cnt_type type)
 }
 
 /* REMOVE THIS FUNCTION LATER. IT'S ONLY FOR DEBUGGING PURPOSES */
-void	print_parsed_cmd_args(char *cmd_type, char *arg_type, char *arg)
+void	print_parsed_cmd_args(t_cmd *command)
 {
-	printf("\tcmd_type = \"%s\"\n", cmd_type);
-	printf("\targ_type = \"%s\"\n", arg_type);
-	printf("\targ = \"%s\"\n", arg);
+	printf("\tcmd_type = \"%s\"\n", command->type);
+	printf("\targ_type = \"%s\"\n", command->arg_type);
+	printf("\targ = \"%s\"\n", command->arg);
 }

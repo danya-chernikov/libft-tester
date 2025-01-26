@@ -20,7 +20,8 @@ OBJS=common_tester.o alg.o print.o cprint.o alloc.o packer.o \
 	 putsmth_fd_special.o putsmth_fd_write.o putsmth_fd_print.o \
 	 putsmth_fd_errors.o \
 	 list_aux.o list_aux2.o list_aux3.o list_aux4.o list_aux5.o \
-	 list_init.o list_tests.o list_tests2.o list_cmd_processor.o \
+	 list_init.o list_tests.o list_tests2.o \
+	 list_cmd_processor.o list_cmd_processor2.o list_cmd_processor3.o \
 	 list_cmd_new.o list_cmd_new2.o list_cmd_new3.o \
 	 list_alloc.o list_alloc2.o list_alloc3.o list_alloc4.o \
 	 list_alloc5.o list_alloc6.o list_alloc7.o \

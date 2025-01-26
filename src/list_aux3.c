@@ -1,11 +1,14 @@
 #include "../include/list.h"
 
-/* It takes the full command entered by the user and separates the command
- * type from its operand (argument), placing this data into the corresponding
- * arrays. If an error occurs during the parsing process, the function returns
- * 0, meaning that the user entered an invalid command or its format was
+/* It takes the full command entered by the
+ * user and separates the command type from
+ * its operand (argument), placing this data
+ * into the corresponding arrays. If an error
+ * occurs during the parsing process, the
+ * function returns 0, meaning that the user
+ * entered an invalid command or its format was
  * incorrect */
-int	parse_user_input(char *buf, char *cmd_type, char *arg_type, char *arg)
+int	parse_user_input(char *buf, t_cmd *command)
 {
 	int	i;
 	int	j;
@@ -14,21 +17,21 @@ int	parse_user_input(char *buf, char *cmd_type, char *arg_type, char *arg)
 	i = 0;
 	while (i < strlen(buf) && buf[i] != ' ' && i < MAX_CMD_TYPE_LEN)
 	{
-		cmd_type[i] = buf[i];
+		cmd->type[i] = buf[i];
 		i++;
 	}
-	cmd_type[i] = '\0';
+	cmd->type[i] = '\0';
 	if (i == strlen(buf))
 	{
 		// These commands do not require any argument
-		if ((strcmp(cmd_type, CMD_MAN) == 0) ||
-			(strcmp(cmd_type, CMD_QUIT) == 0) ||
-			(strcmp(cmd_type, CMD_SIZE) == 0) ||
-			(strcmp(cmd_type, CMD_LAST) == 0) ||
-			(strcmp(cmd_type, CMD_PRINT) == 0))
+		if ((strcmp(cmd->type, CMD_MAN) == 0) ||
+			(strcmp(cmd->type, CMD_QUIT) == 0) ||
+			(strcmp(cmd->type, CMD_SIZE) == 0) ||
+			(strcmp(cmd->type, CMD_LAST) == 0) ||
+			(strcmp(cmd->type, CMD_PRINT) == 0))
 		{
-			arg_type[0] = '\0';
-			arg[0] = '\0';
+			cmd->arg_type[0] = '\0';
+			cmd->arg[0] = '\0';
 			return (SUCCESS);
 		}
 		else
@@ -39,9 +42,9 @@ int	parse_user_input(char *buf, char *cmd_type, char *arg_type, char *arg)
 		return (ERROR);
 
 	// Checking if command type is valid
-	if ((strcmp(cmd_type, CMD_NEW) != 0) &&
-		(strcmp(cmd_type, CMD_ADDFRONT) != 0) &&
-		(strcmp(cmd_type, CMD_ADDBACK) != 0))
+	if ((strcmp(cmd->type, CMD_NEW) != 0) &&
+		(strcmp(cmd->type, CMD_ADDFRONT) != 0) &&
+		(strcmp(cmd->type, CMD_ADDBACK) != 0))
 	{
 		return (ERROR);
 	}
@@ -57,11 +60,11 @@ int	parse_user_input(char *buf, char *cmd_type, char *arg_type, char *arg)
 	j = 0;
 	while (i < strlen(buf) && buf[i] != ' ' && j < MAX_CMD_ARG_TYPE_LEN)
 	{
-		arg_type[j] = buf[i];
+		cmd->arg_type[j] = buf[i];
 		i++;
 		j++;
 	}
-	arg_type[j] = '\0';
+	cmd->arg_type[j] = '\0';
 
 	while (buf[i] == ' ')
 		i++;
@@ -69,20 +72,20 @@ int	parse_user_input(char *buf, char *cmd_type, char *arg_type, char *arg)
 		return (ERROR);
 
 	// Checking if the argument type is valid
-	if ((strcmp(arg_type, AT_CHAR) != 0) &&
-		(strcmp(arg_type, AT_UCHAR) != 0) &&
-		(strcmp(arg_type, AT_SHORT) != 0) &&
-		(strcmp(arg_type, AT_USHORT) != 0) &&
-		(strcmp(arg_type, AT_INT) != 0) &&
-		(strcmp(arg_type, AT_UINT) != 0) &&
-		(strcmp(arg_type, AT_LONG) != 0) &&
-		(strcmp(arg_type, AT_ULONG) != 0) &&
-		(strcmp(arg_type, AT_LONGLONG) != 0) &&
-		(strcmp(arg_type, AT_ULONGLONG) != 0) &&
-		(strcmp(arg_type, AT_FLOAT) != 0) &&
-		(strcmp(arg_type, AT_DOUBLE) != 0) &&
-		(strcmp(arg_type, AT_LONGDOUBLE) != 0) &&
-		(strcmp(arg_type, AT_STRING) != 0))
+	if ((strcmp(cmd->arg_type, AT_CHAR) != 0) &&
+		(strcmp(cmd->arg_type, AT_UCHAR) != 0) &&
+		(strcmp(cmd->arg_type, AT_SHORT) != 0) &&
+		(strcmp(cmd->arg_type, AT_USHORT) != 0) &&
+		(strcmp(cmd->arg_type, AT_INT) != 0) &&
+		(strcmp(cmd->arg_type, AT_UINT) != 0) &&
+		(strcmp(cmd->arg_type, AT_LONG) != 0) &&
+		(strcmp(cmd->arg_type, AT_ULONG) != 0) &&
+		(strcmp(cmd->arg_type, AT_LONGLONG) != 0) &&
+		(strcmp(cmd->arg_type, AT_ULONGLONG) != 0) &&
+		(strcmp(cmd->arg_type, AT_FLOAT) != 0) &&
+		(strcmp(cmd->arg_type, AT_DOUBLE) != 0) &&
+		(strcmp(cmd->arg_type, AT_LONGDOUBLE) != 0) &&
+		(strcmp(cmd->arg_type, AT_STRING) != 0))
 	{
 		return (ERROR);
 	}
@@ -91,11 +94,11 @@ int	parse_user_input(char *buf, char *cmd_type, char *arg_type, char *arg)
 	j = 0;
 	while (i < strlen(buf) && j < MAX_CMD_ARG_LEN)
 	{
-		arg[j] = buf[i];
+		cmd->arg[j] = buf[i];
 		i++;
 		j++;
 	}
-	arg[j] = '\0';
+	cmd->arg[j] = '\0';
 	
 	return (SUCCESS);
 }

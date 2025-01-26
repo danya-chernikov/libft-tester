@@ -1,16 +1,16 @@
 #include "../include/list.h"
 
 /* It accepts the string representing an
- * argument data type, and returns its code. */
+ * argument data type, and returns its code */
 t_cnt_type	determine_data_type(char *type)
 {
 	t_cnt_type	res1;
 	t_cnt_type	res2;
 
-	res1 = determine_numeric_data_type(type);
+	res1 = check_numeric_data_type(type);
 	if (res1 == INVALID_TYPE)
 	{
-		res2 = determine_non_numeric_data_type(type);
+		res2 = check_non_numeric_data_type(type);
 		if (res2 == INVALID_TYPE)
 			return (INVALID_TYPE);
 		else
@@ -19,7 +19,7 @@ t_cnt_type	determine_data_type(char *type)
 	return (res1);
 }
 
-t_cnt_type	determine_numeric_data_types(char *type)
+t_cnt_type	check_numeric_data_types(char *type)
 {
 	if (strcmp(type, AT_SHORT) == 0)
 		return (SHORT);
@@ -46,7 +46,7 @@ t_cnt_type	determine_numeric_data_types(char *type)
 	return (INVALID_TYPE);
 }
 
-t_cnt_type	determine_non_numeric_data_types(char *type)
+t_cnt_type	check_non_numeric_data_types(char *type)
 {
 
 	if (strcmp(type, AT_CHAR) == 0)

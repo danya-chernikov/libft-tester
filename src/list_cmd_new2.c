@@ -1,16 +1,17 @@
 #include "../include/list.h"
 #include <limits.h>
+#include <stdlib.h>
 
-int	create_lst_uint(t_lst_d *list, t_lst_test *tests, char *arg)
+int	lstnew_uint(t_lst_d *list, t_lst_test *tests, char *arg)
 {
 	char	*stopstr;
-	int		pos;
 	t_ull	lst_data;
+	int		pos;
 
 	lst_data = strtoull(arg, &stopstr, 10);
 	if (lst_data > UINT_MAX)
 	{
-		printf("create_lst_uint(): The passed argument is not an u_int\n");
+		printf("lstnew_uint(): The passed argument is not an u_int\n");
 		return (ERROR);
 	}
 	pos = counters[(int)U_INT];
@@ -22,16 +23,16 @@ int	create_lst_uint(t_lst_d *list, t_lst_test *tests, char *arg)
 	return (SUCCESS);
 }
 
-int	create_lst_long(t_lst_d *list, t_lst_test *tests, char *arg)
+int	lstnew_long(t_lst_d *list, t_lst_test *tests, char *arg)
 {
 	char	*stopstr;
-	int		pos;
 	t_ll	lst_data;
+	int		pos;
 
 	lst_data = strtoll(arg, &stopstr, 10);
 	if (lst_data > LONG_MAX || lst_data < LONG_MIN)
 	{
-		printf("create_lst_long(): The passed argument is not a long\n");
+		printf("lstnew_long(): The passed argument is not a long\n");
 		return (ERROR);
 	}
 	pos = counters[(int)LONG];
@@ -43,16 +44,16 @@ int	create_lst_long(t_lst_d *list, t_lst_test *tests, char *arg)
 	return (SUCCESS);
 }
 
-int	create_lst_ulong(t_lst_d *list, t_lst_test *tests, char *arg)
+int	lstnew_ulong(t_lst_d *list, t_lst_test *tests, char *arg)
 {
 	char	*stopstr;
-	int		pos;
 	t_ull	lst_data;
+	int		pos;
 
 	lst_data = strtoull(arg, &stopstr, 10);
 	if (lst_data > ULONG_MAX)
 	{
-		printf("create_lst_ulong(): The passed argument is not an u_long\n");
+		printf("lstnew_ulong(): The passed argument is not an u_long\n");
 		return (ERROR);
 	}
 	pos = counters[(int)U_LONG];
@@ -64,11 +65,11 @@ int	create_lst_ulong(t_lst_d *list, t_lst_test *tests, char *arg)
 	return (SUCCESS);
 }
 
-int	create_lst_longlong(t_lst_d *list, t_lst_test *tests, char *arg)
+int	lstnew_longlong(t_lst_d *list, t_lst_test *tests, char *arg)
 {
 	char	*stopstr;
-	int		pos;
 	t_ll	lst_data;
+	int		pos;
 
 	lst_data = strtoll(arg, &stopstr, 10);
 	pos = counters[(int)LONG_LONG];
@@ -80,11 +81,11 @@ int	create_lst_longlong(t_lst_d *list, t_lst_test *tests, char *arg)
 	return (SUCCESS);
 }
 
-int	create_lst_ulonglong(t_lst_d *list, t_lst_test *tests, char *arg)
+int	lstnew_ulonglong(t_lst_d *list, t_lst_test *tests, char *arg)
 {
 	char	*stopstr;
-	int		pos;
 	t_ull	lst_data;
+	int		pos;
 
 	lst_data = strtoull(arg, &stopstr, 10);
 	pos = counters[(int)U_LONG_LONG];
