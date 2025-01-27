@@ -11,6 +11,11 @@
 # define MAX_CMD_ARG_LEN			4096
 # define LST_DATA_TYPES_NUM			15
 
+# define SIGNAL_QUIT				2
+
+# define CHOICE_STATIC				"S"
+# define CHOICE_DYNAMIC				"D"
+
 # define CMD_MAN					"man"
 # define CMD_NEW					"new"
 # define CMD_ADDFRONT				"addfront"
@@ -178,13 +183,21 @@ void	nullify_heap_list_tests(t_lst_test *tests);
 
 /* list_tests.c */
 void	linked_list_choose_testing_type(t_lst_test *tests);
-void	linked_list_launch_static_testing(t_lst_test *tests);
-void	linked_list_launch_dynamic_testing(t_lst_test *tests);
 int		alloc_mem_for_tests(t_lst_test *tests);
-void	add_static_list_tests(t_lst_test *tests);
 
 /* list_tests2.c */
 void	lst_print_man(void);
+
+/* list_static_testing.c */
+void	linked_list_launch_static_testing(t_lst_test *tests);
+void	add_static_list_tests(t_lst_test *tests);
+
+/* list_dynamic_testing.c */
+void	linked_list_launch_dynamic_testing(t_lst_test *tests);
+
+
+/* list_cmd_new_processor.c */
+int		process_cmd_new(t_lst_d *list, t_lst_test *tests, t_cmd *command);
 
 /* list_cmd_new.c */
 int		lstnew_char(t_lst_d *list, t_lst_test *tests, char *arg);
@@ -206,6 +219,10 @@ int		lstnew_double(t_lst_d *list, t_lst_test *tests, char *arg);
 int		lstnew_longdouble(t_lst_d *list, t_lst_test *tests, char *arg);
 int		lstnew_string(t_lst_d *list, t_lst_test *tests, char *arg);
 
+
+/* list_cmd_addfront_processor.c */
+int		process_cmd_addfront(t_lst_d *list, t_lst_test *tests, t_cmd *command);
+
 /* list_cmd_addfront.c */
 int		lstaddfront_char(t_lst_d *list, t_lst_test *tests, char *arg);
 int		lstaddfront_uchar(t_lst_d *list, t_lst_test *tests, char *arg);
@@ -226,24 +243,30 @@ int		lstaddfront_double(t_lst_d *list, t_lst_test *tests, char *arg);
 int		lstaddfront_longdouble(t_lst_d *list, t_lst_test *tests, char *arg);
 int		lstaddfront_string(t_lst_d *list, t_lst_test *tests, char *arg);
 
-/* list_cmd_addback.c */
-
-
-/* list_cmd_addback2.c */
-
-
-/* list_cmd_addback3.c */
-
-
-
-/* list_cmd_new_processor.c */
-int		process_cmd_new(t_lst_d *list, t_lst_test *tests, t_cmd *command);
-
-/* list_cmd_addfront_processor.c */
-int		process_cmd_addfront(t_lst_d *list, t_lst_test *tests, t_cmd *command);
 
 /* list_cmd_addback_processor.c */
 int		process_cmd_addback(t_lst_d *list, t_lst_test *tests, t_cmd *command);
+
+/* list_cmd_addback.c */
+int		lstaddback_char(t_lst_d *list, t_lst_test *tests, char *arg);
+int		lstaddback_uchar(t_lst_d *list, t_lst_test *tests, char *arg);
+int		lstaddback_short(t_lst_d *list, t_lst_test *tests, char *arg);
+int		lstaddback_ushort(t_lst_d *list, t_lst_test *tests, char *arg);
+int		lstaddback_int(t_lst_d *list, t_lst_test *tests, char *arg);
+
+/* list_cmd_addback2.c */
+int		lstaddback_uint(t_lst_d *list, t_lst_test *tests, char *arg);
+int		lstaddback_long(t_lst_d *list, t_lst_test *tests, char *arg);
+int		lstaddback_ulong(t_lst_d *list, t_lst_test *tests, char *arg);
+int		lstaddback_longlong(t_lst_d *list, t_lst_test *tests, char *arg);
+int		lstaddback_ulonglong(t_lst_d *list, t_lst_test *tests, char *arg);
+
+/* list_cmd_addback3.c */
+int		lstaddback_float(t_lst_d *list, t_lst_test *tests, char *arg);
+int		lstaddback_double(t_lst_d *list, t_lst_test *tests, char *arg);
+int		lstaddback_longdouble(t_lst_d *list, t_lst_test *tests, char *arg);
+int		lstaddback_string(t_lst_d *list, t_lst_test *tests, char *arg);
+
 
 /* list_cmd_clear_processor.c */
 int		process_cmd_clear(t_lst_d *list, t_lst_test *tests, t_cmd *command);

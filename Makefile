@@ -21,10 +21,11 @@ OBJS=common_tester.o alg.o print.o cprint.o alloc.o packer.o \
 	 putsmth_fd_errors.o \
 	 list_aux.o list_aux2.o list_aux3.o list_aux4.o list_aux5.o \
 	 list_init.o list_tests.o list_tests2.o \
-	 list_cmd_processor.o list_cmd_processor2.o list_cmd_processor3.o \
-	 list_cmd_new.o list_cmd_new2.o list_cmd_new3.o \
-	 list_alloc.o list_alloc2.o list_alloc3.o list_alloc4.o \
-	 list_alloc5.o list_alloc6.o list_alloc7.o \
+	 list_static_testing.o list_dynamic_testing.o \
+	 list_cmd_new_processor.o list_cmd_new.o list_cmd_new2.o list_cmd_new3.o \
+	 list_cmd_addfront_processor.o list_cmd_addfront.o list_cmd_addfront2.o list_cmd_addfront3.o \
+	 list_cmd_addback_processor.o list_cmd_addback.o list_cmd_addback2.o list_cmd_addback3.o \
+	 list_alloc.o list_alloc2.o list_alloc3.o list_alloc4.o list_alloc5.o list_alloc6.o list_alloc7.o \
 	 list_free.o list_free2.o list_free3.o list_free4.o list_free5.o \
 	 lstnew.o lstsize.o lstadd_front.o lstlast.o lstadd_back.o \
 	 lstdelone.o lstclear.o
@@ -192,6 +193,7 @@ strmapi.o : src/strmapi.c include/libft_tester.h
 striteri.o : src/striteri.c include/libft_tester.h
 	$(CC) $(CFLAGS) -c src/striteri.c
 
+
 putchar_fd.o : src/putchar_fd.c include/putsmth_fd.h include/libft_tester.h
 	$(CC) $(CFLAGS) -c src/putchar_fd.c
 
@@ -238,6 +240,7 @@ list_aux4.o : src/list_aux4.c include/list.h
 list_aux5.o : src/list_aux5.c include/list.h
 	$(CC) $(CFLAGS) -c src/list_aux5.c
 
+
 list_init.o : src/list_init.c include/list.h
 	$(CC) $(CFLAGS) -c src/list_init.c
 
@@ -246,6 +249,16 @@ list_tests.o : src/list_tests.c include/list.h include/putsmth_fd.h
 
 list_tests2.o : src/list_tests2.c include/list.h
 	$(CC) $(CFLAGS) -c src/list_tests2.c
+
+list_static_testing.o : src/list_static_testing.c include/list.h
+	$(CC) $(CFLAGS) -c src/list_static_testing.c
+
+list_dynamic_testing.o : src/list_dynamic_testing.c include/list.h
+	$(CC) $(CFLAGS) -c src/list_dynamic_testing.c
+
+
+list_cmd_new_processor.o : src/list_cmd_new_processor.c include/list.h
+	$(CC) $(CFLAGS) -c src/list_cmd_new_processor.c
 
 list_cmd_new.o : src/list_cmd_new.c include/list.h
 	$(CC) $(CFLAGS) -c src/list_cmd_new.c
@@ -256,14 +269,32 @@ list_cmd_new2.o : src/list_cmd_new2.c include/list.h
 list_cmd_new3.o : src/list_cmd_new3.c include/list.h
 	$(CC) $(CFLAGS) -c src/list_cmd_new3.c
 
-list_cmd_processor.o : src/list_cmd_processor.c include/list.h
-	$(CC) $(CFLAGS) -c src/list_cmd_processor.c
 
-list_cmd_processor2.o : src/list_cmd_processor2.c include/list.h
-	$(CC) $(CFLAGS) -c src/list_cmd_processor2.c
+list_cmd_addfront_processor.o : src/list_cmd_addfront_processor.c include/list.h
+	$(CC) $(CFLAGS) -c src/list_cmd_addfront_processor.c
 
-list_cmd_processor3.o : src/list_cmd_processor3.c include/list.h
-	$(CC) $(CFLAGS) -c src/list_cmd_processor3.c
+list_cmd_addfront.o : src/list_cmd_addfront.c include/list.h
+	$(cc) $(cflags) -c src/list_cmd_addfront.c
+
+list_cmd_addfront2.o : src/list_cmd_addfront2.c include/list.h
+	$(cc) $(cflags) -c src/list_cmd_addfront2.c
+
+list_cmd_addfront3.o : src/list_cmd_addfront3.c include/list.h
+	$(cc) $(cflags) -c src/list_cmd_addfront3.c
+
+
+list_cmd_addback_processor.o : src/list_cmd_addback_processor.c include/list.h
+	$(CC) $(CFLAGS) -c src/list_cmd_addback_processor.c
+
+list_cmd_addback.o : src/list_cmd_addback.c include/list.h
+	$(cc) $(cflags) -c src/list_cmd_addback.c
+
+list_cmd_addback2.o : src/list_cmd_addback2.c include/list.h
+	$(cc) $(cflags) -c src/list_cmd_addback2.c
+
+list_cmd_addback3.o : src/list_cmd_addback3.c include/list.h
+	$(cc) $(cflags) -c src/list_cmd_addback3.c
+
 
 list_alloc.o : src/list_alloc.c include/list.h
 	$(CC) $(CFLAGS) -c src/list_alloc.c

@@ -1,34 +1,21 @@
 #include "../include/list.h"
 
-/* It takes the full command entered by the
- * user and separates the command type from
- * its operand (argument), placing this data
- * into the corresponding arrays. If an error
- * occurs during the parsing process, the
- * function returns 0, meaning that the user
- * entered an invalid command or its format was
- * incorrect */
-int	parse_user_input(char *buf, t_cmd *command)
+int	parse_cmd_type(char *buf, t_cmd *command, int *i)
 {
-	int	i;
-	int	j;
-
-	// Trying to determine command type
-	i = 0;
-	while (i < strlen(buf) && buf[i] != ' ' && i < MAX_CMD_TYPE_LEN)
+	*i = 0;
+	while ((*i < strlen(buf)) && (buf[*i] != ' ') && (*i < MAX_CMD_TYPE_LEN))
 	{
-		cmd->type[i] = buf[i];
-		i++;
+		cmd->type[*i] = buf[*i];
+		(*i)++;
 	}
-	cmd->type[i] = '\0';
-	if (i == strlen(buf))
+	cmd->type[*i] = '\0';
+	if (*i == strlen(buf))
 	{
-		// These commands do not require any argument
-		if ((strcmp(cmd->type, CMD_MAN) == 0) ||
-			(strcmp(cmd->type, CMD_QUIT) == 0) ||
-			(strcmp(cmd->type, CMD_SIZE) == 0) ||
-			(strcmp(cmd->type, CMD_LAST) == 0) ||
-			(strcmp(cmd->type, CMD_PRINT) == 0))
+		if ((strcmp(cmd->type, CMD_MAN) == 0)
+			|| (strcmp(cmd->type, CMD_QUIT) == 0)
+			|| (strcmp(cmd->type, CMD_SIZE) == 0)
+			|| (strcmp(cmd->type, CMD_LAST) == 0)
+			|| (strcmp(cmd->type, CMD_PRINT) == 0))
 		{
 			cmd->arg_type[0] = '\0';
 			cmd->arg[0] = '\0';
@@ -37,14 +24,93 @@ int	parse_user_input(char *buf, t_cmd *command)
 		else
 			return (ERROR);
 	}
+	return (SUCCESS);
+}
 
-	if (i == MAX_CMD_TYPE_LEN)
+/* The 'clear' command can accept only one argument without requiring
+ * its type to be specified. If the command type is 'clear', this
+ * function takes its argument (a node number indicating where to
+ * start clearing the list) and returns 1, signaling to the caller
+ * to terminate parsing successfully. Otherwise, it returns 0,
+ * indicating to the caller to continue parsing. */
+int	check_if_cmd_is_clear(char *buf, t_cmd *command, int *i, int *j)
+{
+	if (strcmp(cmd->type, CMD_CLEAR) == 0)
+	{
+		cmd->arg_type[0] = '\0';
+		*j = 0;
+		while ((*i < strlen(buf)) && (*j < MAX_CMD_ARG_LEN))
+		{
+			cmd->arg[*j] = buf[*i];
+			(*i)++;
+			(*j)++;
+		}
+		cmd->arg[*j] = '\0';
+		return (1);
+	}
+	else
+		return (0);	
+}
+
+void	split_string_by_spaces(char *str, char *substrs)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while ((str[i] != ' ') && (i < strlen(str)))
+	{
+		part1[i] = str[i];
+		i++;
+	}
+	if (i == strlen(str))
+	{
+		part2[0] = '\0';
+		part3[0] = '\0';
+		return ;
+	}
+	while ((str[i] == ' ') && (i < strlen(str)))
+		i++;
+	if (i == strlen(str))
+		return ;
+	j = 0;
+	while ((str[i] != ' ') && (i < strlen(str)))
+	{
+		part2[]
+	}
+}
+
+/* It takes the full command entered by the
+ * user and separates the command type from
+ * its operand (argument), placing this data
+ * into the corresponding arrays. If an error
+ * occurs during the parsing process, the
+ * function returns 0, meaning that the user
+ * entered an invalid command or its format was
+ * incorrect. A command may take these forms:
+ * [COMMAND] [ARGUMENT] [ARGUMENT_TYPE]
+ * or
+ * [COMMAND] [ARGUMENT]
+ * or just
+ * [COMMAND] */
+int	parse_user_input(char *buf, t_cmd *command)
+{
+	int	i;
+	int	j;
+
+	if (parse_cmd_type(buf, command, &i) == ERROR)
 		return (ERROR);
+	if (check_if_cmd_is_clear(buf, command, &i, &j))
+		return (SUCCESS);
 
+	if (cmd_type_is_valid())
+	{
+
+	}
 	// Checking if command type is valid
-	if ((strcmp(cmd->type, CMD_NEW) != 0) &&
-		(strcmp(cmd->type, CMD_ADDFRONT) != 0) &&
-		(strcmp(cmd->type, CMD_ADDBACK) != 0))
+	if ((strcmp(cmd->type, CMD_NEW) != 0)
+		&& (strcmp(cmd->type, CMD_ADDFRONT) != 0)
+		&& (strcmp(cmd->type, CMD_ADDBACK) != 0))
 	{
 		return (ERROR);
 	}

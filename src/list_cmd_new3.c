@@ -10,7 +10,7 @@ int	lstnew_float(t_lst_d *list, t_lst_test *tests, char *arg)
 	lst_data = strtold(arg, &stopstr);
 	pos = counters[(int)FLOAT];
 	tests->floats_ptrs[pos] = alloc_float((float)lst_data);
-	list = list_debug_init((float *)tests->floats_ptrs[pos], FLOAT);
+	list = list_debug_init((float *)tests->floats_ptrs[pos], FLOAT, false);
 	if (list == NULL)
 		return (ERROR);
 	tests->counters[(int)FLOAT]++;
@@ -26,7 +26,7 @@ int	lstnew_double(t_lst_d *list, t_lst_test *tests, char *arg)
 	lst_data = strtold(arg, &stopstr);
 	pos = counters[(int)DOUBLE];
 	tests->dbls_ptrs[pos] = alloc_double((double)lst_data);
-	list = list_debug_init((double *)tests->dbls_ptrs[pos], DOUBLE);
+	list = list_debug_init((double *)tests->dbls_ptrs[pos], DOUBLE, false);
 	if (list == NULL)
 		return (ERROR);
 	tests->counters[(int)DOUBLE]++;
@@ -42,7 +42,7 @@ int	lstnew_longdouble(t_lst_d *list, t_lst_test *tests, char *arg)
 	lst_data = strtold(arg, &stopstr);
 	pos = counters[(int)LONG_DOUBLE];
 	tests->ldbls_ptrs[pos] = alloc_ldouble((t_ld)lst_data);
-	list = list_debug_init((t_ld *)tests->ldbls_ptrs[pos], LONG_DOBULE);
+	list = list_debug_init((t_ld *)tests->ldbls_ptrs[pos], LONG_DOBULE, false);
 	if (list == NULL)
 		return (ERROR);
 	tests->counters[(int)LONG_DOUBLE]++;
@@ -55,7 +55,7 @@ int	lstnew_string(t_lst_d *list, t_lst_test *tests, char *arg)
 
 	pos = counters[(int)STRING];
 	tests->strs_ptrs[pos] = alloc_string(arg);
-	list = list_debug_init((char *)tests->strs_ptrs[pos], STRING);
+	list = list_debug_init((char *)tests->strs_ptrs[pos], STRING, false);
 	if (list == NULL)
 		return (ERROR);
 	tests->counters[(int)STRING]++;
