@@ -26,7 +26,7 @@ int	alloc_lst_test_floats(t_lst_test *tests)
 	return (SUCCESS);
 }
 
-int	alloc_lst_test_doulbes(t_lst_test *tests)
+int	alloc_lst_test_doubles(t_lst_test *tests)
 {
 	double	**dbls_ptrs;
 	double	*doubles;
@@ -52,7 +52,7 @@ int	alloc_lst_test_doulbes(t_lst_test *tests)
 	return (SUCCESS);
 }
 
-int	alloc_lst_test_ldoulbes(t_lst_test *tests)
+int	alloc_lst_test_ldoubles(t_lst_test *tests)
 {
 	t_ld	**ldbls_ptrs;
 	t_ld	*ldoubles;

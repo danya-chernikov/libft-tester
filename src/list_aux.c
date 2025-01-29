@@ -71,7 +71,7 @@ int	lstsize(t_list **lst)
 	return (size);
 }
 
-void	lst_ask_user(char *choice)
+void	ask_user_test_type(char *choice)
 {
 	printf("What kind of testing for linked lists you "
 		"would prefer? (S - Static / D - Dynamic): ");

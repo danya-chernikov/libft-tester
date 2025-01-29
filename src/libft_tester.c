@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:51:25 by dchernik          #+#    #+#             */
-/*   Updated: 2025/01/25 15:22:46 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/01/29 19:09:02 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,6 @@ void	test_linked_list(void)
 	init_list_tests(&tests);
 	if (alloc_mem_for_tests(&tests) == ERROR)
 		return ;
-	linked_list_choose_testing_type(&tests);
+	linked_list_launch_tests(&tests);
 	release_all_lst_tests(&tests);
 }

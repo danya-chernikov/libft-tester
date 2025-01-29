@@ -4,7 +4,7 @@
  * the `form_common_err_msg()` function */
 
 /* This is the main function that launches all the tests */
-void	linked_list_choose_testing_type(t_lst_test *tests)
+void	linked_list_launch_tests(t_lst_test *tests)
 {
 	int		attempts_cnt;
 	char	choice;
@@ -12,7 +12,7 @@ void	linked_list_choose_testing_type(t_lst_test *tests)
 	attempts_cnt = 0;
 	while (attempts_cnt < MAX_LST_ATTEMPTS_NUM)
 	{
-		lst_ask_user(&choice);
+		ask_user_test_type(&choice);
 		if (choice == CHOICE_STATIC[0])
 		{
 			add_static_list_tests(tests);

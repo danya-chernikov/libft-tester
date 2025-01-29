@@ -1,46 +1,54 @@
 #ifndef LIST_H
 # define LIST_H
 
-#include "../include/libft_tester.h"
+# include "../common_tester/common_tester.h"
+# include "../../libft.h"
 
-# define MAX_LST_NODES_NUM			4096
-# define MAX_LST_ATTEMPTS_NUM		8
-# define MAX_USER_INPUT_BUF_LEN		8192
-# define MAX_CMD_TYPE_LEN			16
-# define MAX_CMD_ARG_TYPE_LEN		16
-# define MAX_CMD_ARG_LEN			4096
-# define LST_DATA_TYPES_NUM			15
+# include <ctype.h>
+# include <stdbool.h>
 
-# define SIGNAL_QUIT				2
 
-# define CHOICE_STATIC				"S"
-# define CHOICE_DYNAMIC				"D"
+# define MAX_LST_NODES_NUM		4096
+# define MAX_LST_ATTEMPTS_NUM	8
+# define MAX_USER_INPUT_BUF_LEN	8192
+# define MAX_CMD_TYPE_LEN		16
+# define MAX_CMD_ARG_TYPE_LEN	16
+# define MAX_CMD_ARG_LEN		4096
+# define MAX_CMD_SUBSTR_LEN		4096
+# define MAX_CMD_SUBSTR_NUM		3
+# define LST_DATA_TYPES_NUM		15
 
-# define CMD_MAN					"man"
-# define CMD_NEW					"new"
-# define CMD_ADDFRONT				"addfront"
-# define CMD_SIZE					"size"
-# define CMD_LAST					"last"
-# define CMD_ADDBACK				"addback"
-# define CMD_DEL					"del"
-# define CMD_CLEAR					"clear"
-# define CMD_PRINT					"print"
-# define CMD_QUIT					"quit"
+# define SIGNAL_QUIT			2
 
-# define AT_CHAR					"CHAR"
-# define AT_UCHAR					"U_CHAR"
-# define AT_SHORT					"SHORT"
-# define AT_USHORT					"U_SHORT"
-# define AT_INT						"INT"
-# define AT_UINT					"U_INT"
-# define AT_LONG					"LONG"
-# define AT_ULONG					"U_LONG"
-# define AT_LONGLONG				"LONG_LONG"
-# define AT_ULONGLONG				"U_LONG_LONG"
-# define AT_FLOAT					"FLOAT"
-# define AT_DOUBLE					"DOUBLE"
-# define AT_LONGDOUBLE				"LONG_DOUBLE"
-# define AT_STRING					"STRING"
+# define CHOICE_STATIC			"S"
+# define CHOICE_DYNAMIC			"D"
+
+# define CMD_MAN				"man"
+# define CMD_NEW				"new"
+# define CMD_ADDFRONT			"addfront"
+# define CMD_SIZE				"size"
+# define CMD_LAST				"last"
+# define CMD_ADDBACK			"addback"
+# define CMD_DEL				"del"
+# define CMD_CLEAR				"clear"
+# define CMD_PRINT				"print"
+# define CMD_QUIT				"quit"
+
+# define AT_CHAR				"CHAR"
+# define AT_UCHAR				"U_CHAR"
+# define AT_SHORT				"SHORT"
+# define AT_USHORT				"U_SHORT"
+# define AT_INT					"INT"
+# define AT_UINT				"U_INT"
+# define AT_LONG				"LONG"
+# define AT_ULONG				"U_LONG"
+# define AT_LONGLONG			"LONG_LONG"
+# define AT_ULONGLONG			"U_LONG_LONG"
+# define AT_FLOAT				"FLOAT"
+# define AT_DOUBLE				"DOUBLE"
+# define AT_LONGDOUBLE			"LONG_DOUBLE"
+# define AT_STRING				"STRING"
+# define AT_VOID				"VOID"
 
 
 /* The type of a list's content */
@@ -143,11 +151,21 @@ typedef struct list_debug
 }	t_lst_d;
 
 
+t_list	*lstnew_test(void *cnt, t_cnt_type type);
+void	lstadd_front_test(t_list **head, t_list *new);
+void	lstsize_test(t_list **head);
+void	lstlast_test(t_list *head, t_cnt_type type);
+void	lstadd_back_test(t_list **head, t_list *new);
+void	lstdelone_test(t_list *node, void (*del)(void *));
+void	lstclear_test(t_lst_d *l, t_list **n, void (*f)(void *), t_lst_test *t);
+void	lstiter_test(void);
+void	lstmap_test(void);
+
 /* list_aux.c */
 int		print_list(t_lst_d *list, int ntabs);
 void	print_tabs(int n);
 int		lstsize(t_list **lst);
-void	lst_ask_user(char *choice);
+void	ask_user_test_type(char *choice);
 void	insert_type_at_begin(t_cnt_type *types, int type_cnt, t_cnt_type type);
 
 /* list_aux2.c */
@@ -158,7 +176,6 @@ void	nullify_node_ptr(t_lst_d *list, t_list **node);
 t_list	*get_node(t_lst_d *list, int node_ind);
 
 /* list_aux3.c */
-int		parse_user_input(char *buf, t_cmd *command);
 bool	cnt_was_freed(void *cnt, t_lst_test *tests);
 bool	node_was_freed(void *node, t_lst_test *tests);
 void	get_line(char *str);
@@ -175,14 +192,27 @@ t_cnt_type	determine_data_type(char *type);
 t_cnt_type	check_numeric_data_types(char *type);
 t_cnt_type	check_non_numeric_data_types(char *type);
 
+
+/* list_cmd_parser.c */
+int		parse_user_input(char *buf, t_cmd *cmd);
+void    split_string_by_spaces(char *str, char (*substrs)[MAX_CMD_SUBSTR_LEN]);
+int		check_no_arg_cmd(char (*substrs)[MAX_CMD_SUBSTR_LEN]);
+int		cmd_type_is_valid(t_cmd *cmd);
+int		user_passed_args_crtly(t_cmd *cmd, char (*substrs)[MAX_CMD_SUBSTR_LEN]);
+
+/* list_cmd_parser2.c */
+int		arg_type_is_valid(t_cmd *cmd);
+int		one_arg_cmd_is_correct(t_cmd *cmd, char (*substrs)[MAX_CMD_SUBSTR_LEN]);
+
+
 /* list_init.c */
-t_lst_d	*list_debug_init(void *cnt, t_cnt_type type);
+t_lst_d	*list_debug_init(void *cnt, t_cnt_type type, bool debug);
 void	init_list_tests(t_lst_test *tests);
 void	nullify_static_list_tests(t_lst_test *tests);
 void	nullify_heap_list_tests(t_lst_test *tests);
 
 /* list_tests.c */
-void	linked_list_choose_testing_type(t_lst_test *tests);
+void	linked_list_launch_tests(t_lst_test *tests);
 int		alloc_mem_for_tests(t_lst_test *tests);
 
 /* list_tests2.c */
@@ -267,7 +297,6 @@ int		lstaddback_double(t_lst_d *list, t_lst_test *tests, char *arg);
 int		lstaddback_longdouble(t_lst_d *list, t_lst_test *tests, char *arg);
 int		lstaddback_string(t_lst_d *list, t_lst_test *tests, char *arg);
 
-
 /* list_cmd_clear_processor.c */
 int		process_cmd_clear(t_lst_d *list, t_lst_test *tests, t_cmd *command);
 
@@ -288,8 +317,8 @@ int		alloc_lst_test_ulls(t_lst_test *tests);
 
 /* list_alloc3.c */
 int		alloc_lst_test_floats(t_lst_test *tests);
-int		alloc_lst_test_doulbes(t_lst_test *tests);
-int		alloc_lst_test_ldoulbes(t_lst_test *tests);
+int		alloc_lst_test_doubles(t_lst_test *tests);
+int		alloc_lst_test_ldoubles(t_lst_test *tests);
 int		alloc_lst_test_strings(t_lst_test *tests);
 int		alloc_lst_test_strs(t_lst_test *tests);
 
@@ -316,7 +345,6 @@ t_ld	*alloc_ldouble(t_ld val);
 
 /* list_alloc7.c */
 char	*alloc_string(char *val);
-
 
 
 /* list_free.c */

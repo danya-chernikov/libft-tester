@@ -6,7 +6,7 @@ int	lstaddfront_char(t_lst_d *list, t_lst_test *tests, char *arg)
 {
 	int	pos;
 	
-	pos = counters[(int)CHAR];
+	pos = tests->counters[(int)CHAR];
 	if (strlen(arg) > 1)
 	{
 		printf("lstaddfront_char(): The passed argument is not a char\n");
@@ -22,7 +22,7 @@ int	lstaddfront_uchar(t_lst_d *list, t_lst_test *tests, char *arg)
 {
 	int	pos;
 
-	pos = counters[(int)U_CHAR];
+	pos = tests->counters[(int)U_CHAR];
 	if (strlen(arg) > 1)
 	{
 		printf("lstaddfront_uchar(): The passed argument is not an u_char\n");
@@ -46,7 +46,7 @@ int	lstaddfront_short(t_lst_d *list, t_lst_test *tests, char *arg)
 		printf("lstaddfront_short(): The passed argument is not a short\n");
 		return (ERROR);
 	}
-	pos = counters[(int)SHORT];
+	pos = tests->counters[(int)SHORT];
 	tests->shorts_ptrs[pos] = alloc_short((short)lst_data);
 	addfront_quick(list, (short *)tests->shorts_ptrs[pos], SHORT, false);
 	tests->counters[(int)SHORT]++;
@@ -65,7 +65,7 @@ int	lstaddfront_ushort(t_lst_d *list, t_lst_test *tests, char *arg)
 		printf("lstaddfront_ushort(): The passed argument is not an u_short\n");
 		return (ERROR);
 	}
-	pos = counters[(int)U_SHORT];
+	pos = tests->counters[(int)U_SHORT];
 	tests->ushorts_ptrs[pos] = alloc_ushort((u_short)lst_data);
 	addfront_quick(list, (u_short *)tests->ushorts_ptrs[pos], U_SHORT, false);
 	tests->counters[(int)U_SHORT]++;
@@ -84,7 +84,7 @@ int	lstaddfront_int(t_lst_d *list, t_lst_test *tests, char *arg)
 		printf("lstaddfront_int(): The passed argument is not an int\n");
 		return (ERROR);
 	}
-	pos = counters[(int)INT];
+	pos = tests->counters[(int)INT];
 	tests->ints_ptrs[pos] = alloc_int((int)lst_data);
 	addfront_quick(list, (int *)tests->ints_ptrs[pos], INT, false);
 	tests->counters[(int)INT]++;

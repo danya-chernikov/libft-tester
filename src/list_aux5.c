@@ -7,10 +7,10 @@ t_cnt_type	determine_data_type(char *type)
 	t_cnt_type	res1;
 	t_cnt_type	res2;
 
-	res1 = check_numeric_data_type(type);
+	res1 = check_numeric_data_types(type);
 	if (res1 == INVALID_TYPE)
 	{
-		res2 = check_non_numeric_data_type(type);
+		res2 = check_non_numeric_data_types(type);
 		if (res2 == INVALID_TYPE)
 			return (INVALID_TYPE);
 		else

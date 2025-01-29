@@ -6,22 +6,19 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:42:27 by dchernik          #+#    #+#             */
-/*   Updated: 2025/01/25 15:34:14 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/01/29 19:34:15 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_TESTER_H
 # define LIBFT_TESTER_H
 
-# include "../common_tester/common_tester.h"
 # include "../libbsd/bsd_string.h"
-# include "../../libft.h"
+# include "list.h"
 
-# include <ctype.h>
 # include <locale.h>
 # include <limits.h>
 # include <stdint.h>
-# include <stdbool.h>
 
 /* MEM_ERR_BUF          - The size of a buffer in which we put the text
  *						  to indicate an error during memory allocation
@@ -54,15 +51,8 @@
  *						  they would prefer;
  * AT_CHAR				- Represents the `CHAR` argument type */
 
-# define ERROR						0
-# define SUCCESS					1
-# define STDIN						0
-# define STDOUT						1
-# define STDERR						2
 # define NO_STD_STREAM				0
-
 # define MAX_FUNC_NAME_LEN			128
-# define MAX_FORMAT_STR_LEN			1024
 # define MAX_STRNCMP_STR_LEN		128
 # define MAX_MEMCHR_STR_LEN			128
 # define MAX_STRNSTR_STR_LEN		128
@@ -227,15 +217,5 @@ void	putchar_fd_test(void);
 void	putstr_fd_test(void);
 void	putendl_fd_test(void);	
 void	putnbr_fd_test(void);
-
-t_list	*lstnew_test(void *cnt, t_cnt_type type);
-void	lstadd_front_test(t_list **head, t_list *new);
-void	lstsize_test(t_list **head);
-void	lstlast_test(t_list *head, t_cnt_type type);
-void	lstadd_back_test(t_list **head, t_list *new);
-void	lstdelone_test(t_list *node, void (*del)(void *));
-void	lstclear_test(t_lst_d *l, t_list **n, void (*f)(void *), t_lst_test *t);
-void	lstiter_test(void);
-void	lstmap_test(void);
 
 #endif

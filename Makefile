@@ -20,6 +20,7 @@ OBJS=common_tester.o alg.o print.o cprint.o alloc.o packer.o \
 	 putsmth_fd_special.o putsmth_fd_write.o putsmth_fd_print.o \
 	 putsmth_fd_errors.o \
 	 list_aux.o list_aux2.o list_aux3.o list_aux4.o list_aux5.o \
+	 list_cmd_parser.o list_cmd_parser2.o \
 	 list_init.o list_tests.o list_tests2.o \
 	 list_static_testing.o list_dynamic_testing.o \
 	 list_cmd_new_processor.o list_cmd_new.o list_cmd_new2.o list_cmd_new3.o \
@@ -239,6 +240,13 @@ list_aux4.o : src/list_aux4.c include/list.h
 
 list_aux5.o : src/list_aux5.c include/list.h
 	$(CC) $(CFLAGS) -c src/list_aux5.c
+
+
+list_cmd_parser.o : src/list_cmd_parser.c include/list.h
+	$(CC) $(CFLAGS) -c src/list_cmd_parser.c
+
+list_cmd_parser2.o : src/list_cmd_parser.c include/list.h
+	$(CC) $(CFLAGS) -c src/list_cmd_parser.c
 
 
 list_init.o : src/list_init.c include/list.h

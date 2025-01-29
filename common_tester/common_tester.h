@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:42:05 by dchernik          #+#    #+#             */
-/*   Updated: 2025/01/25 18:57:23 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/01/29 19:25:16 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <stdarg.h>
 
 # include "../libbsd/bsd_string.h"
+
 
 /* GL_COLOR_FLAG    - global color flag. if 1 cprintf() function
  *					  is going to color it's output, otherwise
@@ -45,6 +46,12 @@
 # define CYAN				"\033[36m"
 # define WHITE				"\033[37m"
 
+# define ERROR				0
+# define SUCCESS			1
+# define STDIN				0
+# define STDOUT				1
+# define STDERR				2
+
 # define GL_COLOR_FLAG		1
 # define MAX_ERR_BUF_SIZE	256
 # define TEST_HD_FT_LEN		50
@@ -53,6 +60,8 @@
 # define MAX_SUBSTR_LEN		100
 # define READ_MEM_LIMIT		1024
 # define DELIM_BYTES_LIMIT	10
+# define MAX_FORMAT_STR_LEN	1024
+
 
 typedef char const			t_char_c;
 typedef void const			t_void_c;
@@ -60,6 +69,7 @@ typedef unsigned long		t_ul;
 typedef long long			t_ll;
 typedef unsigned long long	t_ull;
 typedef long double			t_ld;
+
 
 /* cprintf() - colored printf;
  * cperror() - colored perror;

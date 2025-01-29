@@ -1,9 +1,9 @@
 #include "../include/list.h"
 
-static int	proc_user_command1(t_cmd *c, t_lst_d *l, t_lst_test *t, bool *lcrt);
-static int	proc_user_command2(t_cmd *c, t_lst_d *l, t_lst_test *t, bool *lcrt);
-static int	proc_user_command3(t_cmd *c, t_lst_d *l, t_lst_test *t, bool *lcrt);
-static int	proc_user_command4(t_cmd *c, t_lst_d *l, t_lst_test *t, bool *lcrt);
+static int	proc_user_cmd1(t_cmd *c, t_lst_d *l, t_lst_test *t, bool *lcrt);
+static int	proc_user_cmd2(t_cmd *c, t_lst_d *l, t_lst_test *t, bool *lcrt);
+static int	proc_user_cmd3(t_cmd *c, t_lst_d *l, t_lst_test *t, bool *lcrt);
+static int	proc_user_cmd4(t_cmd *c, t_lst_d *l, t_lst_test *t, bool *lcrt);
 
 /* It performs dynamic testing of singly linked lists. It means
  * the user will have ability to construct thier own list using
@@ -13,10 +13,11 @@ static int	proc_user_command4(t_cmd *c, t_lst_d *l, t_lst_test *t, bool *lcrt);
 void	linked_list_launch_dynamic_testing(t_lst_test *tests)
 {
 	char		input_buf[MAX_USER_INPUT_BUF_LEN];
-	t_cmd		cmd;
 	t_lst_d		*list;
 	bool		lcrt;
+	t_cmd		cmd;
 
+	list = NULL;
 	lcrt = false;
 	while (true)
 	{
@@ -89,7 +90,7 @@ static int	proc_user_cmd2(t_cmd *c, t_lst_d *l, t_lst_test *t, bool *lcrt)
 	return (SUCCESS);
 }
 
-static int	proc_user_cmd3(t_cmd *c, t_lst_d *l t_lst_test *t, bool *lcrt)
+static int	proc_user_cmd3(t_cmd *c, t_lst_d *l, t_lst_test *t, bool *lcrt)
 {
 	if (((strcmp(c->type, CMD_SIZE) == 0)
 		|| (strcmp(c->type, CMD_LAST) == 0)
@@ -102,13 +103,13 @@ static int	proc_user_cmd3(t_cmd *c, t_lst_d *l t_lst_test *t, bool *lcrt)
 	{
 		printf("\tsize\n");
 		print_parsed_cmd_args(c);
-		lstsize_test(&list->head);
+		lstsize_test(&l->head);
 	}
 	if (strcmp(c->type, CMD_LAST) == 0)
 	{
 		printf("\tlast\n");
 		print_parsed_cmd_args(c);
-		lstlast_test(list->head, SHORT); // Improve this!
+		lstlast_test(l->head, SHORT); // Improve this!
 	}
 	if (strcmp(c->type, CMD_ADDBACK) == 0)
 	{
@@ -120,7 +121,7 @@ static int	proc_user_cmd3(t_cmd *c, t_lst_d *l t_lst_test *t, bool *lcrt)
 	return (SUCCESS);
 }
 
-static int	proc_user_cmd4(t_cmd *c t_lst_d *l, t_lst_test *t, bool *lcrt)
+static int	proc_user_cmd4(t_cmd *c, t_lst_d *l, t_lst_test *t, bool *lcrt)
 {
 	if (((strcmp(c->type, CMD_CLEAR) == 0)
 		|| (strcmp(c->type, CMD_PRINT) == 0)) && (*lcrt == false))
@@ -139,13 +140,13 @@ static int	proc_user_cmd4(t_cmd *c t_lst_d *l, t_lst_test *t, bool *lcrt)
 	{
 		printf("\tprint\n");
 		print_parsed_cmd_args(c);
-		print_list(list);
+		print_list(l, 0);
 	}
 	if (strcmp(c->type, CMD_QUIT) == 0)
 	{
 		printf("\tquit\n");
 		print_parsed_cmd_args(c);
-		break ;
+		return (SIGNAL_QUIT);
 	}
 	return (SUCCESS);
 }

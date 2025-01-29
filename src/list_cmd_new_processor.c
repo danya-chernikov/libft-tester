@@ -114,7 +114,7 @@ static int	proc_cmd_new4(t_lst_d *l, t_lst_test *t, t_cmd *c, t_cnt_type type)
 	if (type == LONG_DOUBLE)
 	{
 		printf("type = LONG_DOUBLE\n");
-		if (lstnew_longdouble(l, t c->arg) == ERROR)
+		if (lstnew_longdouble(l, t, c->arg) == ERROR)
 			return (ERROR);
 	}
 	if (type == STRING)
