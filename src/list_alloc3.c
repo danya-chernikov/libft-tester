@@ -99,7 +99,7 @@ int	alloc_lst_test_strs(t_lst_test *tests)
 	i = 0;
 	while (i < MAX_LST_NODES_NUM)
 	{
-		tests->strs[i] = (char *)malloc(MAX_TEST_STR_LEN * sizeof (char));
+		tests->strs[i] = (char *)malloc(MAX_LST_TEST_STR_LEN * sizeof (char));
 		if (tests->strs[i] == NULL)
 		{
 			i--;

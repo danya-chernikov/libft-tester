@@ -2,7 +2,7 @@
 #include <limits.h>
 #include <stdlib.h>
 
-int	lstnew_uint(t_lst_d *list, t_lst_test *tests, char *arg)
+int	lstnew_uint(t_lst_d **list, t_lst_test *tests, char *arg)
 {
 	char	*stopstr;
 	t_ull	lst_data;
@@ -16,14 +16,14 @@ int	lstnew_uint(t_lst_d *list, t_lst_test *tests, char *arg)
 	}
 	pos = tests->counters[(int)U_INT];
 	tests->uints_ptrs[pos] = alloc_uint((u_int)lst_data);
-	list = list_debug_init((u_int *)tests->uints_ptrs[pos], U_INT, false);
+	*list = list_debug_init((u_int *)tests->uints_ptrs[pos], U_INT, false);
 	if (list == NULL)
 		return (ERROR);
 	tests->counters[(int)U_INT]++;
 	return (SUCCESS);
 }
 
-int	lstnew_long(t_lst_d *list, t_lst_test *tests, char *arg)
+int	lstnew_long(t_lst_d **list, t_lst_test *tests, char *arg)
 {
 	char	*stopstr;
 	t_ll	lst_data;
@@ -37,14 +37,14 @@ int	lstnew_long(t_lst_d *list, t_lst_test *tests, char *arg)
 	}
 	pos = tests->counters[(int)LONG];
 	tests->longs_ptrs[pos] = alloc_long((long)lst_data);
-	list = list_debug_init((long *)tests->longs_ptrs[pos], LONG, false);
+	*list = list_debug_init((long *)tests->longs_ptrs[pos], LONG, false);
 	if (list == NULL)
 		return (ERROR);
 	tests->counters[(int)LONG]++;
 	return (SUCCESS);
 }
 
-int	lstnew_ulong(t_lst_d *list, t_lst_test *tests, char *arg)
+int	lstnew_ulong(t_lst_d **list, t_lst_test *tests, char *arg)
 {
 	char	*stopstr;
 	t_ull	lst_data;
@@ -58,14 +58,14 @@ int	lstnew_ulong(t_lst_d *list, t_lst_test *tests, char *arg)
 	}
 	pos = tests->counters[(int)U_LONG];
 	tests->ulongs_ptrs[pos] = alloc_ulong((u_long)lst_data);
-	list = list_debug_init((u_long *)tests->ulongs_ptrs[pos], U_LONG, false);
+	*list = list_debug_init((u_long *)tests->ulongs_ptrs[pos], U_LONG, false);
 	if (list == NULL)
 		return (ERROR);
 	tests->counters[(int)U_LONG]++;
 	return (SUCCESS);
 }
 
-int	lstnew_longlong(t_lst_d *list, t_lst_test *tests, char *arg)
+int	lstnew_longlong(t_lst_d **list, t_lst_test *tests, char *arg)
 {
 	char	*stopstr;
 	t_ll	lst_data;
@@ -74,14 +74,14 @@ int	lstnew_longlong(t_lst_d *list, t_lst_test *tests, char *arg)
 	lst_data = strtoll(arg, &stopstr, 10);
 	pos = tests->counters[(int)LONG_LONG];
 	tests->lls_ptrs[pos] = alloc_longlong((t_ll)lst_data);
-	list = list_debug_init((t_ll *)tests->lls_ptrs[pos], LONG_LONG, false);
+	*list = list_debug_init((t_ll *)tests->lls_ptrs[pos], LONG_LONG, false);
 	if (list == NULL)
 		return (ERROR);
 	tests->counters[(int)LONG_LONG]++;
 	return (SUCCESS);
 }
 
-int	lstnew_ulonglong(t_lst_d *list, t_lst_test *tests, char *arg)
+int	lstnew_ulonglong(t_lst_d **list, t_lst_test *tests, char *arg)
 {
 	char	*stopstr;
 	t_ull	lst_data;
@@ -90,7 +90,7 @@ int	lstnew_ulonglong(t_lst_d *list, t_lst_test *tests, char *arg)
 	lst_data = strtoull(arg, &stopstr, 10);
 	pos = tests->counters[(int)U_LONG_LONG];
 	tests->ulls_ptrs[pos] = alloc_ulonglong((t_ull)lst_data);
-	list = list_debug_init((t_ull *)tests->ulls_ptrs[pos], U_LONG_LONG, false);
+	*list = list_debug_init((t_ull *)tests->ulls_ptrs[pos], U_LONG_LONG, false);
 	if (list == NULL)
 		return (ERROR);
 	tests->counters[(int)U_LONG_LONG]++;

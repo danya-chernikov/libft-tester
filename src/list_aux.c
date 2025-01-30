@@ -9,12 +9,10 @@ int	print_list(t_lst_d *list, int ntabs)
 {
 	t_list	*nptr;
 	char	*arg;
-	int		lsize;
 	int		i;
 
 	if (list->head == NULL)
 		return (ERROR);
-	lsize = lstsize(&list->head);
 	arg = (char *)malloc((MAX_FORMAT_STR_LEN + 1) * sizeof (char));
 	if (arg == NULL)
 		return (ERROR);

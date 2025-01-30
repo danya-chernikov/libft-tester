@@ -1,11 +1,11 @@
 #include "../include/list.h"
 
-static int	proc_cmd_new1(t_lst_d *l, t_lst_test *t, t_cmd *c, t_cnt_type type);
-static int	proc_cmd_new2(t_lst_d *l, t_lst_test *t, t_cmd *c, t_cnt_type type);
-static int	proc_cmd_new3(t_lst_d *l, t_lst_test *t, t_cmd *c, t_cnt_type type);
-static int	proc_cmd_new4(t_lst_d *l, t_lst_test *t, t_cmd *c, t_cnt_type type);
+static int	proc_cmd_new1(t_lst_d **l, t_lst_test *t, t_cmd *c, t_cnt_type type);
+static int	proc_cmd_new2(t_lst_d **l, t_lst_test *t, t_cmd *c, t_cnt_type type);
+static int	proc_cmd_new3(t_lst_d **l, t_lst_test *t, t_cmd *c, t_cnt_type type);
+static int	proc_cmd_new4(t_lst_d **l, t_lst_test *t, t_cmd *c, t_cnt_type type);
 
-int	process_cmd_new(t_lst_d *list, t_lst_test *tests, t_cmd *command)
+int	process_cmd_new(t_lst_d **list, t_lst_test *tests, t_cmd *command)
 {
 	printf("process_cmd_new()\n");
 	t_cnt_type	data_type;
@@ -22,7 +22,7 @@ int	process_cmd_new(t_lst_d *list, t_lst_test *tests, t_cmd *command)
 	return (SUCCESS);
 }
 
-static int	proc_cmd_new1(t_lst_d *l, t_lst_test *t, t_cmd *c, t_cnt_type type)
+static int	proc_cmd_new1(t_lst_d **l, t_lst_test *t, t_cmd *c, t_cnt_type type)
 {
 	if (type == CHAR)
 	{
@@ -51,7 +51,7 @@ static int	proc_cmd_new1(t_lst_d *l, t_lst_test *t, t_cmd *c, t_cnt_type type)
 	return (SUCCESS);
 }
 
-static int	proc_cmd_new2(t_lst_d *l, t_lst_test *t, t_cmd *c, t_cnt_type type)
+static int	proc_cmd_new2(t_lst_d **l, t_lst_test *t, t_cmd *c, t_cnt_type type)
 {
 	if (type == INT)
 	{
@@ -80,7 +80,7 @@ static int	proc_cmd_new2(t_lst_d *l, t_lst_test *t, t_cmd *c, t_cnt_type type)
 	return (SUCCESS);
 }
 
-static int	proc_cmd_new3(t_lst_d *l, t_lst_test *t, t_cmd *c, t_cnt_type type)
+static int	proc_cmd_new3(t_lst_d **l, t_lst_test *t, t_cmd *c, t_cnt_type type)
 {
 	if (type == LONG_LONG)
 	{
@@ -109,7 +109,7 @@ static int	proc_cmd_new3(t_lst_d *l, t_lst_test *t, t_cmd *c, t_cnt_type type)
 	return (SUCCESS);
 }
 
-static int	proc_cmd_new4(t_lst_d *l, t_lst_test *t, t_cmd *c, t_cnt_type type)
+static int	proc_cmd_new4(t_lst_d **l, t_lst_test *t, t_cmd *c, t_cnt_type type)
 {
 	if (type == LONG_DOUBLE)
 	{
