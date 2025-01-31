@@ -30,31 +30,6 @@ void	addback_quick(t_lst_d *list, void *cnt, t_cnt_type type, bool debug)
 	}
 }
 
-/* It traverses the list starting from the node node to the end,
- * storing pointers to each node and the content of each node it
- * passes. This ensures that when the time comes to free the
- * content of each node, the content won't be freed twice. This
- * approach helps avoid a double-free error. Also, this function
- * decrements the `type_cnt` variable of the `t_lst_d` structure
- * when the next node is passed */
-void	detect_nodes_to_free(t_lst_d *list, t_list **node, t_lst_test *tests)
-{
-	t_list	*ni;
-	int		i;
-
-	i = 0;
-	ni = *node;
-	while (ni != NULL)
-	{
-		list->type_cnt--;
-		tests->nodes_to_free[i] = (void *)ni;
-		tests->cnts_to_free[i] = (void *)ni->content;
-		ni = ni->next;
-		i++;
-	}
-	tests->nodes_num_to_free = i;
-}
-
 /* It nullifies the `next` pointer of the node preceding
  * the node from which we start clearing the list. If we
  * are clearing the list starting from its head, this
@@ -68,6 +43,7 @@ void	nullify_node_ptr(t_lst_d *list, t_list **node)
 	ni = list->head;
 	if (ni == *node)
 	{
+		// ni->next = NULL; ?
 		list->head = NULL;
 		return ;
 	}
@@ -84,6 +60,33 @@ void	nullify_node_ptr(t_lst_d *list, t_list **node)
 			break ;
 		}
 	}
+}
+
+/* It traverses the list starting from the node `*node` to the end,
+ * storing pointers to each node and the content of each node it
+ * passes. This ensures that when the time comes to free the
+ * content of each node, the content won't be freed twice. This
+ * approach helps avoid a double-free error. Also, this function
+ * decrements the `type_cnt` variable of the `t_lst_d` structure
+ * when the next node is passed */
+void	detect_nodes_to_free(t_lst_d *list, t_list **node, t_lst_test *tests)
+{
+	t_list	*ni;
+	int		i;
+	int		last_ind;
+
+	i = 0;
+	ni = *node;
+	last_ind = tests->nodes_num_to_free;
+	while (ni != NULL)
+	{
+		list->type_cnt--;
+		tests->nodes_to_free[last_ind + i] = (void *)ni;
+		tests->cnts_to_free[last_ind + i] = (void *)ni->content;
+		ni = ni->next;
+		i++;
+	}
+	tests->nodes_num_to_free = last_ind + i;
 }
 
 /* It traverses the `list` and returns a pointer

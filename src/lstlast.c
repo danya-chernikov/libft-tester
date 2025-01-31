@@ -5,13 +5,15 @@ static void	test_helper(t_char_c *fn, int nt, t_list *head, t_cnt_type type);
 
 /* This function needs to accept the content type type of
  * the last element in the list list to interpret its content */
-void	lstlast_test(t_list *head, t_cnt_type type)
+void	lstlast_test(t_lst_d *list)
 {
-	char	fname[MAX_FUNC_NAME_LEN];
+	char		fname[MAX_FUNC_NAME_LEN];
+	t_cnt_type	type;
 
 	strncpy(fname, "ft_lstlast", MAX_FUNC_NAME_LEN);
 	print_test_header(fname);
-	test_helper(fname, 1, head, type);
+	type = list->types[list->type_cnt - 1];
+	test_helper(fname, 1, list->head, type);
 	print_test_footer();
 }
 

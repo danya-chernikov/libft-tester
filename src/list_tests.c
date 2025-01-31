@@ -26,7 +26,7 @@ void	linked_list_launch_tests(t_lst_test *tests)
 		}
 		else
 		{
-			printf("You've entered an invalid input Please try again.\n\n");
+			printf("You've entered an invalid input. Please try again.\n\n");
 			attempts_cnt++;
 			continue ;
 		}

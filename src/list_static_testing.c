@@ -13,10 +13,10 @@ void	linked_list_launch_static_testing(t_lst_test *tests)
 		return ;
 	addfront_quick(list, (int *)tests->ints_ptrs[0], INT, true);
 	addfront_quick(list, (float *)tests->floats_ptrs[0], FLOAT, true);
-	lstlast_test(list->head, STRING); // Improve it! The caller does not need to know the content type of the last node!
+	lstlast_test(list); // Improve it! The caller does not need to know the content type of the last node!
 	addfront_quick(list, (char *)tests->chars_ptrs[0], CHAR, true);
 	addback_quick(list, (short *)tests->shorts_ptrs[0], SHORT, true);
-	lstlast_test(list->head, SHORT); // Improve it!
+	lstlast_test(list); // Improve it!
 	addback_quick(list, (long *)tests->longs_ptrs[0], LONG, true);
 	addback_quick(list, (int *)tests->ints_ptrs[1], INT, true);
 	node = get_node(list, 4);
