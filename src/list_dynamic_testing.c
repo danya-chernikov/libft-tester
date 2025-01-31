@@ -23,8 +23,8 @@ void	linked_list_launch_dynamic_testing(t_lst_test *tests)
 	while (true)
 	{
 		printf("\nEnter command ('man' for help): ");
-		//get_line(input_buf);
 		fgets(input_buf, MAX_USER_INPUT_BUF_LEN, stdin);
+		printf("\n");
 		input_buf[strcspn(input_buf, "\n")] = '\0';
 		if (parse_user_input(input_buf, &cmd) == ERROR)
 		{
@@ -38,7 +38,7 @@ void	linked_list_launch_dynamic_testing(t_lst_test *tests)
 		if (proc_user_cmd4(&cmd, &list, tests, &lcrt) == SIGNAL_QUIT)
 			break ;
 	}
-	if ((list != NULL) && (lcrt == true))
+	if (lcrt)
 		free_list_debug(list);
 }
 
@@ -46,8 +46,6 @@ static int	proc_user_cmd1(t_cmd *c, t_lst_d **l, t_lst_test *t, bool *lcrt)
 {
 	if (strcmp(c->type, CMD_MAN) == 0)
 	{
-		printf("\tman\n");
-		print_parsed_cmd_args(c);
 		lst_print_man();
 	}
 	if (strcmp(c->type, CMD_NEW) == 0)
@@ -59,8 +57,6 @@ static int	proc_user_cmd1(t_cmd *c, t_lst_d **l, t_lst_test *t, bool *lcrt)
 		}
 		else
 		{
-			printf("\tnew\n");
-			print_parsed_cmd_args(c);
 			if (process_cmd_new(l, t, c) == ERROR)
 				return (ERROR);
 			else
@@ -76,8 +72,6 @@ static int	proc_user_cmd2(t_cmd *c, t_lst_d **l, t_lst_test *t, bool *lcrt)
 	{
 		if (*lcrt == true)
 		{
-			printf("\taddfront\n");
-			print_parsed_cmd_args(c);
 			if (process_cmd_addfront(l, t, c) == ERROR)
 				return (ERROR);
 		}
@@ -101,20 +95,14 @@ static int	proc_user_cmd3(t_cmd *c, t_lst_d **l, t_lst_test *t, bool *lcrt)
 	}
 	if (strcmp(c->type, CMD_SIZE) == 0)
 	{
-		printf("\tsize\n");
-		print_parsed_cmd_args(c);
 		lstsize_test(&(*l)->head);
 	}
 	if (strcmp(c->type, CMD_LAST) == 0)
 	{
-		printf("\tlast\n");
-		print_parsed_cmd_args(c);
-		lstlast_test(*l); // Improve this!
+		lstlast_test(*l);
 	}
 	if (strcmp(c->type, CMD_ADDBACK) == 0)
 	{
-		printf("\taddback\n");
-		print_parsed_cmd_args(c);
 		if (process_cmd_addback(l, t, c) == ERROR)
 			return (ERROR);
 	}
@@ -131,21 +119,15 @@ static int	proc_user_cmd4(t_cmd *c, t_lst_d **l, t_lst_test *t, bool *lcrt)
 	}
 	if (strcmp(c->type, CMD_CLEAR) == 0)
 	{
-		printf("\tclear\n");
-		print_parsed_cmd_args(c);
 		if (process_cmd_clear(l, t, c, lcrt) == ERROR)
 			return (ERROR);
 	}
 	if (strcmp(c->type, CMD_PRINT) == 0)
 	{
-		printf("\tprint\n");
-		print_parsed_cmd_args(c);
 		print_list(*l, 0);
 	}
 	if (strcmp(c->type, CMD_QUIT) == 0)
 	{
-		printf("\tquit\n");
-		print_parsed_cmd_args(c);
 		return (SIGNAL_QUIT);
 	}
 	return (SUCCESS);
