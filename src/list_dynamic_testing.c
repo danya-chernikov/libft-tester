@@ -23,10 +23,6 @@ void	linked_list_launch_dynamic_testing(t_lst_test *tests)
 	while (true)
 	{
 		printf("\nEnter command ('man' for help): ");
-<<<<<<< HEAD
-=======
-		//get_line(input_buf);
->>>>>>> 5cfd34b8bf85c7a5093477b008c55c21fda46580
 		fgets(input_buf, MAX_USER_INPUT_BUF_LEN, stdin);
 		printf("\n");
 		input_buf[strcspn(input_buf, "\n")] = '\0';
@@ -42,11 +38,7 @@ void	linked_list_launch_dynamic_testing(t_lst_test *tests)
 		if (proc_user_cmd4(&cmd, &list, tests, &lcrt) == SIGNAL_QUIT)
 			break ;
 	}
-<<<<<<< HEAD
 	if (lcrt)
-=======
-	if ((list != NULL) && (lcrt == true))
->>>>>>> 5cfd34b8bf85c7a5093477b008c55c21fda46580
 		free_list_debug(list);
 }
 
@@ -127,11 +119,6 @@ static int	proc_user_cmd4(t_cmd *c, t_lst_d **l, t_lst_test *t, bool *lcrt)
 	}
 	if (strcmp(c->type, CMD_CLEAR) == 0)
 	{
-<<<<<<< HEAD
-=======
-		printf("\tclear\n");
-		print_parsed_cmd_args(c);
->>>>>>> 5cfd34b8bf85c7a5093477b008c55c21fda46580
 		if (process_cmd_clear(l, t, c, lcrt) == ERROR)
 			return (ERROR);
 	}

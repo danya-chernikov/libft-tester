@@ -12,11 +12,12 @@
 
 #include "common_tester.h"
 
-/*
- * It copies the pointers to the passed variables into an array
- * of (void *), called 'packet', so we can pass this array into
- * another function, bypassing the constraint that no more than
- * four arguments can be passed to a function.
+/* It copies the pointers to the passed
+ * variables into an array of (void *),
+ * called 'packet', so we can pass this
+ * array into another function, bypassing
+ * the constraint that no more than four
+ * arguments can be passed to a function.
  * pack - the packet of arguments */
 void	**pack_args(int nargs, ...)
 {
@@ -24,7 +25,7 @@ void	**pack_args(int nargs, ...)
 	va_list	vl;
 	int		i;
 
-	pack = (void **)calloc(sizeof(void *), nargs);
+	pack = (void **)calloc(nargs, sizeof (void *));
 	if (pack == NULL)
 		return (NULL);
 	va_start(vl, nargs);
@@ -38,14 +39,16 @@ void	**pack_args(int nargs, ...)
 	return (pack);
 }
 
-/*
- * It unites two strings into a new one using ':' as a delimiter and
- * returns a pointer to this new string. We use this auxiliary function
- * during testing strncmp() to combine two variables into one. We are
- * doing this to reduce the number of arguments passed to strncmp()
- * from five to four, as functions can accept no more than four
- * arguments according to the Norm. After calling this function, you
- * must call unpack_strs() later or manually free the memory associated
+/* It unites two strings into a new one using
+ * ':' as a delimiter and returns a pointer to
+ * this new string. We use this auxiliary function
+ * during testing strncmp() to combine two variables
+ * into one. We are doing this to reduce the number
+ * of arguments passed to strncmp() from five to
+ * four, as functions can accept no more than four
+ * arguments according to the Norm. After calling
+ * this function, you must call unpack_strs() later
+ * or manually free the memory associated
  * with the returned pointer */
 char	*pack_strs(t_char_c *s1, t_char_c *s2)
 {
@@ -56,7 +59,7 @@ char	*pack_strs(t_char_c *s1, t_char_c *s2)
 
 	s1_len = strlen(s1);
 	s2_len = strlen(s2);
-	res = (char *)malloc(s1_len + s2_len + 2);
+	res = (char *)malloc((s1_len + s2_len + 2) * sizeof (char));
 	if (res == NULL)
 		return (NULL);
 	i = 0;
@@ -75,8 +78,9 @@ char	*pack_strs(t_char_c *s1, t_char_c *s2)
 	return (res);
 }
 
-/* It divides the strings united by pack_strs() using ':' as a delimiter.
- * Also, it frees memory allocated by pack_strs(). It returns zero if the
+/* It divides the strings united by pack_strs()
+ * using ':' as a delimiter. Also, it frees memory
+ * allocated by pack_strs(). It returns zero if the
  * passed strs argument does not contain the delimiter */
 int	unpack_strs(char *strs, char *s1, char *s2)
 {
@@ -87,7 +91,7 @@ int	unpack_strs(char *strs, char *s1, char *s2)
 	while (strs[i] != ':')
 	{
 		if (strs[i] == '\0')
-			return (0);
+			return (ERROR);
 		s1[i] = strs[i];
 		i++;
 	}
@@ -102,5 +106,5 @@ int	unpack_strs(char *strs, char *s1, char *s2)
 	}
 	s2[j] = '\0';
 	free(strs);
-	return (1);
+	return (SUCCESS);
 }
