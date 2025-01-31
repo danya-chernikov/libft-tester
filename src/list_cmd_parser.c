@@ -66,8 +66,11 @@ int	parse_user_input(char *buf, t_cmd *cmd)
 		cmd->arg_type[0] = '\0';
 		strncpy(cmd->arg, substrs[1], MAX_CMD_ARG_LEN - 1);
 	}
-	if (!arg_type_is_valid(cmd))
-		return (ERROR);
+	else
+	{
+		if (!arg_type_is_valid(cmd))
+			return (ERROR);
+	}
 	return (SUCCESS);
 }
 

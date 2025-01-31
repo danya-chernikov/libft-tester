@@ -22,11 +22,10 @@ void	linked_list_launch_dynamic_testing(t_lst_test *tests)
 	fgets(input_buf, MAX_USER_INPUT_BUF_LEN, stdin);
 	while (true)
 	{
-		printf("Enter command ('man' for help): ");
+		printf("\nEnter command ('man' for help): ");
 		//get_line(input_buf);
 		fgets(input_buf, MAX_USER_INPUT_BUF_LEN, stdin);
 		input_buf[strcspn(input_buf, "\n")] = '\0';
-		printf("input_buf = \"%s\"\n", input_buf);
 		if (parse_user_input(input_buf, &cmd) == ERROR)
 		{
 			printf("You entered an incorrect command. Please try again.\n");
@@ -39,7 +38,7 @@ void	linked_list_launch_dynamic_testing(t_lst_test *tests)
 		if (proc_user_cmd4(&cmd, &list, tests, &lcrt) == SIGNAL_QUIT)
 			break ;
 	}
-	if (list != NULL)
+	if ((list != NULL) && (lcrt == true))
 		free_list_debug(list);
 }
 
@@ -134,7 +133,7 @@ static int	proc_user_cmd4(t_cmd *c, t_lst_d **l, t_lst_test *t, bool *lcrt)
 	{
 		printf("\tclear\n");
 		print_parsed_cmd_args(c);
-		if (process_cmd_clear(l, t, c) == ERROR)
+		if (process_cmd_clear(l, t, c, lcrt) == ERROR)
 			return (ERROR);
 	}
 	if (strcmp(c->type, CMD_PRINT) == 0)

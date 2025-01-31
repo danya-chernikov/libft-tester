@@ -15,7 +15,6 @@ void	lstclear_test(t_lst_d *l, t_list **n, void (*f)(void *), t_lst_test *t)
 	print_test_header(fname);
 	nullify_node_ptr(l, n);
 	detect_nodes_to_free(l, n, t);
-	//print_list2(l, 0);
 	test_helper(fname, 1, n, f);
 	print_test_footer();
 }

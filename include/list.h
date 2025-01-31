@@ -155,6 +155,7 @@ typedef struct list_debug
 {
 	t_cnt_type	*types;
 	t_list		*head;
+	t_list		*tail;
 	int			type_cnt;
 }	t_lst_d;
 
@@ -179,8 +180,8 @@ void	insert_type_at_begin(t_cnt_type *types, int type_cnt, t_cnt_type type);
 /* list_aux2.c */
 void	addfront_quick(t_lst_d *list, void *cnt, t_cnt_type type, bool debug);
 void	addback_quick(t_lst_d *list, void *cnt, t_cnt_type type, bool debug);
-void	detect_nodes_to_free(t_lst_d *list, t_list **node, t_lst_test *tests);
 void	nullify_node_ptr(t_lst_d *list, t_list **node);
+void	detect_nodes_to_free(t_lst_d *list, t_list **node, t_lst_test *tests);
 t_list	*get_node(t_lst_d *list, int node_ind);
 
 /* list_aux3.c */
@@ -307,7 +308,7 @@ int		lstaddback_longdouble(t_lst_d **list, t_lst_test *tests, char *arg);
 int		lstaddback_string(t_lst_d **list, t_lst_test *tests, char *arg);
 
 /* list_cmd_clear_processor.c */
-int		process_cmd_clear(t_lst_d **list, t_lst_test *tests, t_cmd *command);
+int		process_cmd_clear(t_lst_d **list, t_lst_test *tests, t_cmd *command, bool *lcrt);
 
 
 /* list_alloc.c */
