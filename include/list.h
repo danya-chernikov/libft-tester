@@ -155,6 +155,7 @@ typedef struct list_debug
 {
 	t_cnt_type	*types;
 	t_list		*head;
+	t_list		*tail;
 	int			type_cnt;
 }	t_lst_d;
 
