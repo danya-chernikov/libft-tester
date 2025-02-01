@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 15:20:48 by dchernik          #+#    #+#             */
-/*   Updated: 2025/02/01 15:20:55 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/02/01 16:33:36 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,18 @@ static int	proc_user_cmd4(t_cmd *c, t_lst_d **l, t_lst_test *t, bool *lcrt);
  *     lcrt - a flag indicating whether a list was created or not */
 void	linked_list_launch_dynamic_testing(t_lst_test *tests)
 {
-	char		input_buf[MAX_USER_INPUT_BUF_LEN];
+	char		cmd_buf[MAX_USER_INPUT_BUF_LEN];
 	t_lst_d		*list;
 	bool		lcrt;
 	t_cmd		cmd;
 
 	list = NULL;
 	lcrt = false;
-	fgets(input_buf, MAX_USER_INPUT_BUF_LEN, stdin);
+	fgets(cmd_buf, MAX_USER_INPUT_BUF_LEN, stdin);
 	while (true)
 	{
-		printf("\nEnter command ('man' for help): ");
-		fgets(input_buf, MAX_USER_INPUT_BUF_LEN, stdin);
-		printf("\n");
-		input_buf[strcspn(input_buf, "\n")] = '\0';
-		if (parse_user_input(input_buf, &cmd) == ERROR)
+		get_user_command(cmd_buf);
+		if (parse_user_input(cmd_buf, &cmd) == ERROR)
 		{
 			printf("You entered an incorrect command. Please try again.\n");
 			continue ;
@@ -99,8 +96,8 @@ static int	proc_user_cmd2(t_cmd *c, t_lst_d **l, t_lst_test *t, bool *lcrt)
 static int	proc_user_cmd3(t_cmd *c, t_lst_d **l, t_lst_test *t, bool *lcrt)
 {
 	if ((!strcmp(c->type, CMD_SIZE)
-		|| !strcmp(c->type, CMD_LAST)
-		|| !strcmp(c->type, CMD_ADDBACK)) && (*lcrt == false))
+			|| !strcmp(c->type, CMD_LAST)
+			|| !strcmp(c->type, CMD_ADDBACK)) && (*lcrt == false))
 	{
 		printf("Before working with a list, it must be created.\n");
 		return (ERROR);
@@ -124,7 +121,7 @@ static int	proc_user_cmd3(t_cmd *c, t_lst_d **l, t_lst_test *t, bool *lcrt)
 static int	proc_user_cmd4(t_cmd *c, t_lst_d **l, t_lst_test *t, bool *lcrt)
 {
 	if ((!strcmp(c->type, CMD_CLEAR)
-		|| !strcmp(c->type, CMD_PRINT)) && (*lcrt == false))
+			|| !strcmp(c->type, CMD_PRINT)) && (*lcrt == false))
 	{
 		printf("Before working with a list, it must be created.\n");
 		return (ERROR);

@@ -6,16 +6,15 @@
 /*   By: dchernik <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 17:31:44 by dchernik          #+#    #+#             */
-/*   Updated: 2025/02/01 15:21:36 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/02/01 15:30:08 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/list.h"
 
-/* It creates a new singly linked list, allocates
- * memory for an array of all possible node content
- * types, and initializes the list by adding the
- * first node with content `cnt` of `type` type */
+/* It creates a new singly linked list, allocates memory for an
+ * array of all possible node content types, and initializes the
+ * list by adding the first node with content `cnt` of `type` type */
 t_lst_d	*list_debug_init(void *cnt, t_cnt_type type, bool debug)
 {
 	t_lst_d	*list;

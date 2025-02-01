@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 15:16:09 by dchernik          #+#    #+#             */
-/*   Updated: 2025/02/01 15:16:22 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/02/01 16:31:52 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ bool	cnt_was_freed(void *cnt, t_lst_test *tests)
 		if (cnt == tests->cnts_to_free[i])
 		{
 			was_freed = true;
-			break;
+			break ;
 		}
 		i++;
 	}
@@ -43,7 +43,7 @@ bool	node_was_freed(void *node, t_lst_test *tests)
 		if (node == tests->nodes_to_free[i])
 		{
 			was_freed = true;
-			break;
+			break ;
 		}
 		i++;
 	}
@@ -53,19 +53,10 @@ bool	node_was_freed(void *node, t_lst_test *tests)
 /* It just gets line from the
  * standard input and puts it
  * into `str` array */
-void	get_line(char *str)
+void	get_user_command(char *buf)
 {
-	int	ch;
-	int	i;
-
-	i = 0;
-	while (i < MAX_USER_INPUT_BUF_LEN)
-	{
-		ch = getchar();
-		if (ch == '\n' || ch == EOF)
-			break ;
-		str[i] = ch;
-		i++;
-	}
-	str[i] = '\0';
+	printf("\nEnter command ('man' for help): ");
+	fgets(buf, MAX_USER_INPUT_BUF_LEN, stdin);
+	printf("\n");
+	buf[strcspn(buf, "\n")] = '\0';
 }

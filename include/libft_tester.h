@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:42:27 by dchernik          #+#    #+#             */
-/*   Updated: 2025/01/29 19:34:15 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/02/01 15:34:40 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@
 # define PUTSTR_FORMAT				"(\"%s\", fd): \"%s\"\n"
 # define PUTENDL_FORMAT				"(\"%s\", fd): \"%s\"\n"
 # define PUTNBR_FORMAT				"(%d, fd): \"%s\"\n"
-
 
 /* This structure defines all the tests to be performed on
  * the function being tested.

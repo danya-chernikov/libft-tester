@@ -3,7 +3,9 @@
 /* We included `putsmth_fd.h` to use
  * the `form_common_err_msg()` function */
 
-/* This is the main function that launches all the tests */
+/* It suggests that the user choose the testing
+ * mode for singly linked lists and launches the
+ * corresponding testing function. */
 void	linked_list_launch_tests(t_lst_test *tests)
 {
 	int		attempts_cnt;

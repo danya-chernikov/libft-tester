@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 15:20:45 by dchernik          #+#    #+#             */
-/*   Updated: 2025/02/01 15:20:55 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/02/01 18:04:46 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@
  *     last
  *     print
  * */
-// What if an argument of STRING type contains spaces?!
 int	parse_user_input(char *buf, t_cmd *cmd)
 {
 	char	substrs[MAX_CMD_SUBSTR_NUM][MAX_CMD_SUBSTR_LEN];
@@ -70,6 +69,15 @@ int	parse_user_input(char *buf, t_cmd *cmd)
 		return (ERROR);
 	strncpy(cmd->arg_type, substrs[1], MAX_CMD_ARG_TYPE_LEN - 1);
 	strncpy(cmd->arg, substrs[2], MAX_CMD_ARG_LEN - 1);
+	if (check_single_arg(cmd, substrs) == ERROR)
+		return (ERROR);
+	return (SUCCESS);
+}
+
+int	check_single_arg(t_cmd *cmd, char (*substrs)[MAX_CMD_SUBSTR_LEN])
+{
+	int	res;
+
 	res = single_arg_cmd_is_crt(cmd, substrs);
 	if (res == ERROR)
 		return (ERROR);
@@ -86,37 +94,38 @@ int	parse_user_input(char *buf, t_cmd *cmd)
 	return (SUCCESS);
 }
 
-/* It splits the string str by spaces and stores each substring in the array
- * of pointers to substrings, substrs. It splits only the first three substrings
- * found. If the original string str contains fewer than three space-separated
- * substrings, the remaining cells of the substrs array will contain empty strings */
-void    split_string_by_spaces(char *str, char (*substrs)[MAX_CMD_SUBSTR_LEN])
+/* It splits the string str by spaces and stores each substring in the
+ * array of pointers to substrings, substrs. It splits only the first
+ * three substrings found. If the original string str contains fewer
+ * than three space-separated substrings, the remaining cells of the
+ * substrs array will contain empty strings */
+void	split_string_by_spaces(char *str, char (*substrs)[MAX_CMD_SUBSTR_LEN])
 {
-    int		si;
-    int		j;
-    size_t	i;
+	int		si;
+	int		j;
+	size_t	i;
 
-    substrs[0][0] = '\0';
-    substrs[1][0] = '\0';
-    substrs[2][0] = '\0';
-    si = 0;
-    i = 0;
-    while (si < 3)
-    {
-        j = 0;
-        while ((str[i] != ' ') && (i < strlen(str)))
-        {
-            substrs[si][j] = str[i];
-            i++;
-            j++;
-        }
-        substrs[si][j] = '\0';
-        while ((str[i] == ' ') && (i < strlen(str)))
-            i++;
-        if (i == strlen(str))
-            break ;
-        si++;
-    }
+	substrs[0][0] = '\0';
+	substrs[1][0] = '\0';
+	substrs[2][0] = '\0';
+	si = 0;
+	i = 0;
+	while (si < 3)
+	{
+		j = 0;
+		while ((str[i] != ' ') && (i < strlen(str)))
+		{
+			substrs[si][j] = str[i];
+			i++;
+			j++;
+		}
+		substrs[si][j] = '\0';
+		while ((str[i] == ' ') && (i < strlen(str)))
+			i++;
+		if (i == strlen(str))
+			break ;
+		si++;
+	}
 }
 
 /* It checks if the entered command belongs to the type of commands
@@ -166,37 +175,6 @@ int	multi_arg_cmd(t_cmd *cmd)
 	{
 		printf("parse_user_input(): Unknown command\n");
 		return (ERROR);
-	}
-	return (SUCCESS);
-}
-
-/* It checks if the user specified the arguments correctly when the command
- * type belongs to the group of commands that require two arguments */
-int	user_passed_args_crtly(t_cmd *cmd, char (*substrs)[MAX_CMD_SUBSTR_LEN])
-{
-	if (!strcmp(cmd->type, CMD_NEW) || !strcmp(cmd->type, CMD_ADDFRONT)
-		|| !strcmp(cmd->type, CMD_ADDBACK))
-	{
-		if (substrs[1][0] == '\0')
-		{
-			printf("parse_user_input(): You must specify an argument type\n");
-			return (ERROR);
-		}
-		if (substrs[2][0] == '\0')
-		{
-			printf("parse_user_input(): You forgot to specify an argument\n");
-			return (ERROR);
-		}
-		if (strlen(substrs[1]) > MAX_CMD_ARG_TYPE_LEN)
-		{
-			printf("parse_user_input(): The argument type is invaild\n");
-			return (ERROR);
-		}
-		if (strlen(substrs[2]) > MAX_CMD_ARG_LEN)
-		{
-			printf("parse_user_input(): The argument exceeds maximum length\n");
-			return (ERROR);
-		}
 	}
 	return (SUCCESS);
 }

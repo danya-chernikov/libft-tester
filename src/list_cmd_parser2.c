@@ -6,11 +6,42 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 15:20:47 by dchernik          #+#    #+#             */
-/*   Updated: 2025/02/01 15:20:55 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/02/01 18:00:43 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/list.h"
+
+/* It checks if the user specified the arguments correctly when the command
+ * type belongs to the group of commands that require two arguments */
+int	user_passed_args_crtly(t_cmd *cmd, char (*substrs)[MAX_CMD_SUBSTR_LEN])
+{
+	if (!strcmp(cmd->type, CMD_NEW) || !strcmp(cmd->type, CMD_ADDFRONT)
+		|| !strcmp(cmd->type, CMD_ADDBACK))
+	{
+		if (substrs[1][0] == '\0')
+		{
+			printf("parse_user_input(): You must specify an argument type\n");
+			return (ERROR);
+		}
+		if (substrs[2][0] == '\0')
+		{
+			printf("parse_user_input(): You forgot to specify an argument\n");
+			return (ERROR);
+		}
+		if (strlen(substrs[1]) > MAX_CMD_ARG_TYPE_LEN)
+		{
+			printf("parse_user_input(): The argument type is invaild\n");
+			return (ERROR);
+		}
+		if (strlen(substrs[2]) > MAX_CMD_ARG_LEN)
+		{
+			printf("parse_user_input(): The argument exceeds maximum length\n");
+			return (ERROR);
+		}
+	}
+	return (SUCCESS);
+}
 
 /* It checks if the argument type
  * specified by the user is correct */
@@ -40,7 +71,7 @@ int	arg_type_is_valid(t_cmd *cmd)
 /* If the user entered a command that require only one argument (an argument
  * value which represents a node number) this function checks if this its
  * value has the correct form or not */
-int single_arg_cmd_is_crt(t_cmd *cmd, char (*substrs)[MAX_CMD_SUBSTR_LEN])
+int	single_arg_cmd_is_crt(t_cmd *cmd, char (*substrs)[MAX_CMD_SUBSTR_LEN])
 {
 	if ((strcmp(cmd->type, CMD_CLEAR) == 0)
 		|| (strcmp(cmd->type, CMD_DEL) == 0))

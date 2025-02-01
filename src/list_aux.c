@@ -6,17 +6,21 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 15:16:02 by dchernik          #+#    #+#             */
-/*   Updated: 2025/02/01 15:16:22 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/02/01 16:19:57 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/list.h"
 
-/* It prints the pointers representing all the nodes of the
- * singly linked list, starting from the head node that `head_ptr`
- * points to, in the form of a chain. The chain begins with tabs
- * number of '\t' symbols. The `types` array contains the data
- * types of the nodes in the list, beginning with the head node */
+/* It prints the pointers representing
+ * all the nodes of the singly linked
+ * list, starting from the head node
+ * that `head_ptr` points to, in the
+ * form of a chain. The chain begins
+ * with tabs number of '\t' symbols.
+ * The `types` array contains the data
+ * types of the nodes in the list,
+ * beginning with the head node */
 int	print_list(t_lst_d *list, int ntabs)
 {
 	t_list	*nptr;
@@ -89,7 +93,8 @@ void	ask_user_test_type(char *choice)
 }
 
 /* It inserts the `type` type at the beginning of the `types` array, which had
- * previously shifted all other elements to the right */
+ * previously shifted all other elements to the right.
+ *     type_cnt - type counter */
 void	insert_type_at_begin(t_cnt_type *types, int type_cnt, t_cnt_type type)
 {
 	int	i;

@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 15:17:38 by dchernik          #+#    #+#             */
-/*   Updated: 2025/02/01 15:17:57 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/02/01 16:13:45 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 int	lstaddback_char(t_lst_d **list, t_lst_test *tests, char *arg)
 {
 	int	pos;
-	
+
 	pos = tests->counters[(int)CHAR];
 	if (strlen(arg) > 1)
 	{

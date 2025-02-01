@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 15:19:37 by dchernik          #+#    #+#             */
-/*   Updated: 2025/02/01 15:19:42 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/02/01 16:22:44 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 int	lstnew_char(t_lst_d **list, t_lst_test *tests, char *arg)
 {
 	int	pos;
-	
+
 	pos = tests->counters[(int)CHAR];
 	if (strlen(arg) > 1)
 	{
@@ -85,7 +85,7 @@ int	lstnew_ushort(t_lst_d **list, t_lst_test *tests, char *arg)
 	}
 	pos = tests->counters[(int)U_SHORT];
 	tests->ushorts_ptrs[pos] = alloc_ushort((u_short)lst_data);
-	*list = list_debug_init((u_short *)tests->ushorts_ptrs[pos], U_SHORT, false);
+	*list = list_debug_init((u_short *)tests->ushorts_ptrs[pos], U_SHORT, 0);
 	if (list == NULL)
 		return (ERROR);
 	tests->counters[(int)U_SHORT]++;

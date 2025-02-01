@@ -6,14 +6,14 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 16:41:38 by dchernik          #+#    #+#             */
-/*   Updated: 2025/01/29 19:50:46 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/02/01 15:36:06 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUTSMTH_FD_H
 # define PUTSMTH_FD_H
 
-#include "libft_tester.h"
+# include "libft_tester.h"
 
 /* putsmth_fd_aux.c */
 void	ps_test_help(t_char_c *fn, t_ps_tests *tests, t_func_id find, int tn);

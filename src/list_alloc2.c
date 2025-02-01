@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 15:15:16 by dchernik          #+#    #+#             */
-/*   Updated: 2025/02/01 15:15:26 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/02/01 16:11:56 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,10 +117,10 @@ int	alloc_lst_test_lls(t_lst_test *tests)
 }
 
 int	alloc_lst_test_ulls(t_lst_test *tests)
-{	
+{
 	t_ull	**ulls_ptrs;
 	t_ull	*ulls;
-	int	i;
+	int		i;
 
 	ulls = (t_ull *)malloc(MAX_LST_NODES_NUM * sizeof (t_ull));
 	if (ulls == NULL)

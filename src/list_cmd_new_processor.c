@@ -6,16 +6,16 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 15:19:36 by dchernik          #+#    #+#             */
-/*   Updated: 2025/02/01 15:19:42 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/02/01 16:24:04 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/list.h"
 
-static int	proc_cmd_new1(t_lst_d **l, t_lst_test *t, t_cmd *c, t_cnt_type type);
-static int	proc_cmd_new2(t_lst_d **l, t_lst_test *t, t_cmd *c, t_cnt_type type);
-static int	proc_cmd_new3(t_lst_d **l, t_lst_test *t, t_cmd *c, t_cnt_type type);
-static int	proc_cmd_new4(t_lst_d **l, t_lst_test *t, t_cmd *c, t_cnt_type type);
+static int	proc_cmd_new1(t_lst_d **l, t_lst_test *t, t_cmd *c, t_cnt_type typ);
+static int	proc_cmd_new2(t_lst_d **l, t_lst_test *t, t_cmd *c, t_cnt_type typ);
+static int	proc_cmd_new3(t_lst_d **l, t_lst_test *t, t_cmd *c, t_cnt_type typ);
+static int	proc_cmd_new4(t_lst_d **l, t_lst_test *t, t_cmd *c, t_cnt_type typ);
 
 int	process_cmd_new(t_lst_d **list, t_lst_test *tests, t_cmd *command)
 {

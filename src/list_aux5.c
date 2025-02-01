@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 15:16:12 by dchernik          #+#    #+#             */
-/*   Updated: 2025/02/01 15:16:22 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/02/01 16:12:31 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ t_cnt_type	check_numeric_data_types(char *type)
 
 t_cnt_type	check_non_numeric_data_types(char *type)
 {
-
 	if (strcmp(type, AT_CHAR) == 0)
 		return (CHAR);
 	if (strcmp(type, AT_UCHAR) == 0)

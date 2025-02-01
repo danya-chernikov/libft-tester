@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 15:21:34 by dchernik          #+#    #+#             */
-/*   Updated: 2025/02/01 15:21:36 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/02/01 16:53:46 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@ void	lst_print_man(void)
 	printf("\t\tClears the list starting from the node that has "
 		"the `nodenumber` position in the list (by count)\n");
 	printf("\tPossible types of content are: CHAR, U_CHAR, SHORT, U_SHORT, "
-	"INT, U_INT, LONG, U_LONG, LONG_LONG, U_LONG_LONG, FLOAT, DOUBLE, "
-	"LONG_DOUBLE, STRING, VOID\n");
+		"INT, U_INT, LONG, U_LONG, LONG_LONG, U_LONG_LONG, FLOAT, DOUBLE, "
+		"LONG_DOUBLE, STRING, VOID\n");
 }

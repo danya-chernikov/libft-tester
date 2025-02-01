@@ -6,12 +6,13 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 15:16:06 by dchernik          #+#    #+#             */
-/*   Updated: 2025/02/01 15:16:22 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/02/01 17:01:29 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/list.h"
 
+/* list->type_cnt - type counter */
 void	addfront_quick(t_lst_d *list, void *cnt, t_cnt_type type, bool debug)
 {
 	t_list	*lst;
@@ -31,6 +32,7 @@ void	addfront_quick(t_lst_d *list, void *cnt, t_cnt_type type, bool debug)
 void	addback_quick(t_lst_d *list, void *cnt, t_cnt_type type, bool debug)
 {
 	t_list	*lst;
+
 	list->types[list->type_cnt] = type;
 	lst = lstnew_test(cnt, type);
 	lstadd_back_test(&list->head, lst);
@@ -51,11 +53,10 @@ void	addback_quick(t_lst_d *list, void *cnt, t_cnt_type type, bool debug)
 void	nullify_node_ptr(t_lst_d *list, t_list **node)
 {
 	t_list	*ni;
-	
+
 	ni = list->head;
 	if (ni == *node)
 	{
-		// ni->next = NULL; ?
 		list->head = NULL;
 		return ;
 	}
