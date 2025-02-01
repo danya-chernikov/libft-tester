@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   list_cmd_clear_processor.c                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/01 15:19:34 by dchernik          #+#    #+#             */
+/*   Updated: 2025/02/01 15:19:42 by dchernik         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/list.h"
 
 int	process_cmd_clear(t_lst_d **list, t_lst_test *tests, t_cmd *command, bool *lcrt)

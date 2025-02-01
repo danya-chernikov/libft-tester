@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   list_cmd_addfront_processor.c                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/01 15:18:31 by dchernik          #+#    #+#             */
+/*   Updated: 2025/02/01 15:18:33 by dchernik         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/list.h"
 
 static int	proc_cmd_af1(t_lst_d **l, t_lst_test *t, t_cmd *c, t_cnt_type type);
