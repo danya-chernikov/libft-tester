@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 15:20:45 by dchernik          #+#    #+#             */
-/*   Updated: 2025/02/01 18:04:46 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/02/01 18:32:47 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,11 @@
  * substrs[0]   substrs[1]         substrs[2]
  * [COMMAND]    [ARGUMENT_TYPE]    [ARGUMENT]
  *     new          CHAR		       a
- *     addfront     U_CHAR             b
+ *     addfront     U_CHAR             'b'
  *     addback      SHORT              128
  *					...
- *					STRING             "kek"
+ *					STRING			   justastring
+ *					STRING             "lol kek cheburek"
  *
  * or
  *
@@ -35,6 +36,8 @@
  * [COMMAND]    [ARGUMENT]
  *     clear        5
  *     del          6
+ *     clear		0x555555575730
+ *     del			0x555555575a10
  *
  *
  * or just

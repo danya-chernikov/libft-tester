@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 15:16:09 by dchernik          #+#    #+#             */
-/*   Updated: 2025/02/01 16:31:52 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/02/01 19:19:41 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,11 @@ void	get_user_command(char *buf)
 	fgets(buf, MAX_USER_INPUT_BUF_LEN, stdin);
 	printf("\n");
 	buf[strcspn(buf, "\n")] = '\0';
+}
+
+void	ask_user_test_type(char *choice)
+{
+	printf("What kind of testing for linked lists you "
+		"would prefer? (S - Static / D - Dynamic): ");
+	scanf("%c", choice);
 }

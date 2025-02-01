@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 15:16:02 by dchernik          #+#    #+#             */
-/*   Updated: 2025/02/01 16:19:57 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/02/01 19:36:41 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,25 +49,47 @@ int	print_list(t_lst_d *list, int ntabs)
 	return (SUCCESS);
 }
 
-/* It prints n tabs consecutively */
-void	print_tabs(int n)
+
+/* It inserts the type at the beginning of the types array,
+ * shifting all other elements to the right by one beforehand. 
+ *     type_cnt - type counter. */
+void	insert_type_at_begin(t_cnt_type *types, int type_cnt, t_cnt_type type)
 {
 	int	i;
 
-	i = 0;
-	while (i < n)
+	i = type_cnt;
+	while (i > 0)
 	{
-		printf("\t");
+		types[i] = types[i - 1];
+		i--;
+	}
+	types[0] = type;
+}
+
+/* It deletes one element from the type_pos cell of the types array
+ * and then shifts all elements to its right one position to the left.
+ *     type_cnt - type counter. */
+void	delete_type(t_cnt_type *types, int type_cnt, int type_pos)
+{
+	int	i;
+
+	i = type_pos;
+	while (i < type_cnt)
+	{
+		types[i] = types[i + 1];
 		i++;
 	}
 }
 
-/* It's the same function
- * as ft_lstsize(), but it
- * is used only for the
- * internal purposes of the
- * tester, specifically by
- * the print_list() function */
+/* It returns the size of the
+ * list `lst`. This function
+ * is the same as ft_lstsize(),
+ * but it is used only for
+ * internal purposes within
+ * the tester, specifically
+ * by the print_list() and
+ * process_del_clear()
+ * functions */
 int	lstsize(t_list **lst)
 {
 	t_list	*nptr;
@@ -85,25 +107,15 @@ int	lstsize(t_list **lst)
 	return (size);
 }
 
-void	ask_user_test_type(char *choice)
-{
-	printf("What kind of testing for linked lists you "
-		"would prefer? (S - Static / D - Dynamic): ");
-	scanf("%c", choice);
-}
-
-/* It inserts the `type` type at the beginning of the `types` array, which had
- * previously shifted all other elements to the right.
- *     type_cnt - type counter */
-void	insert_type_at_begin(t_cnt_type *types, int type_cnt, t_cnt_type type)
+/* It prints n tabs consecutively */
+void	print_tabs(int n)
 {
 	int	i;
 
-	i = type_cnt;
-	while (i > 0)
+	i = 0;
+	while (i < n)
 	{
-		types[i] = types[i - 1];
-		i--;
+		printf("\t");
+		i++;
 	}
-	types[0] = type;
 }

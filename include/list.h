@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 15:24:23 by dchernik          #+#    #+#             */
-/*   Updated: 2025/02/01 17:59:59 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/02/01 19:36:29 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,10 +185,10 @@ void		lstmap_test(void);
 
 /* list_aux.c */
 int			print_list(t_lst_d *list, int ntabs);
-void		print_tabs(int n);
-int			lstsize(t_list **lst);
-void		ask_user_test_type(char *choice);
 void		insert_type_at_begin(t_cnt_type *t, int type_cnt, t_cnt_type type);
+void		delete_type(t_cnt_type *types, int type_cnt, int type_pos);
+int			lstsize(t_list **lst);
+void		print_tabs(int n);
 
 /* list_aux2.c */
 void		addfront_quick(t_lst_d *list, void *cnt, t_cnt_type type, bool dbg);
@@ -201,6 +201,7 @@ t_list		*get_node(t_lst_d *list, int node_ind);
 bool		cnt_was_freed(void *cnt, t_lst_test *tests);
 bool		node_was_freed(void *node, t_lst_test *tests);
 void		get_user_command(char *buf);
+void		ask_user_test_type(char *choice);
 
 /* list_aux4.c */
 char		*create_format_str(void *cnt, t_cnt_type type);

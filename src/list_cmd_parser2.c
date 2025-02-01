@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 15:20:47 by dchernik          #+#    #+#             */
-/*   Updated: 2025/02/01 18:00:43 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/02/01 18:37:25 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,12 +78,14 @@ int	single_arg_cmd_is_crt(t_cmd *cmd, char (*substrs)[MAX_CMD_SUBSTR_LEN])
 	{
 		if (strlen(substrs[1]) > MAX_CMD_ARG_LEN)
 		{
-			printf("parse_user_input(): This value can not be a node number\n");
+			printf("parse_user_input(): This value can "
+				"not be a node number or an address\n");
 			return (ERROR);
 		}
 		if (substrs[1][0] == '\0')
 		{
-			printf("parse_user_input(): You forgot to specify a node number\n");
+			printf("parse_user_input(): You forgot to "
+				" specify either a node number or an address\n");
 			return (ERROR);
 		}
 		else

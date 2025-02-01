@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 15:20:48 by dchernik          #+#    #+#             */
-/*   Updated: 2025/02/01 16:33:36 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/02/01 18:41:40 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,15 +102,15 @@ static int	proc_user_cmd3(t_cmd *c, t_lst_d **l, t_lst_test *t, bool *lcrt)
 		printf("Before working with a list, it must be created.\n");
 		return (ERROR);
 	}
-	if (strcmp(c->type, CMD_SIZE) == 0)
+	if (!strcmp(c->type, CMD_SIZE))
 	{
 		lstsize_test(&(*l)->head);
 	}
-	if (strcmp(c->type, CMD_LAST) == 0)
+	if (!strcmp(c->type, CMD_LAST))
 	{
 		lstlast_test(*l);
 	}
-	if (strcmp(c->type, CMD_ADDBACK) == 0)
+	if (!strcmp(c->type, CMD_ADDBACK))
 	{
 		if (process_cmd_addback(l, t, c) == ERROR)
 			return (ERROR);
@@ -120,22 +120,27 @@ static int	proc_user_cmd3(t_cmd *c, t_lst_d **l, t_lst_test *t, bool *lcrt)
 
 static int	proc_user_cmd4(t_cmd *c, t_lst_d **l, t_lst_test *t, bool *lcrt)
 {
-	if ((!strcmp(c->type, CMD_CLEAR)
+	if ((!strcmp(c->type, CMD_CLEAR) || !strcmp(c->type, CMD_DEL)
 			|| !strcmp(c->type, CMD_PRINT)) && (*lcrt == false))
 	{
 		printf("Before working with a list, it must be created.\n");
 		return (ERROR);
 	}
-	if (strcmp(c->type, CMD_CLEAR) == 0)
+	if (!strcmp(c->type, CMD_CLEAR))
 	{
 		if (process_cmd_clear(l, t, c, lcrt) == ERROR)
 			return (ERROR);
 	}
-	if (strcmp(c->type, CMD_PRINT) == 0)
+	if (!strcmp(c->type, CMD_DEL))
+	{
+		if (process_cmd_del(l, t, c, lcrt) == ERROR)
+			return (ERROR);
+	}
+	if (!strcmp(c->type, CMD_PRINT) == 0)
 	{
 		print_list(*l, 0);
 	}
-	if (strcmp(c->type, CMD_QUIT) == 0)
+	if (!strcmp(c->type, CMD_QUIT) == 0)
 	{
 		return (SIGNAL_QUIT);
 	}

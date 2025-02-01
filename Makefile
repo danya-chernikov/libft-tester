@@ -26,7 +26,7 @@ OBJS=common_tester.o alg.o print.o cprint.o alloc.o packer.o \
 	 list_cmd_new_processor.o list_cmd_new.o list_cmd_new2.o list_cmd_new3.o \
 	 list_cmd_addfront_processor.o list_cmd_addfront.o list_cmd_addfront2.o list_cmd_addfront3.o \
 	 list_cmd_addback_processor.o list_cmd_addback.o list_cmd_addback2.o list_cmd_addback3.o \
-	 list_cmd_clear_processor.o \
+	 list_cmd_clear_processor.o list_cmd_del_processor.o \
 	 list_alloc.o list_alloc2.o list_alloc3.o list_alloc4.o list_alloc5.o list_alloc6.o list_alloc7.o \
 	 list_free.o list_free2.o list_free3.o list_free4.o list_free5.o \
 	 lstnew.o lstsize.o lstadd_front.o lstlast.o lstadd_back.o \
@@ -307,6 +307,9 @@ list_cmd_addback3.o : src/list_cmd_addback3.c include/list.h
 
 list_cmd_clear_processor.o : src/list_cmd_clear_processor.c include/list.h
 	$(CC) $(CFLAGS) -c src/list_cmd_clear_processor.c
+
+list_cmd_del_processor.o : src/list_cmd_del_processor.c include/list.h
+	$(CC) $(CFLAGS) -c src/list_cmd_del_processor.c
 
 
 list_alloc.o : src/list_alloc.c include/list.h
