@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 15:21:33 by dchernik          #+#    #+#             */
-/*   Updated: 2025/02/01 15:21:36 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/02/02 00:15:14 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	linked_list_launch_static_testing(t_lst_test *tests)
 	addback_quick(list, (int *)tests->ints_ptrs[1], INT, true);
 	node = get_node(list, 4);
 	if (node != NULL)
-		lstclear_test(list, &node, del, tests);
+		lstclear_test(list, &node, tests, del);
 	print_list(list, 0);
 	lstsize_test(&list->head);
 	free_list_debug(list);

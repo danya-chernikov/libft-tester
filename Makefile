@@ -308,6 +308,7 @@ list_cmd_addback3.o : src/list_cmd_addback3.c include/list.h
 list_cmd_clear_processor.o : src/list_cmd_clear_processor.c include/list.h
 	$(CC) $(CFLAGS) -c src/list_cmd_clear_processor.c
 
+
 list_cmd_del_processor.o : src/list_cmd_del_processor.c include/list.h
 	$(CC) $(CFLAGS) -c src/list_cmd_del_processor.c
 

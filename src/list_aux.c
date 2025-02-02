@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 15:16:02 by dchernik          #+#    #+#             */
-/*   Updated: 2025/02/01 19:36:41 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/02/01 20:36:11 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ int	print_list(t_lst_d *list, int ntabs)
 	free(arg);
 	return (SUCCESS);
 }
-
 
 /* It inserts the type at the beginning of the types array,
  * shifting all other elements to the right by one beforehand. 

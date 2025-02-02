@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 15:24:23 by dchernik          #+#    #+#             */
-/*   Updated: 2025/02/01 19:36:29 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/02/02 00:28:02 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,21 +168,24 @@ typedef struct list_debug
 	int			type_cnt;
 }	t_lst_d;
 
+/* Main functions */
 t_list		*lstnew_test(void *cnt, t_cnt_type type);
 void		lstadd_front_test(t_list **head, t_list *new);
 void		lstsize_test(t_list **head);
 void		lstlast_test(t_lst_d *list);
 void		lstadd_back_test(t_list **head, t_list *new);
-void		lstdelone_test(t_list *node, void (*del)(void *));
 
-void		lstclear_test(t_lst_d *l,
-				t_list **n,
-				void (*f)(void *),
-				t_lst_test *t);
+void        lstdelone_test(t_list *n, t_lst_test *t, void (*f)(void *));
+
+void        lstclear_test(t_lst_d *l,
+                t_list **n,
+                t_lst_test *t,
+                void (*f)(void *));
 
 void		lstiter_test(void);
 void		lstmap_test(void);
 
+/* Auxiliary functions */
 /* list_aux.c */
 int			print_list(t_lst_d *list, int ntabs);
 void		insert_type_at_begin(t_cnt_type *t, int type_cnt, t_cnt_type type);
@@ -193,8 +196,6 @@ void		print_tabs(int n);
 /* list_aux2.c */
 void		addfront_quick(t_lst_d *list, void *cnt, t_cnt_type type, bool dbg);
 void		addback_quick(t_lst_d *list, void *cnt, t_cnt_type type, bool dbg);
-void		nullify_node_ptr(t_lst_d *list, t_list **node);
-void		detect_nodes_to_free(t_lst_d *list, t_list **node, t_lst_test *t);
 t_list		*get_node(t_lst_d *list, int node_ind);
 
 /* list_aux3.c */
@@ -319,6 +320,9 @@ int			lstaddback_string(t_lst_d **list, t_lst_test *tests, char *arg);
 
 /* list_cmd_clear_processor.c */
 int			process_cmd_clear(t_lst_d **l, t_lst_test *t, t_cmd *c, bool *lcrt);
+
+/* list_cmd_del_processor.c */
+int         process_cmd_del(t_lst_d **l, t_lst_test *t, t_cmd *c, bool *lcrt);
 
 /* list_alloc.c */
 int			alloc_lst_test_chars(t_lst_test *tests);
