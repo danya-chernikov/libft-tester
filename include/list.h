@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 15:24:23 by dchernik          #+#    #+#             */
-/*   Updated: 2025/02/02 00:28:02 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/02/02 19:29:21 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,12 +175,12 @@ void		lstsize_test(t_list **head);
 void		lstlast_test(t_lst_d *list);
 void		lstadd_back_test(t_list **head, t_list *new);
 
-void        lstdelone_test(t_list *n, t_lst_test *t, void (*f)(void *));
+void		lstdelone_test(t_list *n, t_lst_test *t, void (*f)(void *));
 
-void        lstclear_test(t_lst_d *l,
-                t_list **n,
-                t_lst_test *t,
-                void (*f)(void *));
+void		lstclear_test(t_lst_d *l,
+				t_list **n,
+				t_lst_test *t,
+				void (*f)(void *));
 
 void		lstiter_test(void);
 void		lstmap_test(void);
@@ -322,7 +322,7 @@ int			lstaddback_string(t_lst_d **list, t_lst_test *tests, char *arg);
 int			process_cmd_clear(t_lst_d **l, t_lst_test *t, t_cmd *c, bool *lcrt);
 
 /* list_cmd_del_processor.c */
-int         process_cmd_del(t_lst_d **l, t_lst_test *t, t_cmd *c, bool *lcrt);
+int			process_cmd_del(t_lst_d **l, t_lst_test *t, t_cmd *c, bool *lcrt);
 
 /* list_alloc.c */
 int			alloc_lst_test_chars(t_lst_test *tests);

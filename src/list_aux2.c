@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 15:16:06 by dchernik          #+#    #+#             */
-/*   Updated: 2025/02/02 00:11:25 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/02/02 19:29:42 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void	addback_quick(t_lst_d *list, void *cnt, t_cnt_type type, bool debug)
 		lstsize_test(&list->head);
 	}
 }
-
 
 /* It traverses the `list` and returns a pointer
  * to the node at the `node_num`-th position in

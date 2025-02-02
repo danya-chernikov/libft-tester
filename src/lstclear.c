@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 15:22:45 by dchernik          #+#    #+#             */
-/*   Updated: 2025/02/02 00:11:25 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/02/02 19:35:28 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "../include/libft_tester.h"
 
 static void	test_helper(t_char_c *fn, int nt, t_list **n, void (*del)(void *));
-static void nullify_node_ptr(t_lst_d *list, t_list **node);
+static void	nullify_node_ptr(t_lst_d *list, t_list **node);
 static void	detect_nodes_to_free(t_lst_d *l, t_list **node, t_lst_test *tests);
 
 /* l - Pointer to the structure that represents the list;
@@ -53,7 +53,7 @@ static void	test_helper(t_char_c *fn, int nt, t_list **n, void (*del)(void *))
  * function simply nullifies the pointer to the head of
  * the list in the `t_lst_d` structure that represents
  * our list */
-static void nullify_node_ptr(t_lst_d *list, t_list **node)
+static void	nullify_node_ptr(t_lst_d *list, t_list **node)
 {
 	t_list	*ni;
 
