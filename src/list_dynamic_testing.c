@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 15:20:48 by dchernik          #+#    #+#             */
-/*   Updated: 2025/02/01 18:41:40 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/02/02 14:49:24 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,11 +136,11 @@ static int	proc_user_cmd4(t_cmd *c, t_lst_d **l, t_lst_test *t, bool *lcrt)
 		if (process_cmd_del(l, t, c, lcrt) == ERROR)
 			return (ERROR);
 	}
-	if (!strcmp(c->type, CMD_PRINT) == 0)
+	if (!strcmp(c->type, CMD_PRINT))
 	{
 		print_list(*l, 0);
 	}
-	if (!strcmp(c->type, CMD_QUIT) == 0)
+	if (!strcmp(c->type, CMD_QUIT))
 	{
 		return (SIGNAL_QUIT);
 	}
