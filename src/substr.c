@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:57:28 by dchernik          #+#    #+#             */
-/*   Updated: 2025/02/02 18:54:42 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/02/02 19:48:45 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void	substr_test(void)
  * an r-value. For example, it is not possible
  * to call a test this way:
  * test_helper(..., pack_args(3, (void *)"str", (void *)&(2), (void *)&(4)); */
-/* WE MUST RELEASE MEMORY AFTER using pack_args() ! */
 static void	launch_tests(t_char_c *fn)
 {
 	char	s[3][MAX_SUBSTR_STR_LEN];
@@ -83,6 +82,7 @@ static void	test_help(t_char_c *fname, int ntest, void **pack)
 	printf(f, str, start, len, ret, ret);
 	printf("\n");
 	free(ret);
+	free(pack);
 }
 
 static void	form_second_args_arr(u_int *t)
