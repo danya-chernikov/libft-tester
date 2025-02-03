@@ -12,7 +12,7 @@ void	del(void *node_cnt)
 
 /* This function is used to test how
  * the ft_lstiter() function works */
-void	iter_func1(void *node_cnt)
+void	lstiter_func1(void *node_cnt)
 {
 	size_t	i;
 
@@ -26,7 +26,7 @@ void	iter_func1(void *node_cnt)
 
 /* This function is used to test how
  * the ft_lstiter() function works */
-void	iter_func2(void *node_cnt)
+void	lstiter_func2(void *node_cnt)
 {
 	size_t	i;
 
@@ -36,4 +36,34 @@ void	iter_func2(void *node_cnt)
 		((char *)node_cnt)[i] = tolower(((char *)node_cnt)[i]);
 		i++;
 	}
+}
+
+/* This function is used to test how
+ * the ft_lstmap() function works */
+void	*lstmap_func1(void *node_cnt)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < strlen((char *)node_cnt))
+	{
+		((char *)node_cnt)[i] = toupper(((char *)node_cnt)[i]);
+		i++;
+	}
+	return (node_cnt);
+}
+
+/* This function is used to test how
+ * the ft_lstiter() function works */
+void	*lstmap_func2(void *node_cnt)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < strlen((char *)node_cnt))
+	{
+		((char *)node_cnt)[i] = tolower(((char *)node_cnt)[i]);
+		i++;
+	}
+	return (node_cnt);
 }

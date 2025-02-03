@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 15:20:48 by dchernik          #+#    #+#             */
-/*   Updated: 2025/02/03 15:52:29 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/02/03 19:18:50 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
  * the user will have ability to construct thier own list using
  * predefined command set, entering each command in the loop
  * manually.
- *     lcrt - a flag indicating whether a list was created or not */
+ *     lcrt     - a flag indicating whether a list was created or not;
+ *     new_list - a new list created by ft_lstmap() function */
 void	linked_list_launch_dynamic_testing(t_lst_test *tests)
 {
 	char		cmd_buf[MAX_USER_INPUT_BUF_LEN];
@@ -132,10 +133,6 @@ int	proc_user_cmd4(t_cmd *c, t_lst_d **l, t_lst_test *t, bool *lcrt)
 	{
 		if (process_cmd_del(l, t, c, lcrt) == ERROR)
 			return (ERROR);
-	}
-	if (!strcmp(c->type, CMD_ITER))
-	{
-		lstiter_test((*l)->head, iter_func1);
 	}
 	return (SUCCESS);
 }

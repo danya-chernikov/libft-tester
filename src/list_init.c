@@ -6,7 +6,7 @@
 /*   By: dchernik <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 17:31:44 by dchernik          #+#    #+#             */
-/*   Updated: 2025/02/01 15:30:08 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/02/03 19:06:19 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ t_lst_d	*list_debug_init(void *cnt, t_cnt_type type, bool debug)
 	list->type_cnt = 0;
 	list->types = (t_cnt_type *)malloc(MAX_LST_NODES_NUM * sizeof (t_cnt_type));
 	if (list->types == NULL)
+	{
+		free(list);
 		return (NULL);
+	}
 	list->types[list->type_cnt] = type;
 	list->head = lstnew_test(cnt, type);
 	list->type_cnt++;

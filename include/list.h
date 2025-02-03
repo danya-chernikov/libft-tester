@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 15:24:23 by dchernik          #+#    #+#             */
-/*   Updated: 2025/02/03 15:52:29 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/02/03 19:20:15 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,7 +166,6 @@ typedef struct list_debug
 {
 	t_cnt_type	*types;
 	t_list		*head;
-	t_list		*tail;
 	int			type_cnt;
 }	t_lst_d;
 
@@ -184,14 +183,18 @@ void		lstclear_test(t_lst_d *l,
 				void (*f)(void *));
 
 void		lstiter_test(t_list *head, void (*test_func)(void *));
-void		lstmap_test(void);
+
+t_list		*lstmap_test(t_list *node,
+				void *(*test_func)(void *), void (*del_func)(void *));
 
 /* Auxiliary functions */
 
 /* list_testing_funcs.c */
 void		del(void *node_cnt);
-void		iter_func1(void *node_cnt);
-void		iter_func2(void *node_cnt);
+void		lstiter_func1(void *node_cnt);
+void		lstiter_func2(void *node_cnt);
+void		lstmap_func1(void *node_cnt);
+void		lstmap_func2(void *node_cnt);
 
 
 /* list_aux.c */
@@ -204,6 +207,7 @@ void		print_tabs(int n);
 /* list_aux2.c */
 void		addfront_quick(t_lst_d *list, void *cnt, t_cnt_type type, bool dbg);
 void		addback_quick(t_lst_d *list, void *cnt, t_cnt_type type, bool dbg);
+t_lst_d		*update_list(t_lst_d **old_list, t_list *new_list_head);
 t_list		*get_node(t_lst_d *list, int node_ind);
 
 /* list_aux3.c */
@@ -262,7 +266,7 @@ int			proc_user_cmd3(t_cmd *c, t_lst_d **l, t_lst_test *t, bool *lcrt);
 int			proc_user_cmd4(t_cmd *c, t_lst_d **l, t_lst_test *t, bool *lcrt);
 
 /* list_dynamic_testing2.c */
-int			proc_user_cmd5(t_cmd *c, t_lst_d **l);
+int			proc_user_cmd5(t_cmd *cmd, t_lst_d **list);
 
 /* list_cmd_new_processor.c */
 int			process_cmd_new(t_lst_d **list, t_lst_test *tests, t_cmd *command);
@@ -338,6 +342,9 @@ int			process_cmd_clear(t_lst_d **l, t_lst_test *t, t_cmd *c, bool *lcrt);
 
 /* list_cmd_del_processor.c */
 int			process_cmd_del(t_lst_d **l, t_lst_test *t, t_cmd *c, bool *lcrt);
+
+/* list_cmd_map_processor.c */
+int			process_cmd_map(t_lst_d **list);
 
 /* list_alloc.c */
 int			alloc_lst_test_chars(t_lst_test *tests);
