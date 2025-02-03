@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 15:20:45 by dchernik          #+#    #+#             */
-/*   Updated: 2025/02/01 18:32:47 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/02/03 14:52:44 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@
  *     quit
  *     size
  *     last
+ *     iter
+ *     map
  *     print
  * */
 int	parse_user_input(char *buf, t_cmd *cmd)
@@ -141,11 +143,13 @@ int	check_no_arg_cmd(char (*substrs)[MAX_CMD_SUBSTR_LEN])
 		printf("parse_user_input(): Unknown command\n");
 		return (ERROR);
 	}
-	if ((strcmp(substrs[0], CMD_MAN) == 0)
-		|| (strcmp(substrs[0], CMD_QUIT) == 0)
-		|| (strcmp(substrs[0], CMD_SIZE) == 0)
-		|| (strcmp(substrs[0], CMD_LAST) == 0)
-		|| (strcmp(substrs[0], CMD_PRINT) == 0))
+	if (!strcmp(substrs[0], CMD_MAN)
+		|| !strcmp(substrs[0], CMD_QUIT)
+		|| !strcmp(substrs[0], CMD_SIZE)
+		|| !strcmp(substrs[0], CMD_LAST)
+		|| !strcmp(substrs[0], CMD_PRINT)
+		|| !strcmp(substrs[0], CMD_ITER)
+		|| !strcmp(substrs[0], CMD_MAP))
 	{
 		if ((substrs[1][0] != '\0') || (substrs[2][0] != '\0'))
 		{

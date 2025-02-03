@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 15:24:23 by dchernik          #+#    #+#             */
-/*   Updated: 2025/02/02 19:29:21 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/02/03 15:52:29 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@
 # define CMD_ADDBACK			"addback"
 # define CMD_DEL				"del"
 # define CMD_CLEAR				"clear"
+# define CMD_ITER				"iter"
+# define CMD_MAP				"map"
 # define CMD_PRINT				"print"
 # define CMD_QUIT				"quit"
 
@@ -174,7 +176,6 @@ void		lstadd_front_test(t_list **head, t_list *new);
 void		lstsize_test(t_list **head);
 void		lstlast_test(t_lst_d *list);
 void		lstadd_back_test(t_list **head, t_list *new);
-
 void		lstdelone_test(t_list *n, t_lst_test *t, void (*f)(void *));
 
 void		lstclear_test(t_lst_d *l,
@@ -182,10 +183,17 @@ void		lstclear_test(t_lst_d *l,
 				t_lst_test *t,
 				void (*f)(void *));
 
-void		lstiter_test(void);
+void		lstiter_test(t_list *head, void (*test_func)(void *));
 void		lstmap_test(void);
 
 /* Auxiliary functions */
+
+/* list_testing_funcs.c */
+void		del(void *node_cnt);
+void		iter_func1(void *node_cnt);
+void		iter_func2(void *node_cnt);
+
+
 /* list_aux.c */
 int			print_list(t_lst_d *list, int ntabs);
 void		insert_type_at_begin(t_cnt_type *t, int type_cnt, t_cnt_type type);
@@ -248,6 +256,13 @@ void		add_static_list_tests(t_lst_test *tests);
 
 /* list_dynamic_testing.c */
 void		linked_list_launch_dynamic_testing(t_lst_test *tests);
+int			proc_user_cmd1(t_cmd *c, t_lst_d **l, t_lst_test *t, bool *lcrt);
+int			proc_user_cmd2(t_cmd *c, t_lst_d **l, t_lst_test *t, bool *lcrt);
+int			proc_user_cmd3(t_cmd *c, t_lst_d **l, t_lst_test *t, bool *lcrt);
+int			proc_user_cmd4(t_cmd *c, t_lst_d **l, t_lst_test *t, bool *lcrt);
+
+/* list_dynamic_testing2.c */
+int			proc_user_cmd5(t_cmd *c, t_lst_d **l);
 
 /* list_cmd_new_processor.c */
 int			process_cmd_new(t_lst_d **list, t_lst_test *tests, t_cmd *command);
@@ -374,7 +389,6 @@ void		release_all_lst_tests(t_lst_test *tests);
 void		free_numeric_lst_tests(t_lst_test *tests);
 void		free_non_numeric_lst_tests(t_lst_test *tests);
 void		free_list_debug(t_lst_d *list);
-void		del(void *node_cnt);
 
 /* list_free2.c */
 void		free_chars(t_lst_test *tests);

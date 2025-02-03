@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 15:20:50 by dchernik          #+#    #+#             */
-/*   Updated: 2025/02/01 15:21:36 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/02/03 15:09:46 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,13 +68,4 @@ void	free_list_debug(t_lst_d *list)
 		free(list);
 		list = NULL;
 	}
-}
-
-/* This function is used to test
- * how the ft_lstdelone() works */
-void	del(void *node_cnt)
-{
-	if (node_cnt != NULL)
-		free(node_cnt);
-	node_cnt = NULL;
 }

@@ -6,14 +6,14 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 15:22:47 by dchernik          #+#    #+#             */
-/*   Updated: 2025/02/02 19:36:53 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/02/03 15:33:37 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/list.h"
 #include "../include/libft_tester.h"
 
-static void	test_helper(t_char_c *fn, int nt, t_list *n, void (*del)(void *));
+static void	test_helper(t_char_c *fn, int nt, t_list *n, void (*f)(void *));
 static void	detect_nodes_to_free(t_list *node, t_lst_test *tests);
 
 void	lstdelone_test(t_list *n, t_lst_test *t, void (*f)(void *))

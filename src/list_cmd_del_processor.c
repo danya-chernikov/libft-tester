@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 14:16:31 by dchernik          #+#    #+#             */
-/*   Updated: 2025/02/03 14:16:32 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/02/03 15:54:28 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int	process_cmd_del(t_lst_d **list, t_lst_test *tests, t_cmd *cmd, bool *lcrt)
 	t_list	*node;
 	t_list	*next;
 
+	node = NULL;
+	next = NULL;
 	lsize = lstsize(&(*list)->head);
 	node_num = atoi(cmd->arg);
 	if ((node_num < 0) || (node_num > lsize - 1))
@@ -44,6 +46,8 @@ int	process_cmd_del(t_lst_d **list, t_lst_test *tests, t_cmd *cmd, bool *lcrt)
 		next = node->next;
 		lstdelone_test(node, tests, del);
 	}
+	else
+		return (ERROR);
 	delete_type((*list)->types, (*list)->type_cnt, node_num);
 	(*list)->type_cnt--;
 	if (update_ptr_if_node_is_first(list, next, lcrt,

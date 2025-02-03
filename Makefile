@@ -19,10 +19,12 @@ OBJS=common_tester.o alg.o print.o cprint.o alloc.o packer.o \
 	 putsmth_fd_aux.o putsmth_fd_regular.o \
 	 putsmth_fd_special.o putsmth_fd_write.o putsmth_fd_print.o \
 	 putsmth_fd_errors.o \
+	 list_testing_funcs.o \
 	 list_aux.o list_aux2.o list_aux3.o list_aux4.o list_aux5.o \
 	 list_cmd_parser.o list_cmd_parser2.o \
 	 list_init.o list_tests.o list_tests2.o \
-	 list_static_testing.o list_dynamic_testing.o \
+	 list_static_testing.o \
+	 list_dynamic_testing.o list_dynamic_testing2.o \
 	 list_cmd_new_processor.o list_cmd_new.o list_cmd_new2.o list_cmd_new3.o \
 	 list_cmd_addfront_processor.o list_cmd_addfront.o list_cmd_addfront2.o list_cmd_addfront3.o \
 	 list_cmd_addback_processor.o list_cmd_addback.o list_cmd_addback2.o list_cmd_addback3.o \
@@ -30,7 +32,7 @@ OBJS=common_tester.o alg.o print.o cprint.o alloc.o packer.o \
 	 list_alloc.o list_alloc2.o list_alloc3.o list_alloc4.o list_alloc5.o list_alloc6.o list_alloc7.o \
 	 list_free.o list_free2.o list_free3.o list_free4.o list_free5.o \
 	 lstnew.o lstsize.o lstadd_front.o lstlast.o lstadd_back.o \
-	 lstdelone.o lstclear.o
+	 lstdelone.o lstclear.o lstiter.o
 
 $(NAME) : $(OBJS) $(BSDOBJS)
 	cd .. && $(MAKE) all # First let's build the Libft
@@ -208,6 +210,7 @@ putendl_fd.o : src/putendl_fd.c include/putsmth_fd.h include/libft_tester.h
 putnbr_fd.o : src/putnbr_fd.c include/putsmth_fd.h include/libft_tester.h
 	$(CC) $(CFLAGS) -c src/putnbr_fd.c
 
+
 putsmth_fd_aux.o : src/putsmth_fd_aux.c include/putsmth_fd.h include/libft_tester.h
 	$(CC) $(CFLAGS) -c src/putsmth_fd_aux.c
 
@@ -225,6 +228,10 @@ putsmth_fd_print.o : src/putsmth_fd_print.c include/putsmth_fd.h include/libft_t
 
 putsmth_fd_errors.o : src/putsmth_fd_errors.c include/putsmth_fd.h include/libft_tester.h
 	$(CC) $(CFLAGS) -c src/putsmth_fd_errors.c
+
+
+list_testing_funcs.o : src/list_testing_funcs.c include/list.h
+	$(CC) $(CFLAGS) -c src/list_testing_funcs.c
 
 
 list_aux.o : src/list_aux.c include/list.h
@@ -259,11 +266,16 @@ list_tests.o : src/list_tests.c include/list.h include/putsmth_fd.h
 list_tests2.o : src/list_tests2.c include/list.h
 	$(CC) $(CFLAGS) -c src/list_tests2.c
 
+
 list_static_testing.o : src/list_static_testing.c include/list.h
 	$(CC) $(CFLAGS) -c src/list_static_testing.c
 
+
 list_dynamic_testing.o : src/list_dynamic_testing.c include/list.h
 	$(CC) $(CFLAGS) -c src/list_dynamic_testing.c
+
+list_dynamic_testing2.o : src/list_dynamic_testing2.c include/list.h
+	$(CC) $(CFLAGS) -c src/list_dynamic_testing2.c
 
 
 list_cmd_new_processor.o : src/list_cmd_new_processor.c include/list.h
@@ -371,5 +383,8 @@ lstdelone.o : src/lstdelone.c include/list.h include/libft_tester.h
 
 lstclear.o : src/lstclear.c include/list.h include/libft_tester.h
 	$(CC) $(CFLAGS) -c src/lstclear.c
+
+lstiter.o : src/lstiter.c include/list.h include/libft_tester.h
+	$(CC) $(CFLAGS) -c src/lstiter.c
 
 .PHONY: all clean fclean re

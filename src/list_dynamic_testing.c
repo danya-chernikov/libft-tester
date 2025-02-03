@@ -6,16 +6,11 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 15:20:48 by dchernik          #+#    #+#             */
-/*   Updated: 2025/02/02 14:49:24 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/02/03 15:52:29 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/list.h"
-
-static int	proc_user_cmd1(t_cmd *c, t_lst_d **l, t_lst_test *t, bool *lcrt);
-static int	proc_user_cmd2(t_cmd *c, t_lst_d **l, t_lst_test *t, bool *lcrt);
-static int	proc_user_cmd3(t_cmd *c, t_lst_d **l, t_lst_test *t, bool *lcrt);
-static int	proc_user_cmd4(t_cmd *c, t_lst_d **l, t_lst_test *t, bool *lcrt);
 
 /* It performs dynamic testing of singly linked lists. It means
  * the user will have ability to construct thier own list using
@@ -42,16 +37,17 @@ void	linked_list_launch_dynamic_testing(t_lst_test *tests)
 		}
 		if ((proc_user_cmd1(&cmd, &list, tests, &lcrt) == ERROR)
 			|| (proc_user_cmd2(&cmd, &list, tests, &lcrt) == ERROR)
-			|| (proc_user_cmd3(&cmd, &list, tests, &lcrt) == ERROR))
+			|| (proc_user_cmd3(&cmd, &list, tests, &lcrt) == ERROR)
+			|| (proc_user_cmd4(&cmd, &list, tests, &lcrt) == ERROR))
 			continue ;
-		if (proc_user_cmd4(&cmd, &list, tests, &lcrt) == SIGNAL_QUIT)
+		if (proc_user_cmd5(&cmd, &list) == SIGNAL_QUIT)
 			break ;
 	}
 	if (lcrt)
 		free_list_debug(list);
 }
 
-static int	proc_user_cmd1(t_cmd *c, t_lst_d **l, t_lst_test *t, bool *lcrt)
+int	proc_user_cmd1(t_cmd *c, t_lst_d **l, t_lst_test *t, bool *lcrt)
 {
 	if (strcmp(c->type, CMD_MAN) == 0)
 	{
@@ -75,7 +71,7 @@ static int	proc_user_cmd1(t_cmd *c, t_lst_d **l, t_lst_test *t, bool *lcrt)
 	return (SUCCESS);
 }
 
-static int	proc_user_cmd2(t_cmd *c, t_lst_d **l, t_lst_test *t, bool *lcrt)
+int	proc_user_cmd2(t_cmd *c, t_lst_d **l, t_lst_test *t, bool *lcrt)
 {
 	if (strcmp(c->type, CMD_ADDFRONT) == 0)
 	{
@@ -93,7 +89,7 @@ static int	proc_user_cmd2(t_cmd *c, t_lst_d **l, t_lst_test *t, bool *lcrt)
 	return (SUCCESS);
 }
 
-static int	proc_user_cmd3(t_cmd *c, t_lst_d **l, t_lst_test *t, bool *lcrt)
+int	proc_user_cmd3(t_cmd *c, t_lst_d **l, t_lst_test *t, bool *lcrt)
 {
 	if ((!strcmp(c->type, CMD_SIZE)
 			|| !strcmp(c->type, CMD_LAST)
@@ -118,10 +114,11 @@ static int	proc_user_cmd3(t_cmd *c, t_lst_d **l, t_lst_test *t, bool *lcrt)
 	return (SUCCESS);
 }
 
-static int	proc_user_cmd4(t_cmd *c, t_lst_d **l, t_lst_test *t, bool *lcrt)
+int	proc_user_cmd4(t_cmd *c, t_lst_d **l, t_lst_test *t, bool *lcrt)
 {
 	if ((!strcmp(c->type, CMD_CLEAR) || !strcmp(c->type, CMD_DEL)
-			|| !strcmp(c->type, CMD_PRINT)) && (*lcrt == false))
+			|| !strcmp(c->type, CMD_PRINT) || !strcmp(c->type, CMD_ITER)
+			|| !strcmp(c->type, CMD_MAP)) && (*lcrt == false))
 	{
 		printf("Before working with a list, it must be created.\n");
 		return (ERROR);
@@ -136,13 +133,9 @@ static int	proc_user_cmd4(t_cmd *c, t_lst_d **l, t_lst_test *t, bool *lcrt)
 		if (process_cmd_del(l, t, c, lcrt) == ERROR)
 			return (ERROR);
 	}
-	if (!strcmp(c->type, CMD_PRINT))
+	if (!strcmp(c->type, CMD_ITER))
 	{
-		print_list(*l, 0);
-	}
-	if (!strcmp(c->type, CMD_QUIT))
-	{
-		return (SIGNAL_QUIT);
+		lstiter_test((*l)->head, iter_func1);
 	}
 	return (SUCCESS);
 }
