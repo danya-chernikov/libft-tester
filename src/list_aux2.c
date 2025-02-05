@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 15:16:06 by dchernik          #+#    #+#             */
-/*   Updated: 2025/02/03 19:33:28 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/02/05 16:20:08 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ void	addback_quick(t_lst_d *list, void *cnt, t_cnt_type type, bool debug)
 
 /* It creates a new debug list, fills its fields with the
  * corresponding values from `*old_list`, and assigns the
- * `new_list_head` pointer to the head field of the newly
+ * `new_list_head` pointer to the `head` field of the newly
  * created list `new_list_head` */
-t_lst_d *update_list(t_lst_d **old_list, t_list *new_list_head)
+t_lst_d	*update_list(t_lst_d **old_list, t_list *new_list_head)
 {
 	t_lst_d	*new_list;
 	int		i;
@@ -57,8 +57,8 @@ t_lst_d *update_list(t_lst_d **old_list, t_list *new_list_head)
 	if (new_list == NULL)
 		return (NULL);
 	new_list->type_cnt = (*old_list)->type_cnt;
-	new_list->types =
-		(t_cnt_type *)malloc(MAX_LST_NODES_NUM * sizeof (t_cnt_type));
+	new_list->types
+		= (t_cnt_type *)malloc(MAX_LST_NODES_NUM * sizeof (t_cnt_type));
 	if (new_list->types == NULL)
 	{
 		free(new_list);

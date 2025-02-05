@@ -1,5 +1,27 @@
 #include "../include/list.h"
 
+int	proc_user_cmd4(t_cmd *c, t_lst_d **l, t_lst_test *t, bool *lcrt)
+{
+	if ((!strcmp(c->type, CMD_CLEAR) || !strcmp(c->type, CMD_DEL)
+			|| !strcmp(c->type, CMD_PRINT) || !strcmp(c->type, CMD_ITER)
+			|| !strcmp(c->type, CMD_MAP)) && (*lcrt == false))
+	{
+		printf("Before working with a list, it must be created.\n");
+		return (ERROR);
+	}
+	if (!strcmp(c->type, CMD_CLEAR))
+	{
+		if (process_cmd_clear(l, t, c, lcrt) == ERROR)
+			return (ERROR);
+	}
+	if (!strcmp(c->type, CMD_DEL))
+	{
+		if (process_cmd_del(l, t, c, lcrt) == ERROR)
+			return (ERROR);
+	}
+	return (SUCCESS);
+}
+
 int	proc_user_cmd5(t_cmd *cmd, t_lst_d **list)
 {
 	if (!strcmp(cmd->type, CMD_ITER))

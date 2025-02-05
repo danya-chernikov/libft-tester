@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 15:24:23 by dchernik          #+#    #+#             */
-/*   Updated: 2025/02/03 19:20:15 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/02/05 16:27:21 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,9 +193,8 @@ t_list		*lstmap_test(t_list *node,
 void		del(void *node_cnt);
 void		lstiter_func1(void *node_cnt);
 void		lstiter_func2(void *node_cnt);
-void		lstmap_func1(void *node_cnt);
-void		lstmap_func2(void *node_cnt);
-
+void		*lstmap_func1(void *node_cnt);
+void		*lstmap_func2(void *node_cnt);
 
 /* list_aux.c */
 int			print_list(t_lst_d *list, int ntabs);
@@ -260,12 +259,13 @@ void		add_static_list_tests(t_lst_test *tests);
 
 /* list_dynamic_testing.c */
 void		linked_list_launch_dynamic_testing(t_lst_test *tests);
+int			process_user_cmd(t_cmd *c, t_lst_d **l, t_lst_test *t, bool *lcrt);
 int			proc_user_cmd1(t_cmd *c, t_lst_d **l, t_lst_test *t, bool *lcrt);
 int			proc_user_cmd2(t_cmd *c, t_lst_d **l, t_lst_test *t, bool *lcrt);
 int			proc_user_cmd3(t_cmd *c, t_lst_d **l, t_lst_test *t, bool *lcrt);
-int			proc_user_cmd4(t_cmd *c, t_lst_d **l, t_lst_test *t, bool *lcrt);
 
 /* list_dynamic_testing2.c */
+int			proc_user_cmd4(t_cmd *c, t_lst_d **l, t_lst_test *t, bool *lcrt);
 int			proc_user_cmd5(t_cmd *cmd, t_lst_d **list);
 
 /* list_cmd_new_processor.c */

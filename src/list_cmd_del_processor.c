@@ -6,17 +6,19 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 14:16:31 by dchernik          #+#    #+#             */
-/*   Updated: 2025/02/03 15:54:28 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/02/05 17:24:49 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/list.h"
 
+static void	update_ptr(t_lst_d **list, t_list *node, t_list *next, void **pack);
+
 static bool	update_ptr_if_node_is_first(t_lst_d **list,
-				t_list *next, bool *lcrt, void **pack);
+				t_list *next, void **pack);
 
 static bool	update_ptr_if_node_is_last(t_lst_d **list,
-				t_list *node, int node_num, int lsize);
+				t_list *node, void **pack);
 
 static void	update_ptr_if_node_is_inmid(t_lst_d **list,
 				t_list *next, t_list *node, void **pack);
@@ -50,14 +52,18 @@ int	process_cmd_del(t_lst_d **list, t_lst_test *tests, t_cmd *cmd, bool *lcrt)
 		return (ERROR);
 	delete_type((*list)->types, (*list)->type_cnt, node_num);
 	(*list)->type_cnt--;
-	if (update_ptr_if_node_is_first(list, next, lcrt,
-			pack_args(2, (void *)&node_num, (void *)&lsize)))
-		return (SUCCESS);
-	if (update_ptr_if_node_is_last(list, node, node_num, lsize))
-		return (SUCCESS);
-	update_ptr_if_node_is_inmid(list, next, node,
-		pack_args(2, (void *)&node_num, (void *)&lsize));
+	update_ptr(list, node, next,
+		pack_args(3, (void *)&node_num, (void *)&lsize, (void *)lcrt));
 	return (SUCCESS);
+}
+
+static void	update_ptr(t_lst_d **list, t_list *node, t_list *next, void **pack)
+{
+	if (update_ptr_if_node_is_first(list, next, pack))
+		return ;
+	if (update_ptr_if_node_is_last(list, node, pack))
+		return ;
+	update_ptr_if_node_is_inmid(list, node, next, pack);
 }
 
 /* If the user wants to delete the first (head) element
@@ -74,13 +80,15 @@ int	process_cmd_del(t_lst_d **list, t_lst_test *tests, t_cmd *cmd, bool *lcrt)
  * functions update_ptr_if_node_is_last() and
  * update_ptr_if_node_is_inmid() */
 static bool	update_ptr_if_node_is_first(t_lst_d **list,
-				t_list *next, bool *lcrt, void **pack)
+				t_list *next, void **pack)
 {
-	int	node_num;
-	int	lsize;
+	int		node_num;
+	int		lsize;
+	bool	*lcrt;
 
 	node_num = *(int *)pack[0];
 	lsize = *(int *)pack[1];
+	lcrt = (bool *)pack[2];
 	if (node_num == 0)
 	{
 		if (lsize == 1)
@@ -101,10 +109,14 @@ static bool	update_ptr_if_node_is_first(t_lst_d **list,
  * the last element to delete is met, the function returns
  * true; otherwise, it returns false */
 static bool	update_ptr_if_node_is_last(t_lst_d **list,
-				t_list *node, int node_num, int lsize)
+				t_list *node, void **pack)
 {
+	int		node_num;
+	int		lsize;
 	t_list	*ni;
 
+	node_num = *(int *)pack[0];
+	lsize = *(int *)pack[1];
 	ni = (*list)->head;
 	if (node_num == lsize - 1)
 	{
@@ -121,7 +133,7 @@ static bool	update_ptr_if_node_is_last(t_lst_d **list,
  * the preceding node to `node` to the address of the
  * node that comes after `node` */
 static void	update_ptr_if_node_is_inmid(t_lst_d **list,
-		t_list *next, t_list *node, void **pack)
+				t_list *node, t_list *next, void **pack)
 {
 	int		node_num;
 	int		lsize;

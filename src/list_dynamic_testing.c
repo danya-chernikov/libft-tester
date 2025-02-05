@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 15:20:48 by dchernik          #+#    #+#             */
-/*   Updated: 2025/02/03 19:18:50 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/02/05 16:31:09 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,25 @@ void	linked_list_launch_dynamic_testing(t_lst_test *tests)
 			printf("You entered an incorrect command. Please try again.\n");
 			continue ;
 		}
-		if ((proc_user_cmd1(&cmd, &list, tests, &lcrt) == ERROR)
-			|| (proc_user_cmd2(&cmd, &list, tests, &lcrt) == ERROR)
-			|| (proc_user_cmd3(&cmd, &list, tests, &lcrt) == ERROR)
-			|| (proc_user_cmd4(&cmd, &list, tests, &lcrt) == ERROR))
-			continue ;
-		if (proc_user_cmd5(&cmd, &list) == SIGNAL_QUIT)
+		if (process_user_cmd(&cmd, &list, tests, &lcrt) == SIGNAL_QUIT)
 			break ;
+		else
+			continue ;
 	}
 	if (lcrt)
 		free_list_debug(list);
+}
+
+int	process_user_cmd(t_cmd *cmd, t_lst_d **list, t_lst_test *t, bool *lcrt)
+{
+	if ((proc_user_cmd1(cmd, list, t, lcrt) == ERROR)
+		|| (proc_user_cmd2(cmd, list, t, lcrt) == ERROR)
+		|| (proc_user_cmd3(cmd, list, t, lcrt) == ERROR)
+		|| (proc_user_cmd4(cmd, list, t, lcrt) == ERROR))
+		return (ERROR);
+	if (proc_user_cmd5(cmd, list) == SIGNAL_QUIT)
+		return (SIGNAL_QUIT);
+	return (SUCCESS);
 }
 
 int	proc_user_cmd1(t_cmd *c, t_lst_d **l, t_lst_test *t, bool *lcrt)
@@ -110,28 +119,6 @@ int	proc_user_cmd3(t_cmd *c, t_lst_d **l, t_lst_test *t, bool *lcrt)
 	if (!strcmp(c->type, CMD_ADDBACK))
 	{
 		if (process_cmd_addback(l, t, c) == ERROR)
-			return (ERROR);
-	}
-	return (SUCCESS);
-}
-
-int	proc_user_cmd4(t_cmd *c, t_lst_d **l, t_lst_test *t, bool *lcrt)
-{
-	if ((!strcmp(c->type, CMD_CLEAR) || !strcmp(c->type, CMD_DEL)
-			|| !strcmp(c->type, CMD_PRINT) || !strcmp(c->type, CMD_ITER)
-			|| !strcmp(c->type, CMD_MAP)) && (*lcrt == false))
-	{
-		printf("Before working with a list, it must be created.\n");
-		return (ERROR);
-	}
-	if (!strcmp(c->type, CMD_CLEAR))
-	{
-		if (process_cmd_clear(l, t, c, lcrt) == ERROR)
-			return (ERROR);
-	}
-	if (!strcmp(c->type, CMD_DEL))
-	{
-		if (process_cmd_del(l, t, c, lcrt) == ERROR)
 			return (ERROR);
 	}
 	return (SUCCESS);

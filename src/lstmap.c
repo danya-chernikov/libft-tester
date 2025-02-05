@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 15:22:51 by dchernik          #+#    #+#             */
-/*   Updated: 2025/02/03 19:30:42 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/02/05 15:48:00 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ t_list	*lstmap_test(t_list *node,
 	strncpy(fname, "ft_lstmap", MAX_FUNC_NAME_LEN);
 	strncpy(format, "(%p, %p, %p)\n", MAX_FORMAT_STR_LEN);
 	print_test_header(fname);
-	printf("\t%d. ", nt);
-	cprintf(YELLOW, "%s", fn);
+	printf("\t%d. ", ntest);
+	cprintf(YELLOW, "%s", fname);
 	new_list_head = ft_lstmap(node, test_func, del_func);
 	if (new_list_head == NULL)
 		return (NULL);
