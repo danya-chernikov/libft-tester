@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 15:16:02 by dchernik          #+#    #+#             */
-/*   Updated: 2025/02/01 20:36:11 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/02/05 19:32:59 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,15 +89,15 @@ void	delete_type(t_cnt_type *types, int type_cnt, int type_pos)
  * by the print_list() and
  * process_del_clear()
  * functions */
-int	lstsize(t_list **lst)
+int	lstsize(t_list *lst)
 {
 	t_list	*nptr;
 	int		size;
 
-	if (*lst == NULL)
-		return (0);
+	if (lst == NULL)
+		return (ERROR);
 	size = 1;
-	nptr = (*lst)->next;
+	nptr = lst->next;
 	while (nptr != NULL)
 	{
 		nptr = nptr->next;

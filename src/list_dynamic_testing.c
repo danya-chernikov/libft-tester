@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 15:20:48 by dchernik          #+#    #+#             */
-/*   Updated: 2025/02/05 16:31:09 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/02/05 19:30:30 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ int	proc_user_cmd3(t_cmd *c, t_lst_d **l, t_lst_test *t, bool *lcrt)
 	}
 	if (!strcmp(c->type, CMD_SIZE))
 	{
-		lstsize_test(&(*l)->head);
+		lstsize_test((*l)->head);
 	}
 	if (!strcmp(c->type, CMD_LAST))
 	{

@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 15:16:06 by dchernik          #+#    #+#             */
-/*   Updated: 2025/02/05 16:20:08 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/02/05 19:29:10 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	addfront_quick(t_lst_d *list, void *cnt, t_cnt_type type, bool debug)
 	if (debug)
 	{
 		print_list(list, 0);
-		lstsize_test(&list->head);
+		lstsize_test(list->head);
 	}
 }
 
@@ -40,7 +40,7 @@ void	addback_quick(t_lst_d *list, void *cnt, t_cnt_type type, bool debug)
 	if (debug)
 	{
 		print_list(list, 0);
-		lstsize_test(&list->head);
+		lstsize_test(list->head);
 	}
 }
 

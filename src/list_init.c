@@ -6,7 +6,7 @@
 /*   By: dchernik <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 17:31:44 by dchernik          #+#    #+#             */
-/*   Updated: 2025/02/03 19:06:19 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/02/05 19:34:58 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_lst_d	*list_debug_init(void *cnt, t_cnt_type type, bool debug)
 	if (debug)
 	{
 		print_list(list, 0);
-		lstsize_test(&list->head);
+		lstsize_test(list->head);
 	}
 	return (list);
 }

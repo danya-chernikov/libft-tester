@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 15:24:23 by dchernik          #+#    #+#             */
-/*   Updated: 2025/02/05 16:27:21 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/02/05 19:32:00 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,7 +172,7 @@ typedef struct list_debug
 /* Main functions */
 t_list		*lstnew_test(void *cnt, t_cnt_type type);
 void		lstadd_front_test(t_list **head, t_list *new);
-void		lstsize_test(t_list **head);
+void		lstsize_test(t_list *head);
 void		lstlast_test(t_lst_d *list);
 void		lstadd_back_test(t_list **head, t_list *new);
 void		lstdelone_test(t_list *n, t_lst_test *t, void (*f)(void *));
@@ -200,7 +200,7 @@ void		*lstmap_func2(void *node_cnt);
 int			print_list(t_lst_d *list, int ntabs);
 void		insert_type_at_begin(t_cnt_type *t, int type_cnt, t_cnt_type type);
 void		delete_type(t_cnt_type *types, int type_cnt, int type_pos);
-int			lstsize(t_list **lst);
+int			lstsize(t_list *lst);
 void		print_tabs(int n);
 
 /* list_aux2.c */

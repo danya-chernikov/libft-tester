@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 14:16:31 by dchernik          #+#    #+#             */
-/*   Updated: 2025/02/05 17:24:49 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/02/05 19:36:23 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	process_cmd_del(t_lst_d **list, t_lst_test *tests, t_cmd *cmd, bool *lcrt)
 
 	node = NULL;
 	next = NULL;
-	lsize = lstsize(&(*list)->head);
+	lsize = lstsize((*list)->head);
 	node_num = atoi(cmd->arg);
 	if ((node_num < 0) || (node_num > lsize - 1))
 		return (ERROR);
