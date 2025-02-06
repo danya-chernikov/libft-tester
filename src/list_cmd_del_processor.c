@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 14:16:31 by dchernik          #+#    #+#             */
-/*   Updated: 2025/02/05 19:36:23 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/02/06 23:40:42 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,6 @@ static bool	update_ptr_if_node_is_first(t_lst_d **list,
 		free(pack);
 		return (true);
 	}
-	free(pack);
 	return (false);
 }
 
@@ -123,6 +122,7 @@ static bool	update_ptr_if_node_is_last(t_lst_d **list,
 		while (ni->next != node)
 			ni = ni->next;
 		ni->next = NULL;
+		free(pack);
 		return (true);
 	}
 	return (false);
