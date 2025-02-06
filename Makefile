@@ -35,7 +35,8 @@ OBJS=common_tester.o alg.o print.o cprint.o alloc.o packer.o \
 	 lstdelone.o lstclear.o lstiter.o lstmap.o
 
 $(NAME) : $(OBJS) $(BSDOBJS)
-	cd .. && $(MAKE) all # First let's build the Libft
+	cd .. && $(MAKE) all && $(MAKE) bonus # First let's build the Libft
+
 	ar rcs $(NAME) $(OBJS) $(BSDOBJS) # Building Libft tester library
 
 # First we build libft.a and then libft_tester.a
