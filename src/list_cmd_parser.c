@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 15:20:45 by dchernik          #+#    #+#             */
-/*   Updated: 2025/02/03 14:52:44 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/05/04 20:07:51 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,7 +149,9 @@ int	check_no_arg_cmd(char (*substrs)[MAX_CMD_SUBSTR_LEN])
 		|| !strcmp(substrs[0], CMD_LAST)
 		|| !strcmp(substrs[0], CMD_PRINT)
 		|| !strcmp(substrs[0], CMD_ITER)
-		|| !strcmp(substrs[0], CMD_MAP))
+		|| !strcmp(substrs[0], CMD_MAP)
+		|| !strcmp(substrs[0], CMD_REMOVE_IF)
+		|| !strcmp(substrs[0], CMD_SORT))
 	{
 		if ((substrs[1][0] != '\0') || (substrs[2][0] != '\0'))
 		{

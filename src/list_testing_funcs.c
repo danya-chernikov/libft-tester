@@ -6,22 +6,11 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 17:36:31 by dchernik          #+#    #+#             */
-/*   Updated: 2025/02/05 20:10:26 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/05/04 20:14:53 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/list.h"
-
-/* This function is used to
- * test how the ft_lstdelone()
- * and ft_lstclear() functions
- * works */
-void	del(void *node_cnt)
-{
-	if (node_cnt != NULL)
-		free(node_cnt);
-	node_cnt = NULL;
-}
 
 /* This function is used to test how
  * the ft_lstiter() function works */

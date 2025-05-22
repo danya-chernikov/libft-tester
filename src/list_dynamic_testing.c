@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 15:20:48 by dchernik          #+#    #+#             */
-/*   Updated: 2025/02/05 19:30:30 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/05/04 21:46:43 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,10 @@ int	process_user_cmd(t_cmd *cmd, t_lst_d **list, t_lst_test *t, bool *lcrt)
 	if ((proc_user_cmd1(cmd, list, t, lcrt) == ERROR)
 		|| (proc_user_cmd2(cmd, list, t, lcrt) == ERROR)
 		|| (proc_user_cmd3(cmd, list, t, lcrt) == ERROR)
-		|| (proc_user_cmd4(cmd, list, t, lcrt) == ERROR))
+		|| (proc_user_cmd4(cmd, list, t, lcrt) == ERROR)
+		|| (proc_user_cmd5(cmd, list) == ERROR))
 		return (ERROR);
-	if (proc_user_cmd5(cmd, list) == SIGNAL_QUIT)
+	if (proc_user_cmd6(cmd, list) == SIGNAL_QUIT)
 		return (SIGNAL_QUIT);
 	return (SUCCESS);
 }

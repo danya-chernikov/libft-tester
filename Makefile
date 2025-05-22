@@ -19,7 +19,7 @@ OBJS=common_tester.o alg.o print.o cprint.o alloc.o packer.o \
 	 putsmth_fd_aux.o putsmth_fd_regular.o \
 	 putsmth_fd_special.o putsmth_fd_write.o putsmth_fd_print.o \
 	 putsmth_fd_errors.o \
-	 list_testing_funcs.o \
+	 list_testing_funcs.o list_testing_funcs2.o \
 	 list_aux.o list_aux2.o list_aux3.o list_aux4.o list_aux5.o \
 	 list_cmd_parser.o list_cmd_parser2.o \
 	 list_init.o list_tests.o list_tests2.o \
@@ -31,7 +31,7 @@ OBJS=common_tester.o alg.o print.o cprint.o alloc.o packer.o \
 	 list_cmd_clear_processor.o list_cmd_del_processor.o list_cmd_map_processor.o \
 	 list_alloc.o list_alloc2.o list_alloc3.o list_alloc4.o list_alloc5.o list_alloc6.o list_alloc7.o \
 	 list_free.o list_free2.o list_free3.o list_free4.o list_free5.o \
-	 lstnew.o lstsize.o lstadd_front.o lstlast.o lstadd_back.o \
+	 lstnew.o lstsize.o lstadd_front.o lstlast.o lstadd_back.o list_remove_if.o \
 	 lstdelone.o lstclear.o lstiter.o lstmap.o
 
 $(NAME) : $(OBJS) $(BSDOBJS)
@@ -234,6 +234,9 @@ putsmth_fd_errors.o : src/putsmth_fd_errors.c include/putsmth_fd.h include/libft
 list_testing_funcs.o : src/list_testing_funcs.c include/list.h
 	$(CC) $(CFLAGS) -c src/list_testing_funcs.c
 
+list_testing_funcs2.o : src/list_testing_funcs2.c include/list.h
+	$(CC) $(CFLAGS) -c src/list_testing_funcs2.c
+
 
 list_aux.o : src/list_aux.c include/list.h
 	$(CC) $(CFLAGS) -c src/list_aux.c
@@ -394,5 +397,8 @@ lstiter.o : src/lstiter.c include/list.h include/libft_tester.h
 
 lstmap.o : src/lstmap.c include/list.h include/libft_tester.h
 	$(CC) $(CFLAGS) -c src/lstmap.c
+
+list_remove_if.o : src/list_remove_if.c include/list.h include/libft_tester.h
+	$(CC) $(CFLAGS) -c src/list_remove_if.c
 
 .PHONY: all clean fclean re

@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 15:24:23 by dchernik          #+#    #+#             */
-/*   Updated: 2025/02/05 19:32:00 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/05/06 17:26:20 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@
 # define CMD_MAP				"map"
 # define CMD_PRINT				"print"
 # define CMD_QUIT				"quit"
+# define CMD_REMOVE_IF			"remove"
+# define CMD_SORT				"sort"
 
 # define AT_CHAR				"CHAR"
 # define AT_UCHAR				"U_CHAR"
@@ -187,14 +189,19 @@ void		lstiter_test(t_list *head, void (*test_func)(void *));
 t_list		*lstmap_test(t_list *node,
 				void *(*test_func)(void *), void (*del_func)(void *));
 
+void		list_remove_if_test(t_list **head);
+
 /* Auxiliary functions */
 
 /* list_testing_funcs.c */
-void		del(void *node_cnt);
 void		lstiter_func1(void *node_cnt);
 void		lstiter_func2(void *node_cnt);
 void		*lstmap_func1(void *node_cnt);
 void		*lstmap_func2(void *node_cnt);
+
+/* list_testing_funcs2.c */
+void		del(void *node_cnt);
+int			cmp(void *data1, void *data2);
 
 /* list_aux.c */
 int			print_list(t_lst_d *list, int ntabs);
@@ -266,7 +273,8 @@ int			proc_user_cmd3(t_cmd *c, t_lst_d **l, t_lst_test *t, bool *lcrt);
 
 /* list_dynamic_testing2.c */
 int			proc_user_cmd4(t_cmd *c, t_lst_d **l, t_lst_test *t, bool *lcrt);
-int			proc_user_cmd5(t_cmd *cmd, t_lst_d **list);
+int			proc_user_cmd5(t_cmd *c, t_lst_d **l);
+int			proc_user_cmd6(t_cmd *cmd, t_lst_d **list);
 
 /* list_cmd_new_processor.c */
 int			process_cmd_new(t_lst_d **list, t_lst_test *tests, t_cmd *command);
